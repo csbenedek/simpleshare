@@ -1,0 +1,42 @@
+/* 
+  Localized.strings
+  BoxSimpleShare
+
+  Created by Alexander Kievsky on 11/10/11.
+*/
+
+// General strings
+
+YES = "Yes";
+NO = "No";
+OK = "OK";
+Cancel = "Cancel";
+
+StartLoginTitle = "Login";
+StartLoginMessage = "Clicking OK will redirect your browser to box.com. After you have authenticated Box SimpleShare please return to the application";
+WasLoginSuccessTitle = "Was the authentication successful?";
+WasLoginSuccessMessage = "Did you successfully authenticate Box SimpleShare at the website?";
+
+LoginFailed = "Your username or password was entered incorrectly";
+RegisterString = "Register for a free 5GB account";
+LearMoreString = "learn more";
+
+// Menu
+
+Account = "Account";
+Preferences = "Preferences...";
+DisableUploads = "Disable Uploads";
+EnableUploads = "Enable Uploads";
+Login = "Login";
+
+Capture = "Capture";
+CaptureRegion = "Draw region";
+CaptureFullscreen = "Full Screen";
+Upload = "Upload File...";
+
+VideoCapture = "Video Capture";
+StopVideoCapture = "Stop Video Capture";
+StopCaptureButtonTitle = "Stop Recording";
+StartVideoCaptureTitle = "Video capture started";
+StartVideoCaptureDescription = "To stop recording use ⇧⌘%@";
+

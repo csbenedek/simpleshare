@@ -1,0 +1,17 @@
+//
+// Prefix header for all source files of the 'BoxSimpleShare' target in the 'BoxSimpleShare' project
+//
+
+#ifdef __OBJC__
+
+#import <Cocoa/Cocoa.h>
+
+// APP CONTANTS & EXTENSIONS
+#import "AppConstants.h"
+#import "Macros.h" // need to decleare this in each class as to avoid linking errors
+
+#endif
+
+#define InterfaceString(key) NSLocalizedStringFromTable(key, @"Localized", nil)
+
+

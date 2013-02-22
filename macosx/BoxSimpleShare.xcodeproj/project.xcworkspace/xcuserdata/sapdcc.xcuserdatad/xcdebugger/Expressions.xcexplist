@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesStackState
+   version = "1.0">
+   <StackStates>
+      <StackState
+         stackFrameDescription = "-[BoxSimpleShareAppDelegate showLoading:]:BoxSimpleShareAppDelegate.m">
+         <expressions>
+            <expression
+               value = "notification.object">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[BoxSimpleShareAppDelegate showLoading]:BoxSimpleShareAppDelegate.m">
+         <expressions>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[MainController updateProgress:]:MainController.m">
+         <expressions>
+            <expression
+               value = "[notification object]">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[UploadOperation totalBytesToUpload]:UploadOperation.m">
+         <expressions>
+            <expression
+               value = "[request contentLength]">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[UploadOperation start]:UploadOperation.m">
+         <expressions>
+            <expression
+               value = "src">
+            </expression>
+            <expression
+               value = "[request postBody]">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[NSStatusItem(PRIVATE) updateStatusItem:]:BoxSimpleShareAppDelegate.m">
+         <expressions>
+            <expression
+               value = "[notification object]">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "GLOBAL">
+         <expressions>
+            <expression
+               value = "operationQueue">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[BoxNetHandler uploadFiles:withProperties:]:BoxNetHandler.m">
+         <expressions>
+            <expression
+               value = "[[[BoxNetHandler sharedHandler] operationQueue] operationCount]">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[BoxSimpleShareAppDelegate applicationDidFinishLaunching:]:BoxSimpleShareAppDelegate.m">
+         <expressions>
+            <expression
+               value = "loginView">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[ASIHTTPRequest updateUploadProgress]:ASIHTTPRequest.m">
+         <expressions>
+            <expression
+               value = "[self totalBytesSent]">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[HTTPFormDataRequest failWithError:]:HTTPFormDataRequest.m">
+         <expressions>
+            <expression
+               value = "multicastDelegate">
+            </expression>
+            <expression
+               value = "[self multicastDelegate]">
+            </expression>
+         </expressions>
+      </StackState>
+   </StackStates>
+</VariablesStackState>

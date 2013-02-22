@@ -1,0 +1,1 @@
+// Dummy file to avoid C/C++ linking errors.
