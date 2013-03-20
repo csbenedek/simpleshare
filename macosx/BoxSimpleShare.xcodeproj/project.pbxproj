@@ -62,6 +62,8 @@
 		2CAFB79816B58D3A00418D61 /* OAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFB79716B58D3A00418D61 /* OAuth2Client.m */; };
 		2CAFB79B16B5C83A00418D61 /* OAuth2Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFB79A16B5C83A00418D61 /* OAuth2Server.m */; };
 		2CAFB7CC16B71E7000418D61 /* OAuth2Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFB7CB16B71E7000418D61 /* OAuth2Connection.m */; };
+		2CBDB37316FA58FC00BA81E1 /* Growl.framework in Copy Linked Frameworks */ = {isa = PBXBuildFile; fileRef = 2CBDB37216FA58FC00BA81E1 /* Growl.framework */; };
+		2CBDB37416FA595700BA81E1 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CBDB37216FA58FC00BA81E1 /* Growl.framework */; };
 		8B120E4F13D3305300604F85 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B120E4E13D3305200604F85 /* ScriptingBridge.framework */; };
 		8B16ED7313D21DE100F6DC5E /* PreferenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B16ED7213D21DE000F6DC5E /* PreferenceManager.m */; };
 		8B2BF1EF13CD06C600A76F27 /* libchilkatCocoa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B2BF1EE13CD06C600A76F27 /* libchilkatCocoa.a */; };
@@ -200,8 +202,6 @@
 		91F23825147E886E00B1B655 /* StartVideoCaptureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F23824147E886E00B1B655 /* StartVideoCaptureController.m */; };
 		91F23833147EA93F00B1B655 /* ScreenshotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F23832147EA93F00B1B655 /* ScreenshotManager.m */; };
 		91F23842147FF6B200B1B655 /* VideoCaptureManagerPreLion.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F23841147FF6B200B1B655 /* VideoCaptureManagerPreLion.m */; };
-		91F7EBA7147404F700D79553 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F7EBA6147404F700D79553 /* Growl.framework */; };
-		91F7EBA81474057600D79553 /* Growl.framework in Copy Linked Frameworks */ = {isa = PBXBuildFile; fileRef = 91F7EBA6147404F700D79553 /* Growl.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -211,7 +211,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				91F7EBA81474057600D79553 /* Growl.framework in Copy Linked Frameworks */,
+				2CBDB37316FA58FC00BA81E1 /* Growl.framework in Copy Linked Frameworks */,
 			);
 			name = "Copy Linked Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +280,8 @@
 		2CAFB79A16B5C83A00418D61 /* OAuth2Server.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuth2Server.m; sourceTree = "<group>"; };
 		2CAFB7CA16B71E7000418D61 /* OAuth2Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuth2Connection.h; sourceTree = "<group>"; };
 		2CAFB7CB16B71E7000418D61 /* OAuth2Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuth2Connection.m; sourceTree = "<group>"; };
+		2CBDB36F16FA554D00BA81E1 /* SimpleShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SimpleShare.entitlements; sourceTree = "<group>"; };
+		2CBDB37216FA58FC00BA81E1 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		8B120E4E13D3305200604F85 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		8B16ED7113D21DE000F6DC5E /* PreferenceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceManager.h; sourceTree = "<group>"; };
 		8B16ED7213D21DE000F6DC5E /* PreferenceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceManager.m; sourceTree = "<group>"; };
@@ -574,7 +576,6 @@
 		91F23840147FF6B200B1B655 /* VideoCaptureManagerPreLion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCaptureManagerPreLion.h; sourceTree = "<group>"; };
 		91F23841147FF6B200B1B655 /* VideoCaptureManagerPreLion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCaptureManagerPreLion.m; sourceTree = "<group>"; };
 		91F7EB901472BCF500D79553 /* Finder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Finder.h; sourceTree = "<group>"; };
-		91F7EBA6147404F700D79553 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -582,6 +583,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CBDB37416FA595700BA81E1 /* Growl.framework in Frameworks */,
 				2C11BB3516A00462005C240C /* libz.1.2.5.dylib in Frameworks */,
 				2C11BB3316A00443005C240C /* libxml2.2.dylib in Frameworks */,
 				8B120E4F13D3305300604F85 /* ScriptingBridge.framework in Frameworks */,
@@ -599,7 +601,6 @@
 				8BDB2E4313C3A126003BFDE0 /* SystemConfiguration.framework in Frameworks */,
 				8BDB2E4113C3A11D003BFDE0 /* Security.framework in Frameworks */,
 				8B2BF1EF13CD06C600A76F27 /* libchilkatCocoa.a in Frameworks */,
-				91F7EBA7147404F700D79553 /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -985,6 +986,7 @@
 		8BDB2D1013C3989E003BFDE0 = {
 			isa = PBXGroup;
 			children = (
+				2CBDB36F16FA554D00BA81E1 /* SimpleShare.entitlements */,
 				8BDB2D2513C3989F003BFDE0 /* BoxSimpleShare */,
 				8BDB2D1E13C3989F003BFDE0 /* Frameworks */,
 				8BDB2D1C13C3989F003BFDE0 /* Products */,
@@ -1077,8 +1079,8 @@
 		8BDB2DB913C39EA5003BFDE0 /* External Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2CBDB37216FA58FC00BA81E1 /* Growl.framework */,
 				2C11BB3B16A7D264005C240C /* Base64 */,
-				91F7EBA6147404F700D79553 /* Growl.framework */,
 				8B84069F13D3A2B00025EA39 /* JSON */,
 				8B2BF1B913CD06B800A76F27 /* Chilkat */,
 				8B69535613C4D11B00B32618 /* GData XML Parser */,
@@ -1637,6 +1639,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = SimpleShare.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1670,6 +1673,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = SimpleShare.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";

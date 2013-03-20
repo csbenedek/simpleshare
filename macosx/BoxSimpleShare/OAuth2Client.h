@@ -31,6 +31,9 @@
 - (void) deallocSharedInstance;
 
 - (void) authorize;
+- (BOOL) isAuthorized;
+
+- (void) reset;
 
 - (void) downloadFile:(NSString *)fileID;
 

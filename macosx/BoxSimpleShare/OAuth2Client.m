@@ -36,6 +36,8 @@ static OAuth2Client* oauth2SharedInstance = nil;
 		isAuthorized = NO;
 		
 		refreshTimer = nil;
+		
+		[self loadRefreshToken];
 	}
 	
 	return self;
@@ -91,10 +93,33 @@ static OAuth2Client* oauth2SharedInstance = nil;
 
 - (void) authorize
 {
-	NSString* redirectURL = [NSString stringWithFormat:@"http://localhost:%d", [server listenPort]];
-	NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:OAUTH2_AUTH_CODE_URL, OAUTH2_CLIENT_ID, redirectURL]];
+	if (!refreshToken)
+	{
+		NSString* redirectURL = [NSString stringWithFormat:@"http://localhost:%d", (int)[server listenPort]];
+		NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:OAUTH2_AUTH_CODE_URL, OAUTH2_CLIENT_ID, redirectURL]];
 
-	[[NSWorkspace sharedWorkspace] openURL:url];
+		[[NSWorkspace sharedWorkspace] openURL:url];
+	}
+	else
+	{
+		[self refreshAccessToken];
+	}
+}
+
+- (BOOL) isAuthorized
+{
+	return refreshToken != nil;
+}
+
+- (void) reset
+{
+	if (refreshToken)
+	{
+		[refreshToken release];
+		refreshToken = nil;
+	}
+	
+	[self saveRefreshToken];
 }
 
 - (void) downloadFile:(NSString *)fileID
@@ -171,13 +196,28 @@ static OAuth2Client* oauth2SharedInstance = nil;
 				// TODO: handle error and show the corresponding description.
 				// the possible values are: invalid_request, unauthorized_client,
 				// invalid_grant, invalid_client, redirect_uri_mismatch, internal_server_error
+
+				if (accessToken && refreshToken)
+				{
+					NSDictionary* userInfo = [NSDictionary dictionaryWithObject:[json objectForKey:@"error_description"]
+																		 forKey:@"error"];
+					
+					NSError* err = [NSError errorWithDomain:@"net.box.loginerror" code:-1 userInfo:userInfo];
+					NSNotification* notification = [NSNotification notificationWithName:@"LOGIN_RESPONSE" object:err];
+					[[NSNotificationCenter defaultCenter] postNotification:notification];
+				}
+				else
+				{
+					PostNotification(@"HIDE_LOADING");
+				}
 				
-				NSDictionary* userInfo = [NSDictionary dictionaryWithObject:[json objectForKey:@"message"]
-                                                                     forKey:@"error"];
+				if (refreshToken)
+				{
+					[refreshToken release];
+					refreshToken = nil;
+				}
 				
-                NSError* err = [NSError errorWithDomain:@"net.box.loginerror" code:-1 userInfo:userInfo];
-                NSNotification* notification = [NSNotification notificationWithName:@"LOGIN_RESPONSE" object:err];
-				[[NSNotificationCenter defaultCenter] postNotification:notification];
+				[self saveRefreshToken];
 				
 				return;
 			}
@@ -212,7 +252,9 @@ static OAuth2Client* oauth2SharedInstance = nil;
 			
 			tokenExpires = [[dict objectForKey:@"expires_in"] doubleValue];
 			
-			SSLog(@"oauth2 access token has been received successfully");
+			SSLog(@"OAuth2 access token has been received successfully");
+
+			[self saveRefreshToken];
 			
 			[self startRefreshTimer:(tokenExpires / 2)];
 			
@@ -290,24 +332,91 @@ static OAuth2Client* oauth2SharedInstance = nil;
 	
 	if (accessToken && refreshToken)
 	{
-		SSLog(@"Refreshing oauth2 access token...");
-		
-		NSURL* url = [NSURL URLWithString:OAUTH2_AUTH_TOKEN_URL];
-		
-		ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL:url];
-		
-		[request addRequestHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", accessToken]];
-		
-		[request addPostValue:@"refresh_token" forKey:@"grant_type"];
-		[request addPostValue:refreshToken forKey:@"refresh_token"];
-		[request addPostValue:OAUTH2_CLIENT_ID forKey:@"client_id"];
-		[request addPostValue:OAUTH2_CLIENT_SECRET forKey:@"client_secret"];
-		
-		NSMutableDictionary* dic = [NSMutableDictionary dictionaryWithObject:LOGIN_ACTION forKey:@"TYPE"];
-		[request setUserInfo:dic];
-		
-		[queue addOperation:request];
+		[self refreshAccessToken];
 	}
+}
+
+- (void) refreshAccessToken
+{
+	SSLog(@"Refreshing OAuth2 access token...");
+
+	NSURL* url = [NSURL URLWithString:OAUTH2_AUTH_TOKEN_URL];
+	
+	ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL:url];
+	
+	[request addRequestHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", accessToken]];
+	
+	[request addPostValue:@"refresh_token" forKey:@"grant_type"];
+	[request addPostValue:refreshToken forKey:@"refresh_token"];
+	[request addPostValue:OAUTH2_CLIENT_ID forKey:@"client_id"];
+	[request addPostValue:OAUTH2_CLIENT_SECRET forKey:@"client_secret"];
+	
+	NSMutableDictionary* dic = [NSMutableDictionary dictionaryWithObject:LOGIN_ACTION forKey:@"TYPE"];
+	[request setUserInfo:dic];
+	
+	[queue addOperation:request];
+}
+
+- (void) loadRefreshToken
+{
+	NSString *path = [BASE_PATH stringByAppendingPathComponent:[NSString stringWithFormat:@"net.box.simpleshare.rt"]];
+    
+    NSMutableData *data = [[NSMutableData alloc] initWithContentsOfFile:path];
+    
+    if (data && [[NSFileManager defaultManager] fileExistsAtPath:path])
+    {
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+        NSMutableDictionary *details = [[unarchiver decodeObjectForKey:@"net.box.simpleshare.rt"] retain];
+        
+        if (details)
+        {
+			refreshToken = [details valueForKey:@"RT"];
+        }
+        
+        [unarchiver finishDecoding];
+		
+        safe_release( details );
+    }
+    
+    safe_release( data );
+    path = nil;
+}
+
+- (void) saveRefreshToken
+{
+	NSFileManager* fileManager = [NSFileManager defaultManager];
+	if (![fileManager fileExistsAtPath:BASE_PATH])
+	{
+		if (![fileManager createDirectoryAtPath:BASE_PATH withIntermediateDirectories:YES attributes:nil error:NULL])
+		{
+			SSLog(@"ERROR: Failed to create a directory: %@", BASE_PATH);
+			return;
+		}
+	}
+	
+    NSString *path = [BASE_PATH stringByAppendingPathComponent:[NSString stringWithFormat:@"net.box.simpleshare.rt"]];
+    
+    NSMutableDictionary* details = [NSMutableDictionary new];
+	
+	if (refreshToken)
+	{
+		[details setObject:refreshToken forKey:@"RT"];
+	}
+    
+    NSMutableData *data = [NSMutableData new];
+	
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [archiver encodeObject:details forKey:@"net.box.simpleshare.rt"];
+    [archiver finishEncoding];
+    
+    safe_release(details);
+    safe_release(archiver);
+    
+    NSError *error = nil;
+    [data writeToFile:path options:NSDataWritingAtomic error:&error];
+    
+    safe_release( data );
+    path = nil;
 }
 
 @end

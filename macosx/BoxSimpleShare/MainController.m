@@ -232,7 +232,9 @@ static NSString* LearnMoreURL = @"http://www.box.com/business/features/";
     [[HTTPRequestHandler sharedHandler] deallocSharedHandler];
     [[HTTPRequestHandler uploadHandler] deallocUploadHandler];
 
+	[[OAuth2Client sharedInstance] reset];
 	[[OAuth2Client sharedInstance] deallocSharedInstance];
+	
 	[[Mixpanel sharedInstance] deallocSharedInstance];
 	
     [[BoxNetHandler sharedHandler] deallocSharedHandler];

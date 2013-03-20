@@ -166,6 +166,12 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     filesAddedToQueue = [NSMutableSet new];
     [self setupUploadHotKey];
     [self setupVideoCaptureHotKey];
+	
+	if ([[OAuth2Client sharedInstance] isAuthorized])
+	{
+		PostNotificationWithObject(@"SHOW_LOADING", [NSString stringWithUTF8String:"Logging In ..."]);
+		[[OAuth2Client sharedInstance] authorize];
+	}
 }
 
 #pragma mark Hotkeys
