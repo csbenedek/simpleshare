@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+
+<Product Name='Box SimpleShare' Id='{22296944-6793-46ef-9C67-5B6E9048666E}' UpgradeCode='CD328FD5-F906-48A8-9DE8-35930E31B248' Version='1.0.42'
+    Language='1033' Codepage='1252' Manufacturer='Box.net'>
+
+    <Package Id='*'
+	Comments="This installer database contains the logic and data required to install Box SimpleShare."
+	Compressed="yes"
+	Keywords='Installer, MSI, Database'
+	Description="Box SimpleShare Installer" 
+	Manufacturer='Box.net'
+	InstallerVersion='200'
+	Languages='1033'
+	SummaryCodepage='1252'
+	ReadOnly="no" />
+
+    <Upgrade Id='CD328FD5-F906-48A8-9DE8-35930E31B248'>
+        <UpgradeVersion OnlyDetect='no'  Maximum='1.0.42' IncludeMaximum='no' Property='OLDPRODUCTS' MigrateFeatures="yes" ExcludeLanguages="yes" />
+        <UpgradeVersion OnlyDetect='yes' Minimum='1.0.42' IncludeMinimum='no' Property='NEWERFOUND' />
+	</Upgrade>
+
+	<CustomAction Id='NoDowngrade' Error='A later version of [ProductName] is already installed.' />
+
+    <Media Id='1' Cabinet='simpleshare.cab' EmbedCab='yes'  />
+
+    <Directory Id='TARGETDIR' Name='SourceDir'>
+
+        <Directory Id='ProgramFilesFolder' Name='PFiles'>
+            <Directory Id='BOXDIR' Name='Box'>
+                <Directory Id='INSTALLDIR' Name='SimpleShare'>
+
+                    <Component Id='MainExecutable' Guid='536ea3ab-0b82-11e1-8c42-08002700f085'>
+                        <File Id='MainExecutable' Name='simpleshare.exe' DiskId='1' Source='simpleshare.exe' KeyPath='yes'>
+                            <Shortcut Id="startmenuSimpleShare" Directory="ProgramMenuDir" Name="Box SimpleShare"
+                                WorkingDirectory='INSTALLDIR' Icon="simpleshare.exe" IconIndex="0" Advertise="yes" />
+                            <Shortcut Id="desktopSimpleShare" Directory="DesktopFolder" Name="Box SimpleShare"
+                                WorkingDirectory='INSTALLDIR' Icon="simpleshare.exe" IconIndex="0" Advertise="yes" />
+                        </File>                                                                       
+                    </Component>
+
+                    <Component Id='mingw10.dll' Guid='536ea3ac-0b82-11e1-8c42-08002700f085'>
+                        <File Id='mingw10.dll' Name='mingwm10.dll' DiskId='1' Source='mingwm10.dll' />
+                    </Component>
+                    <Component Id='libgcc.dll' Guid='536ea3ad-0b82-11e1-8c42-08002700f085'>
+                        <File Id='libgcc.dll' Name='libgcc_s_dw2-1.dll' DiskId='1' Source='libgcc_s_dw2-1.dll' />
+                    </Component>
+
+                    <Component Id='QtCore4.dll' Guid='536ea3ae-0b82-11e1-8c42-08002700f085'>
+                        <File Id='QtCore4.dll' Name='QtCore4.dll' DiskId='1' Source='QtCore4.dll' />
+                    </Component>
+                    <Component Id='QtGui4.dll' Guid='536ea3af-0b82-11e1-8c42-08002700f085'>
+                        <File Id='QtGui4.dll' Name='QtGui4.dll' DiskId='1' Source='QtGui4.dll' />
+                    </Component>
+                    <Component Id='QtNetwork4.dll' Guid='536ea3b0-0b82-11e1-8c42-08002700f085'>
+                        <File Id='QtNetwork4.dll' Name='QtNetwork4.dll' DiskId='1' Source='QtNetwork4.dll' />
+                    </Component>
+                    <Component Id='QtXml4.dll' Guid='536ea3b1-0b82-11e1-8c42-08002700f085'>
+                        <File Id='QtXml4.dll' Name='QtXml4.dll' DiskId='1' Source='QtXml4.dll' />
+                    </Component>
+                    <Component Id='QtScript4.dll' Guid='536ea3b2-0b82-11e1-8c42-08002700f085'>
+                        <File Id='QtScript4.dll' Name='QtScript4.dll' DiskId='1' Source='QtScript4.dll' />
+                    </Component>
+                    <Component Id='QtWebKit4.dll' Guid='536ea3c6-0b82-11e1-8c42-08002700f085'>
+                        <File Id='QtWebKit4.dll' Name='QtWebKit4.dll' DiskId='1' Source='QtWebKit4.dll' />
+                    </Component>
+                    <Component Id='phonon4.dll' Guid='536ea3c8-0b82-11e1-8c42-08002700f085'>
+                        <File Id='phonon4.dll' Name='phonon4.dll' DiskId='1' Source='phonon4.dll' />
+                    </Component>
+
+                    <Component Id='ssleay32.dll' Guid='536ea3b3-0b82-11e1-8c42-08002700f085'>
+                        <File Id='ssleay32.dll' Name='ssleay32.dll' DiskId='1' Source='ssleay32.dll' />
+                    </Component>
+                    <Component Id='libeay32.dll' Guid='536ea3b4-0b82-11e1-8c42-08002700f085'>
+                        <File Id='libeay32.dll' Name='libeay32.dll' DiskId='1' Source='libeay32.dll' />
+                    </Component>
+                    <Component Id='libssl32.dll' Guid='536ea3b5-0b82-11e1-8c42-08002700f085'>
+                        <File Id='libssl32.dll' Name='libssl32.dll' DiskId='1' Source='libssl32.dll' />
+                    </Component>
+
+                    <Component Id='avcodec.dll' Guid='536ea3b6-0b82-11e1-8c42-08002700f085'>
+                        <File Id='avcodec.dll' Name='avcodec-52.dll' DiskId='1' Source='avcodec-52.dll' />
+                    </Component>
+                    <Component Id='avformat.dll' Guid='536ea3b7-0b82-11e1-8c42-08002700f085'>
+                        <File Id='avformat.dll' Name='avformat-52.dll' DiskId='1' Source='avformat-52.dll' />
+                    </Component>
+                    <Component Id='avutil.dll' Guid='536ea3b8-0b82-11e1-8c42-08002700f085'>
+                        <File Id='avutil.dll' Name='avutil-50.dll' DiskId='1' Source='avutil-50.dll' />
+                    </Component>
+                    <Component Id='swscale.dll' Guid='536ea3b9-0b82-11e1-8c42-08002700f085'>
+                        <File Id='swscale.dll' Name='swscale-0.dll' DiskId='1' Source='swscale-0.dll' />
+                    </Component>
+
+                    <Component Id='shellutils.dll' Guid='536ea3ba-0b82-11e1-8c42-08002700f085'>
+                        <File Id="shellutils.dll" Name="shellutils.dll" DiskId='1' Source='shellutils.dll' />
+                    </Component>
+
+                    <Component Id='Shell' Guid='536ea3bb-0b82-11e1-8c42-08002700f085'>
+                        <RegistryValue Root='HKCR' Key='*\shellex\ContextMenuHandlers\SimpleShareExt' Type='string' Value='{50C646F0-78E5-44A1-A4FF-A4FE85362644}' />
+                        <RegistryValue Root='HKCR' Key='Directory\shellex\ContextMenuHandlers\SimpleShareExt' Type='string' Value='{50C646F0-78E5-44A1-A4FF-A4FE85362644}' />
+                    </Component>
+                    <Component Id='Registry' Guid='536ea3c4-0b82-11e1-8c42-08002700f085'>
+        	            <RegistryValue Root='HKCU' Key='Software\[Manufacturer]\[ProductName]' Type='string' Value='' />
+                    </Component>
+                    <Component Id='AutoRun' Guid='536ea3c5-0b82-11e1-8c42-08002700f085'>
+	                    <RegistryValue Root='HKCU' Key='Software\Microsoft\Windows\CurrentVersion\Run' Type='string' Name='SimpleShare' Value='&quot;[INSTALLDIR]SimpleShare.exe&quot;' />
+                    </Component>
+
+                    <Component Id='menuhandler.dll' Guid='536ea3bc-0b82-11e1-8c42-08002700f085'>
+                        <File Id="menuhandler.dll" Name="menuhandler.dll" Vital="no" SelfRegCost="1" Source='menuhandler32.dll' />
+                    </Component>
+                    <!--Component Id='menuhandler.dll' Guid='536ea3bd-0b82-11e1-8c42-08002700f085'>
+                        <File Id="menuhandler.dll" Name="menuhandler.dll" Vital="no" SelfRegCost="1" Source='menuhandler64.dll' />
+                    </Component-->
+
+		    <Component Id='qt.conf' Guid='536ea3be-0b82-11e1-8c42-08002700f085'>
+                    	<File Id='qt.conf' Name='qt.conf' DiskId='1' Source='qt.conf' />
+                    </Component>
+
+			<Directory Id='PLUGINSDIR' Name='plugins'>
+
+                            <Directory Id='IMAGEFORMATSDIR' Name='imageformats'> 
+                                <Component Id='qgif4.dll' Guid='536ea3bf-0b82-11e1-8c42-08002700f085'>
+                                    <File Id='qgif4.dll' Name='qgif4.dll' DiskId='1' Source='plugins/imageformats/qgif4.dll' />
+                                </Component>
+                                <Component Id='qico4.dll' Guid='536ea3c0-0b82-11e1-8c42-08002700f085'>
+                                    <File Id='qico4.dll' Name='qico4.dll' DiskId='1' Source='plugins/imageformats/qico4.dll' />
+                                </Component>
+                                <Component Id='qjpeg4.dll' Guid='536ea3c1-0b82-11e1-8c42-08002700f085'>
+                                    <File Id='qjpeg4.dll' Name='qjpeg4.dll' DiskId='1' Source='plugins/imageformats/qjpeg4.dll' />
+                                </Component>
+                                <Component Id='qmng4.dll' Guid='536ea3c2-0b82-11e1-8c42-08002700f085'>
+                                    <File Id='qmng4.dll' Name='qmng4.dll' DiskId='1' Source='plugins/imageformats/qmng4.dll' />
+                                </Component>
+                            </Directory>
+
+                        </Directory>
+
+                </Directory>
+            </Directory>
+        </Directory>
+
+        <Directory Id="ProgramMenuFolder" Name="Programs">        
+            <Directory Id="ProgramMenuDir" Name="Box SimpleShare">
+                <Component Id="ProgramMenuFolder" Guid="536ea3c7-0b82-11e1-8c42-08002700f085">
+                    <RemoveFolder Id='ProgramMenuDir' On='uninstall' />
+                </Component>
+            </Directory>
+        </Directory>
+
+        <Directory Id="DesktopFolder" Name="Desktop" />
+    </Directory>
+
+    <Icon Id="simpleshare.exe" SourceFile="simpleshare.exe" />
+
+    <Feature Id='Complete' Title='Box SimpleShare' Description='The complete package.'
+		Display='expand' Level='1' ConfigurableDirectory='INSTALLDIR'>
+		<Feature Id='MainProgram' Title='Program' Description='The main executable.' Level='1'>
+
+        		<ComponentRef Id='MainExecutable' />
+        		<ComponentRef Id='mingw10.dll' />
+        		<ComponentRef Id='libgcc.dll' />
+
+        		<ComponentRef Id='QtCore4.dll' />
+        		<ComponentRef Id='QtGui4.dll' />
+        		<ComponentRef Id='QtNetwork4.dll' />
+        		<ComponentRef Id='QtXml4.dll' />
+        		<ComponentRef Id='QtScript4.dll' />
+        		<ComponentRef Id='QtWebKit4.dll' />
+        		<ComponentRef Id='phonon4.dll' />
+
+        		<ComponentRef Id='ssleay32.dll' />
+        		<ComponentRef Id='libeay32.dll' />
+        		<ComponentRef Id='libssl32.dll' />
+
+        		<ComponentRef Id='avcodec.dll' />
+        		<ComponentRef Id='avformat.dll' />
+        		<ComponentRef Id='avutil.dll' />
+        		<ComponentRef Id='swscale.dll' />
+
+        		<ComponentRef Id='shellutils.dll' />
+        		<ComponentRef Id='menuhandler.dll' />
+
+        		<ComponentRef Id='Registry' />
+        		<ComponentRef Id='Shell' />
+        		<ComponentRef Id='AutoRun' />
+
+        		<ComponentRef Id='qt.conf' />
+
+        		<ComponentRef Id='qgif4.dll' />
+        		<ComponentRef Id='qico4.dll' />
+        		<ComponentRef Id='qjpeg4.dll' />
+        		<ComponentRef Id='qmng4.dll' />
+		</Feature>
+	</Feature>
+
+    <CustomAction Id='LaunchSimpleShare' FileKey='MainExecutable' ExeCommand='' Return='asyncNoWait' />
+    <InstallExecuteSequence>
+        <RemoveExistingProducts Before="InstallInitialize" /> 
+	<Custom Action='NoDowngrade' After='FindRelatedProducts'>NEWERFOUND</Custom>
+        <Custom Action='LaunchSimpleShare' After='InstallFinalize' />
+    </InstallExecuteSequence>
+
+    <WixVariable Id="WixUIBannerBmp" Value="banner_image.jpg" />
+    <WixVariable Id="WixUIDialogBmp" Value="dialog_image.jpg" />
+
+    <UIRef Id="WixUI_InstallDirNoLicence" />
+	<UIRef Id="WixUI_ErrorProgressText" />
+
+	<Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+
+</Product>
+
+</Wix>

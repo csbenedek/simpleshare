@@ -1,0 +1,48 @@
+#include "abstractdroptargetwidget.h"
+#include <QResizeEvent>
+#include <QDebug>
+#include <QTimer>
+#include "preferenceswidget.h"
+
+// ToolTipWidget
+
+ToolTipWidget::ToolTipWidget(QWidget *parent)
+    : QWidget(parent)
+{
+    setWindowFlags(Qt::FramelessWindowHint
+                   | Qt::WindowStaysOnTopHint
+                   | Qt::Tool);
+    setAttribute(Qt::WA_DeleteOnClose);
+}
+
+ToolTipWidget::~ToolTipWidget()
+{
+
+}
+
+void ToolTipWidget::mouseDoubleClickEvent(QMouseEvent* event)
+{
+    Q_UNUSED(event);
+
+}
+
+void ToolTipWidget::updateRegion()
+{
+    QRect r = geometry();
+
+    QRegion maskRegion;
+
+    r.setHeight(32);
+
+    maskRegion = maskRegion.unite(QRegion(0, 0, r.width(), r.height());//Top
+
+    setMask(maskRegion);
+}
+
+void ToolTipWidget::resizeEvent(QResizeEvent* event)
+{
+    QWidget::resizeEvent(event);
+    updateRegion();
+}
+
+

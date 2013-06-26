@@ -1,0 +1,19 @@
+#ifndef TOOLTIPWIDGET_H
+#define TOOLTIPWIDGET_H
+
+#include <QWidget>
+#include <QMenu>
+
+class ToolTipWidget: public QWidget
+{
+    Q_OBJECT
+public:
+    explicit ToolTipWidget(QWidget* parent = 0);
+    ~ToolTipWidget();
+
+protected:
+    virtual void mouseDoubleClickEvent(QMouseEvent* event);
+
+};
+
+#endif // TOOLTIPWIDGET_H

@@ -1,0 +1,13 @@
+
+[Desktop Entry]
+Version=1.0
+Name=SimpleShare
+GenericName=Box SimpleShare
+Comment=Share files to www.box.net
+Exec=simpleshare %u
+Icon=simpleshare
+Terminal=false
+Type=Application
+StartupNotify=true
+X-Desktop-File-Install-Version=0.16
+Categories=Network;
