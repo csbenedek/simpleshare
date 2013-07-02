@@ -1,2 +1,0 @@
-
-#define UI_SYSTRAY_ICON
