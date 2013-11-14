@@ -1664,7 +1664,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = SimpleShare;
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1698,7 +1698,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = SimpleShare;
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

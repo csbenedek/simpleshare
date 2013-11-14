@@ -80,7 +80,7 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
         [dictionary release];
     }
     
-    SUPPORTED_FORMATS = [NSArray arrayWithObjects:@"flv", @"mp4", @"avi", @"mov", nil];
+    SUPPORTED_FORMATS = [NSArray arrayWithObjects:@"flv", /* @"mp4",*/ @"avi", @"mov", nil];
     
     AddNotificationObserver(self, @selector(showLoading:), @"SHOW_LOADING", nil);
     AddNotificationObserver(self, @selector(hideLoading), @"HIDE_LOADING", nil);
