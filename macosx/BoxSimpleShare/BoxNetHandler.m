@@ -728,7 +728,7 @@ static BoxNetHandler *sharedObject = nil;
 			if ([[json objectForKey:@"shared_link"] isKindOfClass:[NSNull class]])
 			{
 				SSLog(@"Default folder doesn't have shared links, creating shared link ...");
-				
+                
 				[self oauth2CreateSharedLink:[defaultFolder folderID]];
 			}
 			else

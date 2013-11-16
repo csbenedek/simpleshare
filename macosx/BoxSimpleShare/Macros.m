@@ -52,12 +52,7 @@ NSString * (^returnValueWithAccurateAnnotation)(long long) = ^NSString *(long lo
 {
     NSString *identifier = @"";
     double newValue = 0;
-//    if (value > (1 * 1024 * 1024 * 1024 * 1024))
-//    {
-//        newValue = ((float)value / (1 * 1024 * 1024 * 1024 * 1024));
-//        identifier = @"TB";
-//    }
-//    else
+
         if (value > (1 * 1024 * 1024 * 1024))
         {
             newValue = ((float)value / (1 * 1024 * 1024 * 1024));

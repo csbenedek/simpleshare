@@ -94,7 +94,9 @@
 }
 
 - (void)saveCurrentMovieToFile:(NSString*)filename exportFormat:(long)exportFormat {
-    [_movieFileOutput performSelector:@selector(stopRecording) withObject:nil];
+   
+     [_session performSelector:@selector(stopRunning) withObject:nil];
+     [_movieFileOutput performSelector:@selector(stopRecording) withObject:nil];
     [_movie release];
     NSError* error;
     _movie = [[QTMovie movieWithFile:_tempFileName error:&error] retain];

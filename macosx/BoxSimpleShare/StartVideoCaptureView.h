@@ -21,6 +21,7 @@
     NSColor*                            _captureFrameColor;
     id<StartVideoCaptureViewDelegate>   _delegate;
     
+    
     BOOL                                _shouldDrawOnlyFrame;
 }
 

@@ -38,11 +38,16 @@
 - (void)beginNewMovie {
     [_movie release];
     [_tempFileName release];
+    
     _tempFileName = [[NSTemporaryDirectory() stringByAppendingPathComponent:@"movie_tmp"] retain];
     if ([[NSFileManager defaultManager] fileExistsAtPath:_tempFileName]) {
         [[NSFileManager defaultManager] removeItemAtURL:[NSURL fileURLWithPath:_tempFileName] error:NULL];
     }
     
+//    if ([[NSFileManager defaultManager] fileExistsAtPath:_tempFileName]) {
+//        [[NSFileManager defaultManager] removeItemAtURL:[NSURL fileURLWithPath:_tempFileName] error:NULL];
+//    }
+
     _movie = [[QTMovie alloc] initToWritableFile:_tempFileName/*@"/Users/kiev/Documents/tmp_simpleshare/movie_tmp.mov"*/ error:NULL];
     [_movie setAttribute:[NSNumber numberWithBool:YES] forKey:QTMovieEditableAttribute];
     self.stopped = YES;

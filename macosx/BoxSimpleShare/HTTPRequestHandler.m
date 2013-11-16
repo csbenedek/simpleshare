@@ -100,6 +100,8 @@ static HTTPRequestHandler *sharedObject1;
 - (long long) totalBytesToDownload
 {
     return [queue totalBytesToDownload];
+
+    
 }
 
 - (void)setDoubleValue:(double)newProgress
