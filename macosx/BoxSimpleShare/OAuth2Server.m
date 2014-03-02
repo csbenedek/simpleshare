@@ -63,7 +63,7 @@
 	NSNumber* errorNo = [userInfo objectForKey:@"NSFileHandleError"];
 	if (errorNo)
 	{
-		SSLog(@"Accept error: %@", errorNo);
+		DbgLog(@"Accept error: %@", errorNo);
 		return;
 	}
 	
@@ -84,8 +84,8 @@
 
 - (void) onRequestURL:(NSURL *)url
 {
-	NSString* errCode;
-	NSString* errDesc;
+	NSString* errCode = nil;
+	NSString* errDesc = nil;
 	
 	NSArray* queryParams = [[url query] componentsSeparatedByString:@"&"];
 	for (NSString* param in queryParams)

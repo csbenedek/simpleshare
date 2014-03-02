@@ -26,6 +26,8 @@
 #import "BoxNetUser.h"
 
 #import "Finder.h"
+#import "StandardPaths.h"
+#import "FolderUtility.h"
 
 const int MaxHistoryItemCount = 5;
 
@@ -151,8 +153,9 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     [GrowlApplicationBridge setGrowlDelegate:self];
     [GrowlApplicationBridge setWillRegisterWhenGrowlIsReady:YES]; 
     
+    [[[FolderUtility alloc] init] checkPermision];
     UKKQueue *kqueue = [UKKQueue sharedFileWatcher];
-    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Desktop"];
+    NSString *path = [[NSFileManager defaultManager] desktopPath];
     [kqueue addPathToQueue:path];
     NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
     NSNotificationCenter *notificationCenter = [workspace notificationCenter];
@@ -333,10 +336,10 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
         [videoCaptureMenuItem setKeyEquivalentModifierMask:NSCommandKeyMask | NSShiftKeyMask];
     }
     
-    NSMenuItem *screenshot = [[NSMenuItem alloc] initWithTitle:InterfaceString(@"CaptureRegion") action:@selector(triggerRegionCapture:) keyEquivalent:@"4"];
+    NSMenuItem *screenshot = [[NSMenuItem alloc] initWithTitle:InterfaceString(@"CaptureRegion") action:@selector(startImageCapture:) keyEquivalent:@"4"];
     [screenshot setKeyEquivalentModifierMask:NSCommandKeyMask | NSShiftKeyMask];
 
-    NSMenuItem *screenshot_full = [[NSMenuItem alloc] initWithTitle:InterfaceString(@"CaptureFullscreen") action:@selector(triggerFullScreenCapture:) keyEquivalent:@"3"];
+    NSMenuItem *screenshot_full = [[NSMenuItem alloc] initWithTitle:InterfaceString(@"CaptureFullscreen") action:@selector(startImageCaptureFull:) keyEquivalent:@"3"];
     [screenshot_full setKeyEquivalentModifierMask:NSCommandKeyMask | NSShiftKeyMask];
 
     NSMenuItem *uploadfile = [[NSMenuItem alloc] initWithTitle:InterfaceString(@"Upload") action:@selector(selectAndUploadFile:) keyEquivalent:@"U"];
@@ -353,6 +356,7 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
         [progressItem setImage:[NSImage imageNamed:@"icon_account_small.png"]];
     }
 
+    NSMenuItem *feedback = [[NSMenuItem alloc] initWithTitle:InterfaceString(@"Feedback") action:@selector(sendFeedback:) keyEquivalent:@""];
     if ([[[BoxNetHandler sharedHandler] boxNetUser] isAuthenticated])
     {
         [popUpMenu addItem:history];
@@ -367,6 +371,9 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
 //        [popUpMenu addItem:account];
         [popUpMenu addItem:toggleUploadsEnabled];
         [popUpMenu addItem:preference];
+        //[popUpMenu addItem:[[item0 copy] autorelease]]; // Sep
+        [popUpMenu addItem:feedback];
+        [popUpMenu addItem:[[item0 copy] autorelease]]; // Sep
     }
     else
     {
@@ -489,8 +496,8 @@ exit:
         return;
     }
     
-    SSLog(@"UserInfo %@", [notification userInfo]);
-    SSLog(@"Object %@", [[notification object] class]);
+    DbgLog(@"UserInfo %@", [notification userInfo]);
+    DbgLog(@"Object %@", [[notification object] class]);
     
     // check if upload isn't disable
     // add code
@@ -499,40 +506,42 @@ exit:
    
     // Workaround for Lion. Screenshot preferences are stored in com.apple.screencapture.plist on pre Lion OS (Snow Leo, Leo...) 
     // and in SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings on Lion
-    BOOL isLionAndUpper = [Utilities isRunningOnLion];
+   // BOOL isLionAndUpper = [Utilities isRunningOnLion];
         
-	NSString *scprefspath = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Preferences/com.apple.screencapture.plist"];
-    if (isLionAndUpper) {
-        scprefspath = @"/System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings";
-    }
-    
-	NSDictionary *scdict = [NSDictionary dictionaryWithContentsOfFile:scprefspath];
-	
-	// Get prefix
-    
-	NSString *prefix = @"Screen Shot";
-    
-    if (isLionAndUpper) {
-        if (scdict && [scdict objectForKey:@"Screen Shot"]){
-            prefix = [scdict objectForKey:@"Screen Shot"];
-        }
-    } else {
-        if (scdict && [scdict objectForKey:@"name"]){
-            prefix = [scdict objectForKey:@"name"];
-        }        
-    }
-    prefix = [prefix lowercaseString];
+//	NSString *scprefspath = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Preferences/com.apple.screencapture.plist"];
+//    if (isLionAndUpper) {
+//        scprefspath = @"/System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings";
+//    }
+//    
+//	NSDictionary *scdict = [NSDictionary dictionaryWithContentsOfFile:scprefspath];
+//	
+//	// Get prefix
+//    
+//	NSString *prefix = @"Screen Shot";
+//    
+//    if (isLionAndUpper) {
+//        if (scdict && [scdict objectForKey:@"Screen Shot"]){
+//            prefix = [scdict objectForKey:@"Screen Shot"];
+//        }
+//    } else {
+//        if (scdict && [scdict objectForKey:@"name"]){
+//            prefix = [scdict objectForKey:@"name"];
+//        }        
+//    }
+//    prefix = [prefix lowercaseString];
 
 	// Get path
-	NSString *basepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Desktop"];
-	if (scdict && [scdict objectForKey:@"location"]) basepath = [scdict objectForKey:@"location"];
+    
+    NSString *prefix = @"screen shot";
+	NSString *basepath = [[NSFileManager defaultManager]desktopPath];
+//	if (scdict && [scdict objectForKey:@"location"]) basepath = [scdict objectForKey:@"location"];
         
 	// Iterate through all files at that path
 	NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:basepath error:nil];
 	
 	NSDateFormatter* dateFormatter = [[[NSDateFormatter  alloc] initWithDateFormat:@"%z" allowNaturalLanguage:NO] autorelease];
 	NSString* tzString=[dateFormatter stringFromDate:[NSDate date]];
-	SSLog(@"Time Zone is %@",tzString);
+	DbgLog(@"Time Zone is %@",tzString);
 	
 	for (NSString *fileName in files)
 	{
@@ -545,18 +554,18 @@ exit:
             NSString *datestring = [[fileName stringByDeletingPathExtension] stringByReplacingOccurrencesOfString:prefix withString:@""];
 			datestring = [[[datestring stringByReplacingOccurrencesOfString:@" at" withString:@""] stringByReplacingOccurrencesOfString:@"." withString:@":"] stringByAppendingString:[NSString stringWithFormat:@" %@",tzString]];
 			NSDate *picDate = [NSDate dateWithNaturalLanguageString:datestring];
-			SSLog(@"Picture Date %@",picDate);
+			DbgLog(@"Picture Date %@",picDate);
 			// Determine the length of time since the screen was shot.
 			NSTimeInterval t = [[NSDate date] timeIntervalSinceDate:picDate];
 			
 			// Proceed if the time interval lies within 10 seconds
 			// New extra time is to allow for better screen shot layout
-			NSLog(@"Time diff = %f",t);
+			DbgLog(@"Time diff = %f",t);
 			if (t < 10.0f)
 			{
 				// Get the full path and the actual image
 				NSString *path = [basepath stringByAppendingPathComponent:originalFileName];
-				SSLog(@"PATH >> %@",path);
+				DbgLog(@"PATH >> %@",path);
 				
                 if ([filesAddedToQueue containsObject:path])
                     continue;
@@ -583,7 +592,7 @@ exit:
                 }
                 else
                 {
-                    NSLog(@"UPLOADING!!!!!!!");
+                    DbgLog(@"UPLOADING!!!!!!!");
                     [filesAddedToQueue addObject:path];
                     [[BoxNetHandler sharedHandler] uploadFiles:[NSArray arrayWithObject:path] withProperties:[NSDictionary dictionaryWithObject:@"SCREEN_SHOT" forKey:@"SCREEN_SHOT"]];
                 }
@@ -824,8 +833,16 @@ exit:
 }
 
 // Growl Notification
+
++(void) showUploadCompleteGrow {
+    
+}
 + (void) showNotificationWithTitle:(NSString *)title withDescription:(NSString *)description 
-{    
+{
+    
+    PostNotificationWithObject(UPDATE_STATUS_ITEM, UPLOAD_FINISHED);
+
+    
     [GrowlApplicationBridge  notifyWithTitle:title
                                  description:description
                             notificationName:@"TestNotification"
@@ -854,6 +871,41 @@ exit:
 	}
 }
 
+-(IBAction)startImageCaptureFull:(id)sender {
+   
+    if (!imageCaptureController) {
+        imageCaptureController = [[ImageCaptureController alloc] init];
+        imageCaptureController.delegate = self;
+    }
+    if ([[self window] isVisible]) {
+        [[self window] close];
+    }
+    [[Mixpanel sharedInstance] trackCaptureFullScreenEvent];
+    [imageCaptureController captureFullScreen];
+
+}
+-(IBAction)startImageCapture:(id)sender {
+    
+    
+        if (!imageCaptureController) {
+            imageCaptureController = [[ImageCaptureController alloc] init];
+            imageCaptureController.delegate = self;
+        }
+        if ([[self window] isVisible]) {
+            [[self window] close];
+        }
+
+    [BoxSimpleShareAppDelegate showNotificationWithTitle:@"Capture Region" withDescription:@"Hold and drag to take screenshot"];
+	[[Mixpanel sharedInstance] trackCaptureRegionEvent];
+    
+        [imageCaptureController showWindows];
+        
+        [[NSCursor crosshairCursor] set];
+        shouldSetCaptureCursor = YES;
+       // [videoCaptureMenuItem setTitle:InterfaceString(@"StopVideoCapture")];
+    
+
+}
 - (IBAction)startVideoCapture:(id)sender {
     if ([videoCaptureController isCapturing]) {
         [videoCaptureController stopVideoRecording];
@@ -949,7 +1001,14 @@ exit:
 - (void)toggleUploadsEnabled:(id)sender {
     [mainController toggleUploadsEnabled];
 }
-
+-(void)sendFeedback:(id) sender
+{
+    if (feedbackWindowController == nil) {
+        feedbackWindowController = [[FeedbackWindowController alloc] initWithWindowNibName:@"FeedbackWindowController"];
+    }
+    
+    [feedbackWindowController showWindow:self];
+}
 - (void) dealloc
 {
     safe_release(statusBarItem);
@@ -1009,6 +1068,22 @@ exit:
     }
 }
 
+
+#pragma image capture 
+
+- (void)imageCaptureController:(ImageCaptureController*)controller didCaptureVideoToPath:(NSString*)path{
+    
+    DbgLog(@"UPLOADING!!!!!!!");
+    [filesAddedToQueue addObject:path];
+    [[BoxNetHandler sharedHandler] uploadFiles:[NSArray arrayWithObject:path] withProperties:[NSDictionary dictionaryWithObject:@"SCREEN_SHOT" forKey:@"SCREEN_SHOT"]];
+}
+- (void)imageCaptureControllerDidFailedCapture:(ImageCaptureController*)controller{
+    
+    if (controller == imageCaptureController) {
+        //[imageCaptureController setTitle:InterfaceString(@"VideoCapture")];
+    }
+}
+
 #pragma mark -
 
 - (void)videoCaptureController:(id)controller didCaptureVideoToPath:(NSString*)path {
@@ -1055,7 +1130,7 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
         BOOL showOpenWindow = NO;
         FinderApplication *theFinder = [SBApplication applicationWithBundleIdentifier: @"com.apple.finder"];
         if ([theFinder frontmost]) {
-//            NSLog(@"FINDER ON TOP - TRY TO PROCESS SELECTION");
+//            DbgLog(@"FINDER ON TOP - TRY TO PROCESS SELECTION");
             
             SBObject* obj = [theFinder selection];
             SBElementArray* selectedObjects = [obj get];

@@ -11,14 +11,14 @@
 #import "StatusItemView.h"
 #import "LoadingView.h"
 #import "StartVideoCaptureController.h"
-
+#import "ImageCaptureController.h"
 #import "Growl.h"
-
+#import "FeedbackWindowController.h"
 extern const int MaxHistoryItemCount;
 
 @class MainController;
 
-@interface BoxSimpleShareAppDelegate : NSObject <NSApplicationDelegate, NSTabViewDelegate, NSTableViewDataSource, NSWindowDelegate, NSToolbarDelegate, GrowlApplicationBridgeDelegate, VideoCaptureControllerDelegate> {
+@interface BoxSimpleShareAppDelegate : NSObject <NSApplicationDelegate, NSTabViewDelegate, NSTableViewDataSource, NSWindowDelegate, NSToolbarDelegate, GrowlApplicationBridgeDelegate, VideoCaptureControllerDelegate,ImageCaptureControllerDelegate> {
 
 @private
     NSWindow *window;
@@ -62,8 +62,10 @@ extern const int MaxHistoryItemCount;
     // video capture
     
     StartVideoCaptureController* videoCaptureController;
+    ImageCaptureController     * imageCaptureController;
     BOOL shouldSetCaptureCursor;
     
+    FeedbackWindowController* feedbackWindowController;
 @public
     NSTabView *tableView;
     
@@ -112,4 +114,5 @@ extern const int MaxHistoryItemCount;
 
 - (IBAction) selectAndUploadFile:(id)sender;
 
+-(IBAction)startImageCapture:(id)sender;
 @end

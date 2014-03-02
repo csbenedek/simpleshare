@@ -7,11 +7,10 @@
 
 #import "VideoCaptureManagerBase.h"
 
-#import <QTKit/QTKit.h>
 
 @interface VideoCaptureManagerLion : VideoCaptureManagerBase {
     
-    QTMovie*    _movie;
+    //QTMovie*    _movie;
     
     id          _session;
     id          _movieFileOutput;

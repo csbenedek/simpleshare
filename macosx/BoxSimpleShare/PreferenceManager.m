@@ -35,6 +35,7 @@
 #define HOT_KEY_UPLOAD @"HOT_KEY_UPLOAD"
 
 #define CREDENTIAL @"CREDENTIAL"
+#define IMAGE_UPLOAD_HOST @"IMAGE_UPLOAD_HOST"
 
 
 @implementation PreferenceManager
@@ -58,7 +59,7 @@
 	{
 		if (![fileManager createDirectoryAtPath:BASE_PATH withIntermediateDirectories:YES attributes:nil error:NULL])
 		{
-			SSLog(@"ERROR: Failed to create a directory: %@", BASE_PATH);
+			DbgLog(@"ERROR: Failed to create a directory: %@", BASE_PATH);
 			return;
 		}
 	}
@@ -83,6 +84,7 @@
     [pref setObject:controller.screen_cast_hot_key forKey:HOT_KEY_SCREENCAST];
     
     [pref setObject:controller.upload_hot_key forKey:HOT_KEY_UPLOAD];
+    [pref setObject:[NSNumber numberWithInt:controller.uploadhost_index] forKey:IMAGE_UPLOAD_HOST];
     
 //    [pref setObject:[[[BoxNetHandler sharedHandler] boxNetUser] getEncryptedCredentials]  forKey:CREDENTIAL];
     
@@ -114,7 +116,7 @@
     path = nil;
     
     if (error)
-        SSLog(@"METHOD: %@   ERROR: %@", NSStringFromSelector(_cmd), [error description]);
+        DbgLog(@"METHOD: %@   ERROR: %@", NSStringFromSelector(_cmd), [error description]);
     
     safe_release(data);
 }
@@ -151,6 +153,18 @@
             
             controller.screencast_format_index = [[pref valueForKey:SCREENCAST_FORMAT] intValue];
             [controller.screencast_format selectItemAtIndex:controller.screencast_format_index];
+            
+            if([pref valueForKey:IMAGE_UPLOAD_HOST])
+            {
+                controller.uploadhost_index = [[pref valueForKey:IMAGE_UPLOAD_HOST] intValue];
+                [controller.imageHost selectItemAtIndex:controller.uploadhost_index];
+            }
+            else
+            {
+                controller.uploadhost_index = 0;
+                [pref setValue:controller.uploadhost_index forKey:IMAGE_UPLOAD_HOST];
+                [controller.imageHost selectItemAtIndex:controller.uploadhost_index];
+            }
             
             controller.screen_cast_hot_key = [NSString stringWithFormat:[pref valueForKey:HOT_KEY_SCREENCAST]];;
             controller.upload_hot_key = [NSString stringWithFormat:[pref valueForKey:HOT_KEY_UPLOAD]];

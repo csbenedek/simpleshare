@@ -12,17 +12,17 @@
 
 @implementation Macros
 
-void (^SSLog)(id, ...) = ^void (id args, ...)
-{
-    #if SHOW_LOGS
-        va_list list;
-        va_start(list, args);
-        NSString *str = [[NSString alloc] initWithFormat:args arguments:list];
-        NSLog(@"[SSLog] >> %@", str);
-        [str release];
-        va_end(list);
-    #endif
-};
+//void (^DbgLog)(id, ...) = ^void (id args, ...)
+//{
+//    #if SHOW_LOGS
+//        va_list list;
+//        va_start(list, args);
+//        NSString *str = [[NSString alloc] initWithFormat:args arguments:list];
+//        DbgLog(@"[DbgLog] >> %@", str);
+//        [str release];
+//        va_end(list);
+//    #endif
+//};
 
 NSString * (^MD5)(NSString *) = ^NSString *(NSString *string)
 {

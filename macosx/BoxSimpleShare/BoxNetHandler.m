@@ -17,6 +17,9 @@
 #import "BoxNetUser.h"
 #import "BoxFolder.h"
 #import "Extended.h"
+#import "MainController.h"
+#import "BoxSimpleShareAppDelegate.h"
+#import "ImgurUploadOperation.h"
 
 static NSString* BoxNetHandlerDefaultFolderPreferenceKey = @"BoxNetHandlerDefaultFolderPreferenceKey";
 
@@ -108,7 +111,7 @@ static BoxNetHandler *sharedObject = nil;
     
     NSString* url = [NSString stringWithFormat:LOGIN_ACTION,BASE_URL, API_KEY, URLEncode([params valueForKey:USERNAME]), MD5([NSString stringWithFormat:@"%@%@", [params valueForKey:USERNAME], [params valueForKey:PASSWORD]])];
     
-    SSLog(@"%@", url);
+    DbgLog(@"%@", url);
     
     HTTPRequest *request = [HTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request addMulticastDelegate:self];
@@ -173,7 +176,19 @@ static BoxNetHandler *sharedObject = nil;
     [opt setUploadToFolder:[defaultFolder folderID]];
     
     if (properties && [properties containsKey:@"SCREEN_SHOT"]) {
+        
+        
         [opt setIsScreenshot:YES];
+        MainController *controller = [[BoxSimpleShareAppDelegate sharedDelegate] mainController];
+        
+        // Copy URL to clipboard
+        if (controller.uploadhost_index == 1)
+        {
+            opt = [ImgurUploadOperation new];
+            [opt addFiles:files];
+            [opt setIsScreenshot:YES];
+
+        }
     }
     
     [operationQueue addOperation:opt];
@@ -291,7 +306,7 @@ static BoxNetHandler *sharedObject = nil;
             //        Print XML for dump purpose
             //        for (GDataXMLElement *element in [root children])
             //        {
-            //            SSLog(@"%@ -> %@", [element name], [element stringValue]);
+            //            DbgLog(@"%@ -> %@", [element name], [element stringValue]);
             //            
             //        }
             
@@ -659,6 +674,7 @@ static BoxNetHandler *sharedObject = nil;
     
     NSString* action = [params valueForKey:@"ACTION"];
 
+    
 	if ([action isEqualToString:GET_ACCOUNT_INFO] || [action isEqualToString:@"LOAD_ACCOUNT_INFO"])
 	{
 		SBJsonParser* parser = [[SBJsonParser alloc] init];
@@ -699,14 +715,14 @@ static BoxNetHandler *sharedObject = nil;
 		{
 			if ([[json objectForKey:@"code"] isEqualToString:@"item_name_in_use"])
 			{
-				SSLog(@"Default folder already exists, retrieving information about it...");
+				DbgLog(@"Default folder already exists, retrieving information about it...");
 				
 				NSArray* conflicts = [[json objectForKey:@"context_info"] objectForKey:@"conflicts"];
 				[self oauth2GetFolderInformation:[[conflicts objectAtIndex:0] objectForKey:@"id"]];
 			}
 			else
 			{
-				SSLog(@"ERROR: folder operation failed: @%", [json objectForKey:@"message"]);
+				DbgLog(@"ERROR: folder operation failed: @%", [json objectForKey:@"message"]);
 			}
 		}
 		else
@@ -727,7 +743,7 @@ static BoxNetHandler *sharedObject = nil;
 
 			if ([[json objectForKey:@"shared_link"] isKindOfClass:[NSNull class]])
 			{
-				SSLog(@"Default folder doesn't have shared links, creating shared link ...");
+				DbgLog(@"Default folder doesn't have shared links, creating shared link ...");
                 
 				[self oauth2CreateSharedLink:[defaultFolder folderID]];
 			}

@@ -11,11 +11,11 @@
 #import "ASIFormDataRequest.h"
 #import "ASINetworkQueue.h"
 #import "SBJsonParser.h"
-
+#import "GrantAccessWindowController.h"
 @implementation OAuth2Client
 
 static OAuth2Client* oauth2SharedInstance = nil;
-
+GrantAccessWindowController* accessWindowController;
 @synthesize accessToken;
 
 - (id) init
@@ -95,10 +95,20 @@ static OAuth2Client* oauth2SharedInstance = nil;
 {
 	if (!refreshToken)
 	{
-		NSString* redirectURL = [NSString stringWithFormat:@"http://localhost:%d", (int)[server listenPort]];
-		NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:OAUTH2_AUTH_CODE_URL, OAUTH2_CLIENT_ID, redirectURL]];
-
-		[[NSWorkspace sharedWorkspace] openURL:url];
+		NSString* redirectURL = [NSURL URLWithString: [NSString stringWithFormat:@"http://localhost:%d", (int)[server listenPort]]];
+		//NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:OAUTH2_AUTH_CODE_URL, OAUTH2_CLIENT_ID, redirectURL]];
+        
+		//[[NSWorkspace sharedWorkspace] openURL:url];
+        
+        if(accessWindowController == nil) {
+            
+            accessWindowController = [[GrantAccessWindowController alloc] initWithWindowNibName:@"GrantAccessWindowController"];
+            [accessWindowController loadWindow];
+        }
+        
+        NSString* url = [NSString stringWithFormat:OAUTH2_AUTH_CODE_URL, OAUTH2_CLIENT_ID, redirectURL];
+        [accessWindowController loadUrl:url];
+        [accessWindowController showWindow:nil];
 	}
 	else
 	{
@@ -139,7 +149,7 @@ static OAuth2Client* oauth2SharedInstance = nil;
 
 - (void) onAuthCodeReceived:(NSString *)code
 {
-	SSLog(@"oauth2 code is [%@]", code);
+	DbgLog(@"oauth2 code is [%@]", code);
 
 	NSURL* url = [NSURL URLWithString:OAUTH2_AUTH_TOKEN_URL];
 	
@@ -158,7 +168,7 @@ static OAuth2Client* oauth2SharedInstance = nil;
 - (void) onAuthCodeFailure:(NSString *)code
 			andDescription:(NSString *)description;
 {
-	SSLog(@"ERROR: Failed to receive oauth2 code: code=%@, description=%@", code, description);
+	//DbgLog(@"ERROR: Failed to receive oauth2 code: code=%@, description=%@", code, description);
 	// TODO: handle error and show the corresponding description.
 	// the possible values are: invalid_request, unsupportedaccess_denied, server_error
 	
@@ -176,7 +186,7 @@ static OAuth2Client* oauth2SharedInstance = nil;
 	
 	if ([reqType isEqualToString:LOGIN_ACTION])
 	{
-		SSLog(@"OAuth2 token response: %@", [request responseString]);
+		DbgLog(@"OAuth2 token response: %@", [request responseString]);
 		
 		SBJsonParser* parser = [[SBJsonParser alloc] init];
 		NSDictionary* json = [parser objectWithString:[request responseString]];
@@ -192,7 +202,7 @@ static OAuth2Client* oauth2SharedInstance = nil;
 			{
 				NSString* error = [json objectForKey:key];
 				
-				SSLog(@"ERROR: Failed to receive oauth2 access token: error=%@", error);
+				DbgLog(@"ERROR: Failed to receive oauth2 access token: error=%@", error);
 				// TODO: handle error and show the corresponding description.
 				// the possible values are: invalid_request, unauthorized_client,
 				// invalid_grant, invalid_client, redirect_uri_mismatch, internal_server_error
@@ -252,7 +262,7 @@ static OAuth2Client* oauth2SharedInstance = nil;
 			
 			tokenExpires = [[dict objectForKey:@"expires_in"] doubleValue];
 			
-			SSLog(@"OAuth2 access token has been received successfully");
+			DbgLog(@"OAuth2 access token has been received successfully");
 
 			[self saveRefreshToken];
 			
@@ -265,10 +275,14 @@ static OAuth2Client* oauth2SharedInstance = nil;
 				
 				[[BoxNetHandler sharedHandler] oauth2GetUserInformation];
 			}
+            
+            if (accessWindowController.window.isVisible) {
+                [accessWindowController.window close];
+            }
 		}
 		else
 		{
-			SSLog(@"ERROR: Received malformed oauth2 response for access token");
+			DbgLog(@"ERROR: Received malformed oauth2 response for access token");
 			[self startRefreshTimer:10.0];
 		}
 		
@@ -276,13 +290,13 @@ static OAuth2Client* oauth2SharedInstance = nil;
 	}
 	else if ([reqType isEqualToString:GET_ACCOUNT_INFO])
 	{
-		SSLog(@"GET_ACCOUNT_INFO: %@", [request responseString]);
+		DbgLog(@"GET_ACCOUNT_INFO: %@", [request responseString]);
 	}
 }
 
 - (void) requestDidFail:(ASIHTTPRequest *)request
 {
-	SSLog(@"ERROR: OAuth2 request failed: %@", [request error]);
+	DbgLog(@"ERROR: OAuth2 request failed: %@", [request error]);
 	
 	if (accessToken && refreshToken && tokenExpires > 0)
 	{
@@ -338,7 +352,7 @@ static OAuth2Client* oauth2SharedInstance = nil;
 
 - (void) refreshAccessToken
 {
-	SSLog(@"Refreshing OAuth2 access token...");
+	DbgLog(@"Refreshing OAuth2 access token...");
 
 	NSURL* url = [NSURL URLWithString:OAUTH2_AUTH_TOKEN_URL];
 	
@@ -389,7 +403,7 @@ static OAuth2Client* oauth2SharedInstance = nil;
 	{
 		if (![fileManager createDirectoryAtPath:BASE_PATH withIntermediateDirectories:YES attributes:nil error:NULL])
 		{
-			SSLog(@"ERROR: Failed to create a directory: %@", BASE_PATH);
+			DbgLog(@"ERROR: Failed to create a directory: %@", BASE_PATH);
 			return;
 		}
 	}

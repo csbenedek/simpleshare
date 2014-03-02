@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C11BB2F16A003F7005C240C /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C11BB2E16A003F7005C240C /* QTKit.framework */; };
 		2C11BB3116A00417005C240C /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C11BB3016A00417005C240C /* OpenGL.framework */; };
 		2C11BB3316A00443005C240C /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C11BB3216A00443005C240C /* libxml2.2.dylib */; };
 		2C11BB3516A00462005C240C /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C11BB3416A00462005C240C /* libz.1.2.5.dylib */; };
@@ -64,7 +63,23 @@
 		2CAFB7CC16B71E7000418D61 /* OAuth2Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFB7CB16B71E7000418D61 /* OAuth2Connection.m */; };
 		2CBDB37316FA58FC00BA81E1 /* Growl.framework in Copy Linked Frameworks */ = {isa = PBXBuildFile; fileRef = 2CBDB37216FA58FC00BA81E1 /* Growl.framework */; };
 		2CBDB37416FA595700BA81E1 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CBDB37216FA58FC00BA81E1 /* Growl.framework */; };
+		8406BBFC1848446900556555 /* ImageCaptureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406BBFB1848446900556555 /* ImageCaptureController.m */; };
+		8406BBFF18484A7700556555 /* StartImageCaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406BBFE18484A7700556555 /* StartImageCaptureView.m */; };
+		8413C2411857839C00D5A115 /* icons.icns in Resources */ = {isa = PBXBuildFile; fileRef = 8413C2401857839C00D5A115 /* icons.icns */; };
+		843F1B05187FD94200DA291E /* FolderUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 843F1B04187FD94200DA291E /* FolderUtility.m */; };
 		845C02D0183719B100167FA2 /* StartVideoCaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 845C02CF183719B100167FA2 /* StartVideoCaptureView.m */; };
+		846E5D88183F6D73004CA339 /* StandardPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = 846E5D87183F6D73004CA339 /* StandardPaths.m */; };
+		847EF05518BB187300C5CDEE /* FeedbackWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847EF05318BB187300C5CDEE /* FeedbackWindowController.m */; };
+		847EF05618BB187300C5CDEE /* FeedbackWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847EF05418BB187300C5CDEE /* FeedbackWindowController.xib */; };
+		848E35261883DC17000F83B1 /* NSAlert+SynchronousSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E35251883DC17000F83B1 /* NSAlert+SynchronousSheet.m */; };
+		84B85359188C4D6A00D1DF26 /* GrantAccessWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B85357188C4D6A00D1DF26 /* GrantAccessWindowController.m */; };
+		84B8535A188C4D6A00D1DF26 /* GrantAccessWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B85358188C4D6A00D1DF26 /* GrantAccessWindowController.xib */; };
+		84B980A018C327890053D264 /* ImgurUploadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9809F18C327890053D264 /* ImgurUploadOperation.m */; };
+		84D7477A188C4F700033EE2F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D74779188C4F700033EE2F /* WebKit.framework */; };
+		84DE8C71184F4BA80052B7FC /* NSImage+SavingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DE8C6F184F4BA80052B7FC /* NSImage+SavingAdditions.m */; };
+		84E38B5A18532B6300547472 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E38B5918532B6300547472 /* ServiceManagement.framework */; };
+		84E38B5E18532BD900547472 /* LoginHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 84E38B5B18532BA600547472 /* LoginHelper.app */; };
+		84E9B4261863F62F00C881A5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E9B4251863F62F00C881A5 /* AVFoundation.framework */; };
 		8B120E4F13D3305300604F85 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B120E4E13D3305200604F85 /* ScriptingBridge.framework */; };
 		8B16ED7313D21DE100F6DC5E /* PreferenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B16ED7213D21DE000F6DC5E /* PreferenceManager.m */; };
 		8B2BF1EF13CD06C600A76F27 /* libchilkatCocoa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B2BF1EE13CD06C600A76F27 /* libchilkatCocoa.a */; };
@@ -201,10 +216,19 @@
 		915F58FE1490D62E0053D18C /* VideoCaptureManagerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 915F58FD1490D62E0053D18C /* VideoCaptureManagerBase.m */; };
 		91F23825147E886E00B1B655 /* StartVideoCaptureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F23824147E886E00B1B655 /* StartVideoCaptureController.m */; };
 		91F23833147EA93F00B1B655 /* ScreenshotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F23832147EA93F00B1B655 /* ScreenshotManager.m */; };
-		91F23842147FF6B200B1B655 /* VideoCaptureManagerPreLion.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F23841147FF6B200B1B655 /* VideoCaptureManagerPreLion.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		84E38B5D18532BD300547472 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				84E38B5E18532BD900547472 /* LoginHelper.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8B120E4B13D329EF00604F85 /* Copy Linked Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -282,7 +306,33 @@
 		2CAFB7CB16B71E7000418D61 /* OAuth2Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuth2Connection.m; sourceTree = "<group>"; };
 		2CBDB36F16FA554D00BA81E1 /* SimpleShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SimpleShare.entitlements; sourceTree = "<group>"; };
 		2CBDB37216FA58FC00BA81E1 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
+		8406BBFA1848446900556555 /* ImageCaptureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCaptureController.h; sourceTree = "<group>"; };
+		8406BBFB1848446900556555 /* ImageCaptureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCaptureController.m; sourceTree = "<group>"; };
+		8406BBFD18484A7700556555 /* StartImageCaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartImageCaptureView.h; sourceTree = "<group>"; };
+		8406BBFE18484A7700556555 /* StartImageCaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartImageCaptureView.m; sourceTree = "<group>"; };
+		8413C2401857839C00D5A115 /* icons.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icons.icns; sourceTree = "<group>"; };
+		843F1B03187FD94200DA291E /* FolderUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderUtility.h; sourceTree = "<group>"; };
+		843F1B04187FD94200DA291E /* FolderUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderUtility.m; sourceTree = "<group>"; };
 		845C02CF183719B100167FA2 /* StartVideoCaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartVideoCaptureView.m; sourceTree = "<group>"; };
+		846E5D86183F6D73004CA339 /* StandardPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StandardPaths.h; sourceTree = "<group>"; };
+		846E5D87183F6D73004CA339 /* StandardPaths.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StandardPaths.m; sourceTree = "<group>"; };
+		847EF05218BB187300C5CDEE /* FeedbackWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackWindowController.h; sourceTree = "<group>"; };
+		847EF05318BB187300C5CDEE /* FeedbackWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackWindowController.m; sourceTree = "<group>"; };
+		847EF05418BB187300C5CDEE /* FeedbackWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackWindowController.xib; sourceTree = "<group>"; };
+		848E35241883DC17000F83B1 /* NSAlert+SynchronousSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+SynchronousSheet.h"; sourceTree = "<group>"; };
+		848E35251883DC17000F83B1 /* NSAlert+SynchronousSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+SynchronousSheet.m"; sourceTree = "<group>"; };
+		84B85356188C4D6A00D1DF26 /* GrantAccessWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrantAccessWindowController.h; sourceTree = "<group>"; };
+		84B85357188C4D6A00D1DF26 /* GrantAccessWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrantAccessWindowController.m; sourceTree = "<group>"; };
+		84B85358188C4D6A00D1DF26 /* GrantAccessWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GrantAccessWindowController.xib; sourceTree = "<group>"; };
+		84B9809E18C327890053D264 /* ImgurUploadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImgurUploadOperation.h; sourceTree = "<group>"; };
+		84B9809F18C327890053D264 /* ImgurUploadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImgurUploadOperation.m; sourceTree = "<group>"; };
+		84D74779188C4F700033EE2F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
+		84DE8C6F184F4BA80052B7FC /* NSImage+SavingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+SavingAdditions.m"; sourceTree = "<group>"; };
+		84DE8C70184F4BA80052B7FC /* NSImage+SavingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+SavingAdditions.h"; sourceTree = "<group>"; };
+		84E38B5718532AFC00547472 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/ApplicationServices.framework; sourceTree = DEVELOPER_DIR; };
+		84E38B5918532B6300547472 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/ServiceManagement.framework; sourceTree = DEVELOPER_DIR; };
+		84E38B5B18532BA600547472 /* LoginHelper.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = LoginHelper.app; path = LoginHelper/build/Release/LoginHelper.app; sourceTree = "<group>"; };
+		84E9B4251863F62F00C881A5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		8B120E4E13D3305200604F85 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		8B16ED7113D21DE000F6DC5E /* PreferenceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceManager.h; sourceTree = "<group>"; };
 		8B16ED7213D21DE000F6DC5E /* PreferenceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceManager.m; sourceTree = "<group>"; };
@@ -459,9 +509,9 @@
 		8BDB2E5813C3A31E003BFDE0 /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
 		8BDB2E5913C3A31E003BFDE0 /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDownloadCache.m; sourceTree = "<group>"; };
 		8BDB2E5A13C3A31E003BFDE0 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
-		8BDB2E5B13C3A31E003BFDE0 /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
+		8BDB2E5B13C3A31E003BFDE0 /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ASIFormDataRequest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8BDB2E5C13C3A31E003BFDE0 /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
-		8BDB2E5D13C3A31E003BFDE0 /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
+		8BDB2E5D13C3A31E003BFDE0 /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ASIHTTPRequest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8BDB2E5E13C3A31E003BFDE0 /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
 		8BDB2E5F13C3A31E003BFDE0 /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
 		8BDB2E6013C3A31E003BFDE0 /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
@@ -573,8 +623,6 @@
 		91F23824147E886E00B1B655 /* StartVideoCaptureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartVideoCaptureController.m; sourceTree = "<group>"; };
 		91F23831147EA93F00B1B655 /* ScreenshotManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenshotManager.h; sourceTree = "<group>"; };
 		91F23832147EA93F00B1B655 /* ScreenshotManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenshotManager.m; sourceTree = "<group>"; };
-		91F23840147FF6B200B1B655 /* VideoCaptureManagerPreLion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCaptureManagerPreLion.h; sourceTree = "<group>"; };
-		91F23841147FF6B200B1B655 /* VideoCaptureManagerPreLion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCaptureManagerPreLion.m; sourceTree = "<group>"; };
 		91F7EB901472BCF500D79553 /* Finder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Finder.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -583,12 +631,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84D7477A188C4F700033EE2F /* WebKit.framework in Frameworks */,
+				84E9B4261863F62F00C881A5 /* AVFoundation.framework in Frameworks */,
+				84E38B5A18532B6300547472 /* ServiceManagement.framework in Frameworks */,
 				2CBDB37416FA595700BA81E1 /* Growl.framework in Frameworks */,
 				2C11BB3516A00462005C240C /* libz.1.2.5.dylib in Frameworks */,
 				2C11BB3316A00443005C240C /* libxml2.2.dylib in Frameworks */,
 				8B120E4F13D3305300604F85 /* ScriptingBridge.framework in Frameworks */,
 				2C11BB3116A00417005C240C /* OpenGL.framework in Frameworks */,
-				2C11BB2F16A003F7005C240C /* QTKit.framework in Frameworks */,
 				8BA5385A13C798C7008E5AC3 /* Quartz.framework in Frameworks */,
 				8BA5385B13C798C7008E5AC3 /* QuartzCore.framework in Frameworks */,
 				8B69534213C3C3E200B32618 /* Carbon.framework in Frameworks */,
@@ -787,6 +837,8 @@
 				8B51144413CF922400711466 /* StatusItemView.m */,
 				91F2381F147E87DA00B1B655 /* StartVideoCaptureView.h */,
 				845C02CF183719B100167FA2 /* StartVideoCaptureView.m */,
+				8406BBFD18484A7700556555 /* StartImageCaptureView.h */,
+				8406BBFE18484A7700556555 /* StartImageCaptureView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -800,6 +852,13 @@
 				8B16ED7213D21DE000F6DC5E /* PreferenceManager.m */,
 				91F23823147E886E00B1B655 /* StartVideoCaptureController.h */,
 				91F23824147E886E00B1B655 /* StartVideoCaptureController.m */,
+				8406BBFA1848446900556555 /* ImageCaptureController.h */,
+				8406BBFB1848446900556555 /* ImageCaptureController.m */,
+				848E35241883DC17000F83B1 /* NSAlert+SynchronousSheet.h */,
+				848E35251883DC17000F83B1 /* NSAlert+SynchronousSheet.m */,
+				84B85356188C4D6A00D1DF26 /* GrantAccessWindowController.h */,
+				84B85357188C4D6A00D1DF26 /* GrantAccessWindowController.m */,
+				84B85358188C4D6A00D1DF26 /* GrantAccessWindowController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -838,6 +897,8 @@
 		8B69535D13C4D71500B32618 /* App Constants */ = {
 			isa = PBXGroup;
 			children = (
+				843F1B03187FD94200DA291E /* FolderUtility.h */,
+				843F1B04187FD94200DA291E /* FolderUtility.m */,
 				8B69534313C3C6EB00B32618 /* AppConstants.h */,
 				8B69534413C3C6EC00B32618 /* AppConstants.m */,
 			);
@@ -847,6 +908,8 @@
 		8B69536413C63B3800B32618 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
+				84B9809E18C327890053D264 /* ImgurUploadOperation.h */,
+				84B9809F18C327890053D264 /* ImgurUploadOperation.m */,
 				8B69536513C63B4F00B32618 /* UploadOperation.h */,
 				8B69536613C63B4F00B32618 /* UploadOperation.m */,
 				8B69536813C63B7200B32618 /* OperationQueue.h */,
@@ -986,6 +1049,8 @@
 		8BDB2D1013C3989E003BFDE0 = {
 			isa = PBXGroup;
 			children = (
+				8413C2401857839C00D5A115 /* icons.icns */,
+				84E38B5B18532BA600547472 /* LoginHelper.app */,
 				2CBDB36F16FA554D00BA81E1 /* SimpleShare.entitlements */,
 				8BDB2D2513C3989F003BFDE0 /* BoxSimpleShare */,
 				8BDB2D1E13C3989F003BFDE0 /* Frameworks */,
@@ -1006,6 +1071,10 @@
 		8BDB2D1E13C3989F003BFDE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84D74779188C4F700033EE2F /* WebKit.framework */,
+				84E9B4251863F62F00C881A5 /* AVFoundation.framework */,
+				84E38B5918532B6300547472 /* ServiceManagement.framework */,
+				84E38B5718532AFC00547472 /* ApplicationServices.framework */,
 				8BDB2DB913C39EA5003BFDE0 /* External Frameworks */,
 				8BDB2D2113C3989F003BFDE0 /* Other Frameworks */,
 			);
@@ -1050,6 +1119,9 @@
 				8BDB2D3213C3989F003BFDE0 /* BoxSimpleShareAppDelegate.m */,
 				8BDB2D3413C3989F003BFDE0 /* MainMenu.xib */,
 				8BDB2D2613C3989F003BFDE0 /* Supporting Files */,
+				847EF05218BB187300C5CDEE /* FeedbackWindowController.h */,
+				847EF05318BB187300C5CDEE /* FeedbackWindowController.m */,
+				847EF05418BB187300C5CDEE /* FeedbackWindowController.xib */,
 			);
 			path = BoxSimpleShare;
 			sourceTree = "<group>";
@@ -1300,12 +1372,14 @@
 			children = (
 				91F23831147EA93F00B1B655 /* ScreenshotManager.h */,
 				91F23832147EA93F00B1B655 /* ScreenshotManager.m */,
-				91F23840147FF6B200B1B655 /* VideoCaptureManagerPreLion.h */,
-				91F23841147FF6B200B1B655 /* VideoCaptureManagerPreLion.m */,
 				915F58C31490B7500053D18C /* VideoCaptureManagerLion.h */,
 				915F58C41490B7500053D18C /* VideoCaptureManagerLion.m */,
 				915F58FC1490D62D0053D18C /* VideoCaptureManagerBase.h */,
 				915F58FD1490D62E0053D18C /* VideoCaptureManagerBase.m */,
+				846E5D86183F6D73004CA339 /* StandardPaths.h */,
+				846E5D87183F6D73004CA339 /* StandardPaths.m */,
+				84DE8C6F184F4BA80052B7FC /* NSImage+SavingAdditions.m */,
+				84DE8C70184F4BA80052B7FC /* NSImage+SavingAdditions.h */,
 			);
 			name = VideoCapture;
 			sourceTree = "<group>";
@@ -1329,6 +1403,8 @@
 				8BDB2D1813C3989F003BFDE0 /* Frameworks */,
 				8BDB2D1913C3989F003BFDE0 /* Resources */,
 				8B120E4B13D329EF00604F85 /* Copy Linked Frameworks */,
+				84E38B5D18532BD300547472 /* CopyFiles */,
+				844218E5186162FE00E0AB8C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1347,6 +1423,11 @@
 			attributes = {
 				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = SAPLogix;
+				TargetAttributes = {
+					8BDB2D1A13C3989F003BFDE0 = {
+						DevelopmentTeam = S9S8JXEXXT;
+					};
+				};
 			};
 			buildConfigurationList = 8BDB2D1513C3989E003BFDE0 /* Build configuration list for PBXProject "BoxSimpleShare" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1374,6 +1455,7 @@
 				8BDB2D3613C3989F003BFDE0 /* MainMenu.xib in Resources */,
 				8BA5383913C73F47008E5AC3 /* dmg_background.png in Resources */,
 				8BA5383A13C73F47008E5AC3 /* icon_account-folder.png in Resources */,
+				847EF05618BB187300C5CDEE /* FeedbackWindowController.xib in Resources */,
 				8BA5383B13C73F47008E5AC3 /* icon_account.png in Resources */,
 				8BA5383C13C73F47008E5AC3 /* icon_file.png in Resources */,
 				8BA5383D13C73F47008E5AC3 /* icon_image.png in Resources */,
@@ -1419,12 +1501,14 @@
 				2CAFB74016B1C3D000418D61 /* icon-animation-5@2x.png in Resources */,
 				2CAFB74116B1C3D000418D61 /* icon-animation-6.png in Resources */,
 				2CAFB74216B1C3D000418D61 /* icon-animation-6@2x.png in Resources */,
+				8413C2411857839C00D5A115 /* icons.icns in Resources */,
 				2CAFB74316B1C3D000418D61 /* icon-animation-7.png in Resources */,
 				2CAFB74416B1C3D000418D61 /* icon-animation-7@2x.png in Resources */,
 				2CAFB74516B1C3D000418D61 /* icon-animation-8.png in Resources */,
 				2CAFB74616B1C3D000418D61 /* icon-animation-8@2x.png in Resources */,
 				2CAFB74716B1C3D000418D61 /* icon-animation-9.png in Resources */,
 				2CAFB74816B1C3D000418D61 /* icon-animation-9@2x.png in Resources */,
+				84B8535A188C4D6A00D1DF26 /* GrantAccessWindowController.xib in Resources */,
 				2CAFB74916B1C3D000418D61 /* icon-animation-10.png in Resources */,
 				2CAFB74A16B1C3D000418D61 /* icon-animation-10@2x.png in Resources */,
 				2CAFB74B16B1C3D000418D61 /* icon-animation-11.png in Resources */,
@@ -1454,6 +1538,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		844218E5186162FE00E0AB8C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "LOCATION=\"${BUILT_PRODUCTS_DIR}\"/\"${FRAMEWORKS_FOLDER_PATH}\"\nCONTENTS=\"${BUILT_PRODUCTS_DIR}\"/\"${CONTENTS_FOLDER_PATH}\"\nIDENTITY=\"3rd Party Mac Developer Application: Aaron Levie\"\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/Growl.framework/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8BDB2D1713C3989F003BFDE0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1464,6 +1564,8 @@
 				8BDB2D3F13C398D4003BFDE0 /* HTTPRequestHandler.m in Sources */,
 				8BDB2E8613C3A31E003BFDE0 /* ASIDataCompressor.m in Sources */,
 				8BDB2E8713C3A31E003BFDE0 /* ASIDataDecompressor.m in Sources */,
+				84B85359188C4D6A00D1DF26 /* GrantAccessWindowController.m in Sources */,
+				847EF05518BB187300C5CDEE /* FeedbackWindowController.m in Sources */,
 				8BDB2E8813C3A31E003BFDE0 /* ASIDownloadCache.m in Sources */,
 				8BDB2E8913C3A31E003BFDE0 /* ASIFormDataRequest.m in Sources */,
 				8BDB2E8A13C3A31E003BFDE0 /* ASIHTTPRequest.m in Sources */,
@@ -1493,6 +1595,8 @@
 				8B69535913C4D11B00B32618 /* GDataXMLNode.m in Sources */,
 				8B69535C13C4D53400B32618 /* BoxNetUser.m in Sources */,
 				8B69536013C4E87000B32618 /* BoxFolder.m in Sources */,
+				84B980A018C327890053D264 /* ImgurUploadOperation.m in Sources */,
+				8406BBFF18484A7700556555 /* StartImageCaptureView.m in Sources */,
 				8B69536713C63B4F00B32618 /* UploadOperation.m in Sources */,
 				8B69536A13C63B7200B32618 /* OperationQueue.m in Sources */,
 				8BA5385713C74030008E5AC3 /* MainController.m in Sources */,
@@ -1508,6 +1612,7 @@
 				8B8406BA13D3A2B00025EA39 /* SBJsonStreamParser.m in Sources */,
 				8B8406BB13D3A2B00025EA39 /* SBJsonStreamParserAccumulator.m in Sources */,
 				8B8406BC13D3A2B00025EA39 /* SBJsonStreamParserAdapter.m in Sources */,
+				8406BBFC1848446900556555 /* ImageCaptureController.m in Sources */,
 				8B8406BD13D3A2B00025EA39 /* SBJsonStreamParserState.m in Sources */,
 				8B8406BE13D3A2B00025EA39 /* SBJsonStreamWriter.m in Sources */,
 				8B8406BF13D3A2B00025EA39 /* SBJsonStreamWriterAccumulator.m in Sources */,
@@ -1516,6 +1621,7 @@
 				8B8406C213D3A2B00025EA39 /* SBJsonWriter.m in Sources */,
 				9104DD16146AC1B500D1A0C9 /* UKFileWatcher.m in Sources */,
 				9104DD17146AC1B500D1A0C9 /* UKFNSubscribeFileWatcher.m in Sources */,
+				84DE8C71184F4BA80052B7FC /* NSImage+SavingAdditions.m in Sources */,
 				9104DD18146AC1B500D1A0C9 /* UKKQueue.m in Sources */,
 				9104DD19146AC1B500D1A0C9 /* UKMainThreadProxy.m in Sources */,
 				9104DD45146BE94000D1A0C9 /* LoginHelper.m in Sources */,
@@ -1534,6 +1640,7 @@
 				9104DDAC146BE9B900D1A0C9 /* BoxMoveOperation.m in Sources */,
 				9104DDAD146BE9B900D1A0C9 /* BoxNetworkOperation.m in Sources */,
 				9104DDAE146BE9B900D1A0C9 /* BoxOperation.m in Sources */,
+				846E5D88183F6D73004CA339 /* StandardPaths.m in Sources */,
 				9104DDAF146BE9B900D1A0C9 /* BoxPrivateShareOperation.m in Sources */,
 				9104DDB0146BE9B900D1A0C9 /* BoxPublicShareOperation.m in Sources */,
 				9104DDB1146BE9B900D1A0C9 /* BoxPublicUnshareOperation.m in Sources */,
@@ -1547,15 +1654,16 @@
 				9104DDB8146BE9B900D1A0C9 /* GTMRegex.m in Sources */,
 				91F23825147E886E00B1B655 /* StartVideoCaptureController.m in Sources */,
 				91F23833147EA93F00B1B655 /* ScreenshotManager.m in Sources */,
-				91F23842147FF6B200B1B655 /* VideoCaptureManagerPreLion.m in Sources */,
 				915F58C51490B7500053D18C /* VideoCaptureManagerLion.m in Sources */,
 				915F58CD1490BCD20053D18C /* Utilities.m in Sources */,
 				915F58FE1490D62E0053D18C /* VideoCaptureManagerBase.m in Sources */,
 				2C11BB3E16A7D27C005C240C /* NSData+Base64.m in Sources */,
 				2C11BB4216A9DD9E005C240C /* Mixpanel.m in Sources */,
 				2CAFB79816B58D3A00418D61 /* OAuth2Client.m in Sources */,
+				843F1B05187FD94200DA291E /* FolderUtility.m in Sources */,
 				2CAFB79B16B5C83A00418D61 /* OAuth2Server.m in Sources */,
 				2CAFB7CC16B71E7000418D61 /* OAuth2Connection.m in Sources */,
+				848E35261883DC17000F83B1 /* NSAlert+SynchronousSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1639,8 +1747,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_ENTITLEMENTS = SimpleShare.entitlements;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Aaron Levie (956ZZDEPUK)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1659,12 +1768,13 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks/ChilKat\"",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
 				);
 				PRODUCT_NAME = SimpleShare;
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1673,8 +1783,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_ENTITLEMENTS = SimpleShare.entitlements;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Aaron Levie (956ZZDEPUK)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1693,12 +1804,13 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks/ChilKat\"",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
 				);
 				PRODUCT_NAME = SimpleShare;
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

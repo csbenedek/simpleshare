@@ -78,6 +78,7 @@
     if (returnCode == NSAlertDefaultReturn) {
         [self performSelectorInBackground:@selector(requestAuthToken) withObject:nil];
     }
+    
 }
 
 - (void)requestAuthToken {

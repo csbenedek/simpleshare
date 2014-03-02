@@ -12,6 +12,12 @@
 
 #endif
 
+#if defined(DEBUG)
+#define DbgLog NSLog
+#else
+#define DbgLog( ... ) ((void)0)
+#endif
+
 #define InterfaceString(key) NSLocalizedStringFromTable(key, @"Localized", nil)
 
 

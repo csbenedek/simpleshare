@@ -8,7 +8,7 @@
 
 #import "AppConstants.h"
 
-NSString * APP_VERSION = @"v3.0.10";
+NSString * APP_VERSION = @"v2.3";
 
 // OLD
 //NSString * const API_KEY = @"tl21gh5qncigu2e8nneo2fvro5m0h5aa";

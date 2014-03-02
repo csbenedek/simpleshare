@@ -100,13 +100,13 @@ static Mixpanel* mixpanelSharedInstance = nil;
 	}
 	else
 	{
-		SSLog(@"ERROR: Mixpanel request wasn't logged: %@", [[request url] absoluteString]);
+		DbgLog(@"ERROR: Mixpanel request wasn't logged: %@", [[request url] absoluteString]);
 	}
 }
 
 - (void) requestDidFail:(ASIHTTPRequest *)request
 {
-	SSLog(@"ERROR: Mixpanel request failed: %@", [request error]);
+	DbgLog(@"ERROR: Mixpanel request failed: %@", [request error]);
 }
 
 - (void) trackCaptureRegionEvent
@@ -133,7 +133,7 @@ static Mixpanel* mixpanelSharedInstance = nil;
 {
 	if (!distinctID || !userName || !userEmail)
 	{
-		SSLog(@" ********* MIXPANEL TRACK FAILED !!!!!!!!!! *************");
+		DbgLog(@" ********* MIXPANEL TRACK FAILED !!!!!!!!!! *************");
 		return;
 	}
 
@@ -164,6 +164,7 @@ static Mixpanel* mixpanelSharedInstance = nil;
 	
 	[jsonWriter release];
 }
+
 
 - (void) engage
 {

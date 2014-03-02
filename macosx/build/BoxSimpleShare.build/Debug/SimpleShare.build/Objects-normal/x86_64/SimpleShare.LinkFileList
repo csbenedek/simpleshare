@@ -3,6 +3,8 @@
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/HTTPRequestHandler.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/ASIDataCompressor.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/ASIDataDecompressor.o
+/Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/GrantAccessWindowController.o
+/Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/FeedbackWindowController.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/ASIDownloadCache.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/ASIFormDataRequest.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/ASIHTTPRequest.o
@@ -32,6 +34,8 @@
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/GDataXMLNode.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/BoxNetUser.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/BoxFolder.o
+/Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/ImgurUploadOperation.o
+/Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/StartImageCaptureView.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/UploadOperation.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/OperationQueue.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/MainController.o
@@ -47,6 +51,7 @@
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/SBJsonStreamParser.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/SBJsonStreamParserAccumulator.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/SBJsonStreamParserAdapter.o
+/Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/ImageCaptureController.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/SBJsonStreamParserState.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/SBJsonStreamWriter.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/SBJsonStreamWriterAccumulator.o
@@ -55,6 +60,7 @@
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/SBJsonWriter.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/UKFileWatcher.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/UKFNSubscribeFileWatcher.o
+/Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/NSImage+SavingAdditions.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/UKKQueue.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/UKMainThreadProxy.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/LoginHelper.o
@@ -73,6 +79,7 @@
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/BoxMoveOperation.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/BoxNetworkOperation.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/BoxOperation.o
+/Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/StandardPaths.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/BoxPrivateShareOperation.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/BoxPublicShareOperation.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/BoxPublicUnshareOperation.o
@@ -86,12 +93,13 @@
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/GTMRegex.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/StartVideoCaptureController.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/ScreenshotManager.o
-/Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/VideoCaptureManagerPreLion.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/VideoCaptureManagerLion.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/Utilities.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/VideoCaptureManagerBase.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/NSData+Base64.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/Mixpanel.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/OAuth2Client.o
+/Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/FolderUtility.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/OAuth2Server.o
 /Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/OAuth2Connection.o
+/Cuongnq/Jobs/simpleshare/macosx/build/BoxSimpleShare.build/Debug/SimpleShare.build/Objects-normal/x86_64/NSAlert+SynchronousSheet.o

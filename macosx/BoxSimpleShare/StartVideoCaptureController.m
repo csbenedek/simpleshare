@@ -11,10 +11,10 @@
 #import "Extended.h"
 #import "Utilities.h"
 #import "VideoCaptureManagerLion.h"
-#import "VideoCaptureManagerPreLion.h"
-
-#import <QTKit/QTKit.h>
-
+//#import "VideoCaptureManagerPreLion.h"
+#import <AVFoundation/AVFoundation.h>
+//#import <QTKit/QTKit.h>
+#import "StandardPaths.h"
 static const int MinCaptureRectWidth = 30;
 static const int MinCaptureRectHeight = 30;
 static const int FrameHalfWidth = 2;
@@ -62,17 +62,17 @@ static const int FrameHalfWidth = 2;
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd HH-mm"];
     NSString* extension = [[[BoxSimpleShareAppDelegate sharedDelegate] mainController] videoFormatExtension];
-    long format = -1;
-    if ([extension isEqualToString:@"flv"]) {
-        format = kQTFileTypeFlash;
-    } else if ([extension isEqualToString:@"mp4"]) {
-        format = kQTFileTypeMP4;
-    } else if ([extension isEqualToString:@"avi"]) {
-        format = kQTFileTypeAVI;
-    }
+    long format = 1;//kQTFileTypeMP4;;
+//    if ([extension isEqualToString:@"flv"]) {
+//        format = kQTFileTypeFlash;
+//    } else if ([extension isEqualToString:@"mp4"]) {
+//        format = kQTFileTypeMP4;
+//    } else if ([extension isEqualToString:@"avi"]) {
+//        format = kQTFileTypeAVI;
+//    }
     NSString* filename = [NSString stringWithFormat:@"Screencast %@.%@", [formatter stringFromDate:[NSDate date]], extension];
     [formatter release];
-    NSString* savedPath = [NSTemporaryDirectory() stringByAppendingPathComponent:filename];
+    NSString* savedPath = [[[NSFileManager defaultManager] cacheDataPath] stringByAppendingPathComponent:filename];
      [_videoCaptureManager saveCurrentMovieToFile:savedPath exportFormat:format];   
     _isCapturing = NO;
     [self hideStopButton];
@@ -140,7 +140,7 @@ static const int FrameHalfWidth = 2;
     _captureViews = [[NSMutableArray alloc] init];
     for (NSScreen* screen in screens) {
         NSRect sFrame = [screen frame];
-        NSLog(@"%@", NSStringFromRect(sFrame));
+        DbgLog(@"%@", NSStringFromRect(sFrame));
         NSWindow* win = [self createTransparentNonDecoratedWindowWithFrame:[screen frame]];
         [_transparentWindows addObject:win];
         StartVideoCaptureView* view = [[StartVideoCaptureView alloc] initWithFrame:[[win contentView] frame]];
@@ -209,7 +209,7 @@ static const int FrameHalfWidth = 2;
             if ([Utilities isRunningOnLion]) {
                 _videoCaptureManager = [[VideoCaptureManagerLion alloc] init];
             } else {
-                _videoCaptureManager = [[VideoCaptureManagerPreLion alloc] init];
+                _videoCaptureManager =  nil; // [[VideoCaptureManagerPreLion alloc] init];
             }
             _videoCaptureManager.delegate = self;
         }

@@ -21,8 +21,8 @@
 #import "Extended.h"
 #import "Utilities.h"
 
-static NSString* SignUpURL = @"https://www.box.com/signup";
-static NSString* LearnMoreURL = @"http://www.box.com/business/features/";
+static NSString* SignUpURL = @"https://www.box.com/signup/personal";
+static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"http://www.box.com/business/features/";
 
 @interface MainController (Private)
 
@@ -48,7 +48,7 @@ static NSString* LearnMoreURL = @"http://www.box.com/business/features/";
 @synthesize requestsTable;
 @synthesize msg;
 @synthesize requestsTableScrollView;
-
+@synthesize imageHost;
 @synthesize delete_screenshot_after_upload_check;
 @synthesize delete_all_after_upload_check;
 @synthesize disable_automatic_upload_check;
@@ -60,7 +60,7 @@ static NSString* LearnMoreURL = @"http://www.box.com/business/features/";
 @synthesize screen_cast_hot_key;
 @synthesize upload_hot_key;
 @synthesize screencast_format;
-
+@synthesize uploadhost_index = uploadHost_index;
 @synthesize window;
 
 - (id) init
@@ -80,17 +80,17 @@ static NSString* LearnMoreURL = @"http://www.box.com/business/features/";
 
 - (void)awakeFromNib {
     
-    NSFont* font = [registerForFreeLabel font];
-    NSAttributedString* string = [NSAttributedString hyperlinkFromString:InterfaceString(@"RegisterString") 
-                                                                 withURL:[NSURL URLWithString:SignUpURL]
-                                                                    font:font];
-    [registerForFreeLabel setAttributedStringValue:string];
-    
-    font = learnMoreLabel.font;
-    string = [NSAttributedString hyperlinkFromString:InterfaceString(@"LearMoreString") 
-                                             withURL:[NSURL URLWithString:LearnMoreURL]
-                                                font:font];
-    [learnMoreLabel setAttributedStringValue:string];
+//    NSFont* font = [registerForFreeLabel font];
+//    NSAttributedString* string = [NSAttributedString hyperlinkFromString:InterfaceString(@"RegisterString") 
+//                                                                 withURL:[NSURL URLWithString:@""]
+//                                                                    font:font];
+//    [registerForFreeLabel setAttributedStringValue:string];
+//    
+//    font = learnMoreLabel.font;
+//    string = [NSAttributedString hyperlinkFromString:InterfaceString(@"LearMoreString") 
+//                                             withURL:[NSURL URLWithString:@""]
+//                                                font:font];
+//    [learnMoreLabel setAttributedStringValue:string];
     
     prefSyncTimer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(serializePrefIfDirty) userInfo:nil repeats:YES];
     
@@ -145,6 +145,9 @@ static NSString* LearnMoreURL = @"http://www.box.com/business/features/";
     
     [screencast_format setTarget:self];
     [screencast_format setAction:@selector(screencastFormatValueChanged:)];
+    
+    [imageHost setTarget:self];
+    [imageHost setAction:@selector(uploadhostChanged:)];
 }
 
 #pragma mark
@@ -163,13 +166,20 @@ static NSString* LearnMoreURL = @"http://www.box.com/business/features/";
 // PREFERENCE PAGE
 
 - (NSString*)videoFormatExtension {
-    return [screencast_format objectValueOfSelectedItem];
+    return @"mp4";// [screencast_format objectValueOfSelectedItem];
 }
 
 - (void) screencastFormatValueChanged:(id)sender
 {
     screencast_format_index = (int)[screencast_format indexOfSelectedItem];
     prefChanged = YES;
+}
+
+-(void)uploadhostChanged :(id) sender
+{
+    uploadHost_index = (int)[imageHost indexOfSelectedItem];
+    prefChanged = YES;
+
 }
 
 - (IBAction) preferencePageValueChangeNotification:(id)sender
@@ -349,7 +359,7 @@ static NSString* LearnMoreURL = @"http://www.box.com/business/features/";
                               nil, 
                               @"");
         }
-        SSLog(@"ERROR!");
+        DbgLog(@"ERROR!");
     } else {
     
 		[[NSFileManager defaultManager] changeCurrentDirectoryPath:TMP_PATH];
@@ -361,7 +371,7 @@ static NSString* LearnMoreURL = @"http://www.box.com/business/features/";
         [PreferenceManager loadPreference];
 		[[Mixpanel sharedInstance] identify:[response object]];
         [[BoxSimpleShareAppDelegate sharedDelegate] createMenu];
-        SSLog(@"Login Successfull!");
+        DbgLog(@"Login Successfull!");
     }
 
     [loginBtn setEnabled:YES];
@@ -452,14 +462,14 @@ static NSString* LearnMoreURL = @"http://www.box.com/business/features/";
 {
 //    if (notification && [notification object])
 //    {
-//        //SSLog(@"updateProgress: %@", [notification object]);
+//        //DbgLog(@"updateProgress: %@", [notification object]);
 //        
 //        UploadOperation *opt = [notification object];
 //        
 //        [statusLine2 setStringValue:[NSString stringWithFormat:@"REQUEST >> Uploaded %@ of %@", returnValueWithAccurateAnnotation([opt bytesUploadedSoFar]), returnValueWithAccurateAnnotation([opt totalBytesToUpload])]];
 //    }
     
-    //SSLog(@"updateProgress");
+    //DbgLog(@"updateProgress");
     
     [[[[BoxSimpleShareAppDelegate sharedDelegate] mainController] requestsTable] reloadData];
 }
@@ -560,7 +570,7 @@ static NSString* LearnMoreURL = @"http://www.box.com/business/features/";
     [self setBoxUser:user];
     // Save user to disc, to avoid login on next launch
     [user save];
-    SSLog(@"Login Successfull!");
+    DbgLog(@"Login Successfull!");
 }
 
 - (void)loginFailedWithError:(NSError *)error 

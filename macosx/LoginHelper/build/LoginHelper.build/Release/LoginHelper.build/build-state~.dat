@@ -1,0 +1,354 @@
+TLoginHelper
+v6
+r1
+cCheck dependencies
+cProcessInfoPlistFile /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/Info.plist /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/LoginHelper-Info.plist
+cProcessPCH /var/folders/52/98xv_x1j55gdm37c0mghymfc0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/LoginHelper-Prefix-hgpecwrpviagwlefssncnuexfozp/LoginHelper-Prefix.pch.pch LoginHelper/LoginHelper-Prefix.pch normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/main.o /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/main.m normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/AppDelegate.o /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/AppDelegate.m normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLd /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/MacOS/LoginHelper normal x86_64
+cGenerateDSYMFile /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app.dSYM /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/MacOS/LoginHelper
+cCopyStringsFile /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/Resources/en.lproj/InfoPlist.strings LoginHelper/en.lproj/InfoPlist.strings
+cCpResource LoginHelper/en.lproj/Credits.rtf build/Release/LoginHelper.app/Contents/Resources/en.lproj/Credits.rtf
+cCompileXIB /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/en.lproj/MainMenu.xib
+cTouch /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app
+cStrip /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/MacOS/LoginHelper
+cProcessProductPackaging /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/LoginHelper.entitlements /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/LoginHelper.xcent
+cCodeSign /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app
+cTouch /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app.dSYM
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk
+c000000005228144B00000000000000AA
+t1378358347
+s170
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/SDKSettings.plist
+c000000005228143200000000000004B3
+t1378358322
+s1203
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/CoreServices/SystemVersion.plist
+c000000005227ECC800000000000001DE
+t1378348232
+s478
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework/Cocoa
+c000000005228145F00000000000025C8
+t1378358367
+s9672
+
+N/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/AppDelegate.m
+c0000000052A2EFC9000000000000037D
+t1386409929
+s893
+
+N/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/LoginHelper-Info.plist
+c0000000051872EB90000000000000473
+t1367813817
+s1139
+
+N/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/LoginHelper-Prefix.pch
+c0000000050767AF90000000000000099
+t1349942009
+s153
+
+N/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/LoginHelper.entitlements
+c000000005076F5B900000000000000F0
+t1349973433
+s240
+
+N/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/en.lproj/Credits.rtf
+c0000000050767AF900000000000001B4
+t1349942009
+s436
+
+N/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/en.lproj/InfoPlist.strings
+c0000000050767AF9000000000000002D
+t1349942009
+s45
+
+N/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/en.lproj/MainMenu.xib
+c000000005076A8940000000000001E9B
+t1349953684
+s7835
+
+N/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/main.m
+c0000000050767AF900000000000000F5
+t1349942009
+s245
+
+N/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/LoginHelper.xcent
+t1386409955
+s240
+
+N/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/AppDelegate.o
+t1386409954
+s31800
+
+N/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/LoginHelper.LinkFileList
+c0000000052A2EFDF00000000000000FF
+t1386409951
+s255
+
+N/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/main.o
+t1386409953
+s2928
+
+N/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app
+t1386409955
+s102
+
+N/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app.dSYM
+t1386409954
+s102
+
+N/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/Info.plist
+t1386409951
+s1463
+
+N/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/MacOS/LoginHelper
+t1386409954
+s26908
+
+N/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/PkgInfo
+t1386409951
+s8
+
+N/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/Resources/en.lproj/Credits.rtf
+t1386409954
+s436
+
+N/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/Resources/en.lproj/InfoPlist.strings
+t1386409954
+s92
+
+N/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/Resources/en.lproj/MainMenu.nib
+t1386409955
+s1872
+
+N/var/folders/52/98xv_x1j55gdm37c0mghymfc0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/LoginHelper-Prefix-hgpecwrpviagwlefssncnuexfozp/LoginHelper-Prefix.pch.pch
+t1386409953
+s13080828
+
+CBuild AST from /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/AppDelegate.m
+r0
+
+CBuild AST from /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/main.m
+r0
+
+CCheck dependencies
+r0
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependenciesf20b7f5f2753b841^0b24a85f2753b841^---0#1#1#--18"Check dependencies36"0D15A450-667C-4A9E-83AF-6B169A5FEFEF-
+
+CCodeSign /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app
+s408102755.141788
+e408102758.575707
+r1
+xCodeSign
+x/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection38"CodeSign build/Release/LoginHelper.app38"CodeSign build/Release/LoginHelper.appc45e24632753b841^416293662753b841^---0#0#1#-19%DVTDocumentLocation2@82"file:///Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/0000000000000000^602"CodeSign build/Release/LoginHelper.app    cd /Cuongnq/Jobs/simpleshare/macosx/LoginHelper    setenv CODESIGN_ALLOCATE /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate    Using code signing identity "3rd Party Mac Developer Application: Aaron Levie (956ZZDEPUK)"    /usr/bin/codesign --force --sign 6B8F7AB8EA341937DF5BFA5FFCFF49E69E083EB2 --entitlements /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/LoginHelper.xcent /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app36"C5FE5320-B166-40AF-95BD-25D51146A626-
+b069527BF-D712-444A-A8FD-A919D806A8EA
+
+CCompileC build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/AppDelegate.o /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/AppDelegate.m normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s408102753.773623
+e408102754.029115
+r1
+xCompileC
+xbuild/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/AppDelegate.o
+x/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/AppDelegate.m
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/AppDelegate.m
+d/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/AppDelegate.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection78"Compile /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/AppDelegate.m190"CompileC build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/AppDelegate.o LoginHelper/AppDelegate.m normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler5340c6612753b841^af7707622753b841^---0#0#1#-19%DVTDocumentLocation2@77"file:///Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/AppDelegate.m0000000000000000^3140"CompileC build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/AppDelegate.o LoginHelper/AppDelegate.m normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Cuongnq/Jobs/simpleshare/macosx/LoginHelper    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.7 -g -fvisibility=hidden -Wno-sign-conversion -iquote /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/LoginHelper-generated-files.hmap -I/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/LoginHelper-own-target-headers.hmap -I/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/LoginHelper-all-target-headers.hmap -iquote /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/LoginHelper-project-headers.hmap -I/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/DerivedSources/x86_64 -I/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/DerivedSources -F/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release -include /var/folders/52/98xv_x1j55gdm37c0mghymfc0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/LoginHelper-Prefix-hgpecwrpviagwlefssncnuexfozp/LoginHelper-Prefix.pch -MMD -MT dependencies -MF /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/AppDelegate.d --serialize-diagnostics /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/AppDelegate.dia -c /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/AppDelegate.m -o /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/AppDelegate.o36"CB814F82-4F4B-4CF1-986D-8905A4094285-
+b069527BF-D712-444A-A8FD-A919D806A8EA
+
+CCompileC build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/main.o /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/main.m normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s408102753.772709
+e408102753.962285
+r1
+xCompileC
+xbuild/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/main.o
+x/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/main.m
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/main.m
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection71"Compile /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/main.m176"CompileC build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/main.o LoginHelper/main.m normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler3c13c6612753b841^8a5af6612753b841^---0#0#1#-19%DVTDocumentLocation2@70"file:///Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/main.m0000000000000000^3098"CompileC build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/main.o LoginHelper/main.m normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Cuongnq/Jobs/simpleshare/macosx/LoginHelper    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.7 -g -fvisibility=hidden -Wno-sign-conversion -iquote /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/LoginHelper-generated-files.hmap -I/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/LoginHelper-own-target-headers.hmap -I/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/LoginHelper-all-target-headers.hmap -iquote /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/LoginHelper-project-headers.hmap -I/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/DerivedSources/x86_64 -I/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/DerivedSources -F/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release -include /var/folders/52/98xv_x1j55gdm37c0mghymfc0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/LoginHelper-Prefix-hgpecwrpviagwlefssncnuexfozp/LoginHelper-Prefix.pch -MMD -MT dependencies -MF /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/main.d --serialize-diagnostics /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/main.dia -c /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/main.m -o /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/main.o36"AD6FD676-CA00-4544-8F6B-299556B23695-
+b069527BF-D712-444A-A8FD-A919D806A8EA
+
+CCompileXIB /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/en.lproj/MainMenu.xib
+s408102754.753951
+e408102755.052039
+r1
+xCompileXIB
+x/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/en.lproj/MainMenu.xib
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection88"Compiling /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/en.lproj/MainMenu.xib44"CompileXIB LoginHelper/en.lproj/MainMenu.xibb210c1622753b841^1d550d632753b841^---0#0#1#-19%DVTDocumentLocation2@85"file:///Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/en.lproj/MainMenu.xib0000000000000000^553"CompileXIB LoginHelper/en.lproj/MainMenu.xib    cd /Cuongnq/Jobs/simpleshare/macosx/LoginHelper    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/usr/bin/ibtool --errors --warnings --notices --minimum-deployment-target 10.7 --output-format human-readable-text --compile /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/Resources/en.lproj/MainMenu.nib /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/en.lproj/MainMenu.xib36"E83F92B6-EA57-44E5-BF2B-D1FCB867058F-
+b069527BF-D712-444A-A8FD-A919D806A8EA
+
+CCopyStringsFile /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/Resources/en.lproj/InfoPlist.strings LoginHelper/en.lproj/InfoPlist.strings
+s408102754.753625
+e408102754.855094
+r1
+xCopyStringsFile
+x/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/Resources/en.lproj/InfoPlist.strings
+xLoginHelper/en.lproj/InfoPlist.strings
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection43"Copy LoginHelper/en.lproj/InfoPlist.strings130"CopyStringsFile build/Release/LoginHelper.app/Contents/Resources/en.lproj/InfoPlist.strings LoginHelper/en.lproj/InfoPlist.strings87fbc0622753b841^e1ecda622753b841^---0#0#1#-19%DVTDocumentLocation2@90"file:///Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/en.lproj/InfoPlist.strings0000000000000000^418"CopyStringsFile build/Release/LoginHelper.app/Contents/Resources/en.lproj/InfoPlist.strings LoginHelper/en.lproj/InfoPlist.strings    cd /Cuongnq/Jobs/simpleshare/macosx/LoginHelper    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding UTF-16 --outdir /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/Resources/en.lproj -- LoginHelper/en.lproj/InfoPlist.strings36"41A99C7D-34C8-44F7-AD1E-A6BDC3E3E2B6-
+b069527BF-D712-444A-A8FD-A919D806A8EA
+
+CCpResource LoginHelper/en.lproj/Credits.rtf build/Release/LoginHelper.app/Contents/Resources/en.lproj/Credits.rtf
+s408102754.753774
+e408102754.854045
+r1
+xCpResource
+xLoginHelper/en.lproj/Credits.rtf
+xbuild/Release/LoginHelper.app/Contents/Resources/en.lproj/Credits.rtf
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection74"Copy build/Release/LoginHelper.app/Contents/Resources/en.lproj/Credits.rtf113"CpResource LoginHelper/en.lproj/Credits.rtf build/Release/LoginHelper.app/Contents/Resources/en.lproj/Credits.rtff704c1622753b841^caa4da622753b841^---0#0#1#-19%DVTDocumentLocation2@121"file:///Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/Resources/en.lproj/Credits.rtf0034bc85dfffdf42^459"CpResource LoginHelper/en.lproj/Credits.rtf build/Release/LoginHelper.app/Contents/Resources/en.lproj/Credits.rtf    cd /Cuongnq/Jobs/simpleshare/macosx/LoginHelper    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/en.lproj/Credits.rtf /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/Resources/en.lproj36"16FA5F8B-3618-443F-9A2E-9A291469DC2A-
+b069527BF-D712-444A-A8FD-A919D806A8EA
+
+CGenerateDSYMFile /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app.dSYM /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/MacOS/LoginHelper
+s408102754.674431
+e408102754.753221
+r1
+xGenerateDSYMFile
+x/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app.dSYM
+x/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/MacOS/LoginHelper
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection88"Generate /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app.dSYM108"GenerateDSYMFile build/Release/LoginHelper.app.dSYM build/Release/LoginHelper.app/Contents/MacOS/LoginHelper2cb7ac622753b841^13d4c0622753b841^---0#0#1#-19%DVTDocumentLocation2@86"file:///Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app.dSYM0034bc85dfffdf42^446"GenerateDSYMFile build/Release/LoginHelper.app.dSYM build/Release/LoginHelper.app/Contents/MacOS/LoginHelper    cd /Cuongnq/Jobs/simpleshare/macosx/LoginHelper    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/MacOS/LoginHelper -o /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app.dSYM36"8C06E2F1-66D8-46CB-B68C-7D8A24506CE4-
+b069527BF-D712-444A-A8FD-A919D806A8EA
+
+CLd /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/MacOS/LoginHelper normal x86_64
+s408102754.030132
+e408102754.673155
+r1
+xLd
+x/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/MacOS/LoginHelper
+xnormal
+xx86_64
+d/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/LoginHelper.LinkFileList
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/crt1.10.6.o
+d/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/main.o
+d/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/AppDelegate.o
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework/Cocoa
+d/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/arc/libarclite_macosx.a
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libobjc.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libSystem.dylib
+d/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.0/lib/darwin/libclang_rt.osx.a
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/AppKit.framework/AppKit
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreData.framework/CoreData
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libcache.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libcommonCrypto.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libcompiler_rt.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libcopyfile.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libdispatch.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libdnsinfo.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libdyld.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libkeymgr.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/liblaunch.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libmacho.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libquarantine.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libremovefile.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libsystem_blocks.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libsystem_c.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libsystem_dnssd.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libsystem_info.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libsystem_kernel.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libsystem_m.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libsystem_network.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libsystem_notify.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libsystem_sandbox.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libunc.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libunwind.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/system/libxpc.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/ApplicationServices.framework/ApplicationServices
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreText.framework/CoreText
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/ImageIO.framework/ImageIO
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreServices.framework/CoreServices
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ATS.framework/Versions/A/ATS
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ColorSync.framework/Versions/A/ColorSync
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/HIServices.framework/Versions/A/HIServices
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/LangAnalysis.framework/Versions/A/LangAnalysis
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/PrintCore
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/QD.framework/Versions/A/QD
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/SpeechSynthesis.framework/Versions/A/SpeechSynthesis
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CFNetwork.framework/CFNetwork
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/CarbonCore
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Metadata
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/OSServices.framework/Versions/A/OSServices
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/SearchKit.framework/Versions/A/SearchKit
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/AE.framework/Versions/A/AE
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/LaunchServices
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/DictionaryServices.framework/Versions/A/DictionaryServices
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection106"Link /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/MacOS/LoginHelper73"Ld build/Release/LoginHelper.app/Contents/MacOS/LoginHelper normal x86_6492cb07622753b841^fc55ac622753b841^---0#0#1#--1023"Ld build/Release/LoginHelper.app/Contents/MacOS/LoginHelper normal x86_64    cd /Cuongnq/Jobs/simpleshare/macosx/LoginHelper    setenv MACOSX_DEPLOYMENT_TARGET 10.7    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -L/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release -F/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release -filelist /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/LoginHelper.LinkFileList -mmacosx-version-min=10.7 -fobjc-arc -fobjc-link-runtime -framework Cocoa -Xlinker -dependency_info -Xlinker /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/Objects-normal/x86_64/LoginHelper_dependency_info.dat -o /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/MacOS/LoginHelper36"5741E4C7-EF99-4C99-9AFF-7E6095C57477-
+b069527BF-D712-444A-A8FD-A919D806A8EA
+
+CProcessInfoPlistFile /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/Info.plist /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/LoginHelper-Info.plist
+s408102751.658749
+e408102751.918176
+r1
+xProcessInfoPlistFile
+x/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/Info.plist
+x/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/LoginHelper-Info.plist
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection87"Process /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/LoginHelper-Info.plist105"ProcessInfoPlistFile build/Release/LoginHelper.app/Contents/Info.plist LoginHelper/LoginHelper-Info.plista6baa85f2753b841^fa0deb5f2753b841^---0#0#1#-19%DVTDocumentLocation2@86"file:///Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/LoginHelper-Info.plist0000000000000000^507"ProcessInfoPlistFile build/Release/LoginHelper.app/Contents/Info.plist LoginHelper/LoginHelper-Info.plist    cd /Cuongnq/Jobs/simpleshare/macosx/LoginHelper    builtin-infoPlistUtility /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/LoginHelper-Info.plist -genpkginfo /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/PkgInfo -expandbuildsettings -platform macosx -o /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/Info.plist36"6218A69F-29BC-4A8C-8CCC-DDB734307041-
+b069527BF-D712-444A-A8FD-A919D806A8EA
+
+CProcessPCH /Users/admin/Library/Developer/Xcode/DerivedData/LoginHelper-albfscxlcmpwclgkvmqwlzosvoxe/Index/PrecompiledHeaders/LoginHelper-Prefix-gihpbdimpirirtdewljrqzylnbde_ast/LoginHelper-Prefix.pch.pch LoginHelper/LoginHelper-Prefix.pch normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
+r0
+
+CProcessPCH /var/folders/52/98xv_x1j55gdm37c0mghymfc0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/LoginHelper-Prefix-hgpecwrpviagwlefssncnuexfozp/LoginHelper-Prefix.pch.pch LoginHelper/LoginHelper-Prefix.pch normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s408102751.918925
+e408102753.771254
+r1
+xProcessPCH
+x/var/folders/52/98xv_x1j55gdm37c0mghymfc0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/LoginHelper-Prefix-hgpecwrpviagwlefssncnuexfozp/LoginHelper-Prefix.pch.pch
+xLoginHelper/LoginHelper-Prefix.pch
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/LoginHelper-Prefix.pch
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection45"Precompile LoginHelper/LoginHelper-Prefix.pch308"ProcessPCH /var/folders/52/98xv_x1j55gdm37c0mghymfc0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/LoginHelper-Prefix-hgpecwrpviagwlefssncnuexfozp/LoginHelper-Prefix.pch.pch LoginHelper/LoginHelper-Prefix.pch normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler7556eb5f2753b841^2975c5612753b841^---0#0#1#-19%DVTDocumentLocation2@86"file:///Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/LoginHelper-Prefix.pch0000000000000000^3258"ProcessPCH /var/folders/52/98xv_x1j55gdm37c0mghymfc0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/LoginHelper-Prefix-hgpecwrpviagwlefssncnuexfozp/LoginHelper-Prefix.pch.pch LoginHelper/LoginHelper-Prefix.pch normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Cuongnq/Jobs/simpleshare/macosx/LoginHelper    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.7 -g -fvisibility=hidden -Wno-sign-conversion -iquote /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/LoginHelper-generated-files.hmap -I/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/LoginHelper-own-target-headers.hmap -I/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/LoginHelper-all-target-headers.hmap -iquote /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/LoginHelper-project-headers.hmap -I/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/DerivedSources/x86_64 -I/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/DerivedSources -F/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release --serialize-diagnostics /var/folders/52/98xv_x1j55gdm37c0mghymfc0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/LoginHelper-Prefix-hgpecwrpviagwlefssncnuexfozp/LoginHelper-Prefix.pch.dia -MMD -MT dependencies -MF /var/folders/52/98xv_x1j55gdm37c0mghymfc0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/LoginHelper-Prefix-hgpecwrpviagwlefssncnuexfozp/LoginHelper-Prefix.pch.d -c /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/LoginHelper-Prefix.pch -o /var/folders/52/98xv_x1j55gdm37c0mghymfc0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/LoginHelper-Prefix-hgpecwrpviagwlefssncnuexfozp/LoginHelper-Prefix.pch.pch36"E9441FD7-595E-4F22-A7CC-729688D84009-
+b069527BF-D712-444A-A8FD-A919D806A8EA
+
+CProcessProductPackaging /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/LoginHelper.entitlements /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/LoginHelper.xcent
+s408102755.111751
+e408102755.141114
+r1
+xProcessProductPackaging
+x/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/LoginHelper.entitlements
+x/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/LoginHelper.xcent
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection128"ProcessProductPackaging LoginHelper/LoginHelper.entitlements build/LoginHelper.build/Release/LoginHelper.build/LoginHelper.xcent128"ProcessProductPackaging LoginHelper/LoginHelper.entitlements build/LoginHelper.build/Release/LoginHelper.build/LoginHelper.xcent71af1c632753b841^d92324632753b841^---0#0#1#-19%DVTDocumentLocation2@119"file:///Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/LoginHelper.xcent0034bc85dfffdf42^441"ProcessProductPackaging LoginHelper/LoginHelper.entitlements build/LoginHelper.build/Release/LoginHelper.build/LoginHelper.xcent    cd /Cuongnq/Jobs/simpleshare/macosx/LoginHelper    builtin-productPackagingUtility /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/LoginHelper/LoginHelper.entitlements -entitlements -format xml -o /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/LoginHelper.build/Release/LoginHelper.build/LoginHelper.xcent36"59BD3C55-2509-4F83-B21B-F97C4A8029BD-
+b069527BF-D712-444A-A8FD-A919D806A8EA
+
+CStrip /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/MacOS/LoginHelper
+s408102755.084738
+e408102755.111157
+r1
+xStrip
+x/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/MacOS/LoginHelper
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection62"Strip build/Release/LoginHelper.app/Contents/MacOS/LoginHelper62"Strip build/Release/LoginHelper.app/Contents/MacOS/LoginHelper8bc315632753b841^21781c632753b841^---0#0#1#-19%DVTDocumentLocation2@108"file:///Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/MacOS/LoginHelper0000000000000000^314"Strip build/Release/LoginHelper.app/Contents/MacOS/LoginHelper    cd /Cuongnq/Jobs/simpleshare/macosx/LoginHelper    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app/Contents/MacOS/LoginHelper36"2A817E36-A2FE-4EBA-8C82-F2B5DF52D0CE-
+b069527BF-D712-444A-A8FD-A919D806A8EA
+
+CTouch /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app
+s408102755.052867
+e408102755.084144
+r1
+xTouch
+x/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection80"Touch /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app35"Touch build/Release/LoginHelper.app96960d632753b841^ce8d15632753b841^---0#0#1#--185"Touch build/Release/LoginHelper.app    cd /Cuongnq/Jobs/simpleshare/macosx/LoginHelper    /usr/bin/touch -c /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app36"5C5CBD70-BDB5-4F63-BD3D-AFCD5D859DDF-
+b069527BF-D712-444A-A8FD-A919D806A8EA
+
+CTouch /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app.dSYM
+s408102758.576253
+e408102758.580709
+r1
+xTouch
+x/Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app.dSYM
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection85"Touch /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app.dSYM40"Touch build/Release/LoginHelper.app.dSYMde8f93662753b841^00aa94662753b841^---0#0#1#--195"Touch build/Release/LoginHelper.app.dSYM    cd /Cuongnq/Jobs/simpleshare/macosx/LoginHelper    /usr/bin/touch -c /Cuongnq/Jobs/simpleshare/macosx/LoginHelper/build/Release/LoginHelper.app.dSYM36"90F77C9C-2B59-4E84-A5A9-3A37ABCE7DA4-
+b069527BF-D712-444A-A8FD-A919D806A8EA
+

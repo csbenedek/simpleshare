@@ -170,7 +170,7 @@
         
         if (!success) 
         {
-            SSLog(@"ZIP %@", strOutput);
+            DbgLog(@"ZIP %@", strOutput);
 //            [BoxSimpleShareAppDelegate showNotificationWithTitle:@"Upload Notification" withDescription:[NSString stringWithFormat:@"Failed to create archive uploading failed with error '%@'", strOutput]];
             
             safe_release(filePath);
@@ -236,7 +236,7 @@
         
         request = [[HTTPFormDataRequest requestWithURL:[NSURL URLWithString:url]] retain];
         
-        SSLog(@"Operation URL %@", url);
+        DbgLog(@"Operation URL %@", url);
         
         [request setQueue:[[HTTPRequestHandler uploadHandler] queue]];
         [request setRequestMethod:@"POST"];
@@ -413,6 +413,8 @@
     return [request contentLength] + [request partialDownloadSize];
 }
 
+
+
 #pragma mark
 #pragma mark Progress Delegate And Operation Status
 
@@ -465,7 +467,7 @@
     [self triggerUpdate:5];
 	*/
     
-//    SSLog(@"DATA FROM SERVER AFTER UPLOADING FILE: %@", [request1 responseString]);
+//    DbgLog(@"DATA FROM SERVER AFTER UPLOADING FILE: %@", [request1 responseString]);
 
 	BoxFile *file = nil;
 	
@@ -497,7 +499,7 @@
 				}
 				else
 				{
-					SSLog(@"Item but not file [%@] already exists", fileName);
+					DbgLog(@"Item but not file [%@] already exists", fileName);
 					[self requestFailed:request1];
 					[parser release];
 					return;
@@ -511,7 +513,7 @@
 		
 		if (fileID)
 		{
-			SSLog(@" File [%@] already exists. Uploading a new version...", fileName);
+			DbgLog(@" File [%@] already exists. Uploading a new version...", fileName);
 			
 			url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.box.com/2.0/files/%@/content", fileID]];
 			
@@ -520,7 +522,7 @@
 		}
 		else
 		{
-			SSLog(@" No file [%@] has been uploaded yet. Uploading...", fileName);
+			DbgLog(@" No file [%@] has been uploaded yet. Uploading...", fileName);
 			
 			url = [NSURL URLWithString:@"https://api.box.com/2.0/files/content"];
 			request = [[HTTPFormDataRequest requestWithURL:url] retain];
@@ -546,7 +548,7 @@
 	}
 	else if ([[[request1 userInfo] objectForKey:@"TYPE"] isEqualToString:UPLOAD_ACTION])
 	{
-		SSLog(@" Creating shared link for uploaded file ...");
+		DbgLog(@" Creating shared link for uploaded file ...");
 		[self oauth2CreateSharedLink:[[[json objectForKey:@"entries"] objectAtIndex:0] objectForKey:@"id"]];
 			
 		[parser release];
@@ -554,7 +556,7 @@
 	}
 	else if ([[[request1 userInfo] objectForKey:@"TYPE"] isEqualToString:@"CREATE_SHARED_LINK"])
 	{
-		SSLog(@" File has been uploaded");
+		DbgLog(@" File has been uploaded");
 		
 		file = [BoxFile new];
 		
@@ -575,7 +577,7 @@
 	}
 	else
 	{
-		SSLog(@"ERROR: skipping unknown request processing");
+		DbgLog(@"ERROR: skipping unknown request processing");
 		return;
 	}
 	
@@ -684,23 +686,23 @@
 - (void) request:(id)requestRef didReceiveBytes:(long long)bytes
 {
     //PostNotificationWithObject(REQUEST_PROGRESS, self);
-	//SSLog(@"Request Received Bytes: %lld", bytes);
+	//DbgLog(@"Request Received Bytes: %lld", bytes);
 }
 
 - (void) request:(id)requestRef didSendBytes:(long long)bytes
 {
     //PostNotificationWithObject(REQUEST_PROGRESS, self);
-	//SSLog(@"Request Send Bytes: %lld", bytes);
+	//DbgLog(@"Request Send Bytes: %lld", bytes);
 }
 
 - (void) request:(id)requestRef incrementDownloadSizeBy:(long long)newLength
 {
-	//SSLog(@"incrementDownloadSizeBy %lld", newLength); 
+	//DbgLog(@"incrementDownloadSizeBy %lld", newLength); 
 }
 
 - (void) request:(id)requestRef incrementUploadSizeBy:(long long)newLength
 {
-	//SSLog(@"incrementUploadSizeBy %lld", newLength);
+	//DbgLog(@"incrementUploadSizeBy %lld", newLength);
 }
 
 #pragma mark 

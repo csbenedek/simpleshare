@@ -16,7 +16,7 @@
 #define QUEUE_PROGRESS @"QUEUE_PROGRESS"
 
 @interface UploadOperation : NSOperation <ASIHTTPRequestDelegate, ASIProgressDelegate> {
-@private
+@public
     
     NSMutableArray *itemsToUpload;
     NSString *uploadToFolder;
@@ -47,5 +47,6 @@
 
 - (NSString *) FileName;
 - (NSString *) getCurrentStatus;
+- (void) triggerUpdate;
 
 @end

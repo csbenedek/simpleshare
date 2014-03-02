@@ -29,6 +29,8 @@
     [self reloadImage];
 }
 
+
+
 - (void) reloadImage
 {
     if (!_imgURL) return;
@@ -36,7 +38,7 @@
     HTTPRequest *request = [HTTPRequest requestWithURL:[NSURL URLWithString:_imgURL]];
     [request addMulticastDelegate:self];
     [request startAsynchronous];
-    request = nil;
+    request = nil;    
 }
 
 - (void) requestFinished:(id) request
@@ -46,6 +48,7 @@
     if (img)
     {
         [self setImage:img];
+        
     }
     
     [img release];

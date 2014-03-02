@@ -19,6 +19,7 @@
     BOOL isUploadQueue;
 }
 
+
 @property (retain, nonatomic) ASINetworkQueue *queue;
 
 @property (nonatomic) double progress;

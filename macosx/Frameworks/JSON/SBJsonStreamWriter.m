@@ -257,7 +257,7 @@ static const char *strForChar(int c) {
 		case 34: return "\\\""; break;
 		case 92: return "\\\\"; break;
 	}
-	NSLog(@"FUTFUTFUT: -->'%c'<---", c);
+	DbgLog(@"FUTFUTFUT: -->'%c'<---", c);
 	return "FUTFUTFUT";
 }
 

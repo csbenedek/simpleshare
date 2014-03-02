@@ -7,6 +7,7 @@
 
 #import "Utilities.h"
 #import <Security/Security.h>
+#import <ServiceManagement/ServiceManagement.h>
 
 static const char *kKeychainAccountName = "OAuth";
 
@@ -29,62 +30,75 @@ static const char *kKeychainAccountName = "OAuth";
 #pragma mark - Startup item management
 
 + (BOOL)loginItemForAppPresentShouldDelete:(BOOL)delete {
-    NSString* appPath = [[NSBundle mainBundle] bundlePath];
+
+
+    BOOL isEnabled  = NO;
+    NSString* _identifier = @"com.simpleshare.LoginHelper";
+    // the easy and sane method (SMJobCopyDictionary) can pose problems when sandboxed. -_-
+    CFArrayRef cfJobDicts = SMCopyAllJobDictionaries(kSMDomainUserLaunchd);
+    NSArray* jobDicts = CFBridgingRelease(cfJobDicts);
     
-	CFURLRef url = (CFURLRef)[NSURL fileURLWithPath:appPath]; 
+    if (jobDicts && [jobDicts count] > 0) {
+        for (NSDictionary* job in jobDicts) {
+            if ([_identifier isEqualToString:[job objectForKey:@"Label"]]) {
+                isEnabled = [[job objectForKey:@"OnDemand"] boolValue];
+                break;
+            }
+        }
+    }
     
-	LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL,
-                                                            kLSSharedFileListSessionLoginItems, NULL);
+//    if (isEnabled != _enabled) {
+//        [self willChangeValueForKey:@"enabled"];
+//        _enabled = isEnabled;
+//        [self didChangeValueForKey:@"enabled"];
+//    }
     
-	if (loginItems) {
-		UInt32 seedValue;
-		NSArray* loginItemsArray = (NSArray *)LSSharedFileListCopySnapshot(loginItems, &seedValue);
-		for (int i = 0; i < [loginItemsArray count]; i++){
-			LSSharedFileListItemRef itemRef = (LSSharedFileListItemRef)[loginItemsArray objectAtIndex:i];
-			//Resolve the item with URL
-			if (LSSharedFileListItemResolve(itemRef, 0, (CFURLRef*)&url, NULL) == noErr) {
-				NSString* urlPath = [(NSURL*)url path];
-				if ([urlPath compare:appPath] == NSOrderedSame){
-                    if (delete) {
-                        LSSharedFileListItemRemove(loginItems, itemRef);
-                    }
-                    [loginItemsArray release];
-                    return !delete;
-				}
-			}
-		}
-		[loginItemsArray release];
-        CFRelease(loginItems);
+    return isEnabled;
+}
+
+
+
++ (BOOL)setStartAtLogin:(BOOL)enabled {
+
+	if (!SMLoginItemSetEnabled((CFStringRef)@"com.simpleshare.LoginHelper",
+                               enabled)) {
+		DbgLog(@"SMLoginItemSetEnabled failed!");
+        return FALSE;
 	}
-    return NO;
+    return YES;
 }
 
 + (void)addAppAsStartupItem {
-    if (![self shouldLaunchOnSystemStartup]) {
-        
-        NSString* appPath = [[NSBundle mainBundle] bundlePath];
-        
-        CFURLRef url = (CFURLRef)[NSURL fileURLWithPath:appPath]; 
-        
-        LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL,
-                                                                kLSSharedFileListSessionLoginItems, NULL);
-        if (loginItems) {
-            //Insert an item to the list.
-            LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(loginItems,
-                                                                         kLSSharedFileListItemLast, NULL, NULL,
-                                                                         url, NULL, NULL);
-            if (item){
-                CFRelease(item);
-            }
-            CFRelease(loginItems);
-        }	
-    }
+    
+    [self setStartAtLogin:YES];
+    
+//    if (![self shouldLaunchOnSystemStartup]) {
+//        
+//        NSString* appPath = [[NSBundle mainBundle] bundlePath];
+//        
+//        CFURLRef url = (CFURLRef)[NSURL fileURLWithPath:appPath]; 
+//        
+//        LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL,
+//                                                                kLSSharedFileListSessionLoginItems, NULL);
+//        if (loginItems) {
+//            //Insert an item to the list.
+//            LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(loginItems,
+//                                                                         kLSSharedFileListItemLast, NULL, NULL,
+//                                                                         url, NULL, NULL);
+//            if (item){
+//                CFRelease(item);
+//            }
+//            CFRelease(loginItems);
+//        }	
+//    }
 }
 
 + (void)deleteAppFromLoginItem {
-    if ([self shouldLaunchOnSystemStartup]) {
-        [self loginItemForAppPresentShouldDelete:YES];
-    }
+    
+    [self setStartAtLogin:NO];
+//    if ([self shouldLaunchOnSystemStartup]) {
+//        [self loginItemForAppPresentShouldDelete:YES];
+//    }
 }
 
 + (BOOL)shouldLaunchOnSystemStartup {

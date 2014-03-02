@@ -132,7 +132,7 @@ static HTTPRequestHandler *sharedObject1;
 - (void)request:(ASIHTTPRequest *)request didSendBytes:(long long)bytes
 {	
     PostNotificationWithObject(QUEUE_PROGRESS, self);
-    //SSLog(@"1.didSendBytes %lld", bytes);
+    //DbgLog(@"1.didSendBytes %lld", bytes);
 }
 
 // Called when a request needs to change the length of the content to download
@@ -152,19 +152,19 @@ static HTTPRequestHandler *sharedObject1;
 {
     // Finished - Success 
     
-    SSLog(@"request data: %@", [request responseString]);
+    DbgLog(@"request data: %@", [request responseString]);
 }
 
 - (void) requestDidFail:(id)request
 {
     // Finished - Failure
     
-    SSLog(@"request failed: %@", [request error]);
+    DbgLog(@"request failed: %@", [request error]);
 }
 
 - (void) queueDidFinish:(id)queue
 {
-    SSLog(@"queue finished!");
+    DbgLog(@"queue finished!");
     [[self queue] setTotalBytesToUpload:0];
     [[self queue] setBytesUploadedSoFar:0];
     if (isUploadQueue)
@@ -207,6 +207,7 @@ static HTTPRequestHandler *sharedObject1;
     if (self == sharedObject1)
         safe_release_sharedObject(sharedObject1);
 }
+
 
 - (void) deallocSharedHandler
 {

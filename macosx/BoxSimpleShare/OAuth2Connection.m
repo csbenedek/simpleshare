@@ -69,7 +69,7 @@
 		{
 			if (CFHTTPMessageIsHeaderComplete(msg))
 			{
-				SSLog(@"HTTP REQUEST: [%s]", (const char*)[data bytes]);
+				DbgLog(@"HTTP REQUEST: [%s]", (const char*)[data bytes]);
 				
 				CFURLRef url = CFHTTPMessageCopyRequestURL( msg );
 				

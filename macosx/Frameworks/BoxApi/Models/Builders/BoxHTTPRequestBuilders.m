@@ -158,7 +158,7 @@
 	NSError *theError = nil;
 	NSString *ret = nil;
 
-	NSData *theResponseData = [NSURLConnection sendSynchronousRequest:uploadRequest 
+	NSData *theResponseData = [NSURLConnection sendSynchronousRequest:uploadRequest
 													returningResponse:&theResponse 
 																error:&theError];
 	ret = [[[NSString alloc] initWithData:theResponseData encoding:NSUTF8StringEncoding] autorelease];

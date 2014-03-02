@@ -43,6 +43,7 @@
     }
     
     return self;
+    
 }
 
 - (void) updateText:(NSNotification *)notification

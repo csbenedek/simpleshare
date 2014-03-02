@@ -61,6 +61,7 @@
     BOOL mute_audio_check;
 
     int screencast_format_index;
+    int uploadHost_index;
     NSString *screen_cast_hot_key;
     NSString *upload_hot_key;
     
@@ -68,7 +69,7 @@
     
     NSTimer *prefSyncTimer;
     BOOL prefChanged;
-    
+    NSComboBox *imageHost;
     //
     
 //    LoginHelper *loginHelper;
@@ -115,11 +116,14 @@
 @property (nonatomic) BOOL launch_at_startup_check;
 @property (nonatomic) BOOL mute_audio_check;
 
+@property (nonatomic) int uploadhost_index;
+
 @property (nonatomic) int screencast_format_index;
 @property (nonatomic, retain) NSString *screen_cast_hot_key;
 @property (nonatomic, retain) NSString *upload_hot_key;
 
 @property (nonatomic, retain) IBOutlet NSComboBox *screencast_format;
+@property (nonatomic, retain) IBOutlet NSComboBox *imageHost;
 
 // OTHER
 

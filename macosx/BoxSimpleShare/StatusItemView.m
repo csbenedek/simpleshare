@@ -216,7 +216,7 @@ typedef enum {
             
             if ([handler isUploadQueue])
             {
-//                NSLog(@"bytes to upload : %lld, bytes uploaded : %lld", [handler totalBytesToUpload], [handler bytesUploadedSoFar]);
+//                DbgLog(@"bytes to upload : %lld, bytes uploaded : %lld", [handler totalBytesToUpload], [handler bytesUploadedSoFar]);
                 if ([handler bytesUploadedSoFar] > 0 && [handler totalBytesToUpload] > (5 * 1024 * 1024)) // Should be greater than 5 mb to show the percentage in status bar
                 {
                     double progress = (double)[handler bytesUploadedSoFar] / (double)[handler totalBytesToUpload];
@@ -269,8 +269,10 @@ typedef enum {
 					
 					if (!mouseDown)
 					{
-						if ([imageQueue count] == 0) {
+                      
+					 	if ([imageQueue count] == 0) {
 							[self setImageIndex:0];
+                            [self setNeedsDisplay:YES];
 						} else {
 							[self performSelector:@selector(setupInitialImage) withObject:nil afterDelay:0.1];
 						}
@@ -286,7 +288,7 @@ typedef enum {
     }
     @catch (NSException *e)
     {
-        SSLog(@"CLASS: %@   METHOD: %@   EXCEPTION: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), e);
+        DbgLog(@"CLASS: %@   METHOD: %@   EXCEPTION: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), e);
     }
 }
 

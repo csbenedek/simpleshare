@@ -11,7 +11,7 @@
 
 }
 
-extern void (^SSLog)(id, ...);
+extern void (^DbgLog)(id, ...);
 extern NSString * (^MD5)(NSString *);
 extern NSString * (^URLEncode)(NSString *);
 extern NSString * (^returnValueWithAccurateAnnotation)(long long);
