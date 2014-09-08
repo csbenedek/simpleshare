@@ -45,7 +45,7 @@
     return self;
     
 }
-
+    
 - (void) updateText:(NSNotification *)notification
 {
     if (notification && [notification object])
@@ -57,13 +57,13 @@
     [text setStringValue:string];
 }
 
-- (void) drawRect:(NSRect)dirtyRect
-{
-    // Fill in background Color
-    CGContextRef context = (CGContextRef) [[NSGraphicsContext currentContext] graphicsPort];
-    CGContextSetRGBFillColor(context, 0,0,0,0.7);
-    CGContextFillRect(context, NSRectToCGRect(dirtyRect));
-}
+//- (void) drawRect:(NSRect)dirtyRect
+//{
+//    // Fill in background Color
+//    CGContextRef context = (CGContextRef) [[NSGraphicsContext currentContext] graphicsPort];
+//    CGContextSetRGBFillColor(context, 0,0,0,0.7);
+//    CGContextFillRect(context, NSRectToCGRect(dirtyRect));
+//}
 
 - (NSView *) hitTest:(NSPoint)aPoint
 {

@@ -88,7 +88,6 @@
         CGImageWriteToFile(image, tempFile);
         
         break;
-        // do something with the snapshot image
     }
     
     if (tempFile) {
@@ -149,7 +148,7 @@
             
             NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
             [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
-            NSString* fileName = [NSString stringWithFormat:@"Screen shot %@.png", [dateFormatter stringFromDate:[NSDate date]]];
+            NSString* fileName = [NSString stringWithFormat:@"screen shot %@.png", [dateFormatter stringFromDate:[NSDate date]]];
             CGImageRef image = CGDisplayCreateImageForRect(displays[i], NSRectToCGRect( captureRect));
             
             tempFile =   [[[[NSFileManager defaultManager] cacheDataPath]stringByAppendingPathComponent:fileName] retain];

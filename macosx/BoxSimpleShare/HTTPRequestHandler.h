@@ -40,5 +40,5 @@
 
 - (void) deallocUploadHandler;
 - (void) deallocSharedHandler;
-
+- (void)setDoubleValue:(double)newProgress;
 @end
