@@ -34,4 +34,6 @@ dependencies: \
   /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/HTTPRequest.h \
   /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/BoxFile.h \
   /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/MainController.h \
-  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/CustomNSImageView.h
+  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/CustomNSImageView.h \
+  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/Utilities.h \
+  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/NSImage+Additions.h

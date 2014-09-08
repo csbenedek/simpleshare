@@ -193,4 +193,58 @@ static const char *kKeychainAccountName = "OAuth";
     return token;
 }
 
++(BOOL)isRetinalSupported
+{
+    float displayScale = 1;
+    if ([[NSScreen mainScreen] respondsToSelector:@selector(backingScaleFactor)]) {
+        NSArray *screens = [NSScreen screens];
+        for (int i = 0; i < [screens count]; i++) {
+            float s = [[screens objectAtIndex:i] backingScaleFactor];
+            if (s > displayScale)
+                displayScale = s;
+        }
+    }
+    return displayScale > 1;
+}
++(NSImage*)resizeImage:(NSImage *)sourceImage newSize:(CGSize)newSize
+{
+    
+    
+//    NSString *newImagePath = [[[Utility documentPath] stringByAppendingPathComponent:imagefolder] stringByAppendingPathComponent:@"imageName"];
+    
+    
+    
+    [sourceImage setScalesWhenResized:YES];
+    [sourceImage setSize:newSize];
+    
+    
+    NSImage *newImage = [[NSImage alloc] initWithSize:newSize];
+    
+    [newImage lockFocus];
+    
+    NSRect frame = NSMakeRect(0, 0, newSize.width, newSize.height);
+    
+    [NSGraphicsContext saveGraphicsState];
+    
+    NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:frame xRadius:0 yRadius:0];
+    [path addClip];
+    
+    [sourceImage drawInRect:frame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+    
+    [NSGraphicsContext restoreGraphicsState];
+    
+    [newImage unlockFocus];
+
+    return newImage;
+//    CGImageRef CGImage = [newImage CGImageForProposedRect:nil context:nil hints:nil];
+//    NSBitmapImageRep *imgRep = [[[NSBitmapImageRep alloc] initWithCGImage:CGImage] autorelease];
+//    
+//    
+//    NSData *data = [imgRep representationUsingType:NSPNGFileType properties: nil];
+//    
+//    [newImage release];
+    
+}
+
+
 @end

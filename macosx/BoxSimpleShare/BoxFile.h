@@ -16,6 +16,7 @@
     NSString *fileName;
     NSString *fileID;
     BOOL isShared;
+    BOOL isImgur;
     NSString *publicName;
     NSString *folderID;
     NSString *shortURL;
@@ -28,5 +29,6 @@
 @property (retain, nonatomic) NSString *publicName;
 @property (retain, nonatomic) NSString *folderID;
 @property (retain, nonatomic) NSString *shortURL;
+@property (nonatomic) BOOL isImgur;
 
 @end

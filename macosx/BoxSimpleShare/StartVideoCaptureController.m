@@ -11,10 +11,11 @@
 #import "Extended.h"
 #import "Utilities.h"
 #import "VideoCaptureManagerLion.h"
-//#import "VideoCaptureManagerPreLion.h"
 #import <AVFoundation/AVFoundation.h>
-//#import <QTKit/QTKit.h>
 #import "StandardPaths.h"
+
+
+
 static const int MinCaptureRectWidth = 30;
 static const int MinCaptureRectHeight = 30;
 static const int FrameHalfWidth = 2;
@@ -166,6 +167,7 @@ static const int FrameHalfWidth = 2;
 #pragma mark -
 
 - (void)startCaptureView:(StartVideoCaptureView*)view didChooseCaptureRect:(NSRect)rect {
+    
     [[NSCursor arrowCursor] set];
     _actualView = nil;
     if (rect.size.width > MinCaptureRectWidth && rect.size.height > MinCaptureRectHeight) {

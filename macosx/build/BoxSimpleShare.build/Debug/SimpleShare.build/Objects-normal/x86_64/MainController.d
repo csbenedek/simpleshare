@@ -26,4 +26,9 @@ dependencies: \
   /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/HTTPRequestHandler.h \
   /Cuongnq/Jobs/simpleshare/macosx/Frameworks/ASIHTTPRequest/ASINetworkQueue.h \
   /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/Extended.h \
-  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/Utilities.h
+  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/Utilities.h \
+  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/LoginWindowController.h \
+  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/YoutubeAuthenticateManager.h \
+  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/YoutubeUploadWindowController.h \
+  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/JCSSheetController.h \
+  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/ITSwitch.h

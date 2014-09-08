@@ -17,17 +17,17 @@
 #import "Mixpanel.h"
 #import "Extended.h"
 #import "Utilities.h"
-
 #import "OAuth2Client.h"
-
 #import "LoadingView.h"
-
 #import "BoxFile.h"
 #import "BoxNetUser.h"
-
 #import "Finder.h"
 #import "StandardPaths.h"
 #import "FolderUtility.h"
+#import "DragDropWindowController.h"
+#import "PopupWindowController.h"
+#import "MenubarController.h"
+
 
 const int MaxHistoryItemCount = 5;
 
@@ -61,8 +61,8 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
 
 @synthesize uploadFileHotkeyRef;
 @synthesize videoCaptureHotkeyRef;
-
-
+@synthesize  popupWindowController = _popupWindowController;
+@synthesize shortcutView;
 - (void) applicationWillTerminate:(NSNotification *)notification;
 {
     [PreferenceManager savePreference];
@@ -84,8 +84,8 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     
     SUPPORTED_FORMATS = [NSArray arrayWithObjects:@"flv", /* @"mp4",*/ @"avi", @"mov", nil];
     
-    AddNotificationObserver(self, @selector(showLoading:), @"SHOW_LOADING", nil);
-    AddNotificationObserver(self, @selector(hideLoading), @"HIDE_LOADING", nil);
+//    AddNotificationObserver(self, @selector(showLoading:), @"SHOW_LOADING", nil);
+//    AddNotificationObserver(self, @selector(hideLoading), @"HIDE_LOADING", nil);
     
     [mainController setAppVersion];
     [mainController wireAllButtons];
@@ -106,46 +106,41 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
                         options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld 
                         context:NULL];
         
-    if (![[[BoxNetHandler sharedHandler] boxNetUser] isAuthenticated]) 
-    {
-        [self addAndResizeWindowForView:loginView];
-    }/* else {
-//        [self showMainView];
-        [self addAndResizeWindowForView:mainView];
-    }*/
+ 
     
-    [[self window] setDelegate:self];
-    [[self window] makeKeyWindow];
-    [[self window] makeMainWindow];
+//    [[self window] setDelegate:self];
+//    [[self window] makeKeyWindow];
+//    [[self window] makeMainWindow];
     
     statusBarImages = [NSMutableArray new];
 	
-	[statusBarImages addObject:[NSImage imageNamed:@"default-icon.png"]];
-	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-1.png"]];
-	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-2.png"]];
-	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-3.png"]];
-	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-4.png"]];
-	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-5.png"]];
-	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-6.png"]];
-	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-7.png"]];
-	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-8.png"]];
-	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-9.png"]];
-	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-10.png"]];
-	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-11.png"]];
-	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-12.png"]];
-	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-13.png"]];
-	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-14.png"]];
-	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-15.png"]];
-	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-16.png"]];
-	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-17.png"]];
-	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-18.png"]];
-	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-19.png"]];
-	[statusBarImages addObject:[NSImage imageNamed:@"active-icon.png"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"default-icon"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-1"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-2"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-3"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-4"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-5"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-6"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-7"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-8"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-9"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-10"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-11"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-12"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-13"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-14"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-15"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-16"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-17"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-18"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-19"]];
+	[statusBarImages addObject:[NSImage imageNamed:@"active-icon"]];
     
 	
-    [self createMenu];
-    [statusBarItem setHighlightMode:YES];
-    [statusBarItem setEnabled:YES];
+   // [self createMenu];
+//    [statusBarItem setHighlightMode:YES];
+//    [statusBarItem setEnabled:YES];
+     self.menubarController = [[MenubarController alloc] init];
     
     [uploadStatusPanel setDelegate:self];
     [uploadStatusPanel registerForDraggedTypes:[self acceptableTypes]];
@@ -175,6 +170,22 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
 		PostNotificationWithObject(@"SHOW_LOADING", [NSString stringWithUTF8String:"Logging In ..."]);
 		[[OAuth2Client sharedInstance] authorize];
 	}
+    else
+    {
+        [self.popupWindowController showLogin];
+    }
+    
+    
+
+    if (![[[BoxNetHandler sharedHandler] boxNetUser] isAuthenticated])
+    {
+        //[self.popupWindowController showWindow:nil];
+        
+        //[self addAndResizeWindowForView:loginView];
+    }/* else {
+      //        [self showMainView];
+      [self addAndResizeWindowForView:mainView];
+      }*/
 }
 
 #pragma mark Hotkeys
@@ -279,7 +290,7 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
 			//url = [NSString stringWithFormat:@"http://www.box.com/shared/%@", [file publicName]];
 			url = [file publicName];
 		
-		if (mainController.shorten_links_check)
+		if (mainController.shorten_links_check && !file.isImgur)
 		{
 			url = URLShortner( url );
 		}
@@ -293,22 +304,24 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
 
 - (void) createMenu
 {
-    if (!statusBarItem) {
-        statusBarItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
-        
-        StatusItemView *view = [[StatusItemView alloc] initWithStatusItem:statusBarItem];
-        [view setFrame:NSMakeRect(0, 0, 25, 50)];
-        
-        [statusBarItem setView:view];
-        
-        [view release];
-        
-        popUpMenu = [[NSMenu alloc] initWithTitle:@"MainMenu"];
-        [statusBarItem setMenu:popUpMenu];
-    }
-    
-    [popUpMenu removeAllItems];
+   
 
+//    if (!statusBarItem) {
+//        statusBarItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
+//        
+//        StatusItemView *view = [[StatusItemView alloc] initWithStatusItem:statusBarItem];
+//        [view setFrame:NSMakeRect(0, 0, 25, 50)];
+//        
+//        [statusBarItem setView:view];
+//        
+//        [view release];
+//        
+//        popUpMenu = [[NSMenu alloc] initWithTitle:@"MainMenu"];
+//        [statusBarItem setMenu:popUpMenu];
+//    }
+ 
+    [popUpMenu removeAllItems];
+    [self.popupWindowController loadUserData];
     if (!account)
     {
         account = [[NSMenuItem alloc] initWithTitle:InterfaceString(@"Account") action:nil keyEquivalent:@""];
@@ -499,38 +512,6 @@ exit:
     DbgLog(@"UserInfo %@", [notification userInfo]);
     DbgLog(@"Object %@", [[notification object] class]);
     
-    // check if upload isn't disable
-    // add code
-    // if (![[[BoxNetHandler sharedHandler] boxNetUser] isAuthenticated]) return; // NO
-    
-   
-    // Workaround for Lion. Screenshot preferences are stored in com.apple.screencapture.plist on pre Lion OS (Snow Leo, Leo...) 
-    // and in SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings on Lion
-   // BOOL isLionAndUpper = [Utilities isRunningOnLion];
-        
-//	NSString *scprefspath = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Preferences/com.apple.screencapture.plist"];
-//    if (isLionAndUpper) {
-//        scprefspath = @"/System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings";
-//    }
-//    
-//	NSDictionary *scdict = [NSDictionary dictionaryWithContentsOfFile:scprefspath];
-//	
-//	// Get prefix
-//    
-//	NSString *prefix = @"Screen Shot";
-//    
-//    if (isLionAndUpper) {
-//        if (scdict && [scdict objectForKey:@"Screen Shot"]){
-//            prefix = [scdict objectForKey:@"Screen Shot"];
-//        }
-//    } else {
-//        if (scdict && [scdict objectForKey:@"name"]){
-//            prefix = [scdict objectForKey:@"name"];
-//        }        
-//    }
-//    prefix = [prefix lowercaseString];
-
-	// Get path
     
     NSString *prefix = @"screen shot";
 	NSString *basepath = [[NSFileManager defaultManager]desktopPath];
@@ -644,17 +625,83 @@ exit:
         [item setAction:@selector(showPreferenceView)];
         
         item = nil;
+        item = [[toolBar items] objectAtIndex:3];
+        
+        [item setTarget:self];
+        [item setAction:@selector(showShortcutView)];
+
+        item = nil;
     }
     
     [self selectToolBarItem:0];
     [self addAndResizeWindowForView:mainView];
 }
 
-- (void) showLoginView
+
+
+
+#pragma mark -
+
+void *kContextActivePanel = &kContextActivePanel;
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    [self addAndResizeWindowForView:loginView];
+//    if (context == kContextActivePanel) {
+//        self.menubarController.hasActiveIcon = self.popupWindowController.hasActivePanel;
+//    }
+    if ([keyPath isEqualToString:@"disable_automatic_upload_check"]) {
+       // [self createMenu];
+        
+        BOOL enabled = ![mainController disable_automatic_upload_check];
+        if (enabled) {
+            
+        } else {
+            
+        }
+    } else if ([keyPath isEqualToString:@"upload_hot_key"]) {
+        [self uninstallUploadHotKey];
+        [self setupUploadHotKey];
+    } else if ([keyPath isEqualToString:@"screen_cast_hot_key"]) {
+        [self uninstallVideoCaptureHotKey];
+        [self setupVideoCaptureHotKey];
+    } else if ([keyPath isEqualToString:@"launch_at_startup_check"]) {
+        BOOL launchOnStart = [mainController launch_at_startup_check];
+        if (launchOnStart) {
+            [Utilities addAppAsStartupItem];
+        } else {
+            [Utilities deleteAppFromLoginItem];
+        }
+    }
+
+    else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
 }
 
+-(PopupWindowController*)popupWindowController
+{
+    if (_popupWindowController == nil) {
+        _popupWindowController = [[PopupWindowController alloc] initWithDelegate:self];
+        [_popupWindowController loadWindow];
+         //[_popupWindowController addObserver:self forKeyPath:@"hasActivePanel" options:0 context:kContextActivePanel];
+    }
+    
+    return _popupWindowController;
+}
+
+#pragma mark - PanelControllerDelegate
+
+- (StatusItemView *)statusItemViewForPanelController:(PopupWindowController *)controller
+{
+    return self.menubarController.statusItemView;
+}
+
+-(void)showShortcutView
+{
+    [self selectToolBarItem:3];
+    [self addAndResizeWindowForView:shortcutView];
+    
+}
 - (void) showPreferenceView
 {    
     [self selectToolBarItem:1];
@@ -724,6 +771,11 @@ exit:
         {
             [toolBar setSelectedItemIdentifier:@"net.box.preferenceView"];
         }
+    else if (index == 2)
+    {
+        [toolBar setSelectedItemIdentifier:@"net.box.shortcutView"];
+        
+    }
 }
 
 - (void) disableToolBarItems
@@ -749,6 +801,7 @@ exit:
 {
     return (BoxSimpleShareAppDelegate *)[NSApp delegate];
 }
+
 
 - (id) getIconForType:(NSString *)name
 {
@@ -819,9 +872,14 @@ exit:
         [icons setValue:@"image.png" forKey:@"tiff"];
         [icons setValue:@"image.png" forKey:@"jpg"];
     }
-    return ([icons containsKey:[name lowercaseString]] ? [icons valueForKey:[name lowercaseString]] : [NSString stringWithString:@"default.png"]);
+    return ([icons containsKey:[name lowercaseString]] ? [icons valueForKey:[name lowercaseString]] : @"default.png");
 }
 
+
+-(NSWindow*)statusBarWindow
+{
+    return statusBarItem.view.window;
+}
 #pragma mark Growl notifications
 
 - (NSDictionary *) registrationDictionaryForGrowl
@@ -1036,36 +1094,11 @@ exit:
     [super dealloc];
 }
 
-#pragma mark -
-
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context
+- (void)togglePanel:(id)sender
 {
-    if ([keyPath isEqualToString:@"disable_automatic_upload_check"]) {
-        [self createMenu];
-        
-        BOOL enabled = ![mainController disable_automatic_upload_check];
-        if (enabled) {
-            
-        } else {
-            
-        }
-    } else if ([keyPath isEqualToString:@"upload_hot_key"]) {
-        [self uninstallUploadHotKey];
-        [self setupUploadHotKey];
-    } else if ([keyPath isEqualToString:@"screen_cast_hot_key"]) {
-        [self uninstallVideoCaptureHotKey];
-        [self setupVideoCaptureHotKey];
-    } else if ([keyPath isEqualToString:@"launch_at_startup_check"]) {
-        BOOL launchOnStart = [mainController launch_at_startup_check];
-        if (launchOnStart) {
-            [Utilities addAppAsStartupItem]; 
-        } else {
-            [Utilities deleteAppFromLoginItem];
-        }
-    }
+    self.menubarController.hasActiveIcon = !self.menubarController.hasActiveIcon;
+    self.popupWindowController.hasActivePanel = self.menubarController.hasActiveIcon;
+    
 }
 
 
@@ -1074,8 +1107,20 @@ exit:
 - (void)imageCaptureController:(ImageCaptureController*)controller didCaptureVideoToPath:(NSString*)path{
     
     DbgLog(@"UPLOADING!!!!!!!");
-    [filesAddedToQueue addObject:path];
-    [[BoxNetHandler sharedHandler] uploadFiles:[NSArray arrayWithObject:path] withProperties:[NSDictionary dictionaryWithObject:@"SCREEN_SHOT" forKey:@"SCREEN_SHOT"]];
+    
+    NSString* filePath = [[NSFileManager defaultManager] desktopPath];
+    
+    filePath = [filePath stringByAppendingPathComponent:[path lastPathComponent]];
+    //copy file
+    BOOL copyResult = [[NSFileManager defaultManager] moveItemAtPath:path toPath:filePath error:nil];
+    
+    NSString* uploadPath = copyResult ? filePath : path;
+    if (!copyResult) {
+        
+        [filesAddedToQueue addObject:uploadPath];
+        [[BoxNetHandler sharedHandler] uploadFiles:[NSArray arrayWithObject:uploadPath] withProperties:[NSDictionary dictionaryWithObject:@"SCREEN_SHOT" forKey:@"SCREEN_SHOT"]];
+        
+    }
 }
 - (void)imageCaptureControllerDidFailedCapture:(ImageCaptureController*)controller{
     
@@ -1088,8 +1133,19 @@ exit:
 
 - (void)videoCaptureController:(id)controller didCaptureVideoToPath:(NSString*)path {
     if (controller == videoCaptureController && path) {
-		[[Mixpanel sharedInstance] trackVideoCaptureEvent];
-        [[BoxNetHandler sharedHandler] uploadFiles:[NSArray arrayWithObject:path] withProperties:nil];
+        if(1)
+        {
+
+            [[Mixpanel sharedInstance] trackVideoCaptureEvent];
+            [[BoxNetHandler sharedHandler] uploadFiles:[[NSArray arrayWithObject:path] retain] withProperties:[NSDictionary dictionaryWithObject:@"YOUTUBE" forKey:@"YOUTUBE"]];
+
+        }
+        else
+        {
+            [[Mixpanel sharedInstance] trackVideoCaptureEvent];
+            [[BoxNetHandler sharedHandler] uploadFiles:[[NSArray arrayWithObject:path] retain] withProperties:nil];
+            
+        }
     }
 }
 
@@ -1129,23 +1185,30 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
         }
         BOOL showOpenWindow = NO;
         FinderApplication *theFinder = [SBApplication applicationWithBundleIdentifier: @"com.apple.finder"];
-        if ([theFinder frontmost]) {
+       NSRunningApplication* runningApp = [[NSWorkspace sharedWorkspace] frontmostApplication];
+//        if(runningApp.bundleIdentifier s)
+        if ([runningApp.bundleIdentifier isEqualToString:@"com.apple.finder"])
+        {
 //            DbgLog(@"FINDER ON TOP - TRY TO PROCESS SELECTION");
-            
-            SBObject* obj = [theFinder selection];
-            SBElementArray* selectedObjects = [obj get];
-            if ([selectedObjects count]) {
-                NSMutableArray* uploadPaths = [NSMutableArray array];
-                for (FinderItem* item in selectedObjects) {
-                    NSString* fileId = [item URL]; // Acrually returns file id int form file:///.file/id=6571367.8124611
-                    NSURL* url = [NSURL URLWithString:fileId]; // convert it to absoulute path
-                    [uploadPaths addObject:[url path]];
-                }
-                [[BoxNetHandler sharedHandler] uploadFiles:uploadPaths withProperties:nil];
-            } else {
-                showOpenWindow = YES;
-            }
-            
+            [[DragDropWindowController shareController] beginSheetModalForWindow:[appDelegate statusBarWindow] completionHandler:^(NSUInteger result) {
+                
+            }];
+//            SBObject* obj = [theFinder selection];
+//            SBElementArray* selectedObjects = [obj get];
+//            if ([selectedObjects count]) {
+//                NSMutableArray* uploadPaths = [NSMutableArray array];
+//                for (FinderItem* item in selectedObjects) {
+//                    NSString* fileId = [item URL]; // Acrually returns file id int form file:///.file/id=6571367.8124611
+//                    NSURL* url = [NSURL URLWithString:fileId]; // convert it to absoulute path
+//                    [uploadPaths addObject:[url path]];
+//                }
+//                [[BoxNetHandler sharedHandler] uploadFiles:uploadPaths withProperties:nil];
+            //}
+//        else
+//        {
+//                showOpenWindow = YES;
+//        }
+        
         } else {
             showOpenWindow = YES;
         }
@@ -1157,5 +1220,7 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     }
     return noErr;
 }
+
+
 
 

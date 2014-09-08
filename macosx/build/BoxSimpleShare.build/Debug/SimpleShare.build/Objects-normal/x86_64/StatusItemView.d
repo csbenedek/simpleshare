@@ -17,4 +17,7 @@ dependencies: \
   /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/CustomNSImageView.h \
   /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/HTTPRequestHandler.h \
   /Cuongnq/Jobs/simpleshare/macosx/Frameworks/ASIHTTPRequest/ASIProgressDelegate.h \
-  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/Extended.h
+  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/Extended.h \
+  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/YoutubeUploadOperation.h \
+  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/UploadOperation.h \
+  /Cuongnq/Jobs/simpleshare/macosx/Frameworks/ASIHTTPRequest/ASIHTTPRequestDelegate.h

@@ -20,7 +20,8 @@
 #import "MainController.h"
 #import "BoxSimpleShareAppDelegate.h"
 #import "ImgurUploadOperation.h"
-
+#import "YoutubeUploadOperation.h"
+#import "Mixpanel.h"
 static NSString* BoxNetHandlerDefaultFolderPreferenceKey = @"BoxNetHandlerDefaultFolderPreferenceKey";
 
 static const NSTimeInterval ReloadUserInfoTimeInterval = 360; // every 6 mins
@@ -174,13 +175,14 @@ static BoxNetHandler *sharedObject = nil;
 	UploadOperation *opt = [UploadOperation new];
     [opt addFiles:files];
     [opt setUploadToFolder:[defaultFolder folderID]];
-    
+     MainController *controller = [[BoxSimpleShareAppDelegate sharedDelegate] mainController];
     if (properties && [properties containsKey:@"SCREEN_SHOT"]) {
         
         
         [opt setIsScreenshot:YES];
-        MainController *controller = [[BoxSimpleShareAppDelegate sharedDelegate] mainController];
-        
+       
+        [[Mixpanel sharedInstance] trackCaptureRegionEvent];
+
         // Copy URL to clipboard
         if (controller.uploadhost_index == 1)
         {
@@ -189,6 +191,12 @@ static BoxNetHandler *sharedObject = nil;
             [opt setIsScreenshot:YES];
 
         }
+    }
+    else if (properties && [properties containsKey:@"YOUTUBE"] && controller.upload_video_host_index == 1)
+    {
+        opt = [YoutubeUploadOperation new];
+        [opt addFiles:files];
+
     }
     
     [operationQueue addOperation:opt];
@@ -684,7 +692,7 @@ static BoxNetHandler *sharedObject = nil;
 		[boxNetUser setEmail:[json objectForKey:@"login"]];
 		[boxNetUser setUserID:[json objectForKey:@"id"]];
 		[boxNetUser setSpaceAmount:[[json objectForKey:@"space_amount"] unsignedLongLongValue]];
-		[boxNetUser setSpaceUsed:[[json objectForKey:@"space_amount"] unsignedLongLongValue]];
+		[boxNetUser setSpaceUsed:[[json objectForKey:@"space_used"] unsignedLongLongValue]];
 		 
 		// Q: Where is maxUploadSize???
 		

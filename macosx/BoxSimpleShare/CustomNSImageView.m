@@ -33,7 +33,11 @@
 
 - (void) reloadImage
 {
-    if (!_imgURL) return;
+    if (!_imgURL)
+    {
+        [self setImage:nil];
+        return;
+    }
     
     HTTPRequest *request = [HTTPRequest requestWithURL:[NSURL URLWithString:_imgURL]];
     [request addMulticastDelegate:self];
@@ -59,10 +63,36 @@
     
 }
 
+
+-(void)drawRect:(NSRect)dirtyRect
+{
+    
+    NSRect imageRect =  CGRectInset(self.bounds, 1.0, 1.0);
+    
+    
+    [NSGraphicsContext saveGraphicsState];
+    
+    float radius =  imageRect.size.height / 2;
+    NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:imageRect
+                                                         xRadius:radius
+                                                         yRadius:radius];
+    [path addClip];
+    
+    NSImage* img  = self.image == nil ?[NSImage imageNamed:@"nouser"] :self.image;
+    [img drawInRect:imageRect
+           fromRect:NSZeroRect
+          operation:NSCompositeSourceOver
+           fraction:1.0];
+    
+    
+    [NSGraphicsContext restoreGraphicsState];
+    
+}
+
 - (void)dealloc
 {
     [_imgURL release];
-    
+    [self.image release];
     [super dealloc];
 }
 

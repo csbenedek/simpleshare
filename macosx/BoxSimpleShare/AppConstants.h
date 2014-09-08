@@ -127,4 +127,5 @@ extern NSString * const OAUTH2_CLIENT_SECRET;
  OAUTH2 --- END
  */
 
+#define YOUTUBE_LOGIN @"youTubeLoginEvent"
 

@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 
 
-@interface CustomNSImageView : NSImageView {
+@interface CustomNSImageView : NSView {
 @private
     NSString *_imgURL;
 }
 
 @property (retain, nonatomic) NSString *imageURL;
+@property (retain, nonatomic) NSImage *image;
 
 - (void) reloadImage;
 

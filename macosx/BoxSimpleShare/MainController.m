@@ -20,6 +20,10 @@
 #import "ASINetworkQueue.h"
 #import "Extended.h"
 #import "Utilities.h"
+#import "LoginWindowController.h"
+#import "YoutubeAuthenticateManager.h"
+#import "YoutubeUploadWindowController.h"
+#import "ITSwitch.h"
 
 static NSString* SignUpURL = @"https://www.box.com/signup/personal";
 static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"http://www.box.com/business/features/";
@@ -61,6 +65,7 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
 @synthesize upload_hot_key;
 @synthesize screencast_format;
 @synthesize uploadhost_index = uploadHost_index;
+@synthesize upload_video_host_index;
 @synthesize window;
 
 - (id) init
@@ -73,7 +78,7 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
         // REQUEST 
         AddNotificationObserver(self, @selector(updateRequestProgress:), REQUEST_PROGRESS, nil);
         AddNotificationObserver(self, @selector(updateQueueProgress:), QUEUE_PROGRESS, nil);
-    
+        AddNotificationObserver(self, @selector(youTubeLoginSuccessed:), YOUTUBE_LOGIN, nil);
     }
     return self;
 }
@@ -95,7 +100,21 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
     prefSyncTimer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(serializePrefIfDirty) userInfo:nil repeats:YES];
     
     self.launch_at_startup_check = [Utilities shouldLaunchOnSystemStartup];
+    youtubeWindowController = [[LoginWindowController alloc] initWithWindowNibName:@"LoginWindowController"];
     
+    NSDictionary* dict = [BoxNetUser youTubeUser];
+    if (dict) {
+        [[YoutubeAuthenticateManager shareManager] updateAuthenticateToken:dict];
+    }
+    [self setYoutubState:dict == nil];
+    
+    [copy_url_to_clipboard setTintColor:[NSColor greenColor]];
+    [delete_screenshot_after_upload setTintColor:[NSColor greenColor]];
+    [delete_all_after_upload setTintColor:[NSColor greenColor]];
+    [launchAtLogin setTintColor:[NSColor greenColor]];
+    [shorten_links setTintColor:[NSColor greenColor]];
+
+   // [YoutubeUploadWindowController sharedWindowController];
 }
 
 - (void) setAppVersion
@@ -148,6 +167,10 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
     
     [imageHost setTarget:self];
     [imageHost setAction:@selector(uploadhostChanged:)];
+    
+    [self.youtubeLogoutBtn setTarget:self];
+    [self.youtubeLogoutBtn setAction:@selector(doYoutubeLogin:)];
+    
 }
 
 #pragma mark
@@ -477,7 +500,8 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
 //-----
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-    return [[[BoxNetHandler sharedHandler] operationQueue] operationCount];
+    int i =  [[[BoxNetHandler sharedHandler] operationQueue] operationCount];
+    return i;
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
@@ -578,11 +602,93 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
     
 }*/
 
-
+-(IBAction)onVideoHostSelected:(id)sender
+{
+    self.upload_video_host_index = (int)[self.videoHost indexOfSelectedItem];
+     prefChanged = YES;
+    
+    if (self.upload_video_host_index) {
+//        if(![BoxNetUser youTubeUser])
+//        {
+            [self doYoutubeLogin:self];
+//        }
+       // [[YoutubeUploadWindowController sharedWindowController] prepareData];
+    }
+}
 - (void)toggleUploadsEnabled {
     [self willChangeValueForKey:@"disable_automatic_upload_check"];
     disable_automatic_upload_check = !disable_automatic_upload_check;
     [self didChangeValueForKey:@"disable_automatic_upload_check"];
 }
 
+-(void)youTubeLoginSuccessed:(NSNotification*) notification
+{
+    NSDictionary* dict = notification.object;
+    [BoxNetUser saveYoutubeUser:dict];
+    
+    [[YoutubeAuthenticateManager shareManager] updateAuthenticateToken:dict];
+    [self setYoutubState:NO];
+}
+-(void)doYoutubeLogin:(id)sender
+{
+    
+    [youtubeWindowController reset];
+    [youtubeWindowController showWindow:nil];
+//    if([BoxNetUser youTubeUser])
+//    {
+//        NSString* token = [[BoxNetUser youTubeUser] objectForKey:@"access_token"];
+//        [BoxNetUser removeYoubeUser];
+//        [self setYoutubState:YES];
+//        [youtubeWindowController logout:token];
+//
+//    }
+//    else
+//    {
+//        [youtubeWindowController reset];
+//        [youtubeWindowController showWindow:nil];
+//        
+//    }
+}
+
+
+-(void)setYoutubState :(BOOL)requireLogin
+{
+//    if (requireLogin) {
+//        [self.youtubeLoginName setStringValue:@""];
+//        [self.youtubeUserImage setImageURL:@""];
+//        [self.youtubeLogoutBtn setTitle:@"Login"];
+//    }
+//    else
+//    {
+//        NSDictionary* dict = [BoxNetUser youTubeUser];
+//        [self.youtubeLoginName setStringValue:[dict objectForKey:@"email"]];
+//        [self.youtubeUserImage setImageURL:[dict objectForKey:@"picture"]];
+//        [self.youtubeLogoutBtn setTitle:@"Logout"];
+//    }
+}
+#pragma itswitch 
+
+-(IBAction)onSwitchChange:(id)sender
+{
+    if (sender == shorten_links) {
+        self.shorten_links_check = shorten_links.isOn;
+    }
+    self.shorten_links_check = shorten_links.isOn;
+    self.delete_all_after_upload_check = delete_all_after_upload.isOn;
+    self.delete_screenshot_after_upload_check = delete_screenshot_after_upload.isOn;
+    self.copy_url_to_clipboard_check = copy_url_to_clipboard.isOn;
+    self.launch_at_startup_check = launchAtLogin.isOn;
+    
+    [self preferencePageValueChangeNotification:nil];
+}
+
+-(void)updateSwitchControl
+{
+    shorten_links.isOn = self.shorten_links_check ;
+    delete_all_after_upload.isOn = self.delete_all_after_upload_check ;
+    delete_screenshot_after_upload.isOn = self.delete_screenshot_after_upload_check ;
+    copy_url_to_clipboard.isOn = self.copy_url_to_clipboard_check ;
+   launchAtLogin.isOn = self.launch_at_startup_check ;
+
+}
 @end

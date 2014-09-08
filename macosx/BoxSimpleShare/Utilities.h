@@ -17,5 +17,7 @@
 + (void)saveAuthToken:(NSString*)token forKeychainItemName:(NSString*)keychainItemName;
 + (void)removeAuthTokenForKeychainItemName:(NSString*)keychainItemName;
 + (NSString*)authTokenForKeychainItemName:(NSString*)keychainItemName;
++(BOOL)isRetinalSupported;
++(NSImage*)resizeImage:(NSImage *)sourceImage newSize:(CGSize)newSize;
 
 @end

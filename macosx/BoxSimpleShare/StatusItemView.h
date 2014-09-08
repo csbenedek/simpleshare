@@ -20,9 +20,19 @@
     
     int currentProgressImageIndex;
     NSMutableArray* imageQueue;
+
+    BOOL _isHighlighted;
+    SEL _action;
+    __unsafe_unretained id _target;
+
 }
 
 @property (assign, nonatomic) NSStatusItem *statusItem;
+@property (nonatomic, unsafe_unretained) id target;
+@property (nonatomic, unsafe_unretained) id delegate;
+@property (nonatomic, setter = setHighlighted:) BOOL isHighlighted;
+@property (nonatomic, readonly) NSRect globalRect;
+@property (nonatomic) SEL action;
 
 - (id) initWithStatusItem:(NSStatusItem *)item;
 

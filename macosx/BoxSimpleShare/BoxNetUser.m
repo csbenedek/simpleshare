@@ -138,4 +138,26 @@ static NSString* SavedUserPreferencesKey = @"SavedUserPreferencesKey";
     }
 }
 
++(void)saveYoutubeUser:(NSDictionary*)user
+{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setObject:user forKey:@"youtubeUser"];
+    [defaults synchronize];
+
+}
++(void)removeYoubeUser
+{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setObject:nil forKey:@"youtubeUser"];
+    [defaults synchronize];
+}
+
++(NSDictionary*)youTubeUser
+{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
+    return [defaults  objectForKey:@"youtubeUser"];
+}
 @end

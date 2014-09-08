@@ -12,6 +12,7 @@
 #import "MainController.h"
 #import "HTTPRequestHandler.h"
 #import "Extended.h"
+#import "YoutubeUploadOperation.h"
 
 static const int ShortStatusItemLength = 24;
 static const int LongStatusItemLength = 65;
@@ -47,6 +48,9 @@ typedef enum {
 @implementation StatusItemView
 
 @synthesize statusItem;
+@synthesize isHighlighted = _isHighlighted;
+@synthesize action = _action;
+@synthesize target = _target;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -210,13 +214,58 @@ typedef enum {
 {
     @try {
         
-        if ([[notification object] isKindOfClass:[HTTPRequestHandler class]])
+        if([[notification object] isKindOfClass:[YoutubeUploadOperation class]])
+        {
+            id handler = notification.object;
+            if ([handler bytesUploadedSoFar] > 0 && [handler totalBytesToUpload] > (5 * 1024 * 1024)) // Should be greater than 5 mb to show the percentage in status bar
+            {
+                double progress = (double)[handler bytesUploadedSoFar] / (double)[handler totalBytesToUpload];
+                [self setTitleForStatus:[NSString stringWithFormat:@"%.0f%%", (100 * progress)]];
+                [self updateFrame:StatusItemStateIconAndText];
+            }
+            else
+            {
+                [self setTitleForStatus:@""];
+                [self updateFrame:StatusItemStateIconOnly];
+            }
+            
+            // STATUS IMAGES
+            if ([handler totalBytesToUpload] > 0)
+            {
+                NSArray *images = [[BoxSimpleShareAppDelegate sharedDelegate] statusBarImages];
+                
+                int index = (int)((float)[handler bytesUploadedSoFar] * ((float)([images count] - 1) / (float)[handler totalBytesToUpload]));
+                
+                // Have to change active icon to the first in animation set.
+                if (index == 0)
+                {
+                    index = 1;
+                }
+                else if ([[[BoxSimpleShareAppDelegate sharedDelegate] statusBarImages] count] == index + 1)
+                {
+                    --index;
+                }
+                
+                if (currentProgressImageIndex > index)
+                {
+                    index = currentProgressImageIndex;
+                }
+                
+                if (!mouseDown)
+                {
+                    [self setImageIndex:index];
+                }
+            }
+
+        }
+        
+        else if ([[notification object] isKindOfClass:[HTTPRequestHandler class]])
         {
             HTTPRequestHandler *handler = [notification object];
             
             if ([handler isUploadQueue])
             {
-//                DbgLog(@"bytes to upload : %lld, bytes uploaded : %lld", [handler totalBytesToUpload], [handler bytesUploadedSoFar]);
+
                 if ([handler bytesUploadedSoFar] > 0 && [handler totalBytesToUpload] > (5 * 1024 * 1024)) // Should be greater than 5 mb to show the percentage in status bar
                 {
                     double progress = (double)[handler bytesUploadedSoFar] / (double)[handler totalBytesToUpload];
@@ -305,9 +354,9 @@ typedef enum {
 - (void)installImage {
     BOOL enabled = ![[[BoxSimpleShareAppDelegate sharedDelegate] mainController] disable_automatic_upload_check];
     if (enabled) {
-        [self setImageForStatus:[NSImage imageNamed:@"default-icon.png"]];
+        [self setImageForStatus:[NSImage imageNamed:@"default-icon"]];
     } else {
-		[self setImageForStatus:[NSImage imageNamed:@"nointernet-icon.png"]];
+		[self setImageForStatus:[NSImage imageNamed:@"nointernet-icon"]];
     }
 }
 
@@ -351,13 +400,17 @@ typedef enum {
 
 		if (down)
 		{
-			[self setImageForStatus:[NSImage imageNamed:@"active-icon.png"]];
+			[self setImageForStatus:[NSImage imageNamed:@"active-icon"]];
 		}
 		else
 		{
 //			[self setImageForStatus:[NSImage imageNamed:@"default-icon.png"]];
 
 			NSArray *images = [[BoxSimpleShareAppDelegate sharedDelegate] statusBarImages];
+            if(currentProgressImageIndex > images.count -1)
+            {
+                currentProgressImageIndex = images.count -1;
+            }
 			[self setImageForStatus:[images objectAtIndex:currentProgressImageIndex]];
 		}
 	}
@@ -369,8 +422,9 @@ typedef enum {
 - (void) mouseDown:(NSEvent *)theEvent
 {
     [self setMouseDown:YES];
-    [[statusItem menu] setDelegate:self];
-    [statusItem popUpStatusItemMenu:[statusItem menu]];
+     [NSApp sendAction:self.action to:self.target from:self];
+//    [[statusItem menu] setDelegate:self];
+//    [statusItem popUpStatusItemMenu:[statusItem menu]];
 }
 
 - (void) mouseUp:(NSEvent *)event
@@ -388,18 +442,35 @@ typedef enum {
 	[self mouseUp:event];
 }
 
-- (void) menuDidClose:(NSMenu *)menu
-{
-    [self setMouseDown:NO];
-    [menu setDelegate:nil];
-}
+//- (void) menuDidClose:(NSMenu *)menu
+//{
+//    [self setMouseDown:NO];
+//    [menu setDelegate:nil];
+//}
+//
+//- (void) menuWillOpen:(NSMenu *)menu
+//{
+//    [self setNeedsDisplay:YES];
+//}
+#pragma mark Accessors
 
-- (void) menuWillOpen:(NSMenu *)menu
+-(BOOL)isHighlighted {
+    return _isHighlighted;
+}
+- (void)setHighlighted:(BOOL)newFlag
 {
+    //if (mouseDown == newFlag) return;
+    mouseDown = newFlag;
+    _isHighlighted = newFlag;
     [self setNeedsDisplay:YES];
 }
-
 #pragma mark 
+- (NSRect)globalRect
+{
+    NSRect frame = [self frame];
+    frame.origin = [self.window convertBaseToScreen:frame.origin];
+    return frame;
+}
 #pragma mark Memory Management
 
 - (void) dealloc
@@ -437,5 +508,8 @@ typedef enum {
     
     [NSGraphicsContext restoreGraphicsState];
 }
+#pragma mark -
+
+
 
 @end

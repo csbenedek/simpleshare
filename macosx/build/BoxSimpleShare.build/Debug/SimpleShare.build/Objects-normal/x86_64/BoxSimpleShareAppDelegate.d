@@ -29,4 +29,8 @@ dependencies: \
   /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/BoxNetUser.h \
   /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/Finder.h \
   /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/StandardPaths.h \
-  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/FolderUtility.h
+  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/FolderUtility.h \
+  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/DragDropWindowController.h \
+  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/JCSSheetController.h \
+  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/PopupWindowController.h \
+  /Cuongnq/Jobs/simpleshare/macosx/BoxSimpleShare/MenubarController.h

@@ -55,6 +55,7 @@
             [_captureFrameColor set];
             NSRectFill(_captureRect);
         }
+        
     }
 }
 

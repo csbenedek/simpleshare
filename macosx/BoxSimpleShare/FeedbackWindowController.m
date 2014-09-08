@@ -51,7 +51,7 @@
     NSString* email =@"ajdunn83@gmail.com";
     NSAttributedString* textAttributedString = textView.attributedString;
     NSString* mailtoLink = [NSString
-                            stringWithFormat:@"mailto:%@?subject=%@&body=%@", email, subject.stringValue, textView.string];
+                            stringWithFormat:@"mailto:%@?subject=%@&body=%@", email, @"Feedback for SimpleShare", textView.string];
                             
                             // This creates a URL string by adding percent escapes. Since the URL is
                             // just being used locally, I don't know if this is always necessary,
@@ -67,5 +67,9 @@
     
    // NSArray* shareItems = @[textAttributedString, url];
     //[mailShare performWithItems:shareItems];
+    
+    [self.window performSelector:@selector(close) withObject:nil afterDelay:2.0];
 }
+
+
 @end

@@ -436,7 +436,7 @@
 						value:[NSString stringWithFormat:@"Bearer %@", [[OAuth2Client sharedInstance] accessToken]]];
 	
 	NSMutableDictionary* access = [NSMutableDictionary dictionary];
-	[access setObject:@"open" forKey:@"access"];
+	//[access setObject:@"open" forKey:@"access"];
 	
 	NSMutableDictionary* properties = [NSMutableDictionary dictionary];
 	[properties setObject:access forKey:@"shared_link"];

@@ -8,29 +8,57 @@
 		<data>
 		r6trupKGJ/LFgROthS+adJjTaVc=
 		</data>
+		<key>Resources/DragDropWindowController.nib</key>
+		<data>
+		1hE+xqpUiZiRW6WfMYMaOzCkz2I=
+		</data>
 		<key>Resources/FeedbackWindowController.nib</key>
 		<data>
-		/ykbVhzKamPpo4gq6YtxCFJse2E=
+		ejZfLdQ3elIF2BwUHGzeekS1ApA=
 		</data>
 		<key>Resources/GrantAccessWindowController.nib</key>
 		<data>
 		uPmJ/nDRdZh2lr1g3M+F/9m4n7Y=
 		</data>
+		<key>Resources/ItemCell.nib</key>
+		<data>
+		6DnDgkCZt7B/L4QD0KIBJ2eysr4=
+		</data>
+		<key>Resources/ItemViewController.nib</key>
+		<data>
+		ofFHAK2I0RvjFsqVZoTl+L++SdM=
+		</data>
 		<key>Resources/Localized.strings</key>
 		<data>
 		y9kpS9uVUda1/o6fae4rpynAZOU=
+		</data>
+		<key>Resources/LoginWindowController.nib</key>
+		<data>
+		LCAJGovkcmz6wObCseXW95WTia0=
+		</data>
+		<key>Resources/PopupLoginViewController.nib</key>
+		<data>
+		mhyAz5h6iw+DVLypaTZdLzaWIfM=
+		</data>
+		<key>Resources/PopupMainViewController.nib</key>
+		<data>
+		ZAaaMqDqehrHmozwpxz5IbT6VqI=
+		</data>
+		<key>Resources/PopupWindowController.nib</key>
+		<data>
+		pABkdcBQPucqZ9EQJ5TIEkYJoIY=
 		</data>
 		<key>Resources/README</key>
 		<data>
 		hww7serdCWh4eNRFLZ+38Qim330=
 		</data>
-		<key>Resources/active-icon.png</key>
+		<key>Resources/YoutubeUploadWindowController.nib</key>
 		<data>
-		mOBW0ooQyimI2AIW08uowfiTFFw=
+		2v/FUcsUIfS8dyMkk/vWKByZeQ4=
 		</data>
-		<key>Resources/active-icon@2x.png</key>
+		<key>Resources/active-icon.tiff</key>
 		<data>
-		BcKnoE8bcmAm1RSmAy7KKoBlHW4=
+		tZN/MbHYlILcEw9QElqBeLKIZMI=
 		</data>
 		<key>Resources/audio.png</key>
 		<data>
@@ -40,17 +68,29 @@
 		<data>
 		RpATLXH1cZyaOKjy+XKP47JXi/Q=
 		</data>
+		<key>Resources/box-account-login-button-pressed.tiff</key>
+		<data>
+		S9fW71XH0o+t1/+jYGtM0Zy3tdM=
+		</data>
+		<key>Resources/box-account-login-button.tiff</key>
+		<data>
+		3zSc9bJXOcDDE4YDS9gKhQESPJI=
+		</data>
+		<key>Resources/box-account-logout-button-pressed.tiff</key>
+		<data>
+		LpOfCdI0dp/hnf5v7djy7NFOPAo=
+		</data>
+		<key>Resources/box-account-logout-button.tiff</key>
+		<data>
+		JOfiyWev7u9tLmYl6LyD6yM7tsg=
+		</data>
 		<key>Resources/compress.png</key>
 		<data>
 		vO8W5v/CnWuTb9gQYsR2iI8aJtU=
 		</data>
-		<key>Resources/default-icon.png</key>
+		<key>Resources/default-icon.tiff</key>
 		<data>
-		DYm/EbkSJP6U3nKr8O8PtxeLlIY=
-		</data>
-		<key>Resources/default-icon@2x.png</key>
-		<data>
-		t5Po2100RLwTz+chrk0yynxVhfs=
+		eBEtsSgXjGTWfWr5umqRsrUF54g=
 		</data>
 		<key>Resources/default.png</key>
 		<data>
@@ -59,6 +99,10 @@
 		<key>Resources/dmg_background.png</key>
 		<data>
 		7l1lQuVflXauq3ISyNcEIpGNWQs=
+		</data>
+		<key>Resources/drag_drop.png</key>
+		<data>
+		9kDY4vwv+V6J+cOZWirBI17aYks=
 		</data>
 		<key>Resources/en.lproj/InfoPlist.strings</key>
 		<dict>
@@ -73,7 +117,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			0oVlHptqgXItpOLTDrCZtBTlEhM=
+			vMz9GZZt3etrAk4Y2gZyPlMaSzk=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -86,169 +130,93 @@
 		<data>
 		nPKNiXyGRkfdR5LBtRZicvzGDxA=
 		</data>
-		<key>Resources/icon-animation-1.png</key>
+		<key>Resources/icon-animation-1.tiff</key>
 		<data>
-		GkHSj44r792MGrNlKwzxTXCWP6Y=
+		cQJB9ETaOFMQvGogt5VIpOxt+Is=
 		</data>
-		<key>Resources/icon-animation-10.png</key>
+		<key>Resources/icon-animation-10.tiff</key>
 		<data>
-		uAuYS+21ZS1aDF0we0xzjEUX2Ls=
+		bunkE7kRCC2lzc7Wd69spplI87g=
 		</data>
-		<key>Resources/icon-animation-10@2x.png</key>
+		<key>Resources/icon-animation-11.tiff</key>
 		<data>
-		ewonKsM1QXgsVf3xqpy4OJI/Lt8=
+		PHrCinwF4PuKccrND9yzLcHXSEE=
 		</data>
-		<key>Resources/icon-animation-11.png</key>
+		<key>Resources/icon-animation-12.tiff</key>
 		<data>
-		wgLpyrILfgYCfmuyq0oSveJTpPc=
+		Ni80tPqDoHiEPu7V2aI0uAcg2I8=
 		</data>
-		<key>Resources/icon-animation-11@2x.png</key>
+		<key>Resources/icon-animation-13.tiff</key>
 		<data>
-		IwPIBQ4X4bSuv5iO+9koUlunV6w=
+		cZP94A6xUpHvs26d/mb/x8BI/44=
 		</data>
-		<key>Resources/icon-animation-12.png</key>
+		<key>Resources/icon-animation-14.tiff</key>
 		<data>
-		ddtV//vMVHGk10QZ2BKRD4G5tpc=
+		jvM4RXD+buENzAyUFKSOVTXeBSo=
 		</data>
-		<key>Resources/icon-animation-12@2x.png</key>
+		<key>Resources/icon-animation-15.tiff</key>
 		<data>
-		zE1XzHLhbZ6WQsDtwTxSX6J2hPA=
+		AHeTrGxrRdKc5wADTIWV8kbnpQc=
 		</data>
-		<key>Resources/icon-animation-13.png</key>
+		<key>Resources/icon-animation-16.tiff</key>
 		<data>
-		XO9UKNbISD8vcbgFNkHg/7z1WKM=
+		w4tqcC5bEqwa/b95mUZsqkW3XGc=
 		</data>
-		<key>Resources/icon-animation-13@2x.png</key>
+		<key>Resources/icon-animation-17.tiff</key>
 		<data>
-		tRJyCH6vvxIu08wE8YxVAysZNtQ=
+		qbeTZmVfZUJ7lYtPr9tpsnCJVv0=
 		</data>
-		<key>Resources/icon-animation-14.png</key>
+		<key>Resources/icon-animation-18.tiff</key>
 		<data>
-		r74TwZK1AUGIbFquSW+6BoikhK0=
+		x13r27TtsS7eJusLz6x5TP2Hci0=
 		</data>
-		<key>Resources/icon-animation-14@2x.png</key>
+		<key>Resources/icon-animation-19.tiff</key>
 		<data>
-		LwpXeMW5vx/tJgSEHLyNfpC0DaA=
+		T73YEytFBUzRnsuTv30VdkUSVAY=
 		</data>
-		<key>Resources/icon-animation-15.png</key>
+		<key>Resources/icon-animation-2.tiff</key>
 		<data>
-		npGwZR+GO9G3fuXCey4BVLPvHCc=
+		fwzxoa97wEw165UL8Hb6j4BfNpM=
 		</data>
-		<key>Resources/icon-animation-15@2x.png</key>
+		<key>Resources/icon-animation-3.tiff</key>
 		<data>
-		S1M1RfiBw4kyhOdc6GvZuRHOpFE=
+		9HgCsU9pdAW9LrcuETdQSQs4rDc=
 		</data>
-		<key>Resources/icon-animation-16.png</key>
+		<key>Resources/icon-animation-4.tiff</key>
 		<data>
-		5uMGdegiyA0qIqJxQSRDEK2Kehk=
+		31kOy+Ane9n2a/AtvdF4/A/imA0=
 		</data>
-		<key>Resources/icon-animation-16@2x.png</key>
+		<key>Resources/icon-animation-5.tiff</key>
 		<data>
-		fTBnVVNMKkS0UvAGGuhZP81uXO0=
+		xS5UqvnizMGwXAn56xzTLw8Zzp0=
 		</data>
-		<key>Resources/icon-animation-17.png</key>
+		<key>Resources/icon-animation-6.tiff</key>
 		<data>
-		Jh2HS50KYQftCJfA7KXgo+aSoX8=
+		sNkfrk6hEL6rVp/jFtCQeWtb9Sg=
 		</data>
-		<key>Resources/icon-animation-17@2x.png</key>
+		<key>Resources/icon-animation-7.tiff</key>
 		<data>
-		4SDAuPTBW8ZEPDIXOkDrN8Y3oTc=
+		eRpOGdhGNLGwmNGFAjzbOuVpi88=
 		</data>
-		<key>Resources/icon-animation-18.png</key>
+		<key>Resources/icon-animation-8.tiff</key>
 		<data>
-		cLMYVL0jNpLKRUhy+XxTqr3Lwsk=
+		IDcFz8h/ITa0KgxpV2zs6jYJT+I=
 		</data>
-		<key>Resources/icon-animation-18@2x.png</key>
+		<key>Resources/icon-animation-9.tiff</key>
 		<data>
-		BBqvd8XE1Cdh1sQYIYKqySBTCf0=
+		sS4nFLDAhoPhxqOUa6FYchuaEVI=
 		</data>
-		<key>Resources/icon-animation-19.png</key>
+		<key>Resources/icon_account-folder.tiff</key>
 		<data>
-		GqmefHqImVy6JA3wq+f/u3nARjs=
-		</data>
-		<key>Resources/icon-animation-19@2x.png</key>
-		<data>
-		KaI7eXz7SiavX41ZW3FGeqX5UI4=
-		</data>
-		<key>Resources/icon-animation-1@2x.png</key>
-		<data>
-		tA8vWly2fHUACbuFXGMDbHkl5NE=
-		</data>
-		<key>Resources/icon-animation-2.png</key>
-		<data>
-		JN3d8wsH2PTMlj4Oh4JajDx6J0Y=
-		</data>
-		<key>Resources/icon-animation-2@2x.png</key>
-		<data>
-		j9Td47dd9h2wDv8EO9WdvvJvA5c=
-		</data>
-		<key>Resources/icon-animation-3.png</key>
-		<data>
-		6+7N/BApbrVdCdl0mZ2MFuEkH6g=
-		</data>
-		<key>Resources/icon-animation-3@2x.png</key>
-		<data>
-		CWvwCOryCdXl+ocl8ZZ8e5+JnxI=
-		</data>
-		<key>Resources/icon-animation-4.png</key>
-		<data>
-		v+6ni8qX79S2IczmM4weaq/QuKU=
-		</data>
-		<key>Resources/icon-animation-4@2x.png</key>
-		<data>
-		rSBdkvdLVdrisWVZU4Kr/oiYDsc=
-		</data>
-		<key>Resources/icon-animation-5.png</key>
-		<data>
-		iGmZStBLcmNdIcV0l3pAu6u2Xa8=
-		</data>
-		<key>Resources/icon-animation-5@2x.png</key>
-		<data>
-		0KOc5dDHxc8YG8JpSeqESQtyPew=
-		</data>
-		<key>Resources/icon-animation-6.png</key>
-		<data>
-		wOaddmKKfzWHr0xUA4ajQO1tBEQ=
-		</data>
-		<key>Resources/icon-animation-6@2x.png</key>
-		<data>
-		v/P+7cWvJCdA6XTZ1v3jsjRs6+g=
-		</data>
-		<key>Resources/icon-animation-7.png</key>
-		<data>
-		7KFAu/WXfekaoosNMuBFtK8m+9E=
-		</data>
-		<key>Resources/icon-animation-7@2x.png</key>
-		<data>
-		Pw8DMU4CyuZXPYd65itj3qa/cWk=
-		</data>
-		<key>Resources/icon-animation-8.png</key>
-		<data>
-		33djXY7UDJV96ftUy0hOHLYLdmE=
-		</data>
-		<key>Resources/icon-animation-8@2x.png</key>
-		<data>
-		4rDuOu4Fbp0Fq1VvxzCaCelT424=
-		</data>
-		<key>Resources/icon-animation-9.png</key>
-		<data>
-		gna4thMws7/jVgnVmRmbTmnJfJA=
-		</data>
-		<key>Resources/icon-animation-9@2x.png</key>
-		<data>
-		HhpV7A7qiJST+4lMSCyJy0pMS08=
-		</data>
-		<key>Resources/icon_account-folder.png</key>
-		<data>
-		vfj1pF6A9o18eK7G8s796+qLQV8=
+		sCHLjmU8Qq5JA+uoY4KzJCDhJIQ=
 		</data>
 		<key>Resources/icon_account.png</key>
 		<data>
 		WRSAETReRxrS3HCj+3h4VTd6Q7E=
 		</data>
-		<key>Resources/icon_account_small.png</key>
+		<key>Resources/icon_account_small.tiff</key>
 		<data>
-		DtG1aMj//eeebP7Dj4mnIee8s8k=
+		efD6WuNtCNkf2wf0lH/gEqVkRTM=
 		</data>
 		<key>Resources/icon_file.png</key>
 		<data>
@@ -262,9 +230,9 @@
 		<data>
 		yLBIgwq1V5mw5DvcjDo+onV8m6M=
 		</data>
-		<key>Resources/icon_preferences_small.png</key>
+		<key>Resources/icon_preferences_small.tiff</key>
 		<data>
-		q3d4BBYJSQjy7KxPERe5+WOcn8Y=
+		16YlBGRqtqv7sg5RIo9e2bE44Tk=
 		</data>
 		<key>Resources/icon_userimage.png</key>
 		<data>
@@ -282,41 +250,69 @@
 		<data>
 		nJL/Wyq6Gy30axSH9P1xYJw1i20=
 		</data>
-		<key>Resources/image_hotkey_drawregion.png</key>
+		<key>Resources/image_hotkey_drawregion.tiff</key>
 		<data>
-		KayBADpXGuE5e7D61GTuGDNhUgc=
+		NEvQ6DaeI82sRpj81cLHKpY5DUc=
 		</data>
-		<key>Resources/image_hotkey_fullscreen.png</key>
+		<key>Resources/image_hotkey_fullscreen.tiff</key>
 		<data>
-		eaL/TZlBdeJazak4qOaPQvSpPYg=
+		RfT3rnzcbh8k4VfRf5pGZctEsSY=
 		</data>
-		<key>Resources/image_hotkey_screencast.png</key>
+		<key>Resources/image_hotkey_screencast.tiff</key>
 		<data>
-		oZGbUj2DAOBTbzflpYX8Ni+cwS8=
+		qlEpJs1jQnpY8cF/7xoKz2n4SFI=
 		</data>
-		<key>Resources/image_howto_step1.png</key>
+		<key>Resources/image_howto_step1.tiff</key>
 		<data>
-		l5198qRPrWXNMS5Z6Q+PTto6DfQ=
+		mm1Y2VbOHejOp8b6PX6kHYwgliU=
 		</data>
-		<key>Resources/image_howto_step1@2x.png</key>
+		<key>Resources/image_howto_step2.tiff</key>
 		<data>
-		9lIudRnT521rxFczgt0LT2DkVak=
+		AuCPNrQtv7zHIcsy9vvh23uag3Q=
 		</data>
-		<key>Resources/image_howto_step2.png</key>
+		<key>Resources/large-toggle-off.tiff</key>
 		<data>
-		FKQ45Dor4lqp8f1wbGxgiSBDxZ0=
+		/jTeuowlVk8rl7tgNkMI8w+bUwE=
 		</data>
-		<key>Resources/image_howto_step2@2x.png</key>
+		<key>Resources/large-toggle-on.tiff</key>
 		<data>
-		Kz064XY+W+Pp16tQeVVcMojsEe8=
+		XdvH1sxA02Aen7l5JZhBOK+r1MU=
 		</data>
-		<key>Resources/nointernet-icon.png</key>
+		<key>Resources/login-app-icon.tiff</key>
 		<data>
-		AC6ivK01x015/QjGwtrmxW8EJZo=
+		Uj5l0Ol1+nb3hrC7IroDq4ezN1A=
 		</data>
-		<key>Resources/nointernet-icon@2x.png</key>
+		<key>Resources/login-to-box-button-pressed.tiff</key>
 		<data>
-		KqacWCnX9CBVe0pUP4z5mVJ41Zc=
+		tP5CRmmUZhDZOTtpVCmUnMQ+0OY=
+		</data>
+		<key>Resources/login-to-box-button.tiff</key>
+		<data>
+		xQ6zrYcEm+XNjr/Lp+kNHCyIs5U=
+		</data>
+		<key>Resources/login-with-imgur-button-pressed.tiff</key>
+		<data>
+		vO3zYVA4Jm4H8rejsQCvVNLWOsA=
+		</data>
+		<key>Resources/login-with-imgur-button.tiff</key>
+		<data>
+		PAolD+GoDDB8MtJU8cvtexYXBtY=
+		</data>
+		<key>Resources/login-with-youtube-button-pressed.tiff</key>
+		<data>
+		W00NoQoxLvDtaCs7QhiR8Erj+qQ=
+		</data>
+		<key>Resources/login-with-youtube-button.tiff</key>
+		<data>
+		+oA6uJqBG+UpXcobMgCrR98v/OQ=
+		</data>
+		<key>Resources/nointernet-icon.tiff</key>
+		<data>
+		lsBYyin8XQae2vGwKSUhSfbWEDo=
+		</data>
+		<key>Resources/nouser.png</key>
+		<data>
+		EH5jW9eivdC50QRwXu4uPPr2AVM=
 		</data>
 		<key>Resources/pdf.png</key>
 		<data>
@@ -329,6 +325,78 @@
 		<key>Resources/powerpoint.png</key>
 		<data>
 		+4LYFhPmaNct1CLBmyJf8gGeMoE=
+		</data>
+		<key>Resources/prefs-accounts.tiff</key>
+		<data>
+		Vxi/LLpLJOLJxUhmFn3VmCInBsY=
+		</data>
+		<key>Resources/prefs-prefs.tiff</key>
+		<data>
+		69///TkozzA+pgMKTO41SCbRnWo=
+		</data>
+		<key>Resources/prefs-shortcuts.tiff</key>
+		<data>
+		/HmGetoMBOixe1hEkey0Yxsd1kk=
+		</data>
+		<key>Resources/record-button-pressed.tiff</key>
+		<data>
+		nD/Z0JpbmUE1cSvUeB648mPPeSI=
+		</data>
+		<key>Resources/record-button.tiff</key>
+		<data>
+		kpPoWtOla3J82Aiytzaa590hOWo=
+		</data>
+		<key>Resources/screencast-recording-button-pressed.tiff</key>
+		<data>
+		EVf7c98KgJfOEawsF26+ibKvyK8=
+		</data>
+		<key>Resources/screencast-recording-button.tiff</key>
+		<data>
+		M3W2sZd0fhXlB6UHThQ7VAQGQVM=
+		</data>
+		<key>Resources/screencast-recording-icon.tiff</key>
+		<data>
+		vJgYLUBpoWF0rweYPaqb8VQEKVI=
+		</data>
+		<key>Resources/settings-icon.tiff</key>
+		<data>
+		hmYtvulG+YqCrGcrGVMFAfW5Teo=
+		</data>
+		<key>Resources/small-toggle-off.tiff</key>
+		<data>
+		wMNSBFb1L19oPOZUiBWLSNACN3Y=
+		</data>
+		<key>Resources/small-toggle-on.tiff</key>
+		<data>
+		UWNwDpVQqQHAotHYgXOMrMtpg/4=
+		</data>
+		<key>Resources/take-full-screen-icon.tiff</key>
+		<data>
+		S/Dd3GdDxcPowhG37uYMYffhMc4=
+		</data>
+		<key>Resources/take-selected-region-button-pressed.tiff</key>
+		<data>
+		Q6gXmWMe8nELr5oe4kg2Qjd2dtM=
+		</data>
+		<key>Resources/take-selected-region-button.tiff</key>
+		<data>
+		rzX5kEaHRckHCnCYcwi2BiOtlFc=
+		</data>
+		<key>Resources/take-selected-region-icon.tiff</key>
+		<data>
+		21W/9SE2GClunUPIUEjkL/DnJcM=
+		</data>
+		<key>Resources/upload-target-button-pressed.tiff</key>
+		<data>
+		oObWaPZkpyN9CGCotb5ZkR55je0=
+		</data>
+		<key>Resources/upload-target-button.tiff</key>
+		<data>
+		DVBGnvEjq+1cvDYohjFZgDFavpA=
+		</data>
+		<key>Resources/upload-target-icon.tiff</key>
+		<data>
+		cK5rtroDllFRSAJQ0QwRa+K0NY0=
 		</data>
 		<key>Resources/video.png</key>
 		<data>
@@ -345,11 +413,20 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Frameworks/GTL.framework</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			Sp0HKr8IYiY1fBDanjnmL4kK/5k=
+			</data>
+			<key>requirement</key>
+			<string>identifier "com.google.GTLFramework" and anchor apple generic and certificate leaf[subject.CN] = "3rd Party Mac Developer Application: Aaron Levie (956ZZDEPUK)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+		</dict>
 		<key>Frameworks/Growl.framework</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			yNgQQm1mVGESF8M6VCcd8sMD+Lw=
+			gEsNHNXuAnT/hdEsv4LBX+kmgAo=
 			</data>
 			<key>requirement</key>
 			<string>identifier "com.growl.growlframework" and anchor apple generic and certificate leaf[subject.CN] = "3rd Party Mac Developer Application: Aaron Levie (956ZZDEPUK)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
@@ -367,29 +444,57 @@
 		<data>
 		r6trupKGJ/LFgROthS+adJjTaVc=
 		</data>
+		<key>Resources/DragDropWindowController.nib</key>
+		<data>
+		1hE+xqpUiZiRW6WfMYMaOzCkz2I=
+		</data>
 		<key>Resources/FeedbackWindowController.nib</key>
 		<data>
-		/ykbVhzKamPpo4gq6YtxCFJse2E=
+		ejZfLdQ3elIF2BwUHGzeekS1ApA=
 		</data>
 		<key>Resources/GrantAccessWindowController.nib</key>
 		<data>
 		uPmJ/nDRdZh2lr1g3M+F/9m4n7Y=
 		</data>
+		<key>Resources/ItemCell.nib</key>
+		<data>
+		6DnDgkCZt7B/L4QD0KIBJ2eysr4=
+		</data>
+		<key>Resources/ItemViewController.nib</key>
+		<data>
+		ofFHAK2I0RvjFsqVZoTl+L++SdM=
+		</data>
 		<key>Resources/Localized.strings</key>
 		<data>
 		y9kpS9uVUda1/o6fae4rpynAZOU=
+		</data>
+		<key>Resources/LoginWindowController.nib</key>
+		<data>
+		LCAJGovkcmz6wObCseXW95WTia0=
+		</data>
+		<key>Resources/PopupLoginViewController.nib</key>
+		<data>
+		mhyAz5h6iw+DVLypaTZdLzaWIfM=
+		</data>
+		<key>Resources/PopupMainViewController.nib</key>
+		<data>
+		ZAaaMqDqehrHmozwpxz5IbT6VqI=
+		</data>
+		<key>Resources/PopupWindowController.nib</key>
+		<data>
+		pABkdcBQPucqZ9EQJ5TIEkYJoIY=
 		</data>
 		<key>Resources/README</key>
 		<data>
 		hww7serdCWh4eNRFLZ+38Qim330=
 		</data>
-		<key>Resources/active-icon.png</key>
+		<key>Resources/YoutubeUploadWindowController.nib</key>
 		<data>
-		mOBW0ooQyimI2AIW08uowfiTFFw=
+		2v/FUcsUIfS8dyMkk/vWKByZeQ4=
 		</data>
-		<key>Resources/active-icon@2x.png</key>
+		<key>Resources/active-icon.tiff</key>
 		<data>
-		BcKnoE8bcmAm1RSmAy7KKoBlHW4=
+		tZN/MbHYlILcEw9QElqBeLKIZMI=
 		</data>
 		<key>Resources/audio.png</key>
 		<data>
@@ -399,17 +504,29 @@
 		<data>
 		RpATLXH1cZyaOKjy+XKP47JXi/Q=
 		</data>
+		<key>Resources/box-account-login-button-pressed.tiff</key>
+		<data>
+		S9fW71XH0o+t1/+jYGtM0Zy3tdM=
+		</data>
+		<key>Resources/box-account-login-button.tiff</key>
+		<data>
+		3zSc9bJXOcDDE4YDS9gKhQESPJI=
+		</data>
+		<key>Resources/box-account-logout-button-pressed.tiff</key>
+		<data>
+		LpOfCdI0dp/hnf5v7djy7NFOPAo=
+		</data>
+		<key>Resources/box-account-logout-button.tiff</key>
+		<data>
+		JOfiyWev7u9tLmYl6LyD6yM7tsg=
+		</data>
 		<key>Resources/compress.png</key>
 		<data>
 		vO8W5v/CnWuTb9gQYsR2iI8aJtU=
 		</data>
-		<key>Resources/default-icon.png</key>
+		<key>Resources/default-icon.tiff</key>
 		<data>
-		DYm/EbkSJP6U3nKr8O8PtxeLlIY=
-		</data>
-		<key>Resources/default-icon@2x.png</key>
-		<data>
-		t5Po2100RLwTz+chrk0yynxVhfs=
+		eBEtsSgXjGTWfWr5umqRsrUF54g=
 		</data>
 		<key>Resources/default.png</key>
 		<data>
@@ -418,6 +535,10 @@
 		<key>Resources/dmg_background.png</key>
 		<data>
 		7l1lQuVflXauq3ISyNcEIpGNWQs=
+		</data>
+		<key>Resources/drag_drop.png</key>
+		<data>
+		9kDY4vwv+V6J+cOZWirBI17aYks=
 		</data>
 		<key>Resources/en.lproj/InfoPlist.strings</key>
 		<dict>
@@ -432,7 +553,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			0oVlHptqgXItpOLTDrCZtBTlEhM=
+			vMz9GZZt3etrAk4Y2gZyPlMaSzk=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -445,169 +566,93 @@
 		<data>
 		nPKNiXyGRkfdR5LBtRZicvzGDxA=
 		</data>
-		<key>Resources/icon-animation-1.png</key>
+		<key>Resources/icon-animation-1.tiff</key>
 		<data>
-		GkHSj44r792MGrNlKwzxTXCWP6Y=
+		cQJB9ETaOFMQvGogt5VIpOxt+Is=
 		</data>
-		<key>Resources/icon-animation-10.png</key>
+		<key>Resources/icon-animation-10.tiff</key>
 		<data>
-		uAuYS+21ZS1aDF0we0xzjEUX2Ls=
+		bunkE7kRCC2lzc7Wd69spplI87g=
 		</data>
-		<key>Resources/icon-animation-10@2x.png</key>
+		<key>Resources/icon-animation-11.tiff</key>
 		<data>
-		ewonKsM1QXgsVf3xqpy4OJI/Lt8=
+		PHrCinwF4PuKccrND9yzLcHXSEE=
 		</data>
-		<key>Resources/icon-animation-11.png</key>
+		<key>Resources/icon-animation-12.tiff</key>
 		<data>
-		wgLpyrILfgYCfmuyq0oSveJTpPc=
+		Ni80tPqDoHiEPu7V2aI0uAcg2I8=
 		</data>
-		<key>Resources/icon-animation-11@2x.png</key>
+		<key>Resources/icon-animation-13.tiff</key>
 		<data>
-		IwPIBQ4X4bSuv5iO+9koUlunV6w=
+		cZP94A6xUpHvs26d/mb/x8BI/44=
 		</data>
-		<key>Resources/icon-animation-12.png</key>
+		<key>Resources/icon-animation-14.tiff</key>
 		<data>
-		ddtV//vMVHGk10QZ2BKRD4G5tpc=
+		jvM4RXD+buENzAyUFKSOVTXeBSo=
 		</data>
-		<key>Resources/icon-animation-12@2x.png</key>
+		<key>Resources/icon-animation-15.tiff</key>
 		<data>
-		zE1XzHLhbZ6WQsDtwTxSX6J2hPA=
+		AHeTrGxrRdKc5wADTIWV8kbnpQc=
 		</data>
-		<key>Resources/icon-animation-13.png</key>
+		<key>Resources/icon-animation-16.tiff</key>
 		<data>
-		XO9UKNbISD8vcbgFNkHg/7z1WKM=
+		w4tqcC5bEqwa/b95mUZsqkW3XGc=
 		</data>
-		<key>Resources/icon-animation-13@2x.png</key>
+		<key>Resources/icon-animation-17.tiff</key>
 		<data>
-		tRJyCH6vvxIu08wE8YxVAysZNtQ=
+		qbeTZmVfZUJ7lYtPr9tpsnCJVv0=
 		</data>
-		<key>Resources/icon-animation-14.png</key>
+		<key>Resources/icon-animation-18.tiff</key>
 		<data>
-		r74TwZK1AUGIbFquSW+6BoikhK0=
+		x13r27TtsS7eJusLz6x5TP2Hci0=
 		</data>
-		<key>Resources/icon-animation-14@2x.png</key>
+		<key>Resources/icon-animation-19.tiff</key>
 		<data>
-		LwpXeMW5vx/tJgSEHLyNfpC0DaA=
+		T73YEytFBUzRnsuTv30VdkUSVAY=
 		</data>
-		<key>Resources/icon-animation-15.png</key>
+		<key>Resources/icon-animation-2.tiff</key>
 		<data>
-		npGwZR+GO9G3fuXCey4BVLPvHCc=
+		fwzxoa97wEw165UL8Hb6j4BfNpM=
 		</data>
-		<key>Resources/icon-animation-15@2x.png</key>
+		<key>Resources/icon-animation-3.tiff</key>
 		<data>
-		S1M1RfiBw4kyhOdc6GvZuRHOpFE=
+		9HgCsU9pdAW9LrcuETdQSQs4rDc=
 		</data>
-		<key>Resources/icon-animation-16.png</key>
+		<key>Resources/icon-animation-4.tiff</key>
 		<data>
-		5uMGdegiyA0qIqJxQSRDEK2Kehk=
+		31kOy+Ane9n2a/AtvdF4/A/imA0=
 		</data>
-		<key>Resources/icon-animation-16@2x.png</key>
+		<key>Resources/icon-animation-5.tiff</key>
 		<data>
-		fTBnVVNMKkS0UvAGGuhZP81uXO0=
+		xS5UqvnizMGwXAn56xzTLw8Zzp0=
 		</data>
-		<key>Resources/icon-animation-17.png</key>
+		<key>Resources/icon-animation-6.tiff</key>
 		<data>
-		Jh2HS50KYQftCJfA7KXgo+aSoX8=
+		sNkfrk6hEL6rVp/jFtCQeWtb9Sg=
 		</data>
-		<key>Resources/icon-animation-17@2x.png</key>
+		<key>Resources/icon-animation-7.tiff</key>
 		<data>
-		4SDAuPTBW8ZEPDIXOkDrN8Y3oTc=
+		eRpOGdhGNLGwmNGFAjzbOuVpi88=
 		</data>
-		<key>Resources/icon-animation-18.png</key>
+		<key>Resources/icon-animation-8.tiff</key>
 		<data>
-		cLMYVL0jNpLKRUhy+XxTqr3Lwsk=
+		IDcFz8h/ITa0KgxpV2zs6jYJT+I=
 		</data>
-		<key>Resources/icon-animation-18@2x.png</key>
+		<key>Resources/icon-animation-9.tiff</key>
 		<data>
-		BBqvd8XE1Cdh1sQYIYKqySBTCf0=
+		sS4nFLDAhoPhxqOUa6FYchuaEVI=
 		</data>
-		<key>Resources/icon-animation-19.png</key>
+		<key>Resources/icon_account-folder.tiff</key>
 		<data>
-		GqmefHqImVy6JA3wq+f/u3nARjs=
-		</data>
-		<key>Resources/icon-animation-19@2x.png</key>
-		<data>
-		KaI7eXz7SiavX41ZW3FGeqX5UI4=
-		</data>
-		<key>Resources/icon-animation-1@2x.png</key>
-		<data>
-		tA8vWly2fHUACbuFXGMDbHkl5NE=
-		</data>
-		<key>Resources/icon-animation-2.png</key>
-		<data>
-		JN3d8wsH2PTMlj4Oh4JajDx6J0Y=
-		</data>
-		<key>Resources/icon-animation-2@2x.png</key>
-		<data>
-		j9Td47dd9h2wDv8EO9WdvvJvA5c=
-		</data>
-		<key>Resources/icon-animation-3.png</key>
-		<data>
-		6+7N/BApbrVdCdl0mZ2MFuEkH6g=
-		</data>
-		<key>Resources/icon-animation-3@2x.png</key>
-		<data>
-		CWvwCOryCdXl+ocl8ZZ8e5+JnxI=
-		</data>
-		<key>Resources/icon-animation-4.png</key>
-		<data>
-		v+6ni8qX79S2IczmM4weaq/QuKU=
-		</data>
-		<key>Resources/icon-animation-4@2x.png</key>
-		<data>
-		rSBdkvdLVdrisWVZU4Kr/oiYDsc=
-		</data>
-		<key>Resources/icon-animation-5.png</key>
-		<data>
-		iGmZStBLcmNdIcV0l3pAu6u2Xa8=
-		</data>
-		<key>Resources/icon-animation-5@2x.png</key>
-		<data>
-		0KOc5dDHxc8YG8JpSeqESQtyPew=
-		</data>
-		<key>Resources/icon-animation-6.png</key>
-		<data>
-		wOaddmKKfzWHr0xUA4ajQO1tBEQ=
-		</data>
-		<key>Resources/icon-animation-6@2x.png</key>
-		<data>
-		v/P+7cWvJCdA6XTZ1v3jsjRs6+g=
-		</data>
-		<key>Resources/icon-animation-7.png</key>
-		<data>
-		7KFAu/WXfekaoosNMuBFtK8m+9E=
-		</data>
-		<key>Resources/icon-animation-7@2x.png</key>
-		<data>
-		Pw8DMU4CyuZXPYd65itj3qa/cWk=
-		</data>
-		<key>Resources/icon-animation-8.png</key>
-		<data>
-		33djXY7UDJV96ftUy0hOHLYLdmE=
-		</data>
-		<key>Resources/icon-animation-8@2x.png</key>
-		<data>
-		4rDuOu4Fbp0Fq1VvxzCaCelT424=
-		</data>
-		<key>Resources/icon-animation-9.png</key>
-		<data>
-		gna4thMws7/jVgnVmRmbTmnJfJA=
-		</data>
-		<key>Resources/icon-animation-9@2x.png</key>
-		<data>
-		HhpV7A7qiJST+4lMSCyJy0pMS08=
-		</data>
-		<key>Resources/icon_account-folder.png</key>
-		<data>
-		vfj1pF6A9o18eK7G8s796+qLQV8=
+		sCHLjmU8Qq5JA+uoY4KzJCDhJIQ=
 		</data>
 		<key>Resources/icon_account.png</key>
 		<data>
 		WRSAETReRxrS3HCj+3h4VTd6Q7E=
 		</data>
-		<key>Resources/icon_account_small.png</key>
+		<key>Resources/icon_account_small.tiff</key>
 		<data>
-		DtG1aMj//eeebP7Dj4mnIee8s8k=
+		efD6WuNtCNkf2wf0lH/gEqVkRTM=
 		</data>
 		<key>Resources/icon_file.png</key>
 		<data>
@@ -621,9 +666,9 @@
 		<data>
 		yLBIgwq1V5mw5DvcjDo+onV8m6M=
 		</data>
-		<key>Resources/icon_preferences_small.png</key>
+		<key>Resources/icon_preferences_small.tiff</key>
 		<data>
-		q3d4BBYJSQjy7KxPERe5+WOcn8Y=
+		16YlBGRqtqv7sg5RIo9e2bE44Tk=
 		</data>
 		<key>Resources/icon_userimage.png</key>
 		<data>
@@ -641,41 +686,69 @@
 		<data>
 		nJL/Wyq6Gy30axSH9P1xYJw1i20=
 		</data>
-		<key>Resources/image_hotkey_drawregion.png</key>
+		<key>Resources/image_hotkey_drawregion.tiff</key>
 		<data>
-		KayBADpXGuE5e7D61GTuGDNhUgc=
+		NEvQ6DaeI82sRpj81cLHKpY5DUc=
 		</data>
-		<key>Resources/image_hotkey_fullscreen.png</key>
+		<key>Resources/image_hotkey_fullscreen.tiff</key>
 		<data>
-		eaL/TZlBdeJazak4qOaPQvSpPYg=
+		RfT3rnzcbh8k4VfRf5pGZctEsSY=
 		</data>
-		<key>Resources/image_hotkey_screencast.png</key>
+		<key>Resources/image_hotkey_screencast.tiff</key>
 		<data>
-		oZGbUj2DAOBTbzflpYX8Ni+cwS8=
+		qlEpJs1jQnpY8cF/7xoKz2n4SFI=
 		</data>
-		<key>Resources/image_howto_step1.png</key>
+		<key>Resources/image_howto_step1.tiff</key>
 		<data>
-		l5198qRPrWXNMS5Z6Q+PTto6DfQ=
+		mm1Y2VbOHejOp8b6PX6kHYwgliU=
 		</data>
-		<key>Resources/image_howto_step1@2x.png</key>
+		<key>Resources/image_howto_step2.tiff</key>
 		<data>
-		9lIudRnT521rxFczgt0LT2DkVak=
+		AuCPNrQtv7zHIcsy9vvh23uag3Q=
 		</data>
-		<key>Resources/image_howto_step2.png</key>
+		<key>Resources/large-toggle-off.tiff</key>
 		<data>
-		FKQ45Dor4lqp8f1wbGxgiSBDxZ0=
+		/jTeuowlVk8rl7tgNkMI8w+bUwE=
 		</data>
-		<key>Resources/image_howto_step2@2x.png</key>
+		<key>Resources/large-toggle-on.tiff</key>
 		<data>
-		Kz064XY+W+Pp16tQeVVcMojsEe8=
+		XdvH1sxA02Aen7l5JZhBOK+r1MU=
 		</data>
-		<key>Resources/nointernet-icon.png</key>
+		<key>Resources/login-app-icon.tiff</key>
 		<data>
-		AC6ivK01x015/QjGwtrmxW8EJZo=
+		Uj5l0Ol1+nb3hrC7IroDq4ezN1A=
 		</data>
-		<key>Resources/nointernet-icon@2x.png</key>
+		<key>Resources/login-to-box-button-pressed.tiff</key>
 		<data>
-		KqacWCnX9CBVe0pUP4z5mVJ41Zc=
+		tP5CRmmUZhDZOTtpVCmUnMQ+0OY=
+		</data>
+		<key>Resources/login-to-box-button.tiff</key>
+		<data>
+		xQ6zrYcEm+XNjr/Lp+kNHCyIs5U=
+		</data>
+		<key>Resources/login-with-imgur-button-pressed.tiff</key>
+		<data>
+		vO3zYVA4Jm4H8rejsQCvVNLWOsA=
+		</data>
+		<key>Resources/login-with-imgur-button.tiff</key>
+		<data>
+		PAolD+GoDDB8MtJU8cvtexYXBtY=
+		</data>
+		<key>Resources/login-with-youtube-button-pressed.tiff</key>
+		<data>
+		W00NoQoxLvDtaCs7QhiR8Erj+qQ=
+		</data>
+		<key>Resources/login-with-youtube-button.tiff</key>
+		<data>
+		+oA6uJqBG+UpXcobMgCrR98v/OQ=
+		</data>
+		<key>Resources/nointernet-icon.tiff</key>
+		<data>
+		lsBYyin8XQae2vGwKSUhSfbWEDo=
+		</data>
+		<key>Resources/nouser.png</key>
+		<data>
+		EH5jW9eivdC50QRwXu4uPPr2AVM=
 		</data>
 		<key>Resources/pdf.png</key>
 		<data>
@@ -688,6 +761,78 @@
 		<key>Resources/powerpoint.png</key>
 		<data>
 		+4LYFhPmaNct1CLBmyJf8gGeMoE=
+		</data>
+		<key>Resources/prefs-accounts.tiff</key>
+		<data>
+		Vxi/LLpLJOLJxUhmFn3VmCInBsY=
+		</data>
+		<key>Resources/prefs-prefs.tiff</key>
+		<data>
+		69///TkozzA+pgMKTO41SCbRnWo=
+		</data>
+		<key>Resources/prefs-shortcuts.tiff</key>
+		<data>
+		/HmGetoMBOixe1hEkey0Yxsd1kk=
+		</data>
+		<key>Resources/record-button-pressed.tiff</key>
+		<data>
+		nD/Z0JpbmUE1cSvUeB648mPPeSI=
+		</data>
+		<key>Resources/record-button.tiff</key>
+		<data>
+		kpPoWtOla3J82Aiytzaa590hOWo=
+		</data>
+		<key>Resources/screencast-recording-button-pressed.tiff</key>
+		<data>
+		EVf7c98KgJfOEawsF26+ibKvyK8=
+		</data>
+		<key>Resources/screencast-recording-button.tiff</key>
+		<data>
+		M3W2sZd0fhXlB6UHThQ7VAQGQVM=
+		</data>
+		<key>Resources/screencast-recording-icon.tiff</key>
+		<data>
+		vJgYLUBpoWF0rweYPaqb8VQEKVI=
+		</data>
+		<key>Resources/settings-icon.tiff</key>
+		<data>
+		hmYtvulG+YqCrGcrGVMFAfW5Teo=
+		</data>
+		<key>Resources/small-toggle-off.tiff</key>
+		<data>
+		wMNSBFb1L19oPOZUiBWLSNACN3Y=
+		</data>
+		<key>Resources/small-toggle-on.tiff</key>
+		<data>
+		UWNwDpVQqQHAotHYgXOMrMtpg/4=
+		</data>
+		<key>Resources/take-full-screen-icon.tiff</key>
+		<data>
+		S/Dd3GdDxcPowhG37uYMYffhMc4=
+		</data>
+		<key>Resources/take-selected-region-button-pressed.tiff</key>
+		<data>
+		Q6gXmWMe8nELr5oe4kg2Qjd2dtM=
+		</data>
+		<key>Resources/take-selected-region-button.tiff</key>
+		<data>
+		rzX5kEaHRckHCnCYcwi2BiOtlFc=
+		</data>
+		<key>Resources/take-selected-region-icon.tiff</key>
+		<data>
+		21W/9SE2GClunUPIUEjkL/DnJcM=
+		</data>
+		<key>Resources/upload-target-button-pressed.tiff</key>
+		<data>
+		oObWaPZkpyN9CGCotb5ZkR55je0=
+		</data>
+		<key>Resources/upload-target-button.tiff</key>
+		<data>
+		DVBGnvEjq+1cvDYohjFZgDFavpA=
+		</data>
+		<key>Resources/upload-target-icon.tiff</key>
+		<data>
+		cK5rtroDllFRSAJQ0QwRa+K0NY0=
 		</data>
 		<key>Resources/video.png</key>
 		<data>

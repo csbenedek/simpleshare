@@ -19,10 +19,10 @@
         [self tellUserTrustDesktopFolder];
     }
     
-    return [self getPathToFolder];
+    return [self getPathToDesktopFolder];
 
 }
--(BOOL) getPathToFolder {
+-(BOOL) getPathToDesktopFolder {
 
     
     NSError *error = nil;
@@ -57,8 +57,7 @@
     
     [openPanel beginWithCompletionHandler:^(NSInteger result){
         
-//        NSAlert *alert = [NSAlert alertWithMessageText:@"Alert" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:message];
-//        [alert runModalSheetForWindow:openPanel];
+
         if (result == NSFileHandlingPanelOKButton) {
             for (NSURL *fileURL in [openPanel URLs]) {
                 NSString *filename = [fileURL path];

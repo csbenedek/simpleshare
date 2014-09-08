@@ -9,6 +9,8 @@
 #import <Cocoa/Cocoa.h>
 #import "CustomNSImageView.h"
 
+@class LoginWindowController;
+@class ITSwitch;
 @interface MainController : NSObject <NSTableViewDelegate, NSTableViewDataSource> {
     
 @private
@@ -59,7 +61,13 @@
     BOOL shorten_links_check;
     BOOL launch_at_startup_check;
     BOOL mute_audio_check;
-
+    
+    IBOutlet ITSwitch*  launchAtLogin;
+    IBOutlet ITSwitch*   shorten_links;
+    IBOutlet ITSwitch* delete_screenshot_after_upload;
+    IBOutlet ITSwitch* copy_url_to_clipboard;
+    IBOutlet ITSwitch* delete_all_after_upload;
+    
     int screencast_format_index;
     int uploadHost_index;
     NSString *screen_cast_hot_key;
@@ -71,8 +79,10 @@
     BOOL prefChanged;
     NSComboBox *imageHost;
     //
-    
+    int upload_video_host_index;
 //    LoginHelper *loginHelper;
+    
+    LoginWindowController* youtubeWindowController;
 }
 
 @property (retain, nonatomic) IBOutlet NSWindow *window;
@@ -86,6 +96,12 @@
 @property (retain, nonatomic) IBOutlet NSButton *goToUploadFolderBtn;
 @property (retain, nonatomic) IBOutlet NSTextField *verField1;
 @property (retain, nonatomic) IBOutlet NSTextField *storageStatus;
+
+///YOUTUBE VIEW
+@property (retain, nonatomic) IBOutlet NSTextField *youtubeLoginName;
+@property (retain, nonatomic) IBOutlet CustomNSImageView *youtubeUserImage;
+@property (retain, nonatomic) IBOutlet NSButton *youtubeLogoutBtn;
+
 
 // LOGIN VIEW
 
@@ -117,6 +133,8 @@
 @property (nonatomic) BOOL mute_audio_check;
 
 @property (nonatomic) int uploadhost_index;
+@property (nonatomic) int upload_video_host_index;
+
 
 @property (nonatomic) int screencast_format_index;
 @property (nonatomic, retain) NSString *screen_cast_hot_key;
@@ -124,6 +142,8 @@
 
 @property (nonatomic, retain) IBOutlet NSComboBox *screencast_format;
 @property (nonatomic, retain) IBOutlet NSComboBox *imageHost;
+@property (nonatomic, retain) IBOutlet NSComboBox * videoHost;
+
 
 // OTHER
 
@@ -136,5 +156,10 @@
 - (void)toggleUploadsEnabled;
 
 - (IBAction) preferencePageValueChangeNotification:(id)sender;
+
+-(IBAction)onVideoHostSelected:(id)sender;
+- (void) doLogin:(id)sender;
+-(IBAction)onSwitchChange:(id)sender;
+-(void)updateSwitchControl;
 
 @end

@@ -11,7 +11,7 @@
 
 @implementation BoxFile
 
-@synthesize uploadStatus, fileName, fileID, isShared, publicName, folderID, shortURL;
+@synthesize uploadStatus, fileName, fileID, isShared, publicName, folderID, shortURL, isImgur;
 
 - (id)init
 {
@@ -33,6 +33,7 @@
         publicName = [[aDecoder decodeObjectForKey:@"publicName"] retain];
         folderID = [[aDecoder decodeObjectForKey:@"folderID"] retain];
         isShared = [aDecoder decodeBoolForKey:@"isShared"];
+        isImgur = [aDecoder decodeBoolForKey:@"isImgur"];
         if ([aDecoder decodeObjectForKey:@"shortURL"])
             shortURL = [[aDecoder decodeObjectForKey:@"shortURL"] retain];
     }
@@ -47,6 +48,7 @@
     [aCoder encodeObject:publicName forKey:@"publicName"];
     [aCoder encodeObject:folderID forKey:@"folderID"];
     [aCoder encodeBool:isShared forKey:@"isShared"];
+    [aCoder encodeBool:isImgur forKey:@"isImgur"];
     if (shortURL)
         [aCoder encodeObject:shortURL forKey:@"shortURL"];
 }

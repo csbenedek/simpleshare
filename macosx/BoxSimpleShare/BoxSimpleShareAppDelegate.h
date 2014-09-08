@@ -17,6 +17,8 @@
 extern const int MaxHistoryItemCount;
 
 @class MainController;
+@class PopupWindowController;
+@class MenubarController;
 
 @interface BoxSimpleShareAppDelegate : NSObject <NSApplicationDelegate, NSTabViewDelegate, NSTableViewDataSource, NSWindowDelegate, NSToolbarDelegate, GrowlApplicationBridgeDelegate, VideoCaptureControllerDelegate,ImageCaptureControllerDelegate> {
 
@@ -30,7 +32,7 @@ extern const int MaxHistoryItemCount;
     CustomNSView *loginView;
     NSView *mainView;
     NSView *preferenceView;
-    
+    NSView* shorcutView;
     LoadingView *loadingView;
     
     CustomNSView *currentView;
@@ -66,6 +68,10 @@ extern const int MaxHistoryItemCount;
     BOOL shouldSetCaptureCursor;
     
     FeedbackWindowController* feedbackWindowController;
+    
+    PopupWindowController* _popupWindowController;
+    
+    MenubarController* _menubarController;
 @public
     NSTabView *tableView;
     
@@ -80,6 +86,8 @@ extern const int MaxHistoryItemCount;
 @property (retain, nonatomic) IBOutlet CustomNSView *loginView;
 @property (retain, nonatomic) IBOutlet NSView *mainView;
 @property (retain, nonatomic) IBOutlet NSView *preferenceView;
+@property (retain, nonatomic) IBOutlet NSView *shortcutView;
+
 @property (retain, nonatomic) IBOutlet NSPanel *uploadStatusPanel;
 
 @property (retain, nonatomic) NSMutableArray *statusBarImages;
@@ -89,6 +97,9 @@ extern const int MaxHistoryItemCount;
 
 @property (nonatomic, readonly) EventHotKeyRef uploadFileHotkeyRef;
 @property (nonatomic, readonly) EventHotKeyRef videoCaptureHotkeyRef;
+
+@property (nonatomic, retain) PopupWindowController* popupWindowController;
+@property (nonatomic, strong) MenubarController *menubarController;
 
 + (BoxSimpleShareAppDelegate *) sharedDelegate;
 - (void) addAndResizeWindowForView:(NSView *)view;
@@ -115,4 +126,6 @@ extern const int MaxHistoryItemCount;
 - (IBAction) selectAndUploadFile:(id)sender;
 
 -(IBAction)startImageCapture:(id)sender;
+
+-(NSWindow*)statusBarWindow;
 @end

@@ -14,6 +14,6 @@
 }
 
 -(BOOL)checkPermision ;
--(BOOL) getPathToFolder;
+-(BOOL) getPathToDesktopFolder;
 -(BOOL) tellUserTrustDesktopFolder;
 @end
