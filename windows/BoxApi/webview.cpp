@@ -6,8 +6,6 @@
 WebView::WebView(QWidget *parent) :
     QWebView(parent)
 {
-    load(QUrl("https://gmail.com"));
-
     connect(page()->networkAccessManager(),
             SIGNAL(sslErrors(QNetworkReply*, const QList<QSslError> & )),
             this,

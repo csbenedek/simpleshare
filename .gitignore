@@ -1,0 +1,5 @@
+*.pro.user
+*.pro.user.*
+/windows/boxshellext/Thumbs.db
+/windows/boxshellext/*.user
+*.user

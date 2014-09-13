@@ -13,6 +13,7 @@
 #include <QFile>
 #include <QNetworkProxy>
 #include <QMessageBox>
+#include <QPointer>
 
 class QUpFile;
 class UserSession;
@@ -20,9 +21,11 @@ class UserSession;
 class Settings;
 
 class WebLoginForm;
+class SyncHTTP;
 
 #define DEFAULT_UPLOAD_FOLDER       "SimpleShare Uploads"
 #define AUTH_FILE                   "box.net"
+#define AUTH_DO_NOT_USE_MD5
 
 class BxNet: public QObject
 {
@@ -43,6 +46,7 @@ public:
         listing_ok,                 // read_tree
         // FAIL CODES:
         not_logged_in,              // The user did not successfully authenticate on the page provided in the
+        auth_attempts_for_ip_limit_reached,
         get_auth_token_error,       // Generic error for other invalid inputs.
         wrong_auth_token,           // The user is not logged into your application.  Your authentication_token is not valid.
         application_restricted,     // You provided an invalid api_key, or the api_key is restricted from calling this function.
@@ -62,12 +66,22 @@ public:
         login_limit,                // login limit reached
         ssl_error,                  // SSL handshake error
         e_folder_id,                // for read_tree
+        successful_register,        // create_new_user statuses;
+        email_invalid,              // email invalid
+        email_already_registered,   //
+        e_register,
         //applications own status errors
         error_open_file,            //
         network_error,              //
         replay_parssing_error,      // the server replay is not valid and the parsing faield
         upload_canceled,
         //
+        not_a_sso_user,             // SSO results
+        incorrect_signon,
+        sign_on_canceled,
+        sign_on_timeout,
+        //
+        no_memory,
         unknown_status = -1
     };   
 
@@ -83,6 +97,7 @@ public:
     ~BxNet();
 
 public:
+    bool isConnected() const; // TODO: refactor this
     void readProxySettingsFromSystem();
     void enableProxying(const QString& host, const QString& port = "",
                         QNetworkProxy::ProxyType type = QNetworkProxy::HttpProxy,
@@ -105,9 +120,11 @@ public:
     int retryCount() const;
 
     void login();
-    void directLogin(const QString &name,const QString &password);
+    void directLogin(const QString &name, const QString &password);
     void ssoLogin(const QString &name);
-    bool checkAuth();
+    void newUser(const QString& name, QString password);
+    bool isEmailExists(const QString& email);
+    bool checkAuth(bool silent = false);
     void logout();
     QString userName() const;
     QString userId() const;
@@ -133,10 +150,11 @@ public:
 
     int maxUploadFileSizeLimit() const;
 
+    void readUserFromXML(QDomNode& node);
+
     // read box.net folder/files tree
 
-    void readTree(int folderId, bool folders, bool onelevel);
-    QString treeXmlPath() const;
+    void readTree(const QString& folderId, bool folders, bool onelevel, QVariant tag);
     QString linkTo(const QString& folderId) const;
     QString linkTo(const QString& folderId, const QString& fileId) const;
 
@@ -147,6 +165,7 @@ public:
     void clearSettings();
 
 public slots:
+    void checkConnection();
     void getAccountInfo(bool silent = false); // for actual amount and used sizes
 
 protected:
@@ -175,28 +194,33 @@ private:
     void onGetAccountInfoFailed();
     void waitingForAuthToken();
     void openLoginForm(const QString& url);
-
+    void closeLoginForm();
 
     RESPONSE_STATUS responseStatus(QNetworkReply* reply, QDomElement* root = NULL);
     RESPONSE_STATUS responseStatusFromString(const QString& status) const;
-    void initializeStatusMessagesHash();
+    RESPONSE_STATUS responseStatusFromXml(const QString& response, QDomElement* root = NULL) const;
 
-    void parseTree(const QDomElement& root);
-    void parseTreeFromDir(const QString& path);
-    virtual void parseTreeFromFile(const QString& path);
-    void parseFolder(const QDomElement& folder, QString parentId);
-    void parseFile(const QDomElement& file, QString parentId);
+    void initializeStatusMessagesHash();
+    QString statusStringToStatus(RESPONSE_STATUS status);
+
+    void parseTree(const QDomElement& root, const QString& rootId = "0", QVariant tag = QVariant());
+    virtual void parseTreeFromBuff(QByteArray& buff, const QString& rootId = "0", QVariant tag = QVariant());
+    void parseFolder(const QDomElement& folder, QString parentId, QVariant tag);
+    void parseFile(const QDomElement& file, QString parentId, QVariant tag);
+
 
 signals:
     void networkError(QNetworkReply::NetworkError error, const QString& errorString);
-    void authError(BxNet::RESPONSE_STATUS err);
+    void authFailed(BxNet::RESPONSE_STATUS err);
     void authCompleted();
     void disconnected();
+    void connected();
     void changeUserIcon(QPixmap pixmap);
     void addUploadToLog(const QString& fileName, const QString& link);
     void accountInfoCompleted();
-    void createFolderError(BxNet::RESPONSE_STATUS);
+    void createFolderFailed(BxNet::RESPONSE_STATUS);
     void folderCreated(const QString folderName, const QString folderId);
+    void uploadsFolderChanged(const QString folderName);
     void uploadProgressSignal(int progress, qint64 uploaded, qint64 total);
     void startUploadSignal();
     void uploadComplete(const QString& link);
@@ -209,10 +233,12 @@ signals:
     void uploadQueueChanged();
     void fileSizeLimit(const QString& fileName);
     void beginSSO();
+    void newUserSucceded();
+    void newUserFailed(BxNet::RESPONSE_STATUS);
 
-    void treeFolder(QString id, QString parentId, QString name, QString link);
-    void treeFile(QString id, QString parentId, QString name, QString link);
-    void treeFinished();
+    void treeFolder(QString id, QString parentId, QString name, QString link, QVariant tag);
+    void treeFile(QString id, QString parentId, QString name, QString link, QVariant tag);
+    void treeFinished(QVariant tag);
 
 private slots:
     void readTreeReadyRead();
@@ -227,10 +253,12 @@ private slots:
     void shareFileFinished();
     void uploadFinished();   
     void createFolderFinished();
+    void newUserFinished();
     //void createBookmarkFinished();
 
     void requestAuthToken();
-    void onTicketId(const QString& ticketId);
+    void onSSOTicketId(const QString& ticketId);
+    void onSSOError(BxNet::RESPONSE_STATUS status);
 
     void onError(QNetworkReply::NetworkError);
     void onSilentError(QNetworkReply::NetworkError);
@@ -239,19 +267,21 @@ private slots:
     void onUploadError(QNetworkReply::NetworkError error);
     void onShareError(QNetworkReply::NetworkError error);
     void onCreateFolderError(QNetworkReply::NetworkError error);
+    void onNewUserError(QNetworkReply::NetworkError error);
     void onSslError(const QList<QSslError>& errors);
     void onUploadProgress(qint64 uploaded, qint64 total);
     void startUpload();
 
 private:
-    QNetworkAccessManager*  m_networkManager;
-    QNetworkReply*          m_uploadsReply;
+    QPointer<QNetworkAccessManager> m_networkManager;
+    QPointer<QNetworkReply>         m_uploadsReply;
 
     QString     m_apiKey;
     bool        m_https;
 
     bool        m_loadAvatar;
     bool        m_authentificated;
+    bool        m_connected;
     bool        m_checkingAuthToken;
     bool        m_waitingForAuthToken;
     QString     m_authToken;
@@ -270,10 +300,10 @@ private:
     double      m_spaceUsed;
     double      m_maxUploadSize;
 
-    int         m_uploadProgress;
-    QStringList m_uploadingQueue;
-    QUpFile*    m_upf;
-    QString     m_currentUploadingName;
+    int                 m_uploadProgress;
+    QStringList         m_uploadingQueue;
+    QPointer<QUpFile>   m_upf;
+    QString             m_currentUploadingName;
 
     QHash<QString, RESPONSE_STATUS> m_statusMessages;
     // file type icons:
@@ -284,13 +314,14 @@ private:
     quint64         m_total;
     quint64         m_uploaded;
 
-    QString         m_xmlPath;
+    QPointer<QTimer>            m_timer;
+    QString                     m_createFolderHelper;
+    QPointer<WebLoginForm>      m_webLoginForm;
 
-    QTimer*         m_timer;
-
-    QString         m_createFolderHelper;
-
-    WebLoginForm*   m_webLoginForm;
+    // check connection:
+    QPointer<SyncHTTP>          m_syncHttp;
+    bool                        m_isConnected;
+    bool                        m_isSSLErrors;
 };
 
 void fixXMLfile(const QString& path);

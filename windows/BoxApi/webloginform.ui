@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>900</width>
+    <width>1024</width>
     <height>600</height>
    </rect>
   </property>
@@ -25,6 +25,12 @@
    </property>
    <item>
     <widget class="WebView" name="webView" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>800</width>
+       <height>600</height>
+      </size>
+     </property>
      <property name="url" stdset="0">
       <url>
        <string>about:blank</string>

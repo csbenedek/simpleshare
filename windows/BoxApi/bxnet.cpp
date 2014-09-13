@@ -17,7 +17,7 @@
 
 #include "WebLoginForm.h"
 #include "webview.h"
-
+#include "synchttp.h"
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -39,6 +39,8 @@ BxNet::BxNet()
     , m_upf(NULL)
     , m_disconnected(false)
     , m_webLoginForm(NULL)
+    , m_isConnected(false)
+    , m_isSSLErrors(false)
 {
     qDebug() << Q_FUNC_INFO << "BxNet initializing";
 
@@ -50,6 +52,8 @@ BxNet::BxNet()
 
     initializeStatusMessagesHash();
     m_networkManager = new QNetworkAccessManager();
+
+    checkConnection();
 
     loadAuth();
     loadSettings();
@@ -128,6 +132,19 @@ int BxNet::warningWithLog(
     return QMessageBox::warning(parent, title, text, QMessageBox::Ok, QMessageBox::Ok);
 }
 
+QString BxNet::statusStringToStatus(RESPONSE_STATUS status)
+{
+    int index = m_statusMessages.values().lastIndexOf(status);
+    if (index >= 0 && index < m_statusMessages.keys().size())
+    {
+        return m_statusMessages.keys().at(index);
+    }
+    else
+    {
+        return "unknown_status";
+    }
+}
+
 
 void BxNet::initializeStatusMessagesHash()
 {
@@ -167,6 +184,13 @@ void BxNet::initializeStatusMessagesHash()
 
     m_statusMessages.insert("listing_ok",               listing_ok);
     m_statusMessages.insert("e_folder_id",              e_folder_id);
+
+    m_statusMessages.insert("successful_register",      successful_register);
+    m_statusMessages.insert("email_invalid",            email_invalid);
+    m_statusMessages.insert("email_already_registered", email_already_registered);
+    m_statusMessages.insert("e_register",               e_register);
+
+    m_statusMessages.insert("auth_attempts_for_ip_limit_reached", auth_attempts_for_ip_limit_reached);
 }
 
 BxNet::RESPONSE_STATUS BxNet::responseStatusFromString(const QString& status) const
@@ -178,19 +202,11 @@ BxNet::RESPONSE_STATUS BxNet::responseStatusFromString(const QString& status) co
     return m_statusMessages.value(status);
 }
 
-BxNet::RESPONSE_STATUS BxNet::responseStatus(QNetworkReply* reply, QDomElement* root)
+BxNet::RESPONSE_STATUS BxNet::responseStatusFromXml(const QString& response, QDomElement* root) const
 {
-    Q_ASSERT(reply);
-    if (reply == NULL || reply->error() != QNetworkReply::NoError)
-    {
-        return network_error;
-    }
-
     QString errorStr;
     int errorLine;
     int errorColumn;
-
-    QString response(reply->readAll());
 
     RESPONSE_STATUS plainStatus = responseStatusFromString(response);
     if (plainStatus != unknown_status)
@@ -246,6 +262,24 @@ BxNet::RESPONSE_STATUS BxNet::responseStatus(QNetworkReply* reply, QDomElement* 
 
     BxNet::RESPONSE_STATUS result = responseStatusFromString(status);
 
+    return result;
+}
+
+
+BxNet::RESPONSE_STATUS BxNet::responseStatus(QNetworkReply* reply, QDomElement* root)
+{
+    Q_ASSERT(reply);
+    if (reply == NULL || reply->error() != QNetworkReply::NoError)
+    {
+        return network_error;
+    }
+
+    QString response(reply->readAll());
+
+    //qDebug() << response;
+
+    BxNet::RESPONSE_STATUS result = responseStatusFromXml(response, root);
+
     securelyErase(response);
 
     return result;
@@ -259,7 +293,7 @@ void BxNet::closeFile()
         return;
     }
     m_currentUploadingName.clear();
-    if (m_upf)
+    if (!m_upf.isNull())
     {
         qDebug() << Q_FUNC_INFO << "Uploading file closed";
 
@@ -317,7 +351,7 @@ void BxNet::addFileToUploadQueue(const QString& fileName)
 
     if (!isUploading())
     {
-        startUpload(); // delayed start
+        QTimer::singleShot(1000, this, SLOT(startUpload()));
     }
 }
 
@@ -347,7 +381,7 @@ void BxNet::startUpload()
         return;
     }
 
-    if (!isConnectedToNetwork())
+    if (!isConnected())
     {
 
         if (!m_disconnected)
@@ -376,19 +410,16 @@ void BxNet::startUpload()
         m_disconnected = false;
     }
 
-    if (m_upf || isUploading())
+    if (!m_upf.isNull() || isUploading())
     {
         QTimer::singleShot(15000, this, SLOT(startUpload()));
         return;
     }
 
-    emit startUploadSignal();
-
     QString fileName;
 
     do
     {
-
         if (m_uploadingQueue.size() <= 0)
         {
             qDebug() << Q_FUNC_INFO << "trying to startUpload with an empty list";
@@ -469,6 +500,7 @@ void BxNet::startUpload()
         QTimer::singleShot(2000, this, SLOT(startUpload())); // retry other uploads.
         return;
     }
+    emit startUploadSignal();
     emit uploadQueueChanged();
 
     qDebug() << Q_FUNC_INFO << "starting uploading "<< fileName;
@@ -485,6 +517,7 @@ void BxNet::uploadFinished()
     m_uploadProgress = -1; //if it faield or not we stop counting the upload progress
     m_uploadsReply = NULL; //the upload is finished succesfull or not
 
+    const QString currentUploadName = m_currentUploadingName;
     m_currentUploadingName.clear();
     closeFile();
 
@@ -496,64 +529,68 @@ void BxNet::uploadFinished()
         QTimer::singleShot(1000, this, SLOT(startUpload())); // retry upload later
         return;
     }
-    if (reply == NULL
-            || !((reply->error() == QNetworkReply::NoError)
-                 || (reply->error() == 2 && m_uploaded == m_total)))
-    {
-        qDebug() << Q_FUNC_INFO << "reply error: " << reply->error();
-        QTimer::singleShot(1000, this, SLOT(startUpload())); // retry upload later
-        return;
-    }
-
-    //a safe check to be sure nothing bad could happen
-    if (!m_authentificated)
-    {
-        //the code can reach this branch if the user logs out imediatly afeter startup
-        qDebug() << Q_FUNC_INFO << "emit notLoggedIn()";
-        emit notLoggedIn();
-        return;
-    }
-
-    QDomElement root;
-    RESPONSE_STATUS status = responseStatus(reply, &root);
-    qDebug() << Q_FUNC_INFO << "upload finished with status=" << status;
-
-    if (status == wrong_auth_token)
-    {
-        m_authentificated = false; // something wrong with auth_token
-    }
 
     if (reply->error() == 5)
     {
-        status = upload_canceled;
+        //emit uploadFailed(currentUploadName, upload_canceled);
     }
-    if (reply->error() == 2 && m_uploaded == m_total)
+    else
     {
-        qDebug() << Q_FUNC_INFO << "Server closed connection (error #2), but file was uploaded";
-
-        status = upload_ok;
-    }
-
-    if (status == upload_ok)
-    {
-        QDomElement element = root.firstChildElement("files");
-        element = element.firstChildElement("file");
-        QString fileName = element.attribute("file_name");
-        QString id = element.attribute("id");
-
-        //request sharing
-        if (!id.isEmpty() && !fileName.isEmpty())
+        if (!((reply->error() == QNetworkReply::NoError)
+                     || (reply->error() == 2 && m_uploaded == m_total)))
         {
-            shareFile(id, fileName);
-            emit uploadComplete(fileName);
+            qDebug() << Q_FUNC_INFO << "reply error: " << reply->error();
+            QTimer::singleShot(1000, this, SLOT(startUpload())); // retry upload later
+            return;
         }
 
-        return;
+        //a safe check to be sure nothing bad could happen
+        if (!m_authentificated)
+        {
+            //the code can reach this branch if the user logs out imediatly afeter startup
+            qDebug() << Q_FUNC_INFO << "emit notLoggedIn()";
+            emit notLoggedIn();
+            return;
+        }
+
+
+        QDomElement root;
+        RESPONSE_STATUS status = responseStatus(reply, &root);
+        qDebug() << Q_FUNC_INFO << "upload finished with status=" << statusStringToStatus(status);
+
+        if (status == wrong_auth_token)
+        {
+            m_authentificated = false; // something wrong with auth_token
+        }
+
+        if (reply->error() == 2 && m_uploaded == m_total)
+        {
+            qDebug() << Q_FUNC_INFO << "Server closed connection (error #2), but file was uploaded";
+
+            status = upload_ok;
+        }
+
+        if (status == upload_ok)
+        {
+            QDomElement element = root.firstChildElement("files");
+            element = element.firstChildElement("file");
+            QString fileName = element.attribute("file_name");
+            QString id = element.attribute("id");
+
+            //request sharing
+            if (!id.isEmpty() && !fileName.isEmpty())
+            {
+                shareFile(id, fileName);
+                emit uploadComplete(fileName);
+            }
+
+            return;
+        }
+
+        emit uploadFailed(currentUpload(), status);
     }
 
-    emit uploadFailed(currentUpload(), status);
     qDebug() << Q_FUNC_INFO << "trying to start uploading again";
-
     QTimer::singleShot(500, this, SLOT(startUpload())); // upload next
 }
 
@@ -600,17 +637,19 @@ void BxNet::shareFileFinished()
     if (reply == NULL)
     {
         qDebug() << Q_FUNC_INFO << "reply is NULL";
+        emit shareFailed(network_error);
         return;
     }
     if (reply == NULL || reply->error() != QNetworkReply::NoError)
     {
         qDebug() << Q_FUNC_INFO << "reply error: " << reply->error();
+        emit shareFailed(network_error);
         return;
     }
 
     QDomElement root;
     RESPONSE_STATUS status = responseStatus(reply, &root);
-    qDebug() << Q_FUNC_INFO  << "sharing finished with status=" << status;
+    qDebug() << Q_FUNC_INFO  << "sharing finished with status=" << statusStringToStatus(status);
 
     switch(status)
     {
@@ -661,13 +700,13 @@ void BxNet::shareFileFinished()
 }
 
 void BxNet::onAuthError(QNetworkReply::NetworkError error)
-{
+{   
     m_ticket.clear();
     m_maxUploadSize = 0;
 
     onError(error);
 
-    emit authError(network_error);
+    emit authFailed(network_error);
 }
 
 void BxNet::onUploadError(QNetworkReply::NetworkError error)
@@ -696,11 +735,16 @@ void BxNet::onCreateFolderError(QNetworkReply::NetworkError error)
 
     onError(error);
 
-    emit createFolderError(network_error);
+    emit createFolderFailed(network_error);
 }
 
 void BxNet::onError(QNetworkReply::NetworkError error)
 {
+    if (error != QNetworkReply::NoError)
+    {
+        checkConnection();
+    }
+
     if (m_checkingAuthToken)
     {
         m_checkingAuthToken = false;
@@ -708,7 +752,7 @@ void BxNet::onError(QNetworkReply::NetworkError error)
 
     // if error == 5 then upload was stopped. this is not an error
     if (error != 5)
-    {
+    {       
         QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
         Q_ASSERT(reply);
         const QString errorString = reply ? reply->errorString() : "empty reply";
@@ -726,6 +770,11 @@ void BxNet::onError(QNetworkReply::NetworkError error)
 
 void BxNet::onSilentError(QNetworkReply::NetworkError error)
 {
+    if (error != QNetworkReply::NoError)
+    {
+        checkConnection();
+    }
+
     if (m_checkingAuthToken)
     {
         m_checkingAuthToken = false;
@@ -757,6 +806,7 @@ void BxNet::createFolder(QString folderName, const QString& parentId, const QStr
         m_uploadFolderId = "0";
         saveSettings();
         emit folderCreated(m_uploadFolder, m_uploadFolderId);
+
         return;
     }
 
@@ -805,11 +855,13 @@ void BxNet::createFolderFinished()
     if (reply == NULL)
     {
         qDebug() << Q_FUNC_INFO << "reply is NULL";
+        emit createFolderFailed(network_error);
         return;
     }
     if (reply == NULL || reply->error() != QNetworkReply::NoError)
     {
         qDebug() << Q_FUNC_INFO << "reply error: " << reply->error();
+        emit createFolderFailed(network_error);
         return;
     }
 
@@ -824,7 +876,7 @@ void BxNet::createFolderFinished()
 
     QDomElement root;
     RESPONSE_STATUS status = responseStatus(reply, &root);
-    qDebug() << Q_FUNC_INFO << "create folder finished with status=" << status;
+    qDebug() << Q_FUNC_INFO << "create folder finished with status=" << statusStringToStatus(status);
 
     switch(status)
     {
@@ -858,7 +910,7 @@ void BxNet::createFolderFinished()
         }
     default:
         {
-            emit createFolderError(status);
+            emit createFolderFailed(status);
             break;
         }
     }
@@ -999,7 +1051,7 @@ void BxNet::onSslError(const QList<QSslError> & errors)
 
             if (firstTime)
             {
-                emit authError(ssl_error);
+                emit authFailed(ssl_error);
                 firstTime = false;
             }
         }
@@ -1087,11 +1139,13 @@ void BxNet::getTicketFinished()
     if (reply == NULL)
     {
         qDebug() << Q_FUNC_INFO << "reply is NULL";
+        emit authFailed(network_error);
         return;
     }
     if (reply == NULL || reply->error() != QNetworkReply::NoError)
     {
         qDebug() << Q_FUNC_INFO << "reply error: " << reply->error();
+        emit authFailed(network_error);
         return;
     }
 
@@ -1104,11 +1158,11 @@ void BxNet::getTicketFinished()
     QDomElement root;
     RESPONSE_STATUS status = responseStatus(reply, &root);
 
-    qDebug() << Q_FUNC_INFO << "get ticket with status=" << status;
+    qDebug() << Q_FUNC_INFO << "get ticket with status=" << statusStringToStatus(status);
 
     if(status != get_ticket_ok)
     {
-        emit authError(replay_parssing_error);
+        emit authFailed(replay_parssing_error);
         return;
     }
 
@@ -1161,28 +1215,57 @@ void BxNet::useTicketToLogin(const QString &ticket)
 
 void BxNet::openLoginForm(const QString& url)
 {
-    emit beginSSO();
+    //emit beginSSO();
 
     if (m_webLoginForm == NULL)
     {
         m_webLoginForm = new WebLoginForm(NULL);
-        connect(m_webLoginForm, SIGNAL(onTicketId(QString)), this, SLOT(onTicketId(QString)));
     }
 
-    centrateWidget(m_webLoginForm);
-    m_webLoginForm->goToUrl(url);
-}
-
-void BxNet::onTicketId(const QString& ticketId)
-{
-    Q_ASSERT(m_webLoginForm);
     if (m_webLoginForm)
     {
-        m_webLoginForm->close();
+        connect(m_webLoginForm, SIGNAL(onSSOTicketId(QString)), this, SLOT(onSSOTicketId(QString)));
+        connect(m_webLoginForm, SIGNAL(onSSOError(BxNet::RESPONSE_STATUS)), this, SLOT(onSSOError(BxNet::RESPONSE_STATUS)));
+        connect(m_webLoginForm, SIGNAL(beginSSO()), this, SIGNAL(beginSSO()));
+
+        centrateWidget(m_webLoginForm);
+        m_webLoginForm->goToUrl(url);
     }
+    else
+    {
+        onSSOError(BxNet::no_memory);
+    }
+}
+
+void BxNet::closeLoginForm()
+{
+    if (m_webLoginForm)
+    {
+        m_webLoginForm->hide();
+        m_webLoginForm->deleteLater();
+        m_webLoginForm = NULL;
+    }
+}
+
+void BxNet::onSSOTicketId(const QString& ticketId)
+{
+    qDebug() << Q_FUNC_INFO << ticketId;
+
+    closeLoginForm();
 
     m_ticket = ticketId;
     requestAuthToken();
+}
+
+void BxNet::onSSOError(BxNet::RESPONSE_STATUS status)
+{
+    qDebug() << Q_FUNC_INFO << "status=" << status;
+
+    closeLoginForm();
+
+    m_ticket = "";
+
+    emit authFailed(status);
 }
 
 
@@ -1202,37 +1285,30 @@ void BxNet::directLogin(const QString& name, const QString& password)
     RequestType type = RequestXML; //Using XML, becoause REST can't process emails with "+" character
     QNetworkReply* reply = NULL;
 
-    if (type == RequestRest)
+    const QString encodedPass =
+#ifdef AUTH_DO_NOT_USE_MD5
+    password;
+#else
+    QString(QCryptographicHash::hash((name + password).toLatin1(), QCryptographicHash::Md5).toHex().constData());
+#endif
+
+    Q_ASSERT(type != RequestRest);
+    if (type == RequestXML)
     {
-        const QString encodedName = QString(QUrl::toPercentEncoding(name, "@", "+").constData());
-        const QString encodedPass = QString(QCryptographicHash::hash(
-                    (name + password).toLatin1()
-                    , QCryptographicHash::Md5).toHex().constData());
-
-        const QString request = command(QStringList()
-                                    << apiKeyParam()
-                                    << "action=authorization"
-                                    << "login=" + encodedName
-                                    << "password=" + encodedPass
-                                    << "method=md5", type);
-        const QString requestUrl = apiUrl(true, type);
-
-        reply = m_networkManager->get(QNetworkRequest(QUrl(requestUrl + "?" + request)));
-    }
-    else if (type == RequestXML)
-    {
-        const QString encodedPass = QString(QCryptographicHash::hash(
-                    (name + password).toLatin1()
-                    , QCryptographicHash::Md5).toHex().constData());
-
         const QString request = command(QStringList()
                                     << apiKeyParam()
                                     << "action=authorization"
                                     << "login=" + name
                                     << "password=" + encodedPass
+#ifdef AUTH_DO_NOT_USE_MD5
+                                    << "method=plain", type);
+#else
                                     << "method=md5", type);
+#endif
+
         const QString requestUrl = apiUrl(true, type);
         reply = m_networkManager->post(QNetworkRequest(QUrl(requestUrl)), request.toUtf8());
+
     }
 
     qDebug() << Q_FUNC_INFO << "direct login " << name;
@@ -1254,55 +1330,29 @@ void BxNet::directLoginFinished()
     if (reply == NULL)
     {
         qDebug() << Q_FUNC_INFO << "reply is NULL";
+        emit authFailed(network_error);
         return;
     }
     if (reply == NULL || reply->error() != QNetworkReply::NoError)
     {
         qDebug() << Q_FUNC_INFO << "reply error: " << reply->error();
+        //emit authFailed(network_error);
         return;
     }
 
     QDomElement root;
     RESPONSE_STATUS status = responseStatus(reply, &root);
 
-    qDebug() << Q_FUNC_INFO << "direct login finished with status=" << status;
+    qDebug() << Q_FUNC_INFO << "direct login finished with status=" << statusStringToStatus(status);
 
     if(status != logged)
     {
-        emit authError(status);
+        emit authFailed(status);
         return;
     }
 
     QDomNode child = root.firstChild().nextSibling();
-    QDomElement element = child.toElement();
-    m_authToken = element.text();
-
-    child   = child.nextSibling();
-    element = child.toElement();
-    //this is the user element, we get it,s elements
-    QDomElement elemUser;
-    elemUser = element.firstChildElement("login");
-    m_login  = elemUser.text();
-
-    elemUser = element.firstChildElement("email");
-    m_email  = elemUser.text();
-
-    //elemUser   = element.firstChildElement("access_id");
-    //m_accessId = elemUser.text();
-
-    elemUser = element.firstChildElement("user_id");
-    m_userId = elemUser.text();
-
-    elemUser      = element.firstChildElement("space_amount");
-    m_spaceAmount = elemUser.text().toDouble();
-
-    elemUser    = element.firstChildElement("space_used");
-    m_spaceUsed = elemUser.text().toDouble();
-
-    elemUser = element.firstChildElement("max_upload_size");
-    m_maxUploadSize = elemUser.text().toDouble();
-
-    m_authentificated = true;
+    readUserFromXML(child);
 
     emit accountInfoCompleted();
     onFinishAuth();
@@ -1357,18 +1407,20 @@ void BxNet::getAccountInfoFinished()
     if (reply == NULL)
     {
         qDebug() << Q_FUNC_INFO << "reply is NULL";
+        emit authFailed(network_error);
         return;
     }
     if (reply == NULL || reply->error() != QNetworkReply::NoError)
     {
         qDebug() << Q_FUNC_INFO << "reply error: " << reply->error();
+        emit authFailed(network_error);
         return;
     }
 
     QDomElement root;
     RESPONSE_STATUS status = responseStatus(reply, &root);
 
-    qDebug() << Q_FUNC_INFO << "get account info finished with status=" << status;
+    qDebug() << Q_FUNC_INFO << "get account info finished with status=" << statusStringToStatus(status);
 
     if (status != get_account_info_ok)
     {
@@ -1379,7 +1431,7 @@ void BxNet::getAccountInfoFinished()
         }
         else
         {
-            emit authError(status);
+            emit authFailed(status);
         }
         return;
     }
@@ -1431,7 +1483,7 @@ void BxNet::getAccountInfoFinishedSilent()
     QDomElement root;
     RESPONSE_STATUS status = responseStatus(reply, &root);
 
-    qDebug() << Q_FUNC_INFO << "get account info finished with status=" << status;
+    qDebug() << Q_FUNC_INFO << "get account info finished with status=" << statusStringToStatus(status);
 
     if (status == get_account_info_ok)
     {
@@ -1494,7 +1546,7 @@ void BxNet::getUserInfoFinished()
     QDomElement root;
     RESPONSE_STATUS status = responseStatus(reply, &root);
 
-    qDebug() << Q_FUNC_INFO << "get user info finished with status=" << status;
+    qDebug() << Q_FUNC_INFO << "get user info finished with status=" << statusStringToStatus(status);
 
     if (status != s_get_user_info)
     {
@@ -1540,18 +1592,20 @@ void BxNet::getAuthTokenFinished()
     if (reply == NULL)
     {
         qDebug() << Q_FUNC_INFO << "reply is NULL";
+        emit authFailed(network_error);
         return;
     }
     if (reply == NULL || reply->error() != QNetworkReply::NoError)
     {
         qDebug() << Q_FUNC_INFO << "reply error: " << reply->error();
+        emit authFailed(network_error);
         return;
     }
 
     QDomElement root;
     RESPONSE_STATUS status = responseStatus(reply, &root);
 
-    qDebug() << Q_FUNC_INFO << "get auth token finished with status=" << status;
+    qDebug() << Q_FUNC_INFO << "get auth token finished with status=" << statusStringToStatus(status);
 
     if (m_waitingForAuthToken && (status == not_logged_in))
     {
@@ -1562,38 +1616,12 @@ void BxNet::getAuthTokenFinished()
 
     if (status != get_auth_token_ok)
     {
-        emit authError(status);
+        emit authFailed(status);
         return;
     }    
 
     QDomNode child = root.firstChild().nextSibling();
-    QDomElement element = child.toElement();
-    m_authToken         = element.text();
-
-    child   = child.nextSibling();
-    element = child.toElement();
-    //this is the user element, we get it,s elements
-    QDomElement elemUser;
-    elemUser = element.firstChildElement("login");
-    m_login  = elemUser.text();
-
-    elemUser = element.firstChildElement("email");
-    m_email  = elemUser.text();
-
-    //elemUser   = element.firstChildElement("access_id");
-    //m_accessId = elemUser.text();
-
-    elemUser = element.firstChildElement("user_id");
-    m_userId = elemUser.text();
-
-    elemUser      = element.firstChildElement("space_amount");
-    m_spaceAmount = elemUser.text().toDouble();
-
-    elemUser    = element.firstChildElement("space_used");
-    m_spaceUsed = elemUser.text().toDouble();
-
-    elemUser        = element.firstChildElement("max_upload_size");
-    m_maxUploadSize = elemUser.text().toDouble();
+    readUserFromXML(child);
 
     securelyErase(m_ticket);
     m_authentificated = true;
@@ -1713,8 +1741,7 @@ void BxNet::onFinishAuth()
 }
 
 void BxNet::setUploadFolder(const QString& folderName)
-{
-
+{   
     if (m_uploadFolder != folderName)
     {
         if (folderName.isEmpty() || folderName == "\\" || folderName == "/")
@@ -1730,6 +1757,8 @@ void BxNet::setUploadFolder(const QString& folderName)
         {
             createFolder(m_uploadFolder);
         }
+
+        emit uploadsFolderChanged(folderName);
     }
 }
 
@@ -1796,6 +1825,43 @@ bool BxNet::authentificated() const
     return m_authentificated;
 }
 
+bool BxNet::isConnected() const
+{
+    return m_isConnected;
+}
+
+void BxNet::checkConnection()
+{
+    m_isConnected = true;
+    return;
+
+    if (m_syncHttp.isNull())
+    {
+        m_syncHttp = new SyncHTTP("www.box.com");
+    }
+
+    QBuffer getOutput;
+    bool result = m_syncHttp->syncGet("/home", &getOutput);
+    //qDebug() << getOutput.data();
+    result = result && getOutput.size() > 0;
+
+    if (result != m_isConnected)
+    {
+        m_isConnected = result;
+        if (m_isConnected)
+        {
+            emit connected();
+        }
+        else
+        {
+            emit disconnected();
+        }
+    }
+
+    QTimer::singleShot(5000, this, SLOT(checkConnection()));
+}
+
+
 QString BxNet::uploadDirectoryLink() const
 {
     if (!authentificated())
@@ -1821,18 +1887,21 @@ double BxNet::spaceUsed() const
     return m_spaceUsed;
 }
 
-bool BxNet::checkAuth()
+bool BxNet::checkAuth(bool silent)
 {
     if (m_authentificated)
     {
         qDebug() << Q_FUNC_INFO << "call checkAuth but already authentificated";
     }
 
-    if (!m_checkingAuthToken)
+    if (!m_authToken.isEmpty())
     {
         // check if authToken valid.
-        m_checkingAuthToken = true;
-        getAccountInfo();
+        if (!m_checkingAuthToken)
+        {
+            m_checkingAuthToken = true;
+            getAccountInfo(silent);
+        }
         return true;
     }
     return false;
@@ -2228,20 +2297,18 @@ QString BxNet::uploadingQueueItem(int index) const
 
 void BxNet::stopCurrentUpload()
 {
-    if (m_uploadsReply)
+    if (!m_uploadsReply.isNull())
     {
-        m_uploadsReply->abort();
-        m_uploadsReply = NULL;
-        //closeFile();
+        emit uploadFailed(m_currentUploadingName, BxNet::upload_canceled);
 
-        if (m_uploadingQueue.size() > 0)
-        {
-            startUpload(); //force next upload
-        }
-        else
-        {
-            emit uploadQueueChanged();
-        }
+        qDebug() << Q_FUNC_INFO << "stopping upload " << m_currentUploadingName;
+        m_uploadsReply->abort();
+        //m_uploadsReply = NULL;
+        //closeFile();
+        //if (m_uploadingQueue.size() > 0)
+        //{
+//            QTimer::singleShot(2000, this, SLOT(startUpload()));
+//        }
     }
 }
 
@@ -2314,24 +2381,19 @@ int BxNet::maxUploadFileSizeLimit() const
 
 /////////////////////////////////
 
-QString BxNet::treeXmlPath() const
+void BxNet::readTree(const QString& folderId, bool folders, bool onelevel, QVariant tag)
 {
-    return m_xmlPath;
-}
+    qDebug() << Q_FUNC_INFO << "reading tree for " << folderId;
 
-void BxNet::readTree(int folderId, bool folders, bool onelevel)
-{
-    qDebug() << Q_FUNC_INFO << "reading tree";
-
-    m_xmlPath = "";
-    QTemporaryFile* file = new QTemporaryFile(QDir::tempPath() + QDir::separator() + "boxtree");
-    if (file && file->open())
+    QByteArray* data = new QByteArray;
+    Q_ASSERT(data);
+    if (data)
     {
         QStringList commandArgs;
         commandArgs << apiKeyParam()
                     << "action=get_account_tree"
                     << "auth_token=" + m_authToken
-                    << "folder_id=" +QString::number(folderId)
+                    << "folder_id=" + folderId
                     << "params[]=simple";
         if (folders)
         {
@@ -2345,21 +2407,21 @@ void BxNet::readTree(int folderId, bool folders, bool onelevel)
         QString request = command(commandArgs, RequestRest);
         const QString requestUrl = apiUrl(m_https, RequestRest);
 
-        QNetworkReply* reply = m_networkManager->post(QNetworkRequest(QUrl(requestUrl)), request.toUtf8());
+        QNetworkReply* reply = m_networkManager->get(QNetworkRequest(QUrl(requestUrl + "?" + request)));
         securelyErase(request);
 
         Q_ASSERT(reply);
         if (reply != NULL)
         {
-            reply->setProperty("file", reinterpret_cast<quint64>(file));
+            reply->setProperty("data", reinterpret_cast<quint64>(data));
+            reply->setProperty("folderId", folderId);
+            reply->setProperty("tag", tag);
 
             connect(reply, SIGNAL(readyRead()), this, SLOT(readTreeReadyRead()));
             connect(reply, SIGNAL(finished()), this, SLOT(readTreeFinished()));
             connect(reply, SIGNAL(sslErrors(const QList<QSslError>&)), this, SLOT(onSslError(const QList<QSslError>&)));
             connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(onReadTreeError(QNetworkReply::NetworkError)));
         }
-
-        m_xmlPath = file->fileName();
     }
 }
 
@@ -2377,16 +2439,14 @@ void BxNet::readTreeReadyRead()
         qDebug() << Q_FUNC_INFO << "reply error: " << reply->error();
         return;
     }
-    QFile* file = reinterpret_cast<QFile*>(reply->property("file").toLongLong());
-    if (file == NULL)
+    QByteArray* data = reinterpret_cast<QByteArray*>(reply->property("data").toLongLong());
+    if (data == NULL)
     {
-        qDebug() << Q_FUNC_INFO << "reply without file";
+        qDebug() << Q_FUNC_INFO << "reply without data";
         return;
     }
 
-    size_t size = file->write(reply->readAll());
-
-    qDebug() << size << " bytes writed to" << file->fileName();
+    data->append(reply->readAll());
 }
 
 void BxNet::readTreeFinished()
@@ -2403,14 +2463,14 @@ void BxNet::readTreeFinished()
         qDebug() << Q_FUNC_INFO << "reply error: " << reply->error();
         return;
     }
-    QFile* file = reinterpret_cast<QFile*>(reply->property("file").toLongLong());
-    if (file == NULL)
+    QByteArray* data = reinterpret_cast<QByteArray*>(reply->property("data").toLongLong());
+    if (data == NULL)
     {
-        qDebug() << Q_FUNC_INFO << "reply without file";
+        qDebug() << Q_FUNC_INFO << "reply without data";
         return;
     }
-
-    file->seek(0);
+    QString folderId = reply->property("folderId").toString();
+    QVariant tag = reply->property("tag");
 
     // Parse file:
 
@@ -2419,7 +2479,7 @@ void BxNet::readTreeFinished()
     int errorColumn;
 
     QDomDocument doc;
-    if (!doc.setContent(file, false, &errorStr, &errorLine, &errorColumn))
+    if (!doc.setContent(*data, false, &errorStr, &errorLine, &errorColumn))
     {
         qDebug() << Q_FUNC_INFO << "XML Error: Parse error at line " << errorLine << ", " << "column " << errorColumn << ": " << qPrintable(errorStr);
         return;
@@ -2450,7 +2510,7 @@ void BxNet::readTreeFinished()
 
     RESPONSE_STATUS status = responseStatusFromString(statusStr);
 
-    qDebug() << Q_FUNC_INFO << "reading tree finished with status=" << status;
+    qDebug() << Q_FUNC_INFO << "reading tree finished with status=" << statusStringToStatus(status);
 
     if(status != listing_ok)
     {
@@ -2459,13 +2519,10 @@ void BxNet::readTreeFinished()
         return;
     }
 
-    parseTree(root);
+    parseTree(root, folderId, tag);
 
-    QFileInfo info(file->fileName());
-    file->close();
-    file->deleteLater();
-
-    info.dir().remove(info.fileName());
+    emit treeFinished(tag);
+    delete data;
 }
 
 void BxNet::onReadTreeError(QNetworkReply::NetworkError error)
@@ -2473,7 +2530,7 @@ void BxNet::onReadTreeError(QNetworkReply::NetworkError error)
     onSilentError(error);
 }
 
-void BxNet::parseTree(const QDomElement& root)
+void BxNet::parseTree(const QDomElement& root, const QString& rootId, QVariant tag)
 {
     qDebug() << "parsing Tree. root name=" << root.tagName();
 
@@ -2490,128 +2547,34 @@ void BxNet::parseTree(const QDomElement& root)
             {
                 // zipped base64 binary data.... this is SPARTA!
 
-                QByteArray xcode("");
-                xcode.append(element.text().toLatin1());
-
-                QTemporaryFile buffer(QDir::tempPath() + QDir::separator() + "boxtreebuff");
-                if (!buffer.open())
-                {
-                    return;
-                }
-                buffer.write(QByteArray::fromBase64(xcode));
-                buffer.seek(0);
+                QByteArray buff = QByteArray::fromBase64(element.text().toLatin1());
+                QBuffer buffer(&buff);
 
                 QZip::QZipReader unzip(&buffer);
 
-                QTemporaryFile file(QDir::tempPath() + QDir::separator() + "unzip");
-                if (!file.open())
-                {
-                    return;
-                }
-                const QString fileName = QFileInfo(file.fileName()).fileName();
+                QByteArray uncompressed = unzip.fileData(unzip.entryPathAt(0));
 
-                const QString tempDir = QDir::tempPath();
-                QDir tmp(tempDir);
-
-                const QString destDir = tmp.path() + QDir::separator() + "box" + fileName;
-                file.close();
-                tmp.remove(fileName);
-                deletePath(destDir);
-                tmp.mkpath(destDir);
-
-                unzip.extractAll(destDir);
-
-                tmp.remove(buffer.fileName());
-
-                // process destDir...
-
-                parseTreeFromDir(destDir);
-
-                deletePath(destDir);
-                tmp.rmdir(destDir);
-
+                parseTreeFromBuff(uncompressed, rootId, tag);
             }
         }
     }
 }
 
-void BxNet::parseTreeFromDir(const QString& path)
+
+void BxNet::parseTreeFromBuff(QByteArray& buff, const QString& rootId, QVariant tag)
 {
-    if (path.isEmpty())
-    {
-        return;
-    }
+    // fixXML
+    buff.insert(0, "<?xml version='1.0' encoding='UTF-8' ?><root>");
+    buff.append("</root>");
 
-
-    QDir dir(path);
-
-    if (dir.exists())
-    {
-        dir.setFilter(QDir::NoDotAndDotDot | QDir::Files | QDir::Dirs);
-        foreach(const QFileInfo& fileInfo, dir.entryInfoList())
-        {
-            if (fileInfo.isDir())
-            {
-                parseTreeFromDir(fileInfo.absoluteFilePath());
-            }
-            else
-            {
-                parseTreeFromFile(fileInfo.filePath());
-            }
-        }
-    }
-}
-
-void fixXMLfile(const QString& path)
-{
-    QFileInfo info(path);
-    QTemporaryFile tmpFile(info.dir().path() + QDir::separator() + "xml");
-    QString tmpFileName;
-    if (tmpFile.open())
-    {
-        tmpFileName = tmpFile.fileName();
-        tmpFile.write("<?xml version='1.0' encoding='UTF-8' ?><root>");
-
-        QFile file(path);
-        if (file.open(QIODevice::ReadOnly))
-        {
-            while(true)
-            {
-                char buff[4096];
-                size_t sz = file.read(buff, sizeof(buff));
-                if (sz > 0)
-                {
-                    tmpFile.write(buff, sz);
-                }
-                else
-                {
-                    break;
-                }
-            }
-
-            file.close();
-        }
-        tmpFile.write("</root>");
-        tmpFile.close();
-    }
-
-    renameFile(tmpFileName, info.filePath());
-
-}
-
-void BxNet::parseTreeFromFile(const QString& path)
-{
-    fixXMLfile(path);
-
-    QFile file(path);
-    qDebug() << "processing " << path;
+    qDebug() << "processing tree xml buffer ....";
 
     QString errorStr;
     int errorLine;
     int errorColumn;
 
     QDomDocument doc;
-    if (!doc.setContent(&file, false, &errorStr, &errorLine, &errorColumn))
+    if (!doc.setContent(buff, false, &errorStr, &errorLine, &errorColumn))
     {
         qDebug() << Q_FUNC_INFO << "XML Error: Parse error at line " << errorLine << ", " << "column " << errorColumn << ": " << qPrintable(errorStr);
         return;
@@ -2627,13 +2590,11 @@ void BxNet::parseTreeFromFile(const QString& path)
     QDomElement folder = root.firstChildElement("folder");
     if (!folder.isNull())
     {
-        parseFolder(folder, "0");
+        parseFolder(folder, rootId, tag);
     }
-
-    emit treeFinished();
 }
 
-void BxNet::parseFolder(const QDomElement& folder, QString parentId)
+void BxNet::parseFolder(const QDomElement& folder, QString parentId, QVariant tag)
 {   
     if (folder.isNull())
     {
@@ -2641,9 +2602,12 @@ void BxNet::parseFolder(const QDomElement& folder, QString parentId)
     }
 
     const QString id = folder.attribute("id");
-    //qDebug() << "folderName = " << folder.attribute("name");
-    emit treeFolder(id, parentId, folder.attribute("name"), "");
 
+    if (id != parentId) // TODO: can be rewrited
+    {
+        //qDebug() << "folderName = " << folder.attribute("name") << "id = " << id << " parentId = " << parentId;
+        emit treeFolder(id, parentId, folder.attribute("name"), "", tag);
+    }
 
     for(int i = 0; i < folder.childNodes().count(); ++i)
     {
@@ -2656,7 +2620,7 @@ void BxNet::parseFolder(const QDomElement& folder, QString parentId)
                 QDomElement f = element.childNodes().at(j).toElement();
                 if (f.tagName() == "folder")
                 {
-                    parseFolder(f, id);
+                    parseFolder(f, id, tag);
                 }
             }
         }
@@ -2668,7 +2632,7 @@ void BxNet::parseFolder(const QDomElement& folder, QString parentId)
                 QDomElement f = element.childNodes().at(j).toElement();
                 if (f.tagName() == "file")
                 {
-                    parseFile(f, id);
+                    parseFile(f, id, tag);
                 }
             }
         }
@@ -2676,7 +2640,7 @@ void BxNet::parseFolder(const QDomElement& folder, QString parentId)
 
 }
 
-void BxNet::parseFile(const QDomElement& file, QString parentId)
+void BxNet::parseFile(const QDomElement& file, QString parentId, QVariant tag)
 {
     if (file.isNull())
     {
@@ -2684,7 +2648,7 @@ void BxNet::parseFile(const QDomElement& file, QString parentId)
     }
 
     //qDebug() << "fileName = " << file.attribute("file_name");
-    emit treeFile(file.attribute("id"), parentId, file.attribute("file_name"), "");
+    emit treeFile(file.attribute("id"), parentId, file.attribute("file_name"), "", tag);
 }
 
 QString BxNet::linkTo(const QString& folderId) const
@@ -2703,4 +2667,130 @@ QString BxNet::linkTo(const QString& folderId) const
 QString BxNet::linkTo(const QString& folderId, const QString& fileId) const
 {
     return linkTo(folderId) + "/1/f_" + fileId;
+}
+
+void BxNet::newUser(const QString& name, QString password)
+{
+    QString request = command(QStringList()
+                                        << "action=register_new_user"
+                                        << apiKeyParam()
+                                        << "login="+name
+                                        << "password="+password);
+    securelyErase(password);
+    const QString requestUrl = apiUrl(true, RequestRest);
+
+    qDebug() << Q_FUNC_INFO << "creating new user";
+
+    QString url = requestUrl + "?" + request;
+
+    securelyErase(request);
+
+    QNetworkReply* reply = m_networkManager->get(QNetworkRequest(QUrl(url)));
+    securelyErase(url);
+
+    connect(reply, SIGNAL(finished()), this, SLOT(newUserFinished()));
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(onNewUserError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(sslErrors(const QList<QSslError>&)), this, SLOT(onSslError(const QList<QSslError>&)));
+
+}
+
+void BxNet::onNewUserError(QNetworkReply::NetworkError error)
+{
+    onError(error);
+    emit newUserFailed(network_error);
+}
+
+void BxNet::newUserFinished()
+{
+    QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
+    Q_ASSERT(reply);
+    if (reply == NULL)
+    {
+        qDebug() << Q_FUNC_INFO << "reply is NULL";
+        emit newUserFailed(network_error);
+        return;
+    }
+    if (reply == NULL
+            || !((reply->error() == QNetworkReply::NoError)
+                 || (reply->error() == 2 && m_uploaded == m_total)))
+    {
+        qDebug() << Q_FUNC_INFO << "reply error: " << reply->error();
+        emit newUserFailed(network_error);
+        return;
+    }
+
+    QDomElement root;
+    RESPONSE_STATUS status = responseStatus(reply, &root);
+    qDebug() << Q_FUNC_INFO << "create new user finished with status=" << statusStringToStatus(status);
+
+    if (status == successful_register)
+    {
+        QDomNode child = root.firstChild().nextSibling();
+        readUserFromXML(child);
+
+        emit newUserSucceded();
+        onFinishAuth();
+        return;
+    }
+
+    emit newUserFailed(status);
+}
+
+bool BxNet::isEmailExists(const QString& email)
+{
+    QString request = command(QStringList()
+                                        << "action=verify_registration_email"
+                                        << apiKeyParam()
+                                        << "login="+email);
+
+    QString url = "/api/1.0/rest?" + request;
+
+    SyncHTTP http("www.box.com");
+
+    QBuffer reply;
+    bool result = http.syncGet(url, &reply);
+    if (!result)
+    {
+        return unknown_status;
+    }
+
+    QDomElement root;
+    RESPONSE_STATUS status = responseStatusFromXml(reply.buffer(), &root);
+
+    //qDebug() << Q_FUNC_INFO << "email_already_registered finished with status=" << statusStringToStatus(status);
+
+    return status == email_already_registered;
+}
+
+
+void BxNet::readUserFromXML(QDomNode& node)
+{
+    QDomElement element = node.toElement();
+    m_authToken         = element.text();
+    m_authentificated = !m_authToken.isEmpty();
+
+    node = node.nextSibling();
+    element = node.toElement();
+    //this is the user element, we get it,s elements
+    QDomElement elemUser;
+    elemUser = element.firstChildElement("login");
+    m_login  = elemUser.text();
+
+    elemUser = element.firstChildElement("email");
+    m_email  = elemUser.text();
+
+    //elemUser   = element.firstChildElement("access_id");
+    //m_accessId = elemUser.text();
+
+    elemUser = element.firstChildElement("user_id");
+    m_userId = elemUser.text();
+
+    elemUser      = element.firstChildElement("space_amount");
+    m_spaceAmount = elemUser.text().toDouble();
+
+    elemUser    = element.firstChildElement("space_used");
+    m_spaceUsed = elemUser.text().toDouble();
+
+    elemUser        = element.firstChildElement("max_upload_size");
+    m_maxUploadSize = elemUser.text().toDouble();
 }

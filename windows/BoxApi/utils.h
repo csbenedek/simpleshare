@@ -35,11 +35,7 @@ void deletePath(const QString& path);
 void clearArchiveBits(const QString& path);
 void removeUntouched(const QString& path);
 void removeUntouched(const QString path, QDateTime border);
-
-// Network helpers
-
-bool isConnectedToNetwork();
-
+                             
 // Randomizer
 
 unsigned int setRandSeed();

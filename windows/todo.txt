@@ -1,0 +1,110 @@
+-16.04.2011-
+
++1) Test app on following to make sure all functions work: Windows XP, Windows 7 32 bit, Windows 7 64 bit (can one installer be user for all or separate only)?
++2) User reports app isnt starting after restart, please test and fix
++3) I want to test that the update system works for all versions. Can you check this and explain to me how it works?
++4) Make hot-keys customizable, user can enter their own preference for each
++5) Add flv capture, i can show you how mac works to make it similiar, it should work like capture region does, but record FLV.
+.6) Can you allow users to right-click upload folders, and the app will create folder with the same name online, upload all files into it, give user shared URL to the folder containing these files? Thats what the mac version is doing now. Or if that is too hard, zip the folder and upload it as one file
+
+
+
+
+-09.05.2011-
+
+Fixes PC:
++1) need to sign the app with this certificate:  http://www.box.net/shared/cd6l2e0nui
++2) upload file option in context menu isnt working, its saying Upload complete but doesnt ask user to browse and select a file
++3) When user double-clicks short-cut it opens the program multiple times, it should know its already open and not open it again
++4) Installer and shortcut should say "Box SimpleShare" right now i think it says "Shortcut to ...." and the installer just says "SimpleShare"
++5) Change right-click text from "Upload to Box" with "Share with Box"
++6)  Add app version number so when we diagnose issues we know they have the latest version
+ 7) - user encountering an error: http://www.box.net/shared/8hzq12vs1q
+    schauer.pe@pg.com
++8) Spelling mistake: https://www.box.net/shared/90ggbx4xcc should say “Login Successful”
++9) During installation, the default path should be c:\Program Files\Box\SimpleShare instead of c:\Program Files\Box SimpleShare. We probably will have more desktop apps in the future and so we can group them all into a Box folder.
++10) Hide FLV file or store somewhere else while creating video so it doesnt show in the video: http://www.box.net/shared/r95qm8zi53
+ 11) 2nd monitor bug: http://www.box.net/shared/ygm2dqk2h7
+    "However, I use a secondary monitor, and when I do the full-screen screenshot (Shift + Alt + 3), I don't get everything - it captures an image the size of my secondary (1920x1080), but starting from my primary (1440x900). See attached."
++12) Use new PC graphics:
+    context menu: https://boxmarketing.box.net/shared/qc6zhv15xg
+    preferences window: http://goo.gl/tOobS  notice also the OK button was renamed to Save
+    - here are all the images for it: http://goo.gl/WT6JZ
+
+Priority 2:
++) drag file to taskbar to upload
++) Rename screenshots to this format: “Screen shot 2011-05-04 at 12.37.42 PM”
++) Prevent multiple regions at once, if i keep telling it to draw region, screen gets darker and creates a lot of screenshots: https://www.box.net/shared/u41unxsz4o  (might be an older version)
++) Need a way to change hotkey, make it configurable
+-) can we add drag to menu bar on PC or is that not possible?
+Questions:
+. Can the installer be modified to have different graphics?
++ Can we change upload success message? How many characters can I fit in it? Like <Upload complete, ad URL has been pasted to your clipboard>
+
+
+Later features to add:
+- in offline mode, copy image to clipboard not URL
+[Can be done]
+- screencast cropping
+[Need explaination, cropping when?]
+- image annotations
+[Can be done]
+- photoshop addition “upload frontmost document in its current state” (need to rephrase) (saves current image as PNG), seems to crop as the exact size
+[Can you specify the place this text is written]
+- simpleshare hotkey to send open word, ppt, or excel doc? can this happen without user having saved it first?
+[It can be done but it would require lot of work and need to research before i can say for sure]
+
+
+Next steps:
+
+- user encountering an error: http://www.box.net/shared/8hzq12vs1q
+schauer.pe@pg.com
+[added network errors loggin. waiting for detailed log with this error]
+
+- Ability to drag weblinks to create bookmark element on Box, this
+should also have a goo.gl URL so it is shorter. Here is the API info
+to create the file type on box:
+http://developers.box.net/w/page/12923957/Bookmarks
+[waiting for enhance APIs to do this.
+http://forum.developers.box.net/box_developers/topics/function_for_creating_bookmark_without_showing_webpage_for_user]
+
+
+- Linux version fedora14, debian 
+
+1) rewrite region selector (make it transpartent, make it 8 pixels
+aligned for video, and other fixes/bugfixes)
+2) add position pixels coordinates in region selector and add window
+rect selection on double-click in region selector. (like in greenshot
+http://getgreenshot.org/)
+3) upload with alt+shift+u from desktop. currently it work from explorer windows
+4) simpleshare hotkey to send open word, ppt, or excel doc? can this
+happen without user having saved it first?
+;;$$$#%$$5) simpleshare hotkey to send open internet explorer pages
+
+
+
+- Screencast using ffmpeg command
+
+- Autostart (both gnome and kde)
+- make global shortcuts working
+
+    alt+shift+u  active window
+
+- fix main window height
+
+- problems with region selection under linux
+    work if user begin selection from first monitor...
+
++ missing icons in menus
+    not a bug. $gconf-editor
+    /desktop/gnome/interface/menu_have_icons
+
+- make rpm package
+- make deb package
+- delete folders after upload
+
+(11:55:37 PM) zcrendel:     QModelIndex rootIndex = location->rootModelIndex();
+    location->setRootModelIndex(proxyIndex.parent());
+    location->setCurrentIndex(proxyIndex.row());
+    location->setRootModelIndex(rootIndex);
+(11:55:49 PM) zcrendel: location ýòî êîìáîáîêñ ñ treeview
