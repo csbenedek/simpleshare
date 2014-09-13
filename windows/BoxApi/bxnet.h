@@ -13,7 +13,6 @@
 #include <QFile>
 #include <QNetworkProxy>
 #include <QMessageBox>
-#include <QWebView>
 
 class QUpFile;
 class UserSession;
@@ -24,8 +23,6 @@ class WebLoginForm;
 
 #define DEFAULT_UPLOAD_FOLDER       "SimpleShare Uploads"
 #define AUTH_FILE                   "box.net"
-#define BOXNET_API_KEY					"nw9ftvy88wzt70z5xo62quy8aywufgdm"
-#define BOXNET_CLIENT_SECRET		"zIJhpNInStqVoYByJK3t5ph2FSxfc3QF"
 
 class BxNet: public QObject
 {
@@ -107,7 +104,6 @@ public:
     void setRetryCount(int count);
     int retryCount() const;
 
-	void takeUsrToAuthorizePage();
     void login();
     void directLogin(const QString &name,const QString &password);
     void ssoLogin(const QString &name);
@@ -149,8 +145,6 @@ public:
     void loadSettings();
     void saveSettings();
     void clearSettings();
-	std::string getOAuth2AuthenticationCode();
-	void getOAuth2AccessToken();
 
 public slots:
     void getAccountInfo(bool silent = false); // for actual amount and used sizes
@@ -218,7 +212,7 @@ signals:
 
     void treeFolder(QString id, QString parentId, QString name, QString link);
     void treeFile(QString id, QString parentId, QString name, QString link);
-    void treeFinished();	
+    void treeFinished();
 
 private slots:
     void readTreeReadyRead();
@@ -233,14 +227,6 @@ private slots:
     void shareFileFinished();
     void uploadFinished();   
     void createFolderFinished();
-	void takeUsrToAuthorizePageDone();
-	void onFiniAllowDeny(const QUrl&);
-	void onLoadFini(bool ok);
-	void onLinkClicked(QNetworkReply*);
-	void getOAuth2AccessTokenDone();
-	void getUserFolderDone();
-	void doCreateSmvFolder();
-	void SmvFileCreatedDone();
     //void createBookmarkFinished();
 
     void requestAuthToken();
@@ -262,10 +248,6 @@ private:
     QNetworkReply*          m_uploadsReply;
 
     QString     m_apiKey;
-	std::string m_AuthenticationCode;
-	std::string m_acc_token;
-	std::string m_ref_token;
-	QWebView* m_AuthorizationPage;
     bool        m_https;
 
     bool        m_loadAvatar;
