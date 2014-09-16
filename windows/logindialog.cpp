@@ -7,18 +7,7 @@
 #include "preferenceswidget.h"
 #include "messagedialog.h"
 
-//hieu@mycompany.com
-//BoxNet2864!
 
-//test@mycompany.com 123456
-//boxtest@bk.ru boxtest123
-//boxtest@bkkkk.ru boxtest123
-//1@1.ru 123456
-//2@1.ru 123456
-//3@1.ru 123456
-//4@1.ru 123456
-//test1@mail.ru 123456
-//test2@mail.ru 123456
 
 extern PreferencesWidget* g_preferencesWidget;
 
