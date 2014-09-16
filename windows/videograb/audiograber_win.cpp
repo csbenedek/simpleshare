@@ -1,7 +1,6 @@
 #include "audiograber_win.h"
 
 #include <aviriff.h>
-#include "riff.h"
 #include <QDebug>
 
 

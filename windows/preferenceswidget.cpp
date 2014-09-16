@@ -28,7 +28,7 @@
 #include <CoreServices/CoreServices.h>
 #endif
 #ifdef Q_WS_WIN
-#include "shellutils.h"
+#include "shellutils/shellutils.h"
 #include "oleutils.h"
 #include <windows.h>
 #endif

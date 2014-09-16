@@ -21,6 +21,8 @@ THIS SOFTWARE IS PROVIDED BY COPYRIGHT HOLDERS ``AS IS'' AND ANY EXPRESS OR IMPL
 #include <QImage>
 #ifdef Q_OS_UNIX
 #include <stdint.h> // for uint8_t
+#else
+#include <inttypes.h>
 #endif
 
 #include "ffmpeg.h"

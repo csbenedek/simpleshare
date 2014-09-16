@@ -3,7 +3,7 @@ VERSION = 1.0.45
 RC_FILE = icon.rc
 ICON = icon.ico
 
-# Define the preprocessor macro to get the application version in our application.
+# Define the preprocessor macro to get the application version in application.
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 CONFIG   += qxt
@@ -25,7 +25,6 @@ INCLUDEPATH += ./imageeditor
 INCLUDEPATH += ./videograb
 
 INCLUDEPATH += ./BoxApi
-
 
 SOURCES += \
     applicationex.cpp \
