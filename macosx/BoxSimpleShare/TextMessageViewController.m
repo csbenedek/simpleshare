@@ -7,6 +7,8 @@
 //
 
 #import "TextMessageViewController.h"
+#import "MAAttachedWindow.h"
+
 
 @interface TextMessageViewController ()
 
@@ -21,6 +23,18 @@
         // Initialization code here.
     }
     return self;
+}
+
+#pragma mark - NSWindowDelegate methods
+
+
+-(void)windowDidResignKey:(NSNotification *)notification{
+    
+    
+    [self.window orderOut:self];
+    
+    
+    
 }
 
 @end

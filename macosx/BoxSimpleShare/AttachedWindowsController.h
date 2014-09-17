@@ -12,10 +12,12 @@
 
 @class mainView;
 @class VideoCaptureController;
+@class TextMessageViewController;
 
 
 
-@interface AttachedWindowsController : NSObject
+@interface AttachedWindowsController : NSObject <NSWindowDelegate>
+
 
 
 //currently displayed attached window
@@ -41,6 +43,8 @@
 @property (nonatomic, retain) mainView* mainViewController;
 
 @property (nonatomic, retain) VideoCaptureController *videoCaptureController;
+
+@property (nonatomic, retain) TextMessageViewController *textMessageController;
 
 
 

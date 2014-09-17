@@ -198,7 +198,7 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     
     
     
-	
+	/*
 	if ([[OAuth2Client sharedInstance] isAuthorized])
 	{
 		PostNotificationWithObject(@"SHOW_LOADING", [NSString stringWithUTF8String:"Logging In ..."]);
@@ -207,16 +207,16 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     else
     {
         [self.popupWindowController showLogin];
-    }
+    }*/
     
     
-
+    /*
     if (![[[BoxNetHandler sharedHandler] boxNetUser] isAuthenticated])
     {
         //[self.popupWindowController showWindow:nil];
         
         //[self addAndResizeWindowForView:loginView];
-    }/* else {
+    } else {
       //        [self showMainView];
       [self addAndResizeWindowForView:mainView];
       }*/

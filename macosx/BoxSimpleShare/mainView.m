@@ -80,6 +80,20 @@
 
     
 }
+#pragma mark - NSWindowDelegate methods
+
+-(void)windowDidResignKey:(NSNotification *)notification{
+    
+    
+    NSLog(@"Main window did resign key");
+    
+    [self.window orderOut:self];
+    
+    
+}
+
+
+#pragma mark - Helpers
 
 -(void)processNewHistoryElementNotification:(NSNotification *)notification{
     

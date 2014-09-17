@@ -22,6 +22,9 @@
 
 #import "mainView.h"
 
+#import "TextMessageViewController.h"
+
+
 
 
 
@@ -261,9 +264,14 @@
         
         [mainWindow setBackgroundColor:[NSColor whiteColor]];
         
-        //[mainWindow setArrowBaseWidth:20.0];
+        //set delegate
         
-        //[mainWindow setArrowHeight:10.0];
+        [mainWindow setDelegate:self.mainViewController];
+        
+        //store reference to window in controller
+        
+        self.mainViewController.window = mainWindow;
+        
         
         self.mainWindow = mainWindow;
     }
@@ -303,19 +311,19 @@
     //load text message view controller from nib file
     TextMessageViewController *controller = [[TextMessageViewController alloc] initWithNibName:@"TextMessageViewController" bundle:nil];
     
+    //store reference to controller
+    
+    self.textMessageController = controller;
+    
+    
+    
     
     //this is just for triggering lazy loading
     NSView *aView1 = controller.view;
     
-    //this view is reallused
+    //this view is really used
     NSView *aView2 = controller.startView;
-    
-    
-    
-    //set text
-    //[controller.textField setTitleWithMnemonic:text];
-    
-    
+
     //get a location of statusItem
     
     
@@ -327,6 +335,12 @@
     [self configureAttachedWindow:attachedWindow];
     
     self.textMessageWindow = attachedWindow;
+    
+    //set delefate
+    
+    [self.textMessageWindow setDelegate:self.textMessageController];
+    
+    self.textMessageController.window = attachedWindow;
     
     
     
@@ -393,7 +407,7 @@
     
     
     //display attached window
-    //self.currentAttachedWindow = self.textMessageWindow;
+    self.currentAttachedWindow = self.textMessageWindow;
     
     
     [self showAttachedWindow:self.textMessageWindow];
@@ -409,7 +423,8 @@
 
 -(void)processStatusItemClickedNotification{
     
-    NSLog(@"Status Item Clicked");
+    //NSLog(@"Status Item Clicked");
+    
     //hide currentAttachedWindowIf it is visible
     
     if ([self.currentAttachedWindow isVisible]) {

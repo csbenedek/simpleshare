@@ -10,10 +10,10 @@
 
 @class BoxSimpleShareAppDelegate;
 @class AttachedWindowsController;
+@class MAAttachedWindow;
 
 
-
-@interface mainView : NSViewController <NSTableViewDelegate, NSTableViewDataSource>
+@interface mainView : NSViewController <NSTableViewDelegate, NSTableViewDataSource, NSWindowDelegate>
 
 @property(nonatomic, retain) IBOutlet NSTextField *fileName;
 
@@ -29,6 +29,9 @@
 
 
 @property (nonatomic, retain)NSMutableArray *cells;
+
+@property(nonatomic, retain)MAAttachedWindow *window;
+
 
 
 //weak refernce to AttachedWindowsController

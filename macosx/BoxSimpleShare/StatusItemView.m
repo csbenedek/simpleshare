@@ -423,7 +423,7 @@ typedef enum {
 {
     [self setMouseDown:YES];
     
-    NSLog(@"Mouse down!");
+    [self postStatusItemClickedNotification];
     
     
      //[NSApp sendAction:self.action to:self.target from:self];
@@ -480,6 +480,17 @@ typedef enum {
     frame.origin = [self.window convertBaseToScreen:frame.origin];
     return frame;
 }
+
+-(void)postStatusItemClickedNotification{
+    
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"StatusItemClickedNotification" object:self];
+    
+    //see processStatusItemClickedNotificetion of AttachedWindowsController
+    
+}
+
+
 #pragma mark Memory Management
 
 - (void) dealloc

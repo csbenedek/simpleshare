@@ -6,9 +6,13 @@
 //  Copyright (c) 2014 SAPLogix. All rights reserved.
 //
 
+
 #import <Cocoa/Cocoa.h>
 
-@interface TextMessageViewController : NSViewController
+@class MAAttachedWindow;
+
+@interface TextMessageViewController : NSViewController <NSWindowDelegate>
+
 
 @property(nonatomic,retain) IBOutlet NSTextField *textField;
 
@@ -16,6 +20,9 @@
 
 
 @property (nonatomic, retain) IBOutlet NSView *successfulLoginView;
+
+
+@property (nonatomic, retain) MAAttachedWindow *window;
 
 
 

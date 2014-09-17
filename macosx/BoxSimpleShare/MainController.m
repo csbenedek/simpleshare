@@ -389,12 +389,18 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
 		
         [self updateMainViewContent:nil];
         [[BoxSimpleShareAppDelegate sharedDelegate] selectToolBarItem:0];
-        [[BoxSimpleShareAppDelegate sharedDelegate] performSelectorOnMainThread:@selector(showMainView) withObject:nil waitUntilDone:YES];
+        //[[BoxSimpleShareAppDelegate sharedDelegate] performSelectorOnMainThread:@selector(showMainView) withObject:nil waitUntilDone:YES];
 
         [PreferenceManager loadPreference];
 		[[Mixpanel sharedInstance] identify:[response object]];
         [[BoxSimpleShareAppDelegate sharedDelegate] createMenu];
         DbgLog(@"Login Successfull!");
+        
+        
+        PostNotification(@"ShowSuccessfulLoginMessageNotification");
+        
+        //see processShowSuccessfulLoginMessageNotification of AttachedWindowController
+        
     }
 
     [loginBtn setEnabled:YES];

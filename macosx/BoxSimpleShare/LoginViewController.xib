@@ -19,12 +19,12 @@
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QDH-Zy-W6m">
                     <rect key="frame" x="66" y="74" width="129" height="110"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="loginIcon" id="er9-J5-Eom"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="login-app-icon" id="er9-J5-Eom"/>
                 </imageView>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gir-mQ-X22">
                     <rect key="frame" x="22" y="24" width="218" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="loginButton" imagePosition="overlaps" alignment="center" alternateImage="loginButtonPressed" inset="2" id="aUt-xq-6t7">
+                    <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="login-to-box-button" imagePosition="overlaps" alignment="center" alternateImage="login-to-box-button-pressed" inset="2" id="aUt-xq-6t7">
                         <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -36,8 +36,8 @@
         </customView>
     </objects>
     <resources>
-        <image name="loginButton" width="212" height="36"/>
-        <image name="loginButtonPressed" width="212" height="36"/>
-        <image name="loginIcon" width="138" height="116"/>
+        <image name="login-app-icon" width="128" height="100"/>
+        <image name="login-to-box-button" width="212" height="36"/>
+        <image name="login-to-box-button-pressed" width="212" height="36"/>
     </resources>
 </document>
