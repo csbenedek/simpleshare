@@ -29,6 +29,11 @@
 #import "MenubarController.h"
 
 
+#import "AttachedWindowsController.h"
+
+
+
+
 const int MaxHistoryItemCount = 5;
 
 static const int MaxHistoryItemLength = 22;
@@ -137,7 +142,8 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
 	[statusBarImages addObject:[NSImage imageNamed:@"active-icon"]];
     
 	
-   // [self createMenu];
+    //[self createMenu];
+    
 //    [statusBarItem setHighlightMode:YES];
 //    [statusBarItem setEnabled:YES];
      self.menubarController = [[MenubarController alloc] init];
@@ -164,6 +170,34 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     filesAddedToQueue = [NSMutableSet new];
     [self setupUploadHotKey];
     [self setupVideoCaptureHotKey];
+    
+    //init AttachedWindowsController
+    
+    self.attachedWindowsController  = [[AttachedWindowsController alloc] init];
+    
+    //register for ShowTextMessage notification
+    AddNotificationObserver(self.attachedWindowsController, @selector(processShowStartMessageNotification:), @"ShowStartMessageNotification", nil);
+    
+    //resiter for ShowSuccessfulLoginMessageNotification
+    
+    AddNotificationObserver(self.attachedWindowsController, @selector(processShowSuccessfulLoginMessageNotification:), @"ShowSuccessfulLoginMessageNotification", nil);
+    
+    //register to StatusItemClicked notification
+    
+    AddNotificationObserver(self.attachedWindowsController, @selector(processStatusItemClickedNotification), @"StatusItemClickedNotification", nil);
+    
+    
+    //register for NewHistoryElementNotification
+    AddNotificationObserver(self.attachedWindowsController, @selector(processNewHistoryElementNotification:), @"NewHistoryElementNotification", nil);
+    
+    
+    
+    //post notification to show start message
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowStartMessageNotification" object:self userInfo:nil];
+    
+    
+    
 	
 	if ([[OAuth2Client sharedInstance] isAuthorized])
 	{
@@ -187,6 +221,32 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
       [self addAndResizeWindowForView:mainView];
       }*/
 }
+#pragma mark New interface Helpers
+
+-(NSRect)getStatusItemRectInMainScreen{
+    
+    //NSView *view  = statusBarItem.view;
+    
+    NSView *view  = self.menubarController.statusItemView;
+    
+    
+    NSRect rect = view.frame;
+    
+    //NSRect mainScreenRect = [[NSScreen mainScreen] frame];
+    
+    NSRect result = [view.window convertRectToScreen:rect];
+    
+    
+    
+    return result;
+    
+    
+    
+    
+}
+
+
+
 
 #pragma mark Hotkeys
 

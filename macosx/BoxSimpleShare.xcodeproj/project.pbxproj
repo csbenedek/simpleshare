@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DF52E3219C8BB4F000D2D56 /* AttachedWindowsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */; };
+		0DF52E3719C8BB8B000D2D56 /* VideoCaptureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E3519C8BB8B000D2D56 /* VideoCaptureController.m */; };
+		0DF52E3819C8BB8B000D2D56 /* VideoCaptureController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF52E3619C8BB8B000D2D56 /* VideoCaptureController.xib */; };
+		0DF52E3D19C8BBD3000D2D56 /* TextMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E3B19C8BBD3000D2D56 /* TextMessageViewController.m */; };
+		0DF52E3E19C8BBD3000D2D56 /* TextMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF52E3C19C8BBD3000D2D56 /* TextMessageViewController.xib */; };
+		0DF52E4619C8BBFC000D2D56 /* mainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E4119C8BBFC000D2D56 /* mainView.m */; };
+		0DF52E4719C8BBFC000D2D56 /* mainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF52E4219C8BBFC000D2D56 /* mainView.xib */; };
+		0DF52E4819C8BBFC000D2D56 /* MainViewCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E4419C8BBFC000D2D56 /* MainViewCellController.m */; };
+		0DF52E4919C8BBFC000D2D56 /* MainViewCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF52E4519C8BBFC000D2D56 /* MainViewCellController.xib */; };
+		0DF52E4E19C8BF09000D2D56 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E4C19C8BF09000D2D56 /* LoginViewController.m */; };
+		0DF52E4F19C8BF09000D2D56 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF52E4D19C8BF09000D2D56 /* LoginViewController.xib */; };
+		0DF52E5219C8BF21000D2D56 /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E5119C8BF21000D2D56 /* MAAttachedWindow.m */; };
 		2C11BB3116A00417005C240C /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C11BB3016A00417005C240C /* OpenGL.framework */; };
 		2C11BB3316A00443005C240C /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C11BB3216A00443005C240C /* libxml2.2.dylib */; };
 		2C11BB3516A00462005C240C /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C11BB3416A00462005C240C /* libz.1.2.5.dylib */; };
@@ -354,6 +366,25 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0DF52E3019C8BB4F000D2D56 /* AttachedWindowsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachedWindowsController.h; sourceTree = "<group>"; };
+		0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachedWindowsController.m; sourceTree = "<group>"; };
+		0DF52E3419C8BB8B000D2D56 /* VideoCaptureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCaptureController.h; sourceTree = "<group>"; };
+		0DF52E3519C8BB8B000D2D56 /* VideoCaptureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCaptureController.m; sourceTree = "<group>"; };
+		0DF52E3619C8BB8B000D2D56 /* VideoCaptureController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCaptureController.xib; sourceTree = "<group>"; };
+		0DF52E3A19C8BBD3000D2D56 /* TextMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextMessageViewController.h; sourceTree = "<group>"; };
+		0DF52E3B19C8BBD3000D2D56 /* TextMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextMessageViewController.m; sourceTree = "<group>"; };
+		0DF52E3C19C8BBD3000D2D56 /* TextMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextMessageViewController.xib; sourceTree = "<group>"; };
+		0DF52E4019C8BBFC000D2D56 /* mainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainView.h; sourceTree = "<group>"; };
+		0DF52E4119C8BBFC000D2D56 /* mainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainView.m; sourceTree = "<group>"; };
+		0DF52E4219C8BBFC000D2D56 /* mainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = mainView.xib; sourceTree = "<group>"; };
+		0DF52E4319C8BBFC000D2D56 /* MainViewCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewCellController.h; sourceTree = "<group>"; };
+		0DF52E4419C8BBFC000D2D56 /* MainViewCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewCellController.m; sourceTree = "<group>"; };
+		0DF52E4519C8BBFC000D2D56 /* MainViewCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewCellController.xib; sourceTree = "<group>"; };
+		0DF52E4B19C8BF09000D2D56 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		0DF52E4C19C8BF09000D2D56 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		0DF52E4D19C8BF09000D2D56 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		0DF52E5019C8BF21000D2D56 /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
+		0DF52E5119C8BF21000D2D56 /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		2C11BB2E16A003F7005C240C /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
 		2C11BB3016A00417005C240C /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		2C11BB3216A00443005C240C /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
@@ -914,6 +945,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DF52E2C19C8B91C000D2D56 /* New Interface */ = {
+			isa = PBXGroup;
+			children = (
+				0DF52E3019C8BB4F000D2D56 /* AttachedWindowsController.h */,
+				0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */,
+				0DF52E5019C8BF21000D2D56 /* MAAttachedWindow.h */,
+				0DF52E5119C8BF21000D2D56 /* MAAttachedWindow.m */,
+				0DF52E4A19C8BEF5000D2D56 /* loginView */,
+				0DF52E3F19C8BBE2000D2D56 /* mainView */,
+				0DF52E3319C8BB6D000D2D56 /* VIdeoCaptureController */,
+				0DF52E3919C8BB95000D2D56 /* TextMessageController */,
+			);
+			name = "New Interface";
+			sourceTree = "<group>";
+		};
+		0DF52E3319C8BB6D000D2D56 /* VIdeoCaptureController */ = {
+			isa = PBXGroup;
+			children = (
+				0DF52E3419C8BB8B000D2D56 /* VideoCaptureController.h */,
+				0DF52E3519C8BB8B000D2D56 /* VideoCaptureController.m */,
+				0DF52E3619C8BB8B000D2D56 /* VideoCaptureController.xib */,
+			);
+			name = VIdeoCaptureController;
+			sourceTree = "<group>";
+		};
+		0DF52E3919C8BB95000D2D56 /* TextMessageController */ = {
+			isa = PBXGroup;
+			children = (
+				0DF52E3A19C8BBD3000D2D56 /* TextMessageViewController.h */,
+				0DF52E3B19C8BBD3000D2D56 /* TextMessageViewController.m */,
+				0DF52E3C19C8BBD3000D2D56 /* TextMessageViewController.xib */,
+			);
+			name = TextMessageController;
+			sourceTree = "<group>";
+		};
+		0DF52E3F19C8BBE2000D2D56 /* mainView */ = {
+			isa = PBXGroup;
+			children = (
+				0DF52E4019C8BBFC000D2D56 /* mainView.h */,
+				0DF52E4119C8BBFC000D2D56 /* mainView.m */,
+				0DF52E4219C8BBFC000D2D56 /* mainView.xib */,
+				0DF52E4319C8BBFC000D2D56 /* MainViewCellController.h */,
+				0DF52E4419C8BBFC000D2D56 /* MainViewCellController.m */,
+				0DF52E4519C8BBFC000D2D56 /* MainViewCellController.xib */,
+			);
+			name = mainView;
+			sourceTree = "<group>";
+		};
+		0DF52E4A19C8BEF5000D2D56 /* loginView */ = {
+			isa = PBXGroup;
+			children = (
+				0DF52E4B19C8BF09000D2D56 /* LoginViewController.h */,
+				0DF52E4C19C8BF09000D2D56 /* LoginViewController.m */,
+				0DF52E4D19C8BF09000D2D56 /* LoginViewController.xib */,
+			);
+			name = loginView;
+			sourceTree = "<group>";
+		};
 		2C11BB3B16A7D264005C240C /* Base64 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1235,6 +1324,7 @@
 		8B69533313C3BF9100B32618 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0DF52E2C19C8B91C000D2D56 /* New Interface */,
 				8BA5385513C74030008E5AC3 /* MainController.h */,
 				8BA5385613C74030008E5AC3 /* MainController.m */,
 				8B16ED7113D21DE000F6DC5E /* PreferenceManager.h */,
@@ -1899,6 +1989,7 @@
 				8433B2BE19AE76C100DBA8FC /* ItemCell.xib in Resources */,
 				84CC87F01916C33C00A239E0 /* DragDropWindowController.xib in Resources */,
 				8BA5383E13C73F47008E5AC3 /* icon_preferences.png in Resources */,
+				0DF52E4719C8BBFC000D2D56 /* mainView.xib in Resources */,
 				8BA5383F13C73F47008E5AC3 /* icon_userimage.png in Resources */,
 				848F99E519609C2F00984731 /* prefs-prefs@2x.png in Resources */,
 				8BA5384013C73F47008E5AC3 /* image_hotkey_drawregion.png in Resources */,
@@ -1918,6 +2009,7 @@
 				8B4C683913CF14E80044492C /* APPL.icns in Resources */,
 				848F9A0B19609C2F00984731 /* small-toggle-off.png in Resources */,
 				8B4C683D13CF3BEE0044492C /* icon_account_small.png in Resources */,
+				0DF52E4F19C8BF09000D2D56 /* LoginViewController.xib in Resources */,
 				848F99E419609C2F00984731 /* prefs-accounts@2x.png in Resources */,
 				8B4C683E13CF3BEE0044492C /* icon_preferences_small.png in Resources */,
 				8B84068E13D375C30025EA39 /* audio.png in Resources */,
@@ -1925,6 +2017,7 @@
 				84CC87FA19177F0100A239E0 /* icon_account_small@2x.png in Resources */,
 				8B84069013D375C30025EA39 /* compress.png in Resources */,
 				848F99FF19609C2F00984731 /* login-with-imgur-button-pressed.png in Resources */,
+				0DF52E3E19C8BBD3000D2D56 /* TextMessageViewController.xib in Resources */,
 				8B84069113D375C30025EA39 /* excel.png in Resources */,
 				848F9A0719609C2F00984731 /* record-button.png in Resources */,
 				848F99E119609C2F00984731 /* login-with-imgur-button@2x.png in Resources */,
@@ -1937,6 +2030,7 @@
 				8B84069313D375C30025EA39 /* illustrator.png in Resources */,
 				8B84069413D375C30025EA39 /* pdf.png in Resources */,
 				8B84069513D375C30025EA39 /* photoshop.png in Resources */,
+				0DF52E4919C8BBFC000D2D56 /* MainViewCellController.xib in Resources */,
 				8B84069613D375C30025EA39 /* powerpoint.png in Resources */,
 				849219CB18F1426A000F0E7D /* LoginWindowController.xib in Resources */,
 				848F9A0319609C2F00984731 /* prefs-accounts.png in Resources */,
@@ -1951,6 +2045,7 @@
 				8B84069D13D376B40025EA39 /* default.png in Resources */,
 				8B84069E13D376B40025EA39 /* image.png in Resources */,
 				848F99FD19609C2F00984731 /* login-to-box-button-pressed.png in Resources */,
+				0DF52E3819C8BB8B000D2D56 /* VideoCaptureController.xib in Resources */,
 				848F9A0619609C2F00984731 /* record-button-pressed.png in Resources */,
 				9104DD15146AC1B500D1A0C9 /* README in Resources */,
 				848F99ED19609C2F00984731 /* small-toggle-off@2x.png in Resources */,
@@ -2061,7 +2156,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "LOCATION=\"${BUILT_PRODUCTS_DIR}\"/\"${FRAMEWORKS_FOLDER_PATH}\"\nCONTENTS=\"${BUILT_PRODUCTS_DIR}\"/\"${CONTENTS_FOLDER_PATH}\"\nIDENTITY=\"3rd Party Mac Developer Application: Aaron Levie\"\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/Growl.framework/\"\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/GTL.framework/\"";
+			shellScript = "LOCATION=\"${BUILT_PRODUCTS_DIR}\"/\"${FRAMEWORKS_FOLDER_PATH}\"\nCONTENTS=\"${BUILT_PRODUCTS_DIR}\"/\"${CONTENTS_FOLDER_PATH}\"\nIDENTITY=\"Unplugged\"\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/Growl.framework/\"\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/GTL.framework/\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2074,6 +2169,7 @@
 				8433B2A719ADA0B700DBA8FC /* ItemViewController.m in Sources */,
 				8BDB2D3313C3989F003BFDE0 /* BoxSimpleShareAppDelegate.m in Sources */,
 				8BDB2D3F13C398D4003BFDE0 /* HTTPRequestHandler.m in Sources */,
+				0DF52E4E19C8BF09000D2D56 /* LoginViewController.m in Sources */,
 				8BDB2E8613C3A31E003BFDE0 /* ASIDataCompressor.m in Sources */,
 				84CC87EB1916C09100A239E0 /* RMBlurredView.m in Sources */,
 				8BDB2E8713C3A31E003BFDE0 /* ASIDataDecompressor.m in Sources */,
@@ -2101,9 +2197,11 @@
 				8BDB2E9713C3A31E003BFDE0 /* ASIS3BucketRequest.m in Sources */,
 				8BDB2E9813C3A31E003BFDE0 /* ASIS3ObjectRequest.m in Sources */,
 				846F0F7018F6920A0010357C /* JCSSheetController.m in Sources */,
+				0DF52E4619C8BBFC000D2D56 /* mainView.m in Sources */,
 				8BDB2E9913C3A31E003BFDE0 /* ASIS3Request.m in Sources */,
 				8BDB2E9A13C3A31E003BFDE0 /* ASIS3ServiceRequest.m in Sources */,
 				8B69530113C3A99700B32618 /* HTTPRequest.m in Sources */,
+				0DF52E5219C8BF21000D2D56 /* MAAttachedWindow.m in Sources */,
 				8B69530313C3BBB500B32618 /* Macros.m in Sources */,
 				8B69533113C3BF6800B32618 /* BoxNet.m in Sources */,
 				8B69534513C3C6EC00B32618 /* AppConstants.m in Sources */,
@@ -2136,10 +2234,12 @@
 				8B8406BC13D3A2B00025EA39 /* SBJsonStreamParserAdapter.m in Sources */,
 				8406BBFC1848446900556555 /* ImageCaptureController.m in Sources */,
 				8B8406BD13D3A2B00025EA39 /* SBJsonStreamParserState.m in Sources */,
+				0DF52E3719C8BB8B000D2D56 /* VideoCaptureController.m in Sources */,
 				8B8406BE13D3A2B00025EA39 /* SBJsonStreamWriter.m in Sources */,
 				8433B2B719ADA10E00DBA8FC /* PXListView.m in Sources */,
 				8B8406BF13D3A2B00025EA39 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				8B8406C013D3A2B00025EA39 /* SBJsonStreamWriterState.m in Sources */,
+				0DF52E3D19C8BBD3000D2D56 /* TextMessageViewController.m in Sources */,
 				8B8406C113D3A2B00025EA39 /* SBJsonTokeniser.m in Sources */,
 				84098A7119BA3BAD00F37451 /* HeaderView.m in Sources */,
 				849219DB18F1F642000F0E7D /* YoutubeUploadWindowController.m in Sources */,
@@ -2160,6 +2260,7 @@
 				9104DD9F146BE9B900D1A0C9 /* BoxHTTPRequestBuilders.m in Sources */,
 				848F998F196084A900984731 /* Panel.m in Sources */,
 				8457515319AD12A1008AFF41 /* PopupMainViewController.m in Sources */,
+				0DF52E4819C8BBFC000D2D56 /* MainViewCellController.m in Sources */,
 				9104DDA1146BE9B900D1A0C9 /* BoxAddCommentsOperation.m in Sources */,
 				9104DDA2146BE9B900D1A0C9 /* BoxAPIOperation.m in Sources */,
 				9104DDA3146BE9B900D1A0C9 /* BoxCopyOperation.m in Sources */,
@@ -2189,6 +2290,7 @@
 				845C02D0183719B100167FA2 /* StartVideoCaptureView.m in Sources */,
 				9104DDB7146BE9B900D1A0C9 /* NSDictionaryXMLParser.m in Sources */,
 				9104DDB8146BE9B900D1A0C9 /* GTMRegex.m in Sources */,
+				0DF52E3219C8BB4F000D2D56 /* AttachedWindowsController.m in Sources */,
 				91F23825147E886E00B1B655 /* StartVideoCaptureController.m in Sources */,
 				91F23833147EA93F00B1B655 /* ScreenshotManager.m in Sources */,
 				915F58C51490B7500053D18C /* VideoCaptureManagerLion.m in Sources */,
@@ -2304,7 +2406,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = SimpleShare.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Aaron Levie (956ZZDEPUK)";
+				CODE_SIGN_IDENTITY = Unplugged;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2342,7 +2444,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = SimpleShare.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Aaron Levie (956ZZDEPUK)";
+				CODE_SIGN_IDENTITY = Unplugged;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";

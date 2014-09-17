@@ -14,11 +14,15 @@
 #import "ImageCaptureController.h"
 #import "Growl.h"
 #import "FeedbackWindowController.h"
+
+#import "MAAttachedWindow.h"
+
 extern const int MaxHistoryItemCount;
 
 @class MainController;
 @class PopupWindowController;
 @class MenubarController;
+@class AttachedWindowsController;
 
 @interface BoxSimpleShareAppDelegate : NSObject <NSApplicationDelegate, NSTabViewDelegate, NSTableViewDataSource, NSWindowDelegate, NSToolbarDelegate, GrowlApplicationBridgeDelegate, VideoCaptureControllerDelegate,ImageCaptureControllerDelegate> {
 
@@ -101,6 +105,17 @@ extern const int MaxHistoryItemCount;
 @property (nonatomic, retain) PopupWindowController* popupWindowController;
 @property (nonatomic, strong) MenubarController *menubarController;
 
+//a controller to manage attached window
+
+@property (nonatomic, retain) AttachedWindowsController *attachedWindowsController;
+
+//new helpers
+
+-(NSRect)getStatusItemRectInMainScreen;
+
+
+
+
 + (BoxSimpleShareAppDelegate *) sharedDelegate;
 - (void) addAndResizeWindowForView:(NSView *)view;
 
@@ -128,4 +143,10 @@ extern const int MaxHistoryItemCount;
 -(IBAction)startImageCapture:(id)sender;
 
 -(NSWindow*)statusBarWindow;
+
+-(void)quitApplication;
+
+-(IBAction)startVideoCapture:(id)sender;
+
+
 @end

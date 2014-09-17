@@ -1,0 +1,19 @@
+dependencies: \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/Mixpanel.m \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/Mixpanel.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/ASIHTTPRequest/ASIProgressDelegate.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/BoxNetUser.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/ASIHTTPRequest/ASIHTTPRequest.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/ASIHTTPRequest/ASIHTTPRequestConfig.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/ASIHTTPRequest/ASIHTTPRequestDelegate.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/ASIHTTPRequest/ASICacheDelegate.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/ASIHTTPRequest/ASINetworkQueue.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/Base64/NSData+Base64.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/JSON/JSON.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/JSON/SBJsonIncludes.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/JSON/SBJsonParser.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/JSON/SBJsonWriter.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/JSON/SBJsonStreamWriter.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/JSON/SBJsonStreamParser.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/JSON/SBJsonStreamParserAdapter.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/JSON/NSObject+JSON.h

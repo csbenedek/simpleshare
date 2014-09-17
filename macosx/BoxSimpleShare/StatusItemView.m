@@ -422,7 +422,11 @@ typedef enum {
 - (void) mouseDown:(NSEvent *)theEvent
 {
     [self setMouseDown:YES];
-     [NSApp sendAction:self.action to:self.target from:self];
+    
+    NSLog(@"Mouse down!");
+    
+    
+     //[NSApp sendAction:self.action to:self.target from:self];
 //    [[statusItem menu] setDelegate:self];
 //    [statusItem popUpStatusItemMenu:[statusItem menu]];
 }
@@ -434,12 +438,17 @@ typedef enum {
 
 - (void)rightMouseDown:(NSEvent *)event
 {
-	[self mouseDown:event];
+	//[self mouseDown:event];
+    
+    NSLog(@"Right mouse down");
+    
+    [[statusItem menu] setDelegate:self];
+    [statusItem popUpStatusItemMenu:[statusItem menu]];
 }
 
 - (void)rightMouseUp:(NSEvent *)event
 {
-	[self mouseUp:event];
+	//[self mouseUp:event];
 }
 
 //- (void) menuDidClose:(NSMenu *)menu

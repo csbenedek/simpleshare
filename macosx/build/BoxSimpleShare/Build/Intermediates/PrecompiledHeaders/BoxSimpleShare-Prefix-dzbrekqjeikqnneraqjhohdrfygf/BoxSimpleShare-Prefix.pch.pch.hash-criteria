@@ -1,0 +1,26 @@
+Contents of /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/BoxSimpleShare-Prefix.pch
+-x
+objective-c
+-arch
+x86_64
+-std=gnu99
+-fpascal-strings
+-O0
+-DDEBUG
+-isysroot
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
+-fasm-blocks
+-mmacosx-version-min=10.7
+-g
+-iquote
+-iquote
+-I/Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Build/BoxSimpleShare/Build/Products/Debug/include
+-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/include/libxml2
+-IFrameworks/Growl.framework/Headers
+-F/Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Build/BoxSimpleShare/Build/Products/Debug
+-F/Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks
+-DGTL_BUILT_AS_FRAMEWORK=1
+x86_64-apple-darwin13.3.0
+"4.2.1 Compatible Apple LLVM 5.1 (clang-503.0.40)"
+SDK_PRODUCT_BUILD_VERSION=13C64
+13C64
