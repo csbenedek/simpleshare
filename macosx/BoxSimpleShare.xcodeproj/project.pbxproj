@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D01A72319CAB78D000349A7 /* MAAttachedWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D01A72219CAB78D000349A7 /* MAAttachedWindowController.m */; };
+		0D75692419CB13CA0084FA0D /* backArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D75692319CB13CA0084FA0D /* backArrow.png */; };
 		0DF52E3219C8BB4F000D2D56 /* AttachedWindowsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */; };
 		0DF52E3719C8BB8B000D2D56 /* VideoCaptureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E3519C8BB8B000D2D56 /* VideoCaptureController.m */; };
 		0DF52E3819C8BB8B000D2D56 /* VideoCaptureController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF52E3619C8BB8B000D2D56 /* VideoCaptureController.xib */; };
@@ -369,6 +370,7 @@
 /* Begin PBXFileReference section */
 		0D01A72119CAB78D000349A7 /* MAAttachedWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindowController.h; sourceTree = "<group>"; };
 		0D01A72219CAB78D000349A7 /* MAAttachedWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindowController.m; sourceTree = "<group>"; };
+		0D75692319CB13CA0084FA0D /* backArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backArrow.png; sourceTree = "<group>"; };
 		0DF52E3019C8BB4F000D2D56 /* AttachedWindowsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachedWindowsController.h; sourceTree = "<group>"; };
 		0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachedWindowsController.m; sourceTree = "<group>"; };
 		0DF52E3419C8BB8B000D2D56 /* VideoCaptureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCaptureController.h; sourceTree = "<group>"; };
@@ -1102,6 +1104,7 @@
 		848F999819609BC800984731 /* New Images */ = {
 			isa = PBXGroup;
 			children = (
+				0D75692319CB13CA0084FA0D /* backArrow.png */,
 				84ADE14019AA4B3D009AAD62 /* nouser.png */,
 				848F999919609C2F00984731 /* box-account-login-button-pressed@2x.png */,
 				848F999A19609C2F00984731 /* box-account-login-button@2x.png */,
@@ -2063,6 +2066,7 @@
 				848F9A0419609C2F00984731 /* prefs-prefs.png in Resources */,
 				2CAFB71816B1C3B800418D61 /* default-icon@2x.png in Resources */,
 				848F9A1319609C2F00984731 /* screencast-recording-icon.png in Resources */,
+				0D75692419CB13CA0084FA0D /* backArrow.png in Resources */,
 				848F9A0219609C2F00984731 /* login-with-youtube-button.png in Resources */,
 				2CAFB71916B1C3B800418D61 /* icon-animation-1.png in Resources */,
 				2CAFB71A16B1C3B800418D61 /* icon-animation-1@2x.png in Resources */,

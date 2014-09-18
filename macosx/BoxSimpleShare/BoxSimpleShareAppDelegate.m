@@ -182,7 +182,7 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     
     //resiter for ShowSuccessfulLoginMessageNotification
     
-    AddNotificationObserver(self.attachedWindowsController, @selector(processShowSuccessfulLoginMessageNotification:), @"ShowSuccessfulLoginMessageNotification", nil);
+    AddNotificationObserver(self.attachedWindowsController, @selector(processSuccessfulLoginNotification:), @"SuccessfulLoginNotification", nil);
     
     //register to StatusItemClicked notification
     

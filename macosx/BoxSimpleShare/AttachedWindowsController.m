@@ -127,9 +127,23 @@
 
 -(void)displayVideoCaptureWindow{
     
-    //hide current window
+    if (!self.videoCaptureController) {
+        
+        //load VideoCaptureController form nib
+        
+        VideoCaptureController *controller = [[VideoCaptureController alloc] initWithNibName:@"VideoCaptureController" bundle:nil];
+        
+        //set pairing references
+        
+        self.videoCaptureController = controller;
+        
+        
+    }
     
-    [self hideAttachedWindow:self.currentAttachedWindow];
+    
+    [self.videoCaptureController showWindow];
+    
+ 
     
     if (!self.videoCaptureWindow) {
         
@@ -177,7 +191,7 @@
     
     
     
-    self.currentAttachedWindow = self.videoCaptureWindow;
+    //self.currentAttachedWindow = self.videoCaptureWindow;
     
     [self showAttachedWindow:self.videoCaptureWindow];
     
@@ -424,11 +438,13 @@
 
 
 
--(void)processShowSuccessfulLoginMessageNotification:(NSNotification *)notification{
+-(void)processSuccessfulLoginNotification:(NSNotification *)notification{
     
     
     
-    [self.textMessageController showSuccessfulLoginMessage];
+    //[self.textMessageController showSuccessfulLoginMessage];
+    
+    [self displayMainWindow];
     
     
     //hide login window
@@ -505,11 +521,14 @@
         
     }
     
-    //else display main window
+    //else window of active controller
     else{
         
         
-        [self displayMainWindow];
+        //[self displayMainWindow];
+        
+        [self.activeController showWindow];
+        
         
         
     }

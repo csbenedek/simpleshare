@@ -24,13 +24,13 @@
 
 //currently displayed attached window
 
-@property (nonatomic, assign) MAAttachedWindow *currentAttachedWindow;
+//@property (nonatomic, assign) MAAttachedWindow *currentAttachedWindow;
 
 //@property (nonatomic, retain) MAAttachedWindow *textMessageWindow;
 
 //@property (nonatomic, retain) MAAttachedWindow *loginWindow;
 
-@property (nonatomic, retain) MAAttachedWindow *mainWindow;
+//@property (nonatomic, retain) MAAttachedWindow *mainWindow;
 
 @property (nonatomic, retain) MAAttachedWindow *videoCaptureWindow;
 
@@ -70,7 +70,7 @@
 
 -(void)processShowStartMessageNotification:(NSNotification *)notification;
 
--(void)processShowSuccessfulLoginMessageNotification:(NSNotification *)notification;
+-(void)processSuccessfulLoginNotification:(NSNotification *)notification;
 
 -(void)processNewHistoryElementNotification:(NSNotification *)notification;
 

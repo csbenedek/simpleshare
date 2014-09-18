@@ -15,7 +15,7 @@
 
 
 
-@interface mainView : MAAttachedWindowController <NSTableViewDelegate, NSTableViewDataSource, NSWindowDelegate>
+@interface mainView : MAAttachedWindowController <NSTableViewDelegate, NSTableViewDataSource>
 
 @property(nonatomic, retain) IBOutlet NSTextField *fileName;
 

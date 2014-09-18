@@ -7,12 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "MAAttachedWindowController.h"
 
 @class AttachedWindowsController;
 
 
 
-@interface VideoCaptureController : NSViewController
+@interface VideoCaptureController : MAAttachedWindowController
 
 @property (nonatomic, assign) AttachedWindowsController *rootController;
 
