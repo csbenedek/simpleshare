@@ -7,6 +7,10 @@
 //
 
 #import "LoginViewController.h"
+#import "MAAttachedWindow.h"
+#import "AttachedWindowsController.h"
+
+
 
 #import "OAuth2Client.h"
 
@@ -24,6 +28,64 @@
         // Initialization code here.
     }
     return self;
+}
+
+-(void)configureAttachedWindow:(MAAttachedWindow *)window{
+    
+    window.borderWidth = 0;
+    
+    [window setBackgroundColor:[NSColor whiteColor]];
+    
+    [window setArrowBaseWidth:20.0];
+    
+    [window setArrowHeight:10.0];
+    
+    
+}
+
+
+-(void)showWindow{
+    
+    
+    
+    //instantiate and configure attached window
+    
+    if (!self.window) {
+        
+        //get a view from controller, this triggers lazy loading
+        NSView *aView = self.view;
+        
+        //get a StatusItem location
+        
+        NSPoint point = [self getLocationOfStatusItem];
+
+        
+        MAAttachedWindow *window = [[MAAttachedWindow alloc] initWithView:aView attachedToPoint:point];
+        
+        self.window = window;
+        
+        
+        [self configureAttachedWindow:self.window];
+        
+        [self.window setDelegate:self];
+        
+        
+        
+    }
+    
+    //make self active controller in AttachedWindowsController
+    
+    
+    self.rootController.activeController = self;
+    
+    //show window
+    
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+    
+    [self.window makeKeyAndOrderFront:self];
+    
+    
+    
 }
 
 

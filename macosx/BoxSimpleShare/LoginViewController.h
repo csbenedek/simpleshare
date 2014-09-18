@@ -7,8 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "MAAttachedWindowController.h"
+@class MAAttachedWindow;
 
-@interface LoginViewController : NSViewController
+@interface LoginViewController : MAAttachedWindowController
+
+@property (nonatomic, retain) MAAttachedWindow *window;
+
+
+
 
 -(IBAction)loginButtonClicked:(id) sender;
 

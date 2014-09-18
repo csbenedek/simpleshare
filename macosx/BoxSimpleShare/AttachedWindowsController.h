@@ -13,10 +13,19 @@
 @class mainView;
 @class VideoCaptureController;
 @class TextMessageViewController;
+@class LoginViewController;
+@class MAAttachedWindowController;
 
 
 
 @interface AttachedWindowsController : NSObject <NSWindowDelegate>
+
+
+//sharedController;
+
++(AttachedWindowsController *)sharedController;
+
+
 
 
 
@@ -40,11 +49,15 @@
 
 //attached windows controllers
 
+@property(nonatomic, retain) MAAttachedWindowController *activeController;
+
 @property (nonatomic, retain) mainView* mainViewController;
 
 @property (nonatomic, retain) VideoCaptureController *videoCaptureController;
 
 @property (nonatomic, retain) TextMessageViewController *textMessageController;
+
+@property (nonatomic, retain) LoginViewController *loginWindowController;
 
 
 
@@ -59,6 +72,7 @@
 -(void)hideTextMessageWindow;
 
 
+
 -(void)processShowTextMessageNotification:(NSNotification *)notification;
 
 -(void)processShowStartMessageNotification:(NSNotification *)notification;
@@ -67,21 +81,29 @@
 
 -(void)processNewHistoryElementNotification:(NSNotification *)notification;
 
+-(void)processShowLoginWindowNotification:(NSNotification *)notification;
+
+-(void)processStatusItemClickedNotification;
+
 
 -(void)displayMainWindow;
 -(void)displayLoginWindow;
--(void)processShowLoginWindowNotification:(NSNotification *)notification;
+
 -(void)displayVideoCaptureWindow;
 
 
 
 
--(void)processStatusItemClickedNotification;
+
 
 
 //helpers
 
 -(NSPoint)getLocationOfStatusItem;
+
+-(void)setActiveWindowController:(MAAttachedWindowController *)contrtoller;
+
+
 
 
 

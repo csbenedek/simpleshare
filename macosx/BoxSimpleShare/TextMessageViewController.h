@@ -8,10 +8,12 @@
 
 
 #import <Cocoa/Cocoa.h>
+#import "MAAttachedWindowController.h"
 
 @class MAAttachedWindow;
 
-@interface TextMessageViewController : NSViewController <NSWindowDelegate>
+
+@interface TextMessageViewController : MAAttachedWindowController <NSWindowDelegate>
 
 
 @property(nonatomic,retain) IBOutlet NSTextField *textField;
@@ -24,6 +26,10 @@
 
 @property (nonatomic, retain) MAAttachedWindow *window;
 
+
+-(void)showStartMessage;
+
+-(void)showSuccessfulLoginMessage;
 
 
 

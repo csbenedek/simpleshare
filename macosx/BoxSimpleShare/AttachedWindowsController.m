@@ -47,6 +47,19 @@
     
 }
 
++(AttachedWindowsController *)sharedController{
+    
+    BoxSimpleShareAppDelegate *delegate = (BoxSimpleShareAppDelegate *)[[NSApplication sharedApplication] delegate];
+    
+    AttachedWindowsController *controller = delegate.attachedWindowsController;
+    
+    
+    return controller;
+    
+    
+}
+
+
 
 -(void)configureAttachedWindow:(MAAttachedWindow *)attachedWindow{
 
@@ -183,9 +196,25 @@
     
     //hide start Text message
     
-    [self hideTextMessageWindow];
+    //[self hideTextMessageWindow];
+    
+    [self.textMessageController hideWindow];
+    
+    if (!self.loginWindowController) {
+        
+        LoginViewController *controller = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        
+        self.loginWindowController = controller;
+        
+        
+    }
+    
+    [self.loginWindowController showWindow];
     
     
+    
+    
+    /*
     if (!self.loginWindow) {
         
         //load LoginViewController from nib file
@@ -220,7 +249,7 @@
     //display attached window
     
     [self showAttachedWindow:self.loginWindow];
-    
+    */
     
     
 }
@@ -303,21 +332,21 @@
 
 -(void)processShowStartMessageNotification:(NSNotification *)notification{
     
- 
-    //NSLog(@"Show start message notification!");
+    if (!self.textMessageController) {
+        
+        
+        //load text message view controller from nib file
+        TextMessageViewController *controller = [[TextMessageViewController alloc] initWithNibName:@"TextMessageViewController" bundle:nil];
+        
+        //store reference to controller
+        
+        self.textMessageController = controller;
+        
+        
+    }
     
-    
-    //NSLog(@"%@",text);
-    //load text message view controller from nib file
-    TextMessageViewController *controller = [[TextMessageViewController alloc] initWithNibName:@"TextMessageViewController" bundle:nil];
-    
-    //store reference to controller
-    
-    self.textMessageController = controller;
-    
-    
-    
-    
+    [self.textMessageController showStartMessage];
+    /*
     //this is just for triggering lazy loading
     NSView *aView1 = controller.view;
     
@@ -346,7 +375,7 @@
     
     //display attached window
     [self showAttachedWindow:self.textMessageWindow];
-    
+    */
     
     
     
@@ -420,16 +449,19 @@
 
 
 
-
 -(void)processStatusItemClickedNotification{
     
     //NSLog(@"Status Item Clicked");
     
-    //hide currentAttachedWindowIf it is visible
+    //window of active controller is visible, hide it
     
-    if ([self.currentAttachedWindow isVisible]) {
+    if ([self.activeController.window isVisible]) {
         
-        [self hideAttachedWindow:self.currentAttachedWindow];
+        //[self hideAttachedWindow:self.currentAttachedWindow];
+        
+        [self.activeController hideWindow];
+        
+        
         
         return;
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D01A72319CAB78D000349A7 /* MAAttachedWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D01A72219CAB78D000349A7 /* MAAttachedWindowController.m */; };
 		0DF52E3219C8BB4F000D2D56 /* AttachedWindowsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */; };
 		0DF52E3719C8BB8B000D2D56 /* VideoCaptureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E3519C8BB8B000D2D56 /* VideoCaptureController.m */; };
 		0DF52E3819C8BB8B000D2D56 /* VideoCaptureController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF52E3619C8BB8B000D2D56 /* VideoCaptureController.xib */; };
@@ -366,6 +367,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D01A72119CAB78D000349A7 /* MAAttachedWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindowController.h; sourceTree = "<group>"; };
+		0D01A72219CAB78D000349A7 /* MAAttachedWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindowController.m; sourceTree = "<group>"; };
 		0DF52E3019C8BB4F000D2D56 /* AttachedWindowsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachedWindowsController.h; sourceTree = "<group>"; };
 		0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachedWindowsController.m; sourceTree = "<group>"; };
 		0DF52E3419C8BB8B000D2D56 /* VideoCaptureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCaptureController.h; sourceTree = "<group>"; };
@@ -956,6 +959,8 @@
 				0DF52E3F19C8BBE2000D2D56 /* mainView */,
 				0DF52E3319C8BB6D000D2D56 /* VIdeoCaptureController */,
 				0DF52E3919C8BB95000D2D56 /* TextMessageController */,
+				0D01A72119CAB78D000349A7 /* MAAttachedWindowController.h */,
+				0D01A72219CAB78D000349A7 /* MAAttachedWindowController.m */,
 			);
 			name = "New Interface";
 			sourceTree = "<group>";
@@ -2174,6 +2179,7 @@
 				84CC87EB1916C09100A239E0 /* RMBlurredView.m in Sources */,
 				8BDB2E8713C3A31E003BFDE0 /* ASIDataDecompressor.m in Sources */,
 				84B85359188C4D6A00D1DF26 /* GrantAccessWindowController.m in Sources */,
+				0D01A72319CAB78D000349A7 /* MAAttachedWindowController.m in Sources */,
 				848003B919240CB50001F9F4 /* NSImage+Additions.m in Sources */,
 				84098A7219BA3BAD00F37451 /* FooterView.m in Sources */,
 				847EF05518BB187300C5CDEE /* FeedbackWindowController.m in Sources */,

@@ -146,6 +146,8 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     
 //    [statusBarItem setHighlightMode:YES];
 //    [statusBarItem setEnabled:YES];
+    
+    
      self.menubarController = [[MenubarController alloc] init];
     
     [uploadStatusPanel setDelegate:self];
@@ -189,6 +191,9 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     
     //register for NewHistoryElementNotification
     AddNotificationObserver(self.attachedWindowsController, @selector(processNewHistoryElementNotification:), @"NewHistoryElementNotification", nil);
+    
+    
+    
     
     
     
