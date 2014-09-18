@@ -173,9 +173,16 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     [self setupUploadHotKey];
     [self setupVideoCaptureHotKey];
     
-    //init AttachedWindowsController
+    //prepare settings and init AttachedWindowsController
     
-    self.attachedWindowsController  = [[AttachedWindowsController alloc] init];
+    NSNumber *isFirstLaunch = [NSNumber numberWithBool:TRUE];
+    
+    NSDictionary *settingsDict = [NSDictionary dictionaryWithObject:isFirstLaunch forKey:@"isFirstLaunch"];
+    
+    
+    self.attachedWindowsController  = [[AttachedWindowsController alloc] initWithSettings:settingsDict];
+    
+    
     
     //register for ShowTextMessage notification
     AddNotificationObserver(self.attachedWindowsController, @selector(processShowStartMessageNotification:), @"ShowStartMessageNotification", nil);
@@ -199,8 +206,23 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     
     //post notification to show start message
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowStartMessageNotification" object:self userInfo:nil];
+    if (self.attachedWindowsController.isFirstLaunch) {
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowStartMessageNotification" object:self userInfo:nil];
+        
+        
+    }
     
+    else{
+        
+        //NSLog(@"Not first launch.");
+        
+        [self.attachedWindowsController displayLoginWindow];
+        
+        
+        
+    }
+ 
     
     
 	/*

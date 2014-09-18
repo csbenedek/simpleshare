@@ -61,13 +61,17 @@
         
         MAAttachedWindow *videoCaptureWindow = [[MAAttachedWindow alloc] initWithView:aView attachedToPoint:point];
         
+        //configure
         
         [self configureAttachedWindow:videoCaptureWindow];
         
-        
+        //store reference to window
         self.window = videoCaptureWindow;
         
         
+        //set NSWindow delegate
+        
+        [self.window setDelegate:self];
         
     }
     
@@ -92,7 +96,9 @@
 -(IBAction)backToMainWindow:(id)sender{
     
     //hide videoCaptureView
-    //[self.rootController hideAttachedWindow:self.rootController.currentAttachedWindow];
+    
+    [self hideWindow];
+    
     
     //display mainWindow
     [self.rootController displayMainWindow] ;

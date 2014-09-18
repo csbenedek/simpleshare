@@ -182,7 +182,7 @@
 -(void)showCaptureVideoView:(id)sender{
     
     //make attachedWindowsCOntroller display capture video window
-    [[self rootController] displayVideoCaptureWindow];
+    [self.rootController displayVideoCaptureWindow];
     
     
     

@@ -30,6 +30,25 @@
 
 @implementation AttachedWindowsController
 
+-(id)initWithSettings:(NSDictionary *)settingsDict{
+    
+    self = [super init];
+    
+    
+    if (self) {
+        
+        self.isFirstLaunch = [[settingsDict valueForKey:@"isFirstLaunch"] boolValue];
+        
+       
+        return self;
+    }
+    
+    return nil;
+}
+
+
+
+
 #pragma mark - helpers
 -(NSPoint)getLocationOfStatusItem{
     
@@ -133,7 +152,6 @@
         
         VideoCaptureController *controller = [[VideoCaptureController alloc] initWithNibName:@"VideoCaptureController" bundle:nil];
         
-        //set pairing references
         
         self.videoCaptureController = controller;
         
@@ -144,7 +162,7 @@
     [self.videoCaptureController showWindow];
     
  
-    
+    /*
     if (!self.videoCaptureWindow) {
         
     
@@ -194,7 +212,7 @@
     //self.currentAttachedWindow = self.videoCaptureWindow;
     
     [self showAttachedWindow:self.videoCaptureWindow];
-    
+    */
     
     
     
@@ -422,7 +440,7 @@
 
 
 //not used for now..
-
+/*
 -(void)processShowTextMessageNotification:(NSNotification *)notification{
     
     NSDictionary *userInfo = notification.userInfo;
@@ -434,17 +452,27 @@
     //[self displayMessageWithText:string andWidth:width];
     
     
-}
+}*/
 
 
 
 -(void)processSuccessfulLoginNotification:(NSNotification *)notification{
     
     
+    if (self.isFirstLaunch) {
+        
+         [self.textMessageController showSuccessfulLoginMessage];
+        
+        //set active controller to mainView to display it when status item clicked after message
+        
+        
+        
+    }
     
-    //[self.textMessageController showSuccessfulLoginMessage];
     
-    [self displayMainWindow];
+   
+    
+    //[self displayMainWindow];
     
     
     //hide login window
@@ -524,10 +552,23 @@
     //else window of active controller
     else{
         
+        if (self.isFirstLaunch) {
+            
+            [self displayMainWindow];
+            
+            self.isFirstLaunch = FALSE;
+            
+            
+        }
+        else{
+            
+            [self.activeController showWindow];
+            
+        }
         
         //[self displayMainWindow];
         
-        [self.activeController showWindow];
+        
         
         
         

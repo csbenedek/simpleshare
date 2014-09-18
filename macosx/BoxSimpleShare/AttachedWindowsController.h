@@ -21,6 +21,15 @@
 @interface AttachedWindowsController : NSObject <NSWindowDelegate>
 
 
+-(id)initWithSettings:(NSDictionary *)settingsDict;
+
+
+
+
+//isFIrstLauhcn control variable
+
+@property(nonatomic, assign) BOOL isFirstLaunch;
+
 
 //currently displayed attached window
 
