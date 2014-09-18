@@ -7,13 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "MAAttachedWindowController.h"
 
 @class BoxSimpleShareAppDelegate;
 @class AttachedWindowsController;
 @class MAAttachedWindow;
 
 
-@interface mainView : NSViewController <NSTableViewDelegate, NSTableViewDataSource, NSWindowDelegate>
+
+@interface mainView : MAAttachedWindowController <NSTableViewDelegate, NSTableViewDataSource, NSWindowDelegate>
 
 @property(nonatomic, retain) IBOutlet NSTextField *fileName;
 

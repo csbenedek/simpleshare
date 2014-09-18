@@ -31,6 +31,70 @@
     return self;
 }
 
+#pragma mark - show/hide methods
+-(void)configureAttachedWindow:(MAAttachedWindow *)window{
+    
+    window.borderWidth = 0;
+    
+    [window setBackgroundColor:[NSColor whiteColor]];
+    
+    [window setArrowBaseWidth:20.0];
+    
+    [window setArrowHeight:10.0];
+    
+    
+    
+}
+
+
+
+-(void)showWindow{
+    
+    if (!self.window) {
+        
+        //get a view from controller, this triggers lazy loading
+        
+        NSView *aView = self.view;
+        
+        //get a StatusItem location
+        
+        NSPoint point = [self getLocationOfStatusItem];
+        
+        //instantiate attached window
+        MAAttachedWindow *mainWindow = [[MAAttachedWindow alloc] initWithView:aView attachedToPoint:point];
+        
+        
+        [self configureAttachedWindow:mainWindow];
+        
+        
+        //set delegate
+        
+        [mainWindow setDelegate:self];
+        
+        //store reference to window in controller
+        
+        self.window = mainWindow;
+        
+        
+    }
+    
+    //make self active controller in AttachedWindowsController
+    
+    self.rootController.activeController = self;
+    
+    //show window
+    
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+    
+    [self.window makeKeyAndOrderFront:self];
+
+    
+    
+}
+
+
+
+
 #pragma mark - NSTableViewDataSource methods
 
 

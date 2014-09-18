@@ -21,21 +21,14 @@
 @interface AttachedWindowsController : NSObject <NSWindowDelegate>
 
 
-//sharedController;
-
-+(AttachedWindowsController *)sharedController;
-
-
-
-
 
 //currently displayed attached window
 
 @property (nonatomic, assign) MAAttachedWindow *currentAttachedWindow;
 
-@property (nonatomic, retain) MAAttachedWindow *textMessageWindow;
+//@property (nonatomic, retain) MAAttachedWindow *textMessageWindow;
 
-@property (nonatomic, retain) MAAttachedWindow *loginWindow;
+//@property (nonatomic, retain) MAAttachedWindow *loginWindow;
 
 @property (nonatomic, retain) MAAttachedWindow *mainWindow;
 

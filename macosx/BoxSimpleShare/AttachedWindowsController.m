@@ -119,7 +119,7 @@
 
 -(void)hideTextMessageWindow{
     
-    [self.textMessageWindow orderOut:self];
+    //[self.textMessageWindow orderOut:self];
     
 }
 
@@ -258,11 +258,34 @@
 
 -(void)displayMainWindow{
     
+    //hide SuccessfulLoginMessage
     
-    //load and configure mainWindow from nib file
+    [self.textMessageController hideWindow];
     
-    [self hideAttachedWindow:self.textMessageWindow];
     
+    //mainWindowController
+    
+    if (!self.mainViewController) {
+        
+        mainView *controller = [[mainView alloc] initWithNibName:@"mainView" bundle:nil];
+        
+        //store reference to mainView controller
+        
+        self.mainViewController = controller;
+
+        
+        
+    }
+    
+    [self.mainViewController showWindow];
+    
+    
+    
+    
+    
+    
+    //[self hideAttachedWindow:self.textMessageWindow];
+    /*
     if (!self.mainWindow) {
         mainView *controller = [[mainView alloc] initWithNibName:@"mainView" bundle:nil];
         
@@ -303,6 +326,7 @@
         
         
         self.mainWindow = mainWindow;
+    
     }
     
     
@@ -313,7 +337,7 @@
     //display attached window
     [self switchAttachedWindow:self.mainWindow];
     
-    
+    */
     
 }
 
@@ -403,43 +427,47 @@
 -(void)processShowSuccessfulLoginMessageNotification:(NSNotification *)notification{
     
     
+    
+    [self.textMessageController showSuccessfulLoginMessage];
+    
+    
     //hide login window
-    [self hideAttachedWindow:self.loginWindow];
+    //[self hideAttachedWindow:self.loginWindow];
     
     
     //NSLog(@"%@",text);
     //load text message view controller from nib file
-    TextMessageViewController *controller = [[TextMessageViewController alloc] initWithNibName:@"TextMessageViewController" bundle:nil];
+    //TextMessageViewController *controller = [[TextMessageViewController alloc] initWithNibName:@"TextMessageViewController" bundle:nil];
     
     
     //this is just for triggering lazy loading
-    NSView *aView1 = controller.view;
+    //NSView *aView1 = controller.view;
     
     //this view is really used
-    NSView *aView2 = controller.successfulLoginView;
+    //NSView *aView2 = controller.successfulLoginView;
     
     
     
     //get a location of statusItem
     
     
-    NSPoint point = [self getLocationOfStatusItem];
+    //NSPoint point = [self getLocationOfStatusItem];
     
     //instantiate attached window
     
-    MAAttachedWindow *attachedWindow = [[MAAttachedWindow alloc] initWithView:aView2 attachedToPoint:point];
+   // MAAttachedWindow *attachedWindow = [[MAAttachedWindow alloc] initWithView:aView2 attachedToPoint:point];
     
     
-    [self configureAttachedWindow:attachedWindow];
+    //[self configureAttachedWindow:attachedWindow];
     
-    self.textMessageWindow = attachedWindow;
+    //self.textMessageWindow = attachedWindow;
     
     
     //display attached window
-    self.currentAttachedWindow = self.textMessageWindow;
+    //self.currentAttachedWindow = self.textMessageWindow;
     
     
-    [self showAttachedWindow:self.textMessageWindow];
+    //[self showAttachedWindow:self.textMessageWindow];
     
     
     
@@ -460,8 +488,6 @@
         //[self hideAttachedWindow:self.currentAttachedWindow];
         
         [self.activeController hideWindow];
-        
-        
         
         return;
     }
