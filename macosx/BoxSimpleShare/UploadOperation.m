@@ -664,6 +664,16 @@
             
             [[[BoxSimpleShareAppDelegate sharedDelegate] filesUploadedInSession] addObject:file];
             [[BoxSimpleShareAppDelegate sharedDelegate] updateHistoryMenu]; // update history menu
+        
+            //post updateHistoryElementsNotification for new interface
+        
+    #warning add User dictionary with new element!
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"NewHistoryElementNotification" object:nil userInfo:nil];
+        
+        
+        
+        
+        
             
         exit:
             
