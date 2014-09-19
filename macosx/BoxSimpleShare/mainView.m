@@ -236,6 +236,23 @@
     
 }
 
+-(IBAction)uploadFile:(id)sender{
+    
+    BoxSimpleShareAppDelegate *delegate = (BoxSimpleShareAppDelegate *)[BoxSimpleShareAppDelegate sharedDelegate];
+    
+    //hide window
+    
+    [self hideWindow];
+    
+    //make partial screenshot
+    
+    [delegate selectAndUploadFile:nil];
+    
+    
+    
+}
+
+
 -(IBAction)takeScreenShot:(id)sender{
     
     
