@@ -87,6 +87,9 @@
                                 <behavior key="behavior" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="takeScreenShot:" target="-2" id="egA-KG-DNR"/>
+                            </connections>
                         </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YgK-Ye-CXk">
                             <rect key="frame" x="205" y="4" width="73" height="51"/>

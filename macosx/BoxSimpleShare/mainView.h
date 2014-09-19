@@ -45,12 +45,14 @@
 
 -(IBAction)quitApp:(id)sender;
 
--(IBAction)showCaptureVideoView:(id)sender;
+
 
 
 -(void)updateHistoryElements;
 
-
+//actions
+-(IBAction)showCaptureVideoView:(id)sender;
+-(IBAction)takeScreenShot:(id)sender;
 
 
 

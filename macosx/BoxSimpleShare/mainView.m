@@ -236,6 +236,24 @@
     
 }
 
+-(IBAction)takeScreenShot:(id)sender{
+    
+    
+    BoxSimpleShareAppDelegate *delegate = (BoxSimpleShareAppDelegate *)[BoxSimpleShareAppDelegate sharedDelegate];
+    
+    //hide window
+    
+    [self hideWindow];
+    
+    //make partial screenshot
+    
+    [delegate startImageCapture:nil];
+    
+    
+    //NSLog(@"Take screenshot!");
+      
+    
+}
 
 
 

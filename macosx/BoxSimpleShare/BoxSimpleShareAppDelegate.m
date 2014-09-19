@@ -94,6 +94,7 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     
     [mainController setAppVersion];
     [mainController wireAllButtons];
+    
     [mainController addObserver:self
                      forKeyPath:@"disable_automatic_upload_check"
                         options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld 
