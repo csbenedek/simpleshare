@@ -22,6 +22,7 @@ extern const int MaxHistoryItemCount;
 @class MainController;
 @class PopupWindowController;
 @class MenubarController;
+
 @class AttachedWindowsController;
 
 @interface BoxSimpleShareAppDelegate : NSObject <NSApplicationDelegate, NSTabViewDelegate, NSTableViewDataSource, NSWindowDelegate, NSToolbarDelegate, GrowlApplicationBridgeDelegate, VideoCaptureControllerDelegate,ImageCaptureControllerDelegate> {
@@ -147,6 +148,9 @@ extern const int MaxHistoryItemCount;
 -(void)quitApplication;
 
 -(IBAction)startVideoCapture:(id)sender;
+
+- (void)showPreferenceView;
+
 
 
 @end

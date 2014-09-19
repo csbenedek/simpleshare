@@ -48,6 +48,9 @@
                                         <menuItem image="settings-icon" hidden="YES" id="F1f-Jc-CLm"/>
                                         <menuItem title="Preferences.." id="ik6-vX-FtU">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="showPreferencesWindow:" target="-2" id="AcM-N9-xw0"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="IfC-a3-Y0Y"/>
                                         <menuItem title="About" id="GzW-FJ-hEB"/>

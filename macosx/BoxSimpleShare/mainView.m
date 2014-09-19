@@ -236,6 +236,30 @@
     
 }
 
+-(IBAction)showPreferencesWindow:(id)sender{
+    
+    
+    BoxSimpleShareAppDelegate *delegate = (BoxSimpleShareAppDelegate *)[BoxSimpleShareAppDelegate sharedDelegate];
+    
+    //hide window
+    
+    [self hideWindow];
+    
+    //make partial screenshot
+    
+    delegate.window.isVisible = true;
+    
+    [delegate showPreferenceView];
+    
+    
+   // NSLog(@"Show preferences window");
+    
+    
+    
+    
+}
+
+
 -(IBAction)uploadFile:(id)sender{
     
     BoxSimpleShareAppDelegate *delegate = (BoxSimpleShareAppDelegate *)[BoxSimpleShareAppDelegate sharedDelegate];

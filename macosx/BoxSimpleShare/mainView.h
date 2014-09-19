@@ -55,7 +55,7 @@
 -(IBAction)takeScreenShot:(id)sender;
 -(IBAction)uploadFile:(id)sender;
 
-
+-(IBAction)showPreferencesWindow:(id)sender;
 
 
 

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0D01A72319CAB78D000349A7 /* MAAttachedWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D01A72219CAB78D000349A7 /* MAAttachedWindowController.m */; };
 		0D75692419CB13CA0084FA0D /* backArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D75692319CB13CA0084FA0D /* backArrow.png */; };
+		0DB634A319CCB29300F97E34 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB634A119CCB29300F97E34 /* PreferencesController.m */; };
+		0DB634A419CCB29300F97E34 /* PreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB634A219CCB29300F97E34 /* PreferencesController.xib */; };
 		0DF52E3219C8BB4F000D2D56 /* AttachedWindowsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */; };
 		0DF52E3719C8BB8B000D2D56 /* VideoCaptureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E3519C8BB8B000D2D56 /* VideoCaptureController.m */; };
 		0DF52E3819C8BB8B000D2D56 /* VideoCaptureController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF52E3619C8BB8B000D2D56 /* VideoCaptureController.xib */; };
@@ -371,6 +373,9 @@
 		0D01A72119CAB78D000349A7 /* MAAttachedWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindowController.h; sourceTree = "<group>"; };
 		0D01A72219CAB78D000349A7 /* MAAttachedWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindowController.m; sourceTree = "<group>"; };
 		0D75692319CB13CA0084FA0D /* backArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backArrow.png; sourceTree = "<group>"; };
+		0DB634A019CCB29300F97E34 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
+		0DB634A119CCB29300F97E34 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
+		0DB634A219CCB29300F97E34 /* PreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesController.xib; sourceTree = "<group>"; };
 		0DF52E3019C8BB4F000D2D56 /* AttachedWindowsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachedWindowsController.h; sourceTree = "<group>"; };
 		0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachedWindowsController.m; sourceTree = "<group>"; };
 		0DF52E3419C8BB8B000D2D56 /* VideoCaptureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCaptureController.h; sourceTree = "<group>"; };
@@ -950,9 +955,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DB6349A19CCAC9B00F97E34 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				0DB634A019CCB29300F97E34 /* PreferencesController.h */,
+				0DB634A119CCB29300F97E34 /* PreferencesController.m */,
+				0DB634A219CCB29300F97E34 /* PreferencesController.xib */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
 		0DF52E2C19C8B91C000D2D56 /* New Interface */ = {
 			isa = PBXGroup;
 			children = (
+				0DB6349A19CCAC9B00F97E34 /* Preferences */,
 				0DF52E3019C8BB4F000D2D56 /* AttachedWindowsController.h */,
 				0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */,
 				0DF52E5019C8BF21000D2D56 /* MAAttachedWindow.h */,
@@ -2145,6 +2161,7 @@
 				2C6B37A816C5A52F00359B3F /* nointernet-icon.png in Resources */,
 				848F9A0A19609C2F00984731 /* settings-icon.png in Resources */,
 				2C6B37A916C5A52F00359B3F /* nointernet-icon@2x.png in Resources */,
+				0DB634A419CCB29300F97E34 /* PreferencesController.xib in Resources */,
 				849219DC18F1F642000F0E7D /* YoutubeUploadWindowController.xib in Resources */,
 				2C6B37AC16CD8FD100359B3F /* image_howto_step1@2x.png in Resources */,
 				2C6B37AD16CD8FD100359B3F /* image_howto_step2@2x.png in Resources */,
@@ -2200,6 +2217,7 @@
 				8BDB2E9113C3A31E003BFDE0 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 				8BDB2E9213C3A31E003BFDE0 /* ASICloudFilesObject.m in Sources */,
 				8BDB2E9313C3A31E003BFDE0 /* ASICloudFilesObjectRequest.m in Sources */,
+				0DB634A319CCB29300F97E34 /* PreferencesController.m in Sources */,
 				8BDB2E9413C3A31E003BFDE0 /* ASICloudFilesRequest.m in Sources */,
 				84F29FED18F2BF70002B12EB /* YoutubeAuthenticateManager.m in Sources */,
 				8BDB2E9513C3A31E003BFDE0 /* ASIS3Bucket.m in Sources */,
