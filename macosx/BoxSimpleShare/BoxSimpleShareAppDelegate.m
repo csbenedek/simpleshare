@@ -30,6 +30,8 @@
 
 
 #import "AttachedWindowsController.h"
+#import "PreferencesController.h"
+
 
 
 
@@ -199,6 +201,19 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     
     //register for NewHistoryElementNotification
     AddNotificationObserver(self.attachedWindowsController, @selector(processNewHistoryElementNotification:), @"NewHistoryElementNotification", nil);
+    
+    
+    //preferenes controller
+    
+    self.preferencesController = [[PreferencesController alloc] initWithWindowNibName:@"PreferencesController"];
+    
+    //regester for ShowPreferencesWindowNotification
+    
+    AddNotificationObserver(self.preferencesController, @selector(processShowPreferencesWindowNotification), @"ShowPreferencesWindowNotification", nil);
+    
+    
+    
+    
     
     
     

@@ -238,7 +238,7 @@
 
 -(IBAction)showPreferencesWindow:(id)sender{
     
-    
+    /*
     BoxSimpleShareAppDelegate *delegate = (BoxSimpleShareAppDelegate *)[BoxSimpleShareAppDelegate sharedDelegate];
     
     //hide window
@@ -248,8 +248,9 @@
     //make partial screenshot
     
     delegate.window.isVisible = true;
+    */
     
-    [delegate showPreferenceView];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowPreferencesWindowNotification" object:nil];
     
     
    // NSLog(@"Show preferences window");

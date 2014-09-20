@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0D01A72319CAB78D000349A7 /* MAAttachedWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D01A72219CAB78D000349A7 /* MAAttachedWindowController.m */; };
+		0D6C7F3219CE022100D40BD3 /* MainPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3019CE022100D40BD3 /* MainPreferencesViewController.m */; };
+		0D6C7F3319CE022100D40BD3 /* MainPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3119CE022100D40BD3 /* MainPreferencesViewController.xib */; };
+		0D6C7F3819CE208600D40BD3 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3619CE208600D40BD3 /* AccountViewController.m */; };
+		0D6C7F3919CE208600D40BD3 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3719CE208600D40BD3 /* AccountViewController.xib */; };
+		0D6C7F3E19CE26EB00D40BD3 /* ShortcutsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3C19CE26EB00D40BD3 /* ShortcutsViewController.m */; };
+		0D6C7F3F19CE26EB00D40BD3 /* ShortcutsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3D19CE26EB00D40BD3 /* ShortcutsViewController.xib */; };
 		0D75692419CB13CA0084FA0D /* backArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D75692319CB13CA0084FA0D /* backArrow.png */; };
 		0DB634A319CCB29300F97E34 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB634A119CCB29300F97E34 /* PreferencesController.m */; };
 		0DB634A419CCB29300F97E34 /* PreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB634A219CCB29300F97E34 /* PreferencesController.xib */; };
@@ -372,6 +378,15 @@
 /* Begin PBXFileReference section */
 		0D01A72119CAB78D000349A7 /* MAAttachedWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindowController.h; sourceTree = "<group>"; };
 		0D01A72219CAB78D000349A7 /* MAAttachedWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindowController.m; sourceTree = "<group>"; };
+		0D6C7F2F19CE022100D40BD3 /* MainPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPreferencesViewController.h; sourceTree = "<group>"; };
+		0D6C7F3019CE022100D40BD3 /* MainPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPreferencesViewController.m; sourceTree = "<group>"; };
+		0D6C7F3119CE022100D40BD3 /* MainPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainPreferencesViewController.xib; sourceTree = "<group>"; };
+		0D6C7F3519CE208600D40BD3 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
+		0D6C7F3619CE208600D40BD3 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
+		0D6C7F3719CE208600D40BD3 /* AccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
+		0D6C7F3B19CE26EB00D40BD3 /* ShortcutsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortcutsViewController.h; sourceTree = "<group>"; };
+		0D6C7F3C19CE26EB00D40BD3 /* ShortcutsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortcutsViewController.m; sourceTree = "<group>"; };
+		0D6C7F3D19CE26EB00D40BD3 /* ShortcutsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShortcutsViewController.xib; sourceTree = "<group>"; };
 		0D75692319CB13CA0084FA0D /* backArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backArrow.png; sourceTree = "<group>"; };
 		0DB634A019CCB29300F97E34 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		0DB634A119CCB29300F97E34 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
@@ -955,17 +970,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0DB6349A19CCAC9B00F97E34 /* Preferences */ = {
+		0D6C7F2D19CE011800D40BD3 /* PreferencesController */ = {
 			isa = PBXGroup;
 			children = (
 				0DB634A019CCB29300F97E34 /* PreferencesController.h */,
 				0DB634A119CCB29300F97E34 /* PreferencesController.m */,
 				0DB634A219CCB29300F97E34 /* PreferencesController.xib */,
 			);
+			name = PreferencesController;
+			sourceTree = "<group>";
+		};
+		0D6C7F2E19CE013D00D40BD3 /* MainPreferences */ = {
+			isa = PBXGroup;
+			children = (
+				0D6C7F2F19CE022100D40BD3 /* MainPreferencesViewController.h */,
+				0D6C7F3019CE022100D40BD3 /* MainPreferencesViewController.m */,
+				0D6C7F3119CE022100D40BD3 /* MainPreferencesViewController.xib */,
+			);
+			name = MainPreferences;
+			sourceTree = "<group>";
+		};
+		0D6C7F3419CE205E00D40BD3 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				0D6C7F3519CE208600D40BD3 /* AccountViewController.h */,
+				0D6C7F3619CE208600D40BD3 /* AccountViewController.m */,
+				0D6C7F3719CE208600D40BD3 /* AccountViewController.xib */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		0D6C7F3A19CE26BC00D40BD3 /* Shortcuts */ = {
+			isa = PBXGroup;
+			children = (
+				0D6C7F3B19CE26EB00D40BD3 /* ShortcutsViewController.h */,
+				0D6C7F3C19CE26EB00D40BD3 /* ShortcutsViewController.m */,
+				0D6C7F3D19CE26EB00D40BD3 /* ShortcutsViewController.xib */,
+			);
+			name = Shortcuts;
+			sourceTree = "<group>";
+		};
+		0DB6349A19CCAC9B00F97E34 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				0D6C7F3A19CE26BC00D40BD3 /* Shortcuts */,
+				0D6C7F3419CE205E00D40BD3 /* Account */,
+				0D6C7F2D19CE011800D40BD3 /* PreferencesController */,
+				0D6C7F2E19CE013D00D40BD3 /* MainPreferences */,
+			);
 			name = Preferences;
 			sourceTree = "<group>";
 		};
-		0DF52E2C19C8B91C000D2D56 /* New Interface */ = {
+		0DF52E2C19C8B91C000D2D56 /* New Design */ = {
 			isa = PBXGroup;
 			children = (
 				0DB6349A19CCAC9B00F97E34 /* Preferences */,
@@ -980,7 +1036,7 @@
 				0D01A72119CAB78D000349A7 /* MAAttachedWindowController.h */,
 				0D01A72219CAB78D000349A7 /* MAAttachedWindowController.m */,
 			);
-			name = "New Interface";
+			name = "New Design";
 			sourceTree = "<group>";
 		};
 		0DF52E3319C8BB6D000D2D56 /* VIdeoCaptureController */ = {
@@ -1348,7 +1404,6 @@
 		8B69533313C3BF9100B32618 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0DF52E2C19C8B91C000D2D56 /* New Interface */,
 				8BA5385513C74030008E5AC3 /* MainController.h */,
 				8BA5385613C74030008E5AC3 /* MainController.m */,
 				8B16ED7113D21DE000F6DC5E /* PreferenceManager.h */,
@@ -1645,6 +1700,7 @@
 		8BDB2D2513C3989F003BFDE0 /* BoxSimpleShare */ = {
 			isa = PBXGroup;
 			children = (
+				0DF52E2C19C8B91C000D2D56 /* New Design */,
 				848F998519607FC000984731 /* PopupUI */,
 				8B69535D13C4D71500B32618 /* App Constants */,
 				8B69534F13C3CC3D00B32618 /* Extended */,
@@ -2034,6 +2090,7 @@
 				848F9A0B19609C2F00984731 /* small-toggle-off.png in Resources */,
 				8B4C683D13CF3BEE0044492C /* icon_account_small.png in Resources */,
 				0DF52E4F19C8BF09000D2D56 /* LoginViewController.xib in Resources */,
+				0D6C7F3F19CE26EB00D40BD3 /* ShortcutsViewController.xib in Resources */,
 				848F99E419609C2F00984731 /* prefs-accounts@2x.png in Resources */,
 				8B4C683E13CF3BEE0044492C /* icon_preferences_small.png in Resources */,
 				8B84068E13D375C30025EA39 /* audio.png in Resources */,
@@ -2059,6 +2116,7 @@
 				849219CB18F1426A000F0E7D /* LoginWindowController.xib in Resources */,
 				848F9A0319609C2F00984731 /* prefs-accounts.png in Resources */,
 				8B84069713D375C30025EA39 /* video.png in Resources */,
+				0D6C7F3919CE208600D40BD3 /* AccountViewController.xib in Resources */,
 				848F99F619609C2F00984731 /* box-account-login-button-pressed.png in Resources */,
 				848F99E819609C2F00984731 /* record-button@2x.png in Resources */,
 				848F9A1219609C2F00984731 /* upload-target-button.png in Resources */,
@@ -2094,6 +2152,7 @@
 				2CAFB71D16B1C3B800418D61 /* icon-animation-3.png in Resources */,
 				2CAFB71E16B1C3B800418D61 /* icon-animation-3@2x.png in Resources */,
 				2CAFB71F16B1C3B800418D61 /* icon-animation-4.png in Resources */,
+				0D6C7F3319CE022100D40BD3 /* MainPreferencesViewController.xib in Resources */,
 				2CAFB72016B1C3B800418D61 /* icon-animation-4@2x.png in Resources */,
 				848F9A0E19609C2F00984731 /* take-selected-region-button-pressed.png in Resources */,
 				2CAFB73F16B1C3D000418D61 /* icon-animation-5.png in Resources */,
@@ -2191,6 +2250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D6C7F3219CE022100D40BD3 /* MainPreferencesViewController.m in Sources */,
 				8BDB2D2D13C3989F003BFDE0 /* main.m in Sources */,
 				8433B2A719ADA0B700DBA8FC /* ItemViewController.m in Sources */,
 				8BDB2D3313C3989F003BFDE0 /* BoxSimpleShareAppDelegate.m in Sources */,
@@ -2294,6 +2354,7 @@
 				9104DDA3146BE9B900D1A0C9 /* BoxCopyOperation.m in Sources */,
 				9104DDA4146BE9B900D1A0C9 /* BoxCreateFolderOperation.m in Sources */,
 				9104DDA5146BE9B900D1A0C9 /* BoxDeleteCommentOperation.m in Sources */,
+				0D6C7F3E19CE26EB00D40BD3 /* ShortcutsViewController.m in Sources */,
 				9104DDA6146BE9B900D1A0C9 /* BoxDeleteOperation.m in Sources */,
 				9104DDA7146BE9B900D1A0C9 /* BoxDownloadOperation.m in Sources */,
 				9104DDA8146BE9B900D1A0C9 /* BoxGetAuthTokenOperation.m in Sources */,
@@ -2334,6 +2395,7 @@
 				2CAFB7CC16B71E7000418D61 /* OAuth2Connection.m in Sources */,
 				848E35261883DC17000F83B1 /* NSAlert+SynchronousSheet.m in Sources */,
 				8433B2B919ADA10E00DBA8FC /* PXListViewCell.m in Sources */,
+				0D6C7F3819CE208600D40BD3 /* AccountViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2434,7 +2496,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = SimpleShare.entitlements;
-				CODE_SIGN_IDENTITY = Unplugged;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2472,7 +2533,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = SimpleShare.entitlements;
-				CODE_SIGN_IDENTITY = Unplugged;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";

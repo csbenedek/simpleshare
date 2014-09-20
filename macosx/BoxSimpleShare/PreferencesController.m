@@ -7,6 +7,10 @@
 //
 
 #import "PreferencesController.h"
+#import "MainPreferencesViewController.h"
+#import "AccountViewController.h"
+#import "ShortcutsViewController.h"
+
 
 @interface PreferencesController ()
 
@@ -27,7 +31,137 @@
 {
     [super windowDidLoad];
     
+    [self mainPreferencesToolbarItemAction:nil];
+    //[self mainPreferencesToolbarItemAction:nil];
+    
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
+
+-(void)processShowPreferencesWindowNotification{
+    
+    //NSLog(@"Show preferences window notification!");
+    
+    [self.window makeKeyAndOrderFront:self];
+    
+}
+
+#pragma mark - menu toolbar items actions
+
+-(IBAction)mainPreferencesToolbarItemAction:(id)sender{
+    //set window title
+    
+    [self.window setTitle:@"Preferences"];
+    
+    
+    
+    //select toolbar item
+    [self.toolbar setSelectedItemIdentifier:@"net.box.preferencesView"];
+    
+    //load mainPreferences view
+    
+    if (!self.mainPreferencesController) {
+        
+        self.mainPreferencesController = [[MainPreferencesViewController alloc] initWithNibName:@"MainPreferencesViewController" bundle:nil];
+        
+    }
+    
+    [self displayView:self.mainPreferencesController.view];
+    
+    //[self.window.contentView addSubview:self.mainPreferencesController.view];
+    
+    
+    
+    NSLog(@"Main toolbar item action.");
+    
+}
+
+-(IBAction)accountToolbarItemAction:(id)sender{
+    
+    [self.window setTitle:@"Accounts"];
+    
+    
+    //load Account view
+    
+    if (!self.accountViewController) {
+        
+        self.accountViewController = [[AccountViewController alloc] initWithNibName:@"AccountViewController" bundle:nil];
+        
+        
+    }
+    
+    
+    [self displayView:self.accountViewController.view];
+    
+    
+    
+    
+    NSLog(@"Accounts toolbar item action.");
+    
+    
+}
+
+
+-(void) displayView:(NSView *)view{
+    
+    
+    //get size of view to be displayed
+    NSRect viewRect = view.frame;
+    
+    NSRect windowRect = self.window.frame;
+    
+    //needed for holding window position while resizing
+    
+    NSInteger deltaY = 0;
+    
+    
+    if (self.activeView) {
+        
+        NSRect oldViewrect = self.activeView.frame;
+        
+        deltaY = viewRect.size.height - oldViewrect.size.height;
+        
+        
+        [self.activeView removeFromSuperview];
+        
+    }
+    
+    NSRect newWindowRect = NSMakeRect(windowRect.origin.x, windowRect.origin.y - deltaY, windowRect.size.width, 77 + viewRect.size.height);
+    
+    NSRect newViewRect = NSMakeRect(0, 0, viewRect.size.width, viewRect.size.height);
+    
+    //resize window
+    [self.window setFrame:newWindowRect display:TRUE];
+    
+    //add subview
+    
+    [self.window.contentView addSubview:view];
+    
+    [view setFrame:newViewRect];
+    
+    //set as active view
+    
+    self.activeView = view;
+    
+    
+}
+
+-(IBAction)shortcutsToolbarItemAction:(id)sender{
+    
+    [self.window setTitle:@"Shortcuts"];
+    
+    if (!self.shortcutsViewController) {
+        
+        self.shortcutsViewController = [[ShortcutsViewController alloc] initWithNibName:@"ShortcutsViewController" bundle:nil];
+        
+    }
+    
+    [self displayView:self.shortcutsViewController.view];
+    
+    
+    NSLog(@"Shortcuts toolbar item action.");
+    
+}
+
+
 
 @end

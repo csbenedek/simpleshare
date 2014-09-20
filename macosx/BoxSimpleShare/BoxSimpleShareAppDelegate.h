@@ -17,6 +17,7 @@
 
 #import "MAAttachedWindow.h"
 
+
 extern const int MaxHistoryItemCount;
 
 @class MainController;
@@ -24,6 +25,8 @@ extern const int MaxHistoryItemCount;
 @class MenubarController;
 
 @class AttachedWindowsController;
+@class PreferencesController;
+
 
 @interface BoxSimpleShareAppDelegate : NSObject <NSApplicationDelegate, NSTabViewDelegate, NSTableViewDataSource, NSWindowDelegate, NSToolbarDelegate, GrowlApplicationBridgeDelegate, VideoCaptureControllerDelegate,ImageCaptureControllerDelegate> {
 
@@ -109,6 +112,13 @@ extern const int MaxHistoryItemCount;
 //a controller to manage attached window
 
 @property (nonatomic, retain) AttachedWindowsController *attachedWindowsController;
+
+//preferences controller
+@property (nonatomic, retain) PreferencesController* preferencesController;
+
+
+
+
 
 //new helpers
 
