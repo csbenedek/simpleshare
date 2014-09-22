@@ -12,7 +12,7 @@
 @class ShortcutsViewController;
 
 
-@interface PreferencesController : NSWindowController
+@interface PreferencesController : NSWindowController <NSWindowDelegate>
 
 //toolbar
 @property(nonatomic, retain) IBOutlet  NSToolbar *toolbar;

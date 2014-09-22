@@ -43,6 +43,18 @@
     
     [self.window makeKeyAndOrderFront:self];
     
+    //[self.window orderFront:self];
+    
+}
+
+#pragma mark - NSWindow delegate methods
+
+-(void)windowDidResignKey:(NSNotification *)notification{
+    
+    NSLog(@"Window did resign key preferences");
+    
+    [self.window orderOut:self];
+    
 }
 
 #pragma mark - menu toolbar items actions

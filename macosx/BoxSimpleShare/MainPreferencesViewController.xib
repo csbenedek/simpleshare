@@ -7,6 +7,11 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainPreferencesViewController">
             <connections>
+                <outlet property="copyToPasteboardSwitch" destination="x0i-w5-ghv" id="uqT-Gf-gOc"/>
+                <outlet property="deleteAllFileTypesSwitch" destination="0Lo-NU-fF2" id="CYq-L3-G1D"/>
+                <outlet property="deleteScreenshotsSwitch" destination="Ubu-aI-fU7" id="u5J-KS-zXB"/>
+                <outlet property="launchAtStartUpSwitch" destination="QtF-fZ-L4g" id="U9X-4L-ZWJ"/>
+                <outlet property="shortenLinksSwitch" destination="V6N-gA-ybU" id="eZe-iK-VKc"/>
                 <outlet property="view" destination="Aq9-lW-hCy" id="l6e-ea-CzM"/>
             </connections>
         </customObject>
@@ -38,6 +43,9 @@
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QtF-fZ-L4g" customClass="ITSwitch">
                     <rect key="frame" x="454" y="259" width="52" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <connections>
+                        <action selector="launchAtLoginControlSwitched:" target="-2" id="zUa-Td-Vcu"/>
+                    </connections>
                 </customView>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IuP-EI-tVb">
                     <rect key="frame" x="12" y="207" width="185" height="17"/>
@@ -61,6 +69,9 @@
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V6N-gA-ybU" customClass="ITSwitch">
                     <rect key="frame" x="454" y="203" width="52" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <connections>
+                        <action selector="shortenLinksControlSwitched:" target="-2" id="2pq-nn-Z89"/>
+                    </connections>
                 </customView>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pVq-Mf-2a9">
                     <rect key="frame" x="12" y="144" width="255" height="17"/>
@@ -84,11 +95,14 @@
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ubu-aI-fU7" customClass="ITSwitch">
                     <rect key="frame" x="454" y="140" width="52" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <connections>
+                        <action selector="deleteScreenshotsControlSwitched:" target="-2" id="89x-uC-pHK"/>
+                    </connections>
                 </customView>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Dd-ae-FWy">
                     <rect key="frame" x="12" y="86" width="267" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Delete all files types after uploading" id="QQk-UO-hHq">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Delete all file types after uploading" id="QQk-UO-hHq">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -107,6 +121,9 @@
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Lo-NU-fF2" customClass="ITSwitch">
                     <rect key="frame" x="454" y="82" width="52" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <connections>
+                        <action selector="deleteAllFileTypesControlSwitched:" target="-2" id="ZW1-mR-WgE"/>
+                    </connections>
                 </customView>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sR1-hT-5Wr">
                     <rect key="frame" x="12" y="28" width="326" height="17"/>
@@ -120,6 +137,9 @@
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x0i-w5-ghv" customClass="ITSwitch">
                     <rect key="frame" x="454" y="24" width="52" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <connections>
+                        <action selector="copyToPasteboardControlSwitched:" target="-2" id="ZlH-Yx-CKN"/>
+                    </connections>
                 </customView>
             </subviews>
         </customView>

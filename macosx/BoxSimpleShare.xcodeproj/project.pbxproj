@@ -1010,12 +1010,23 @@
 			name = Shortcuts;
 			sourceTree = "<group>";
 		};
+		0D8EEB3319D0AB1D0028C5E9 /* AttachedWindows */ = {
+			isa = PBXGroup;
+			children = (
+				0DF52E4A19C8BEF5000D2D56 /* loginView */,
+				0DF52E3F19C8BBE2000D2D56 /* mainView */,
+				0DF52E3319C8BB6D000D2D56 /* VIdeoCaptureController */,
+				0DF52E3919C8BB95000D2D56 /* TextMessageController */,
+			);
+			name = AttachedWindows;
+			sourceTree = "<group>";
+		};
 		0DB6349A19CCAC9B00F97E34 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
+				0D6C7F2D19CE011800D40BD3 /* PreferencesController */,
 				0D6C7F3A19CE26BC00D40BD3 /* Shortcuts */,
 				0D6C7F3419CE205E00D40BD3 /* Account */,
-				0D6C7F2D19CE011800D40BD3 /* PreferencesController */,
 				0D6C7F2E19CE013D00D40BD3 /* MainPreferences */,
 			);
 			name = Preferences;
@@ -1024,17 +1035,14 @@
 		0DF52E2C19C8B91C000D2D56 /* New Design */ = {
 			isa = PBXGroup;
 			children = (
-				0DB6349A19CCAC9B00F97E34 /* Preferences */,
 				0DF52E3019C8BB4F000D2D56 /* AttachedWindowsController.h */,
 				0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */,
-				0DF52E5019C8BF21000D2D56 /* MAAttachedWindow.h */,
-				0DF52E5119C8BF21000D2D56 /* MAAttachedWindow.m */,
-				0DF52E4A19C8BEF5000D2D56 /* loginView */,
-				0DF52E3F19C8BBE2000D2D56 /* mainView */,
-				0DF52E3319C8BB6D000D2D56 /* VIdeoCaptureController */,
-				0DF52E3919C8BB95000D2D56 /* TextMessageController */,
 				0D01A72119CAB78D000349A7 /* MAAttachedWindowController.h */,
 				0D01A72219CAB78D000349A7 /* MAAttachedWindowController.m */,
+				0DF52E5019C8BF21000D2D56 /* MAAttachedWindow.h */,
+				0DF52E5119C8BF21000D2D56 /* MAAttachedWindow.m */,
+				0DB6349A19CCAC9B00F97E34 /* Preferences */,
+				0D8EEB3319D0AB1D0028C5E9 /* AttachedWindows */,
 			);
 			name = "New Design";
 			sourceTree = "<group>";

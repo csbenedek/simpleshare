@@ -749,6 +749,8 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
+    
+    NSLog(@"Observe value for key Startup");
 //    if (context == kContextActivePanel) {
 //        self.menubarController.hasActiveIcon = self.popupWindowController.hasActivePanel;
 //    }

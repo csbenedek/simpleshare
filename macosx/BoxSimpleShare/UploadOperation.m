@@ -423,8 +423,8 @@
 //    [BoxSimpleShareAppDelegate showNotificationWithTitle:@"Upload Notification" withDescription:[NSString stringWithFormat:@"Uploading file '%@'", [self FileName]]];
     
     operationStatus = UPLOADING;
-    PostNotificationWithObject(REQUEST_PROGRESS, self);
-    [self triggerUpdate];
+    //PostNotificationWithObject(REQUEST_PROGRESS, self);
+    //[self triggerUpdate];
 }
 
 - (void) oauth2CreateSharedLink:(NSString *)fileID
@@ -524,7 +524,10 @@
 		{
 			DbgLog(@" No file [%@] has been uploaded yet. Uploading...", fileName);
 			
-			url = [NSURL URLWithString:@"https://api.box.com/2.0/files/content"];
+			//url = [NSURL URLWithString:@"https://api.box.com/2.0/files/content"];
+            
+            url = [NSURL URLWithString:@"https://upload.box.com/api/2.0/files/content"];
+            
 			request = [[HTTPFormDataRequest requestWithURL:url] retain];
 		}
 		
@@ -571,7 +574,7 @@
 		[BoxSimpleShareAppDelegate showNotificationWithTitle:@"Upload Complete" withDescription:[NSString stringWithFormat:@"Finish uploading file '%@'", [self FileName]]];
 		
 		operationStatus = COMPLETED;
-		[self triggerUpdate:5];
+		//[self triggerUpdate:5];
 		
 		[parser release];
 	}
