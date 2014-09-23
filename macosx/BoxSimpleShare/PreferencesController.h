@@ -10,12 +10,20 @@
 @class MainPreferencesViewController;
 @class AccountViewController;
 @class ShortcutsViewController;
+@class BoxNetAccount;
+
 
 
 @interface PreferencesController : NSWindowController <NSWindowDelegate>
 
 //toolbar
 @property(nonatomic, retain) IBOutlet  NSToolbar *toolbar;
+
+//BoxNet Account
+
+@property(nonatomic, retain) BoxNetAccount *account;
+
+
 
 
 
@@ -47,8 +55,10 @@
 
 -(void)displayView:(NSView *) view;
 
+//processNotifications
 
 -(void)processShowPreferencesWindowNotification;
+-(void)processLoadAccountInfoNotification;
 
 
 @end

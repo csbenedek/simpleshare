@@ -10,6 +10,7 @@
 #import "MainPreferencesViewController.h"
 #import "AccountViewController.h"
 #import "ShortcutsViewController.h"
+#import "BoxNetAccount.h"
 
 
 @interface PreferencesController ()
@@ -17,6 +18,16 @@
 @end
 
 @implementation PreferencesController
+
+-(void)awakeFromNib{
+    
+    //init BoxNetAccount
+    self.account = [[BoxNetAccount alloc] init];
+    
+    NSLog(@"Iniiiit");
+    
+}
+
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -32,9 +43,13 @@
     [super windowDidLoad];
     
     [self mainPreferencesToolbarItemAction:nil];
-    //[self mainPreferencesToolbarItemAction:nil];
+}
+
+-(void)processLoadAccountInfoNotification{
     
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    
+    [self.account populateInfo]; 
+    
 }
 
 -(void)processShowPreferencesWindowNotification{
@@ -79,7 +94,6 @@
     
     [self displayView:self.mainPreferencesController.view];
     
-    //[self.window.contentView addSubview:self.mainPreferencesController.view];
     
     
     
@@ -97,6 +111,19 @@
     if (!self.accountViewController) {
         
         self.accountViewController = [[AccountViewController alloc] initWithNibName:@"AccountViewController" bundle:nil];
+        
+        //set pairing reference
+        
+        self.accountViewController.rootController = self;
+        
+        //trigger lazy loading
+        
+        NSView *view = self.accountViewController.view;
+        
+        
+        
+        [self.accountViewController.loginTextField setTitleWithMnemonic:self.account.login];
+        
         
         
     }

@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AccountViewController">
             <connections>
+                <outlet property="loginTextField" destination="fM3-jP-Aeu" id="6bU-A8-qzF"/>
                 <outlet property="view" destination="vHO-W1-axc" id="vd0-2U-5WU"/>
             </connections>
         </customObject>
@@ -25,31 +26,16 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mni-Al-1QL">
-                    <rect key="frame" x="97" y="177" width="259" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="efz-GF-jDS">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sDg-n1-lda">
-                    <rect key="frame" x="97" y="155" width="259" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="k13-kP-RP3">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" red="0.49456521739999998" green="0.49456521739999998" blue="0.49456521739999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xI4-NQ-4Ei">
-                    <rect key="frame" x="447" y="161" width="80" height="25"/>
+                    <rect key="frame" x="447" y="150" width="80" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="box-account-login-button" imagePosition="overlaps" alignment="center" alternateImage="box-account-login-button-pressed" imageScaling="proportionallyDown" inset="2" id="JPx-IF-kWc">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="getAccountInfo:" target="-2" id="bAh-kx-Ctq"/>
+                    </connections>
                 </button>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oKg-yh-6Sg">
                     <rect key="frame" x="12" y="98" width="118" height="17"/>
@@ -100,15 +86,24 @@
                     <color key="fillColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                 </box>
                 <box autoresizesSubviews="NO" fixedFrame="YES" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="cjd-nv-HwX">
-                    <rect key="frame" x="13" y="94" width="455" height="1"/>
+                    <rect key="frame" x="13" y="94" width="509" height="1"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView">
-                        <rect key="frame" x="1" y="1" width="453" height="0.0"/>
+                        <rect key="frame" x="1" y="1" width="507" height="0.0"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
                     <color key="borderColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                     <color key="fillColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                 </box>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fM3-jP-Aeu">
+                    <rect key="frame" x="89" y="154" width="363" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Login" id="9qb-zr-b9a">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
         </customView>
     </objects>

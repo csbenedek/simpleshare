@@ -14,6 +14,7 @@
 		0D6C7F3919CE208600D40BD3 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3719CE208600D40BD3 /* AccountViewController.xib */; };
 		0D6C7F3E19CE26EB00D40BD3 /* ShortcutsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3C19CE26EB00D40BD3 /* ShortcutsViewController.m */; };
 		0D6C7F3F19CE26EB00D40BD3 /* ShortcutsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3D19CE26EB00D40BD3 /* ShortcutsViewController.xib */; };
+		0D70E23F19D1FABC006DB515 /* BoxNetAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D70E23E19D1FABC006DB515 /* BoxNetAccount.m */; };
 		0D75692419CB13CA0084FA0D /* backArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D75692319CB13CA0084FA0D /* backArrow.png */; };
 		0DB634A319CCB29300F97E34 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB634A119CCB29300F97E34 /* PreferencesController.m */; };
 		0DB634A419CCB29300F97E34 /* PreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB634A219CCB29300F97E34 /* PreferencesController.xib */; };
@@ -387,6 +388,8 @@
 		0D6C7F3B19CE26EB00D40BD3 /* ShortcutsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortcutsViewController.h; sourceTree = "<group>"; };
 		0D6C7F3C19CE26EB00D40BD3 /* ShortcutsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortcutsViewController.m; sourceTree = "<group>"; };
 		0D6C7F3D19CE26EB00D40BD3 /* ShortcutsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShortcutsViewController.xib; sourceTree = "<group>"; };
+		0D70E23D19D1FABC006DB515 /* BoxNetAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxNetAccount.h; sourceTree = "<group>"; };
+		0D70E23E19D1FABC006DB515 /* BoxNetAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxNetAccount.m; sourceTree = "<group>"; };
 		0D75692319CB13CA0084FA0D /* backArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backArrow.png; sourceTree = "<group>"; };
 		0DB634A019CCB29300F97E34 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		0DB634A119CCB29300F97E34 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
@@ -1010,6 +1013,15 @@
 			name = Shortcuts;
 			sourceTree = "<group>";
 		};
+		0D70E23C19D1FA0C006DB515 /* BoxApi */ = {
+			isa = PBXGroup;
+			children = (
+				0D70E23D19D1FABC006DB515 /* BoxNetAccount.h */,
+				0D70E23E19D1FABC006DB515 /* BoxNetAccount.m */,
+			);
+			name = BoxApi;
+			sourceTree = "<group>";
+		};
 		0D8EEB3319D0AB1D0028C5E9 /* AttachedWindows */ = {
 			isa = PBXGroup;
 			children = (
@@ -1035,6 +1047,7 @@
 		0DF52E2C19C8B91C000D2D56 /* New Design */ = {
 			isa = PBXGroup;
 			children = (
+				0D70E23C19D1FA0C006DB515 /* BoxApi */,
 				0DF52E3019C8BB4F000D2D56 /* AttachedWindowsController.h */,
 				0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */,
 				0D01A72119CAB78D000349A7 /* MAAttachedWindowController.h */,
@@ -2346,6 +2359,7 @@
 				843F142F18DEEBCC00C12EFF /* YoutubeUploadOperation.m in Sources */,
 				84DE8C71184F4BA80052B7FC /* NSImage+SavingAdditions.m in Sources */,
 				9104DD18146AC1B500D1A0C9 /* UKKQueue.m in Sources */,
+				0D70E23F19D1FABC006DB515 /* BoxNetAccount.m in Sources */,
 				9104DD19146AC1B500D1A0C9 /* UKMainThreadProxy.m in Sources */,
 				9104DD45146BE94000D1A0C9 /* LoginHelper.m in Sources */,
 				8433B2B619ADA10E00DBA8FC /* PXListDocumentView.m in Sources */,

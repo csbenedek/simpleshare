@@ -7,6 +7,8 @@
 //
 
 #import "AccountViewController.h"
+#import "BoxNetAccount.h"
+#import "PreferencesController.h"
 
 @interface AccountViewController ()
 
@@ -19,8 +21,33 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
+        
     }
     return self;
 }
+
+-(IBAction)getAccountInfo:(id)sender{
+    
+    [self.account populateInfo];
+    
+    
+}
+
+
+
+//KVO
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    
+    
+    NSString *loginString = [change objectForKey:@"NSKeyValueChangeNewKey"];
+    
+    [self.loginTextField setTitleWithMnemonic:loginString];
+    
+    
+}
+
+
+
 
 @end

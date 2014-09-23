@@ -207,9 +207,18 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     
     self.preferencesController = [[PreferencesController alloc] initWithWindowNibName:@"PreferencesController"];
     
+    //trigger lazy loading
+    
+    NSWindow *window = self.preferencesController.window;
+    
+    
+    
     //regester for ShowPreferencesWindowNotification
     
     AddNotificationObserver(self.preferencesController, @selector(processShowPreferencesWindowNotification), @"ShowPreferencesWindowNotification", nil);
+    //register for LoadAccountInfoNotification
+    AddNotificationObserver(self.preferencesController, @selector(processLoadAccountInfoNotification), @"LoadAccountInfoNotification", nil);
+    
     
     
     

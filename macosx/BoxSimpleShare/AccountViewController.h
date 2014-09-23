@@ -7,7 +7,32 @@
 //
 
 #import <Cocoa/Cocoa.h>
+@class BoxNetAccount;
+@class PreferencesController;
+@class CustomNSImageView;
+
+
 
 @interface AccountViewController : NSViewController
+//root controller
+
+@property(nonatomic, assign)PreferencesController * rootController;
+
+
+
+
+
+@property (nonatomic, retain) BoxNetAccount *account;
+
+@property (nonatomic, retain) IBOutlet NSTextField  *loginTextField;
+
+
+
+
+
+
+-(IBAction)getAccountInfo:(id)sender;
+
+
 
 @end

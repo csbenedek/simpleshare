@@ -397,9 +397,9 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
         DbgLog(@"Login Successfull!");
         
         
-        PostNotification(@"SuccessfulLoginNotification");
+        PostNotification(@"SuccessfulLoginNotification"); //see processShowSuccessfulLoginMessageNotification of AttachedWindowController
         
-        //see processShowSuccessfulLoginMessageNotification of AttachedWindowController
+        PostNotification(@"LoadAccountInfoNotification"); //see processLoadAccountInfoNotification of Preferences Controller
         
     }
 
