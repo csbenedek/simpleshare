@@ -172,6 +172,16 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
     [self.youtubeLogoutBtn setAction:@selector(doYoutubeLogin:)];
     
 }
+#pragma mark
+#pragma mark Process Notifications methods
+
+-(void)processDoLogoutNotification:(NSNotification *)notification{
+    
+    [self doLogout:self];
+    
+    
+}
+
 
 #pragma mark
 #pragma mark Actions
@@ -233,7 +243,7 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
         return;
     }
 */
-    PostNotificationWithObject(@"SHOW_LOADING", [NSString stringWithString:@"Logging In ..."]);
+    //PostNotificationWithObject(@"SHOW_LOADING", [NSString stringWithString:@"Logging In ..."]);
 
 	[[OAuth2Client sharedInstance] authorize];
 	
@@ -277,7 +287,7 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
     //    [userPassword setStringValue:@""];
     
     [[BoxSimpleShareAppDelegate sharedDelegate] createMenu];
-    [[BoxSimpleShareAppDelegate sharedDelegate] showLoginView];
+    //[[BoxSimpleShareAppDelegate sharedDelegate] showLoginView];
 }
 
 - (void) switchView:(id)sender

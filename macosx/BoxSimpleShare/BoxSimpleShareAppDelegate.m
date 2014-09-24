@@ -113,12 +113,13 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
                      forKeyPath:@"launch_at_startup_check"
                         options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld 
                         context:NULL];
-        
- 
     
-//    [[self window] setDelegate:self];
-//    [[self window] makeKeyWindow];
-//    [[self window] makeMainWindow];
+    
+    //register MainController for DoLogoutNotification
+    
+    AddNotificationObserver(mainController, @selector(processDoLogoutNotification:), @"DoLogoutNotification", nil);
+ 
+
     
     statusBarImages = [NSMutableArray new];
 	

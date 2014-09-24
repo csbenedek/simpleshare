@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-@class BoxNetAccount;
+
 @class PreferencesController;
 @class CustomNSImageView;
 
@@ -18,23 +18,23 @@
 
 @property(nonatomic, assign)PreferencesController * rootController;
 
+-(IBAction)loginButtonAction:(id)sender;
 
 
-
-
-@property (nonatomic, retain) BoxNetAccount *account;
-
+@property(nonatomic, retain) IBOutlet NSButton *loginButton;
 @property (nonatomic, retain) IBOutlet NSTextField  *loginTextField;
 @property (nonatomic, retain) IBOutlet CustomNSImageView *avatarImageView;
 
 
 
+-(void)updateLoginButton;
 
 
+//process notifications
+
+-(void)processBoxAccountInfoLoadedNotification:(NSNotification *)notification;
 
 
-
--(IBAction)getAccountInfo:(id)sender;
 
 
 

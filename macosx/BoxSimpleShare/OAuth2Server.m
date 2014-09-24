@@ -39,7 +39,7 @@
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
-	[delegate release];
+	//[delegate release];
 	
 	[connections release];
 	

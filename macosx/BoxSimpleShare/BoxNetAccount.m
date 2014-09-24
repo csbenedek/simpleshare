@@ -113,6 +113,8 @@
         
         self.avatar = [[NSImage alloc] initWithData:self.imageData];
         
+        PostNotification(@"BoxAccountInfoLoadedNotification");
+        
         
     }
     

@@ -7,9 +7,13 @@
 //
 
 #import "AccountViewController.h"
-#import "BoxNetAccount.h"
 #import "PreferencesController.h"
 #import "CustomNSImageView.h"
+#import "BoxNetHandler.h"
+#import "BoxNetUser.h"
+#import "OAuth2Client.h"
+#import "BoxNetAccount.h"
+
 
 @interface AccountViewController ()
 
@@ -27,14 +31,72 @@
     return self;
 }
 
--(IBAction)getAccountInfo:(id)sender{
+
+-(void)processBoxAccountInfoLoadedNotification:(NSNotification *)notification{
     
-    [self.account populateInfo];
+    [self.loginTextField setTitleWithMnemonic:self.rootController.account.login];
+    
+    
+    self.avatarImageView.image = self.rootController.account.avatar;
+    
+    [self.view display];
+    
     
     
 }
 
 
+-(IBAction)loginButtonAction:(id)sender{
+    
+    if ([[[BoxNetHandler sharedHandler] boxNetUser] isAuthenticated]) {
+        
+        PostNotification(@"DoLogoutNotification");//MainController -(void)processDoLogoutNotification
+        
+        
+        self.loginButton.image = [NSImage imageNamed:@"box-account-login-button"];
+        
+        [self.loginTextField setTitleWithMnemonic:@""];
+        
+       // self.avatarImageView.image = [NSImage imageNamed:@"nouser"];
+        
+        [self.avatarImageView setImage:nil];
+        
+        [self.avatarImageView display];
+        
+    }
+    
+    else{
+        
+        [[OAuth2Client sharedInstance] authorize];
+        
+        
+        self.loginButton.image = [NSImage imageNamed:@"box-account-logout-button"];
+        
+        
+        
+        
+    }
+    
+    
+}
+
+//method to control login/logout button view
+
+-(void)updateLoginButton{
+    
+    if ([[[BoxNetHandler sharedHandler] boxNetUser] isAuthenticated]) {
+        
+        
+        self.loginButton.image = [NSImage imageNamed:@"box-account-logout-button"];
+        
+        
+        
+        
+    }
+    
+    
+    
+}
 
 
 

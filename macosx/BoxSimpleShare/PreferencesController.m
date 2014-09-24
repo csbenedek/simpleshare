@@ -25,8 +25,6 @@
     //init BoxNetAccount
     self.account = [[BoxNetAccount alloc] init];
     
-    NSLog(@"Iniiiit");
-    
 }
 
 
@@ -67,9 +65,9 @@
 
 -(void)windowDidResignKey:(NSNotification *)notification{
     
-    NSLog(@"Window did resign key preferences");
+    //NSLog(@"Window did resign key preferences");
     
-    [self.window orderOut:self];
+    //[self.window orderOut:self];
     
 }
 
@@ -121,11 +119,9 @@
         
         NSView *view = self.accountViewController.view;
         
+        //register for BoxInfoLoadedNotification
         
-        
-        [self.accountViewController.loginTextField setTitleWithMnemonic:self.account.login];
-        
-        self.accountViewController.avatarImageView.image = self.account.avatar;
+        AddNotificationObserver(self.accountViewController, @selector(processBoxAccountInfoLoadedNotification:), @"BoxAccountInfoLoadedNotification", nil);
         
         
         
@@ -133,6 +129,16 @@
         
     }
     
+    
+    //set login label
+    [self.accountViewController.loginTextField setTitleWithMnemonic:self.account.login];
+    
+    
+    //set avatart image
+    self.accountViewController.avatarImageView.image = self.account.avatar;
+    
+    
+    [self.accountViewController updateLoginButton];
     
     [self displayView:self.accountViewController.view];
     

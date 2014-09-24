@@ -144,6 +144,10 @@
 @property (nonatomic, retain) IBOutlet NSComboBox *imageHost;
 @property (nonatomic, retain) IBOutlet NSComboBox * videoHost;
 
+//process notifications methods
+-(void)processDoLogoutNotification:(NSNotification *)notification;
+
+
 
 // OTHER
 
