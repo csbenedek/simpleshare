@@ -11,6 +11,7 @@
 #import "AccountViewController.h"
 #import "ShortcutsViewController.h"
 #import "BoxNetAccount.h"
+#import "CustomNSImageView.h"
 
 
 @interface PreferencesController ()
@@ -123,6 +124,10 @@
         
         
         [self.accountViewController.loginTextField setTitleWithMnemonic:self.account.login];
+        
+        self.accountViewController.avatarImageView.image = self.account.avatar;
+        
+        
         
         
         

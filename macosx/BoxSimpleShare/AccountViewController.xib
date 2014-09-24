@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AccountViewController">
             <connections>
+                <outlet property="avatarImageView" destination="w5W-IP-1mH" id="NLp-V8-5tm"/>
                 <outlet property="loginTextField" destination="fM3-jP-Aeu" id="6bU-A8-qzF"/>
                 <outlet property="view" destination="vHO-W1-axc" id="vd0-2U-5WU"/>
             </connections>
@@ -33,9 +34,6 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
-                    <connections>
-                        <action selector="getAccountInfo:" target="-2" id="bAh-kx-Ctq"/>
-                    </connections>
                 </button>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oKg-yh-6Sg">
                     <rect key="frame" x="12" y="98" width="118" height="17"/>

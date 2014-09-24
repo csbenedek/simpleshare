@@ -9,6 +9,7 @@
 #import "AccountViewController.h"
 #import "BoxNetAccount.h"
 #import "PreferencesController.h"
+#import "CustomNSImageView.h"
 
 @interface AccountViewController ()
 
@@ -35,17 +36,6 @@
 
 
 
-//KVO
-
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-    
-    
-    NSString *loginString = [change objectForKey:@"NSKeyValueChangeNewKey"];
-    
-    [self.loginTextField setTitleWithMnemonic:loginString];
-    
-    
-}
 
 
 

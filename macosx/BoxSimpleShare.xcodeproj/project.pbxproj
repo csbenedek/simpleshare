@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0D01A72319CAB78D000349A7 /* MAAttachedWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D01A72219CAB78D000349A7 /* MAAttachedWindowController.m */; };
+		0D48778419D2FD2E0015961F /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48778319D2FD2E0015961F /* NSString+URLEncoding.m */; };
+		0D48778719D301DD0015961F /* NSString+HTMLTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48778619D301DD0015961F /* NSString+HTMLTags.m */; };
 		0D6C7F3219CE022100D40BD3 /* MainPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3019CE022100D40BD3 /* MainPreferencesViewController.m */; };
 		0D6C7F3319CE022100D40BD3 /* MainPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3119CE022100D40BD3 /* MainPreferencesViewController.xib */; };
 		0D6C7F3819CE208600D40BD3 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3619CE208600D40BD3 /* AccountViewController.m */; };
@@ -379,6 +381,10 @@
 /* Begin PBXFileReference section */
 		0D01A72119CAB78D000349A7 /* MAAttachedWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindowController.h; sourceTree = "<group>"; };
 		0D01A72219CAB78D000349A7 /* MAAttachedWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindowController.m; sourceTree = "<group>"; };
+		0D48778219D2FD2E0015961F /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		0D48778319D2FD2E0015961F /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		0D48778519D301DD0015961F /* NSString+HTMLTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTMLTags.h"; sourceTree = "<group>"; };
+		0D48778619D301DD0015961F /* NSString+HTMLTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTMLTags.m"; sourceTree = "<group>"; };
 		0D6C7F2F19CE022100D40BD3 /* MainPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPreferencesViewController.h; sourceTree = "<group>"; };
 		0D6C7F3019CE022100D40BD3 /* MainPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPreferencesViewController.m; sourceTree = "<group>"; };
 		0D6C7F3119CE022100D40BD3 /* MainPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainPreferencesViewController.xib; sourceTree = "<group>"; };
@@ -973,6 +979,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D48778119D2FD070015961F /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				0D48778519D301DD0015961F /* NSString+HTMLTags.h */,
+				0D48778619D301DD0015961F /* NSString+HTMLTags.m */,
+				0D48778219D2FD2E0015961F /* NSString+URLEncoding.h */,
+				0D48778319D2FD2E0015961F /* NSString+URLEncoding.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		0D6C7F2D19CE011800D40BD3 /* PreferencesController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1047,6 +1064,7 @@
 		0DF52E2C19C8B91C000D2D56 /* New Design */ = {
 			isa = PBXGroup;
 			children = (
+				0D48778119D2FD070015961F /* Categories */,
 				0D70E23C19D1FA0C006DB515 /* BoxApi */,
 				0DF52E3019C8BB4F000D2D56 /* AttachedWindowsController.h */,
 				0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */,
@@ -2284,6 +2302,7 @@
 				0D01A72319CAB78D000349A7 /* MAAttachedWindowController.m in Sources */,
 				848003B919240CB50001F9F4 /* NSImage+Additions.m in Sources */,
 				84098A7219BA3BAD00F37451 /* FooterView.m in Sources */,
+				0D48778719D301DD0015961F /* NSString+HTMLTags.m in Sources */,
 				847EF05518BB187300C5CDEE /* FeedbackWindowController.m in Sources */,
 				8BDB2E8813C3A31E003BFDE0 /* ASIDownloadCache.m in Sources */,
 				8BDB2E8913C3A31E003BFDE0 /* ASIFormDataRequest.m in Sources */,
@@ -2369,6 +2388,7 @@
 				9104DD9C146BE9B900D1A0C9 /* BoxUser.m in Sources */,
 				9104DD9F146BE9B900D1A0C9 /* BoxHTTPRequestBuilders.m in Sources */,
 				848F998F196084A900984731 /* Panel.m in Sources */,
+				0D48778419D2FD2E0015961F /* NSString+URLEncoding.m in Sources */,
 				8457515319AD12A1008AFF41 /* PopupMainViewController.m in Sources */,
 				0DF52E4819C8BBFC000D2D56 /* MainViewCellController.m in Sources */,
 				9104DDA1146BE9B900D1A0C9 /* BoxAddCommentsOperation.m in Sources */,

@@ -15,6 +15,9 @@
 @property (nonatomic, retain) NSString *avatarURL;
 @property (nonatomic, retain) NSImage *avatar;
 
+@property (nonatomic, retain) NSMutableData * imageData;
+
+
 
 
 

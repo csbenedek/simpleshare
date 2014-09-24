@@ -25,6 +25,9 @@
 @property (nonatomic, retain) BoxNetAccount *account;
 
 @property (nonatomic, retain) IBOutlet NSTextField  *loginTextField;
+@property (nonatomic, retain) IBOutlet CustomNSImageView *avatarImageView;
+
+
 
 
 
