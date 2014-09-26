@@ -12,6 +12,7 @@
 #import "BoxFile.h"
 #import "AttachedWindowsController.h"
 #import "MainController.h"
+#import "BoxNetFileInfoLoader.h"
 
 
 @interface mainView ()
@@ -146,6 +147,9 @@
         //set properties
         
         [controller.fileName setTitleWithMnemonic:file.fileName];
+        
+        [controller.fileInfoLoader loadThumbnailImageForID:file.fileID];
+        
         
         
         //store controller

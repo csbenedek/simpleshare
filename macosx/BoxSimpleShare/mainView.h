@@ -53,7 +53,7 @@
 
 -(void)updateHistoryElements;
 
--(void)addHistoryElement:
+//-(void)addHistoryElement:
 
 
 

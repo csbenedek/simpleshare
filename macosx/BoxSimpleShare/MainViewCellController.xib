@@ -8,7 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="MainViewCellController">
             <connections>
                 <outlet property="fileName" destination="Kq5-bb-HJZ" id="MKm-aj-iSU"/>
-                <outlet property="image" destination="Lr5-QF-ekp" id="ess-ju-Jfw"/>
+                <outlet property="imageView" destination="Lr5-QF-ekp" id="kpw-kI-efJ"/>
                 <outlet property="shareDate" destination="kLK-sS-vjT" id="hBJ-8J-IMW"/>
                 <outlet property="view" destination="qUe-Ef-en9" id="cr8-fE-b1q"/>
             </connections>

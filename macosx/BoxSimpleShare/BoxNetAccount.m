@@ -48,8 +48,6 @@
     //create URL to get current user info
     NSURL *URL = [NSURL URLWithString:self.avatarURL];
     
-    //NSURL *URL = [NSURL URLWithString:@"https%3A%2F%2Fapp.box.com%2Findex.php%3Frm%3Dpic_storage_auth%26pic%3DaFFx2gJdWLEbLcATUXHUW_dEB0ZmGOrCQ-H5w_LSrU0hulnEc3G7xoxrUBVp4QmrpLCS7KYIEyBaDdx2WyHDKcGrf6piOawwxvCaYnio2bKcFPKUSdgqpZdOOD_f3gjDdomZ4ANxZmxKGjAFM54WDc3tOkA1MUWb2XC7wuIRF7oAmu5pLUP1oYCyuJ88BPPtIx79fZ40YRaEMdyLiSG22kI2S6HEL1jbrPbDvcWOle_2-B9oWepnNhkGqEZkubf5wRQAJ7a9b4sCzBYDpiQF4Ee9VfGsrIwmlPpnp7Xl5qY%2C"];
-    
     
     //create request
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
@@ -121,36 +119,7 @@
     
     
 }
-/*
--(NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response{
-    
-    NSLog(@"Will send request");
-    
-    NSURL *URL = request.URL;
-    
-    NSString *path = [URL absoluteString];
-    
-    
-    if ([path containsString:@"?"]) {
-        
-        NSArray *parts = [path componentsSeparatedByString:@"?"];
-        
-        path = [NSString stringWithFormat:@"%@?%@",[parts objectAtIndex:0],[[parts objectAtIndex:1] urlEncodeUsingEncoding:NSUTF8StringEncoding]];
-        
-        
-    }
-    
 
-    
-    NSURL *newURL = [NSURL URLWithString:path];
-    
-    NSMutableURLRequest *newRequest = [request mutableCopy];
-    
-    [newRequest setURL:newURL];
-    
-    return newRequest;
-    
-}*/
 
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{

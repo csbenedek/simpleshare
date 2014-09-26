@@ -7,6 +7,7 @@
 //
 
 #import "MainViewCellController.h"
+#import "BoxNetFileInfoLoader.h"
 
 @interface MainViewCellController ()
 
@@ -14,13 +15,38 @@
 
 @implementation MainViewCellController
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Initialization code here.
+        
+        self.fileInfoLoader = [[BoxNetFileInfoLoader alloc] init];
+        
+        //register self for notifications from fileInfoLoader
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(processThumbnailInfoLoadedNotification:) name:@"ThumbnailLoadedNotification" object:self.fileInfoLoader];
+        
+        
+        
     }
     return self;
 }
+
+
+-(void)processThumbnailInfoLoadedNotification:(NSNotification *) notification{
+    
+    NSLog(@"ProcessThumbnailInfoLoadedNotification");
+    
+    //thumbnail image loaded
+    
+    self.imageView.image = self.fileInfoLoader.thumbnailImage;
+    
+    //update view
+    [self.view display];
+    
+}
+
 
 @end

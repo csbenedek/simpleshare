@@ -5,6 +5,8 @@
 //  Created by Sergey Plotnikov on 12/09/14.
 //  Copyright (c) 2014 SAPLogix. All rights reserved.
 //
+@class BoxNetFileInfoLoader;
+
 
 #import <Cocoa/Cocoa.h>
 
@@ -14,7 +16,18 @@
 
 @property(nonatomic, retain) IBOutlet NSTextField *shareDate;
 
-@property(nonatomic, retain) IBOutlet NSImageView *image;
+@property(nonatomic, retain) IBOutlet NSImageView *imageView;
+
+@property(nonatomic, retain) BoxNetFileInfoLoader *fileInfoLoader;
+
+
+
+
+
+
+-(void)processThumbnailInfoLoadedNotification:(NSNotification *)notification;
+
+
 
 
 @end

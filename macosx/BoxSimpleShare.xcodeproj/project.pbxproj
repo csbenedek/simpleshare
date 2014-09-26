@@ -16,6 +16,8 @@
 		0D6C7F3919CE208600D40BD3 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3719CE208600D40BD3 /* AccountViewController.xib */; };
 		0D6C7F3E19CE26EB00D40BD3 /* ShortcutsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3C19CE26EB00D40BD3 /* ShortcutsViewController.m */; };
 		0D6C7F3F19CE26EB00D40BD3 /* ShortcutsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3D19CE26EB00D40BD3 /* ShortcutsViewController.xib */; };
+		0D6ECD7719D55E5000550AEF /* BoxImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6ECD7619D55E5000550AEF /* BoxImage.m */; };
+		0D6ECD7A19D56E0B00550AEF /* BoxNetFileInfoLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6ECD7919D56E0B00550AEF /* BoxNetFileInfoLoader.m */; };
 		0D70E23F19D1FABC006DB515 /* BoxNetAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D70E23E19D1FABC006DB515 /* BoxNetAccount.m */; };
 		0D75692419CB13CA0084FA0D /* backArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D75692319CB13CA0084FA0D /* backArrow.png */; };
 		0DB634A319CCB29300F97E34 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB634A119CCB29300F97E34 /* PreferencesController.m */; };
@@ -394,6 +396,10 @@
 		0D6C7F3B19CE26EB00D40BD3 /* ShortcutsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortcutsViewController.h; sourceTree = "<group>"; };
 		0D6C7F3C19CE26EB00D40BD3 /* ShortcutsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortcutsViewController.m; sourceTree = "<group>"; };
 		0D6C7F3D19CE26EB00D40BD3 /* ShortcutsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShortcutsViewController.xib; sourceTree = "<group>"; };
+		0D6ECD7519D55E5000550AEF /* BoxImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxImage.h; sourceTree = "<group>"; };
+		0D6ECD7619D55E5000550AEF /* BoxImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxImage.m; sourceTree = "<group>"; };
+		0D6ECD7819D56E0B00550AEF /* BoxNetFileInfoLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxNetFileInfoLoader.h; sourceTree = "<group>"; };
+		0D6ECD7919D56E0B00550AEF /* BoxNetFileInfoLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxNetFileInfoLoader.m; sourceTree = "<group>"; };
 		0D70E23D19D1FABC006DB515 /* BoxNetAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxNetAccount.h; sourceTree = "<group>"; };
 		0D70E23E19D1FABC006DB515 /* BoxNetAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxNetAccount.m; sourceTree = "<group>"; };
 		0D75692319CB13CA0084FA0D /* backArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backArrow.png; sourceTree = "<group>"; };
@@ -1035,6 +1041,8 @@
 			children = (
 				0D70E23D19D1FABC006DB515 /* BoxNetAccount.h */,
 				0D70E23E19D1FABC006DB515 /* BoxNetAccount.m */,
+				0D6ECD7819D56E0B00550AEF /* BoxNetFileInfoLoader.h */,
+				0D6ECD7919D56E0B00550AEF /* BoxNetFileInfoLoader.m */,
 			);
 			name = BoxAPI;
 			sourceTree = "<group>";
@@ -1418,6 +1426,8 @@
 				8B69535F13C4E86F00B32618 /* BoxFolder.m */,
 				8BBC88ED13D3573100A846B7 /* BoxFile.h */,
 				8BBC88EE13D3573100A846B7 /* BoxFile.m */,
+				0D6ECD7519D55E5000550AEF /* BoxImage.h */,
+				0D6ECD7619D55E5000550AEF /* BoxImage.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -2332,6 +2342,7 @@
 				0DF52E5219C8BF21000D2D56 /* MAAttachedWindow.m in Sources */,
 				8B69530313C3BBB500B32618 /* Macros.m in Sources */,
 				8B69533113C3BF6800B32618 /* BoxNet.m in Sources */,
+				0D6ECD7719D55E5000550AEF /* BoxImage.m in Sources */,
 				8B69534513C3C6EC00B32618 /* AppConstants.m in Sources */,
 				8B69534E13C3CAD700B32618 /* BoxNetHandler.m in Sources */,
 				8B69535213C3CC5400B32618 /* Extended.m in Sources */,
@@ -2408,6 +2419,7 @@
 				9104DDAE146BE9B900D1A0C9 /* BoxOperation.m in Sources */,
 				846E5D88183F6D73004CA339 /* StandardPaths.m in Sources */,
 				9104DDAF146BE9B900D1A0C9 /* BoxPrivateShareOperation.m in Sources */,
+				0D6ECD7A19D56E0B00550AEF /* BoxNetFileInfoLoader.m in Sources */,
 				9104DDB0146BE9B900D1A0C9 /* BoxPublicShareOperation.m in Sources */,
 				9104DDB1146BE9B900D1A0C9 /* BoxPublicUnshareOperation.m in Sources */,
 				9104DDB2146BE9B900D1A0C9 /* BoxRegisterOperation.m in Sources */,
