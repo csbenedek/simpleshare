@@ -27,6 +27,9 @@
                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cSQ-JH-KDX" customClass="ITSwitch">
                             <rect key="frame" x="6" y="16" width="42" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <connections>
+                                <action selector="toggleEnableUploads:" target="-2" id="Ses-tk-eb3"/>
+                            </connections>
                         </customView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dey-n0-GKJ">
                             <rect key="frame" x="54" y="15" width="105" height="16"/>

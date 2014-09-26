@@ -11,6 +11,7 @@
 #import "BoxSimpleShareAppDelegate.h"
 #import "BoxFile.h"
 #import "AttachedWindowsController.h"
+#import "MainController.h"
 
 
 @interface mainView ()
@@ -155,6 +156,18 @@
     
     
 }
+
+#pragma mark - interface Actions
+-(IBAction)toggleEnableUploads:(id)sender{
+    
+    MainController *mainController = (MainController *)[[BoxSimpleShareAppDelegate sharedDelegate] mainController];
+    
+    
+    [mainController toggleUploadsEnabled];
+    
+    
+}
+
 
 
 #pragma mark - Helpers

@@ -15,6 +15,7 @@
 
 
 
+
 @interface mainView : MAAttachedWindowController <NSTableViewDelegate, NSTableViewDataSource>
 
 @property(nonatomic, retain) IBOutlet NSTextField *fileName;
@@ -22,6 +23,8 @@
 @property(nonatomic, retain) IBOutlet NSTextField *shareDate;
 
 @property(nonatomic, retain) IBOutlet NSImageView *image;
+
+
 
 
 @property(nonatomic, retain) IBOutlet NSTableView *tableView;
@@ -44,7 +47,7 @@
 
 
 -(IBAction)quitApp:(id)sender;
-
+-(IBAction)toggleEnableUploads:(id)sender;
 
 
 
