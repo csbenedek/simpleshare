@@ -1030,13 +1030,13 @@
 			name = Shortcuts;
 			sourceTree = "<group>";
 		};
-		0D70E23C19D1FA0C006DB515 /* BoxApi */ = {
+		0D70E23C19D1FA0C006DB515 /* BoxAPI */ = {
 			isa = PBXGroup;
 			children = (
 				0D70E23D19D1FABC006DB515 /* BoxNetAccount.h */,
 				0D70E23E19D1FABC006DB515 /* BoxNetAccount.m */,
 			);
-			name = BoxApi;
+			name = BoxAPI;
 			sourceTree = "<group>";
 		};
 		0D8EEB3319D0AB1D0028C5E9 /* AttachedWindows */ = {
@@ -1065,7 +1065,7 @@
 			isa = PBXGroup;
 			children = (
 				0D48778119D2FD070015961F /* Categories */,
-				0D70E23C19D1FA0C006DB515 /* BoxApi */,
+				0D70E23C19D1FA0C006DB515 /* BoxAPI */,
 				0DF52E3019C8BB4F000D2D56 /* AttachedWindowsController.h */,
 				0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */,
 				0D01A72119CAB78D000349A7 /* MAAttachedWindowController.h */,

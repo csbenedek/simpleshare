@@ -93,10 +93,73 @@
     
 }
 
+-(void)awakeFromNib{
+    
+    NSLog(@"Main VIew awake from nib!");
+    
+    //init cells array
+    
+    self.cells = [[NSMutableArray alloc] init];
+    
+    
+    
+    //initial population of history elements array
+    [self updateHistoryElements];
+    
+    //register nib for MainViewCell identifier
+    NSNib *nib = [[NSNib alloc] initWithNibNamed:@"MainViewCellController" bundle:nil];
+    
+    [self.tableView registerNib:nib forIdentifier:@"MainViewCell"];
+    
+    
+    
+}
+
+
+#pragma mark - Table methods
 
 
 
-#pragma mark - NSTableViewDataSource methods
+
+-(void)updateHistoryElements{
+    
+    //clear cells array
+    
+    [self.cells removeAllObjects];
+    
+    //get array of uploaded items
+    
+    BoxSimpleShareAppDelegate *appDelegate = (BoxSimpleShareAppDelegate *)[[NSApplication sharedApplication] delegate];
+    
+    //go through list of saved files in reverse order
+    
+    for (BoxFile *file in [appDelegate.filesUploadedInSession reverseObjectEnumerator]) {
+        
+        //make cell for each file
+        
+        //controller to load nib and set properties
+        MainViewCellController *controller = [[MainViewCellController alloc] initWithNibName:@"MainViewCellController" bundle:nil];
+        
+        //just triggering lazy loading
+        NSView *tmpView = controller.view;
+  
+        //set properties
+        
+        [controller.fileName setTitleWithMnemonic:file.fileName];
+        
+        
+        //store controller
+        
+        [self.cells addObject:controller];
+       
+    }
+  
+    //reload table view
+    [self.tableView reloadData];
+   
+    
+}
+
 
 
 -(NSView *) tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
@@ -124,27 +187,7 @@
 }
 
 
--(void)awakeFromNib{
-    
-    NSLog(@"Main VIew awake from nib!");
-    
-    //init cells array
-    
-    self.cells = [[NSMutableArray alloc] init];
-    
-    
-    
-    //initial population of history elements array
-    [self updateHistoryElements];
-    
-    //register nib for MainViewCell identifier
-    NSNib *nib = [[NSNib alloc] initWithNibNamed:@"MainViewCellController" bundle:nil];
-    
-    [self.tableView registerNib:nib forIdentifier:@"MainViewCell"];
-    
 
-    
-}
 #pragma mark - NSWindowDelegate methods
 
 -(void)windowDidResignKey:(NSNotification *)notification{
@@ -156,6 +199,19 @@
     
     
 }
+
+#pragma mark - process notifications methods
+
+-(void)processNewHistoryElementNotification:(NSNotification *)notification{
+    
+    
+    [self updateHistoryElements];
+    
+    
+    
+}
+
+
 
 #pragma mark - interface Actions
 -(IBAction)toggleEnableUploads:(id)sender{
@@ -172,14 +228,7 @@
 
 #pragma mark - Helpers
 
--(void)processNewHistoryElementNotification:(NSNotification *)notification{
-    
-    
-    [self updateHistoryElements];
-    
-    
-    
-}
+
 
 
 -(IBAction)quitApp:(id)sender{
@@ -203,51 +252,6 @@
 
 
 
--(void)updateHistoryElements{
-    
-   //clear cells array
-    
-    [self.cells removeAllObjects];
-    
-    //get array of uploaded items
-        
-    BoxSimpleShareAppDelegate *appDelegate = (BoxSimpleShareAppDelegate *)[[NSApplication sharedApplication] delegate];
-    
-    //go through list of saved files in reverse order
-        
-    for (BoxFile *file in [appDelegate.filesUploadedInSession reverseObjectEnumerator]) {
-        
-        //make cell for each file
-        
-        //controller to load nib and set properties
-        MainViewCellController *controller = [[MainViewCellController alloc] initWithNibName:@"MainViewCellController" bundle:nil];
-        
-        //just triggering lazy loading
-        NSView *tmpView = controller.view;
-        
-
-        
-        //set properties
-        
-        [controller.fileName setTitleWithMnemonic:file.fileName];
-        
-        
-        //store controller
-        
-        [self.cells addObject:controller];
-        
-        
-        
-    }
-    
-    
-    //reload table view
-    [self.tableView reloadData];
-    
-    
-
-    
-}
 
 -(IBAction)showPreferencesWindow:(id)sender{
     

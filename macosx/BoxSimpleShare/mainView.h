@@ -53,6 +53,10 @@
 
 -(void)updateHistoryElements;
 
+-(void)addHistoryElement:
+
+
+
 //actions
 -(IBAction)showCaptureVideoView:(id)sender;
 -(IBAction)takeScreenShot:(id)sender;
