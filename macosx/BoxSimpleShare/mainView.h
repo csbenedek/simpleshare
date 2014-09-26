@@ -12,7 +12,7 @@
 @class BoxSimpleShareAppDelegate;
 @class AttachedWindowsController;
 @class MAAttachedWindow;
-
+@class ITSwitch;
 
 
 
@@ -23,6 +23,9 @@
 @property(nonatomic, retain) IBOutlet NSTextField *shareDate;
 
 @property(nonatomic, retain) IBOutlet NSImageView *image;
+
+@property(nonatomic, retain) IBOutlet ITSwitch *enableUploadSwitch;
+
 
 
 

@@ -55,7 +55,11 @@
     
     //NSLog(@"Show preferences window notification!");
     
+    //[self.mainPreferencesController updateSwitchesState];
+    
     [self.window makeKeyAndOrderFront:self];
+    
+    
     
     //[self.window orderFront:self];
     
@@ -90,6 +94,9 @@
         self.mainPreferencesController = [[MainPreferencesViewController alloc] initWithNibName:@"MainPreferencesViewController" bundle:nil];
         
     }
+    
+    //update state of switches
+    
     
     [self displayView:self.mainPreferencesController.view];
     

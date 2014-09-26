@@ -13,6 +13,7 @@
 #import "AttachedWindowsController.h"
 #import "MainController.h"
 #import "BoxNetFileInfoLoader.h"
+#import "ITSwitch.h"
 
 
 @interface mainView ()
@@ -96,6 +97,8 @@
 
 -(void)awakeFromNib{
     
+     MainController *controller = (MainController *)[[BoxSimpleShareAppDelegate sharedDelegate] mainController];
+    
     NSLog(@"Main VIew awake from nib!");
     
     //init cells array
@@ -112,6 +115,11 @@
     
     [self.tableView registerNib:nib forIdentifier:@"MainViewCell"];
     
+    
+    
+    //set enabled load switch state
+    
+    self.enableUploadSwitch.isOn = controller.disable_automatic_upload_check;
     
     
 }

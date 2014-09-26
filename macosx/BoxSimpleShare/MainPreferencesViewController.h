@@ -20,6 +20,7 @@
 
 
 
+-(void)updateSwitchesState;
 
 
 -(IBAction)launchAtLoginControlSwitched:(id)sender;

@@ -55,6 +55,9 @@
 
 -(void)displayView:(NSView *) view;
 
+
+
+
 //processNotifications
 
 -(void)processShowPreferencesWindowNotification;

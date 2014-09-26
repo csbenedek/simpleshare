@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="mainView">
             <connections>
+                <outlet property="enableUploadSwitch" destination="cSQ-JH-KDX" id="3GM-Hv-9hc"/>
                 <outlet property="fileName" destination="Ju3-0t-ch5" id="CDN-X1-KjP"/>
                 <outlet property="image" destination="aGB-XO-xe1" id="Byq-wd-lqG"/>
                 <outlet property="shareDate" destination="sNp-fR-whh" id="0tc-KL-8hq"/>

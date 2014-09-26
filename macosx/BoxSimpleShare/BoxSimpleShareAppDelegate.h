@@ -124,7 +124,7 @@ extern const int MaxHistoryItemCount;
 
 -(NSRect)getStatusItemRectInMainScreen;
 
-
+-(void)loadPreferencesController;
 
 
 + (BoxSimpleShareAppDelegate *) sharedDelegate;

@@ -203,33 +203,6 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     //register for NewHistoryElementNotification
     AddNotificationObserver(self.attachedWindowsController, @selector(processNewHistoryElementNotification:), @"NewHistoryElementNotification", nil);
     
-    
-    //preferenes controller
-    
-    self.preferencesController = [[PreferencesController alloc] initWithWindowNibName:@"PreferencesController"];
-    
-    //trigger lazy loading
-    
-    NSWindow *window = self.preferencesController.window;
-    
-    
-    
-    //regester for ShowPreferencesWindowNotification
-    
-    AddNotificationObserver(self.preferencesController, @selector(processShowPreferencesWindowNotification), @"ShowPreferencesWindowNotification", nil);
-    //register for LoadAccountInfoNotification
-    AddNotificationObserver(self.preferencesController, @selector(processLoadAccountInfoNotification), @"LoadAccountInfoNotification", nil);
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     //post notification to show start message
     
     if (self.attachedWindowsController.isFirstLaunch) {
@@ -275,6 +248,31 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
       }*/
 }
 #pragma mark New interface Helpers
+
+-(void)loadPreferencesController{
+    
+    //preferenes controller
+    
+    self.preferencesController = [[PreferencesController alloc] initWithWindowNibName:@"PreferencesController"];
+    
+    //trigger lazy loading
+    
+    NSWindow *window = self.preferencesController.window;
+    
+    
+    
+    //regester for ShowPreferencesWindowNotification
+    
+    AddNotificationObserver(self.preferencesController, @selector(processShowPreferencesWindowNotification), @"ShowPreferencesWindowNotification", nil);
+    
+    
+    //register for LoadAccountInfoNotification
+    AddNotificationObserver(self.preferencesController, @selector(processLoadAccountInfoNotification), @"LoadAccountInfoNotification", nil);
+    
+    
+}
+
+
 
 -(NSRect)getStatusItemRectInMainScreen{
     

@@ -36,6 +36,14 @@
     
     [super awakeFromNib];
     
+    [self updateSwitchesState];
+    
+    
+}
+
+
+-(void)updateSwitchesState{
+    
     MainController *controller = (MainController *)[[BoxSimpleShareAppDelegate sharedDelegate] mainController];
     
     //set states of preferences switches
@@ -44,8 +52,8 @@
     self.deleteScreenshotsSwitch.isOn = controller.delete_screenshot_after_upload_check;
     self.deleteAllFileTypesSwitch.isOn = controller.delete_all_after_upload_check;
     self.copyToPasteboardSwitch.isOn = controller.copy_url_to_clipboard_check;
-    
-    
+
+    //[self.view display];
     
     
 }
