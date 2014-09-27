@@ -8,6 +8,7 @@
 
 #import "MainViewCellController.h"
 #import "BoxNetFileInfoLoader.h"
+#import "BoxFile.h"
 
 @interface MainViewCellController ()
 
@@ -41,7 +42,15 @@
     
     //thumbnail image loaded
     
-    self.imageView.image = self.fileInfoLoader.thumbnailImage;
+    
+    if (self.fileInfoLoader.thumbnailImage) {
+        
+        self.imageView.image = self.fileInfoLoader.thumbnailImage;
+        
+        self.boxFile.thumbnailImage = self.fileInfoLoader.thumbnailImage;
+        
+    }
+    
     
     //update view
     [self.view display];

@@ -30,5 +30,7 @@
 @property (retain, nonatomic) NSString *folderID;
 @property (retain, nonatomic) NSString *shortURL;
 @property (nonatomic) BOOL isImgur;
+@property (nonatomic, retain) NSImage *thumbnailImage;
+
 
 @end

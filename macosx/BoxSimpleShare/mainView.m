@@ -156,8 +156,21 @@
         
         [controller.fileName setTitleWithMnemonic:file.fileName];
         
-        [controller.fileInfoLoader loadThumbnailImageForID:file.fileID];
+        controller.boxFile = file;
         
+        //if box file doesn't contain thumbnail image,load it
+        
+        if (!controller.boxFile.thumbnailImage) {
+            
+            [controller.fileInfoLoader loadThumbnailImageForID:file.fileID];
+            
+        }
+        
+        else{
+            
+            controller.imageView.image = controller.boxFile.thumbnailImage;
+            
+        }
         
         
         //store controller

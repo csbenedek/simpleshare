@@ -20,8 +20,10 @@
 
 
 
-
 -(void)loadThumbnailImageForID:(NSString *)ID;
+
+-(void)retryTimerMethod:(NSTimer *)timer;
+
 
 
 

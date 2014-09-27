@@ -49,12 +49,88 @@
     
     
     [request addValue:authString forHTTPHeaderField:@"Authorization"];
+    
+    [request addValue:ID forHTTPHeaderField:@"ID"];
 
     self.loadThumbnailURLConnection = [NSURLConnection connectionWithRequest:request delegate:self];
     
     
     
 }
+
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+    
+    
+    if (connection == self.loadThumbnailURLConnection) {
+        
+        
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        
+        NSInteger statusCode = httpResponse.statusCode;
+        
+        
+        
+        switch (statusCode) {
+            case 202:{
+                //get ID of file
+                NSDictionary *originalHeaders = connection.originalRequest.allHTTPHeaderFields;
+                
+                NSString *ID = [originalHeaders valueForKey:@"ID"];
+                
+                NSLog(@"OriginalID: %@",ID);
+                
+                NSDictionary *headers = httpResponse.allHeaderFields;
+                
+                //NSLog(@"Status:%li",httpResponse.statusCode);
+                
+                //NSLog(@"Location:%@",[headers valueForKey:@"Location"]);
+                
+                NSInteger retryAfterInterval = [[headers valueForKey:@"Retry-After"] intValue];
+                
+                //NSLog(@"Retry-after:%@",[headers valueForKey:@"Retry-After"]);
+
+                //retry after
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:ID forKey:@"ID"];
+                
+                
+                
+                //NSTimer *timer = [NSTimer timerWithTimeInterval:retryAfterInterval target:self selector:@selector(retryTimerMethod:) userInfo:userInfo repeats:false];
+                
+                [NSTimer scheduledTimerWithTimeInterval:retryAfterInterval target:self selector:@selector(retryTimerMethod:) userInfo:userInfo repeats:FALSE];
+            
+            break;
+            }
+                
+                
+                
+            default:
+                break;
+        }
+        
+        
+    }
+    
+    
+    
+    
+}
+
+-(void)retryTimerMethod:(NSTimer *)timer{
+    
+    
+    NSLog(@"Retry connection");
+    
+    //get ID from timer's userInfo
+    NSString *ID = [timer.userInfo objectForKey:@"ID"];
+    
+    //retry loading of thumbnail
+    [self loadThumbnailImageForID:ID];
+    
+    
+    
+}
+
+
 
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
     

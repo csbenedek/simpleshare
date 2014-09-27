@@ -185,10 +185,13 @@
             controller.screen_cast_hot_key = [NSString stringWithFormat:[pref valueForKey:HOT_KEY_SCREENCAST]];;
             controller.upload_hot_key = [NSString stringWithFormat:[pref valueForKey:HOT_KEY_UPLOAD]];
             
+            
+            //restore uploaded files
             id obj = [[[unarchiver decodeObjectForKey:@"files_uploaded_in_session"] retain] autorelease];
             
             if (obj) {
                 [BoxSimpleShareAppDelegate sharedDelegate].filesUploadedInSession = [NSMutableArray arrayWithArray:obj];
+                
             } else {
                 [BoxSimpleShareAppDelegate sharedDelegate].filesUploadedInSession = [NSMutableArray array];
             }

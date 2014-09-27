@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 SAPLogix. All rights reserved.
 //
 @class BoxNetFileInfoLoader;
+@class BoxFile;
+
 
 
 #import <Cocoa/Cocoa.h>
@@ -19,6 +21,10 @@
 @property(nonatomic, retain) IBOutlet NSImageView *imageView;
 
 @property(nonatomic, retain) BoxNetFileInfoLoader *fileInfoLoader;
+
+@property(nonatomic, retain) BoxFile *boxFile;
+
+
 
 
 
