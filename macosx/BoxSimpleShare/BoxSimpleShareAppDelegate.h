@@ -162,5 +162,8 @@ extern const int MaxHistoryItemCount;
 - (void)showPreferenceView;
 
 
+-(void)openBoxNetFile:(id)sender;
+
+
 
 @end

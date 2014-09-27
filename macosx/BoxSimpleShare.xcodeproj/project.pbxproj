@@ -21,6 +21,7 @@
 		0D75692419CB13CA0084FA0D /* backArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D75692319CB13CA0084FA0D /* backArrow.png */; };
 		0DB634A319CCB29300F97E34 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB634A119CCB29300F97E34 /* PreferencesController.m */; };
 		0DB634A419CCB29300F97E34 /* PreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB634A219CCB29300F97E34 /* PreferencesController.xib */; };
+		0DC9DC3619D70F3100267D84 /* SHTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9DC3519D70F3100267D84 /* SHTableView.m */; };
 		0DF52E3219C8BB4F000D2D56 /* AttachedWindowsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */; };
 		0DF52E3719C8BB8B000D2D56 /* VideoCaptureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E3519C8BB8B000D2D56 /* VideoCaptureController.m */; };
 		0DF52E3819C8BB8B000D2D56 /* VideoCaptureController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF52E3619C8BB8B000D2D56 /* VideoCaptureController.xib */; };
@@ -403,6 +404,8 @@
 		0DB634A019CCB29300F97E34 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		0DB634A119CCB29300F97E34 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		0DB634A219CCB29300F97E34 /* PreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesController.xib; sourceTree = "<group>"; };
+		0DC9DC3419D70F3100267D84 /* SHTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTableView.h; sourceTree = "<group>"; };
+		0DC9DC3519D70F3100267D84 /* SHTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHTableView.m; sourceTree = "<group>"; };
 		0DF52E3019C8BB4F000D2D56 /* AttachedWindowsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachedWindowsController.h; sourceTree = "<group>"; };
 		0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachedWindowsController.m; sourceTree = "<group>"; };
 		0DF52E3419C8BB8B000D2D56 /* VideoCaptureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCaptureController.h; sourceTree = "<group>"; };
@@ -1112,6 +1115,8 @@
 				0DF52E4319C8BBFC000D2D56 /* MainViewCellController.h */,
 				0DF52E4419C8BBFC000D2D56 /* MainViewCellController.m */,
 				0DF52E4519C8BBFC000D2D56 /* MainViewCellController.xib */,
+				0DC9DC3419D70F3100267D84 /* SHTableView.h */,
+				0DC9DC3519D70F3100267D84 /* SHTableView.m */,
 			);
 			name = mainView;
 			sourceTree = "<group>";
@@ -2403,6 +2408,7 @@
 				9104DDA5146BE9B900D1A0C9 /* BoxDeleteCommentOperation.m in Sources */,
 				0D6C7F3E19CE26EB00D40BD3 /* ShortcutsViewController.m in Sources */,
 				9104DDA6146BE9B900D1A0C9 /* BoxDeleteOperation.m in Sources */,
+				0DC9DC3619D70F3100267D84 /* SHTableView.m in Sources */,
 				9104DDA7146BE9B900D1A0C9 /* BoxDownloadOperation.m in Sources */,
 				9104DDA8146BE9B900D1A0C9 /* BoxGetAuthTokenOperation.m in Sources */,
 				9104DDAA146BE9B900D1A0C9 /* BoxGetTicketOperation.m in Sources */,

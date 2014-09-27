@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "MAAttachedWindowController.h"
+#import "SHTableView.h"
 
 @class BoxSimpleShareAppDelegate;
 @class AttachedWindowsController;
@@ -16,7 +17,7 @@
 
 
 
-@interface mainView : MAAttachedWindowController <NSTableViewDelegate, NSTableViewDataSource>
+@interface mainView : MAAttachedWindowController <NSTableViewDelegate, NSTableViewDataSource, ExtendedTableViewDelegate>
 
 @property(nonatomic, retain) IBOutlet NSTextField *fileName;
 
@@ -30,7 +31,7 @@
 
 
 
-@property(nonatomic, retain) IBOutlet NSTableView *tableView;
+@property(nonatomic, retain) IBOutlet SHTableView *tableView;
 
 
 @property(nonatomic, assign)NSMutableArray *historyElements;

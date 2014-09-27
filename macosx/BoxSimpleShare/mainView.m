@@ -16,6 +16,7 @@
 #import "ITSwitch.h"
 
 
+
 @interface mainView ()
 
 @end
@@ -115,7 +116,9 @@
     
     [self.tableView registerNib:nib forIdentifier:@"MainViewCell"];
     
+    //set extended delegate to self
     
+    self.tableView.extendedDelegate = self;
     
     //set enabled load switch state
     
@@ -127,8 +130,24 @@
 
 #pragma mark - Table methods
 
+-(BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row{
+    
+    //disable selection
+    
+    return FALSE;
+    
+}
 
 
+-(void)tableView:(NSTableView *)tableView didClickedRow:(NSInteger)row{
+    
+    //NSLog(@"Did clicked row:%li",row);
+    
+    [[self.cells objectAtIndex:row] openSharedLink];
+    
+    
+    
+}
 
 -(void)updateHistoryElements{
     

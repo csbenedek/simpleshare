@@ -9,12 +9,46 @@
 #import "MainViewCellController.h"
 #import "BoxNetFileInfoLoader.h"
 #import "BoxFile.h"
+#import "BoxSimpleShareAppDelegate.h"
+#import "MainController.h"
 
 @interface MainViewCellController ()
 
 @end
 
 @implementation MainViewCellController
+
+
+-(void)openSharedLink{
+    
+    MainController *mainController = (MainController *)[[BoxSimpleShareAppDelegate sharedDelegate] mainController];
+    
+    BoxFile *file = self.boxFile;
+    
+    
+    if (file)
+    {
+		// open the url using the file link
+		NSString *url = nil;
+		
+		if ([file shortURL])
+			url = [file shortURL];
+		else
+			//url = [NSString stringWithFormat:@"http://www.box.com/shared/%@", [file publicName]];
+			url = [file publicName];
+		
+		if (mainController.shorten_links_check && !file.isImgur)
+		{
+			url = URLShortner( url );
+		}
+		
+		[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
+		url = nil;
+    }
+
+    
+    
+}
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

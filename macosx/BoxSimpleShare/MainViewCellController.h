@@ -32,6 +32,8 @@
 
 
 -(void)processThumbnailInfoLoadedNotification:(NSNotification *)notification;
+-(void)openSharedLink;
+
 
 
 
