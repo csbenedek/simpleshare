@@ -192,6 +192,7 @@ static BoxNetHandler *sharedObject = nil;
 
         }
     }
+    
     else if (properties && [properties containsKey:@"YOUTUBE"] && controller.upload_video_host_index == 1)
     {
         opt = [YoutubeUploadOperation new];

@@ -133,6 +133,11 @@
 
 -(IBAction)startVideoCapture:(id)sender{
     
+    //hide attached window
+    [self hideWindow];
+    
+    
+    //start video capture
     BoxSimpleShareAppDelegate *delegate = (BoxSimpleShareAppDelegate *)[BoxSimpleShareAppDelegate sharedDelegate];
     
     [delegate startVideoCapture:nil];

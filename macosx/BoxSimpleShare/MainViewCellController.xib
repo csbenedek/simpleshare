@@ -9,7 +9,7 @@
             <connections>
                 <outlet property="fileName" destination="Kq5-bb-HJZ" id="MKm-aj-iSU"/>
                 <outlet property="imageView" destination="Lr5-QF-ekp" id="kpw-kI-efJ"/>
-                <outlet property="shareDate" destination="kLK-sS-vjT" id="hBJ-8J-IMW"/>
+                <outlet property="uploadDateTextField" destination="kLK-sS-vjT" id="GG7-bB-Dqh"/>
                 <outlet property="view" destination="qUe-Ef-en9" id="cr8-fE-b1q"/>
             </connections>
         </customObject>
@@ -34,7 +34,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kLK-sS-vjT">
-                    <rect key="frame" x="63" y="9" width="98" height="17"/>
+                    <rect key="frame" x="63" y="9" width="170" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="bLN-aD-WVO">
                         <font key="font" metaFont="system"/>

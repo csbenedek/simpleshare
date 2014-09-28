@@ -78,7 +78,7 @@
     NSTimer *prefSyncTimer;
     BOOL prefChanged;
     NSComboBox *imageHost;
-    //
+    //1 stands for youtube as video upload host
     int upload_video_host_index;
 //    LoginHelper *loginHelper;
     
@@ -165,5 +165,9 @@
 - (void) doLogin:(id)sender;
 -(IBAction)onSwitchChange:(id)sender;
 -(void)updateSwitchControl;
+
+
+-(void)doYoutubeLogin:(id)sender;
+
 
 @end

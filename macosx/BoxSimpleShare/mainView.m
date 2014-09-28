@@ -171,10 +171,36 @@
         //just triggering lazy loading
         NSView *tmpView = controller.view;
   
-        //set properties
+        //set filename
         
         [controller.fileName setTitleWithMnemonic:file.fileName];
         
+        //stamp date if not presented
+        
+        
+        if (!file.uploadDate) {
+            
+            NSLog(@"Stamping date");
+            
+            file.uploadDate = [NSDate date];
+            
+            
+        }
+        
+        //set date in controller
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.doesRelativeDateFormatting = YES;
+        formatter.locale = [NSLocale currentLocale];
+        formatter.dateStyle = NSDateFormatterShortStyle;
+        formatter.timeStyle = NSDateFormatterShortStyle;
+        NSString *timeString = [formatter stringFromDate:file.uploadDate];
+        
+        [controller.uploadDateTextField setTitleWithMnemonic:timeString];
+        
+        [formatter release];
+        
+        //set reference to BoxFile
         controller.boxFile = file;
         
         //if box file doesn't contain thumbnail image,load it

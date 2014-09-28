@@ -31,6 +31,8 @@
 @property (retain, nonatomic) NSString *shortURL;
 @property (nonatomic) BOOL isImgur;
 @property (nonatomic, retain) NSImage *thumbnailImage;
+@property (nonatomic, retain) NSDate *uploadDate;
+
 
 
 @end

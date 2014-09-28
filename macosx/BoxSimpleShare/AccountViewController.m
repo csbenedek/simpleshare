@@ -13,6 +13,8 @@
 #import "BoxNetUser.h"
 #import "OAuth2Client.h"
 #import "BoxNetAccount.h"
+#import "MainController.h"
+#import "BoxSimpleShareAppDelegate.h"
 
 
 @interface AccountViewController ()
@@ -45,8 +47,23 @@
     
 }
 
+-(IBAction)youtubeLoginButtonAction:(id)sender{
+    
+    //get main controller
+    MainController *mainController = [[BoxSimpleShareAppDelegate sharedDelegate] mainController];
+    
+    
+    [mainController doYoutubeLogin:nil];
+    
+    
+    
+}
+
+
 
 -(IBAction)loginButtonAction:(id)sender{
+    
+    //already authenticated, logout
     
     if ([[[BoxNetHandler sharedHandler] boxNetUser] isAuthenticated]) {
         
@@ -65,15 +82,14 @@
         
     }
     
+    //not authentivated, login
+    
     else{
         
         [[OAuth2Client sharedInstance] authorize];
         
         
         self.loginButton.image = [NSImage imageNamed:@"box-account-logout-button"];
-        
-        
-        
         
     }
     

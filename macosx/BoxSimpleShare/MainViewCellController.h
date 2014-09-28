@@ -16,7 +16,7 @@
 
 @property(nonatomic, retain) IBOutlet NSTextField *fileName;
 
-@property(nonatomic, retain) IBOutlet NSTextField *shareDate;
+@property(nonatomic, retain) IBOutlet NSTextField *uploadDateTextField;
 
 @property(nonatomic, retain) IBOutlet NSImageView *imageView;
 
