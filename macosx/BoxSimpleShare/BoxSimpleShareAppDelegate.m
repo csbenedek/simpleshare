@@ -77,6 +77,8 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
 
 - (void) applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+
+    
     // Check if we have plist file from previous version which contains user password in open form - delete password
     
     NSString* plistPath = [BASE_PATH stringByAppendingPathComponent:@"net.box.simpleshare.plist"];
@@ -178,13 +180,39 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     [self setupVideoCaptureHotKey];
     
     //prepare settings and init AttachedWindowsController
-    
-    NSNumber *isFirstLaunch = [NSNumber numberWithBool:TRUE];
-    
-    NSDictionary *settingsDict = [NSDictionary dictionaryWithObject:isFirstLaunch forKey:@"isFirstLaunch"];
+
     
     
-    self.attachedWindowsController  = [[AttachedWindowsController alloc] initWithSettings:settingsDict];
+    
+    //NSNumber *isFirstLaunchNumber = [NSNumber numberWithBool:FALSE];
+    
+    //NSDictionary *settingsDict = [NSDictionary dictionaryWithObject:isFirstLaunchNumber forKey:@"isFirstLaunch"];
+    
+    
+    
+    self.attachedWindowsController  = [[AttachedWindowsController alloc] init];
+    
+    
+    //check for the first launch
+    
+   
+    
+    
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
+    //uncomment to reset SHnotFirstLaunch
+    
+    //[defaults removeObjectForKey:@"SHnotFirstLaunch"];
+    
+    self.attachedWindowsController.isFirstLaunch = ![defaults boolForKey:@"SHnotFirstLaunch"];
+    
+    //set isFirstLaunch to true in defaults
+    
+    [defaults setBool:TRUE forKey:@"SHnotFirstLaunch"];
+    
+    [defaults synchronize];
+    
+    
+    
     
     
     
@@ -203,9 +231,11 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     //register for NewHistoryElementNotification
     AddNotificationObserver(self.attachedWindowsController, @selector(processNewHistoryElementNotification:), @"NewHistoryElementNotification", nil);
     
-    //post notification to show start message
+    //check for first launch
     
     if (self.attachedWindowsController.isFirstLaunch) {
+        
+        //post message for attachedWindowsController to show start message
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowStartMessageNotification" object:self userInfo:nil];
         
@@ -214,9 +244,25 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     
     else{
         
-        //NSLog(@"Not first launch.");
+        NSLog(@"Not first launch. ");
         
-        [self.attachedWindowsController displayLoginWindow];
+        
+        
+        if ([[OAuth2Client sharedInstance] isAuthorized])
+        {
+            NSLog(@"Saved credentials, refresh token");
+            
+            [[OAuth2Client sharedInstance] authorize];
+        }
+        else{
+            
+            
+            NSLog(@"No saved credentials, display login window");
+            
+            [self.attachedWindowsController displayLoginWindow];
+            
+        }
+        
         
         
         

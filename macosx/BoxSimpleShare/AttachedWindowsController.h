@@ -26,20 +26,13 @@
 
 
 
-//isFIrstLauhcn control variable
+//isFirstLauhcn control variable
 
 @property(nonatomic, assign) BOOL isFirstLaunch;
+@property(nonatomic, assign) BOOL isStartUpMessageVisible;
+@property(nonatomic, assign) BOOL isSuccessfulLoginMessageVisible;
 
 
-//currently displayed attached window
-
-//@property (nonatomic, assign) MAAttachedWindow *currentAttachedWindow;
-
-//@property (nonatomic, retain) MAAttachedWindow *textMessageWindow;
-
-//@property (nonatomic, retain) MAAttachedWindow *loginWindow;
-
-//@property (nonatomic, retain) MAAttachedWindow *mainWindow;
 
 @property (nonatomic, retain) MAAttachedWindow *videoCaptureWindow;
 

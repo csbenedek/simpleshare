@@ -226,12 +226,6 @@
 -(void)displayLoginWindow{
     
     
-    //hide start Text message
-    
-    //[self hideTextMessageWindow];
-    
-    [self.textMessageController hideWindow];
-    
     if (!self.loginWindowController) {
         
         LoginViewController *controller = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
@@ -401,59 +395,18 @@
         
     }
     
+    //tell textMessageController to show start message
+    
     [self.textMessageController showStartMessage];
-    /*
-    //this is just for triggering lazy loading
-    NSView *aView1 = controller.view;
     
-    //this view is really used
-    NSView *aView2 = controller.startView;
-
-    //get a location of statusItem
+    //this needed for processStatusItemClickedNotification
     
-    
-    NSPoint point = [self getLocationOfStatusItem];
-    
-    MAAttachedWindow *attachedWindow = [[MAAttachedWindow alloc] initWithView:aView2 attachedToPoint:point];
-    
-    //configure attached window
-    [self configureAttachedWindow:attachedWindow];
-    
-    self.textMessageWindow = attachedWindow;
-    
-    //set delefate
-    
-    [self.textMessageWindow setDelegate:self.textMessageController];
-    
-    self.textMessageController.window = attachedWindow;
-    
-    
-    
-    //display attached window
-    [self showAttachedWindow:self.textMessageWindow];
-    */
+    self.isStartUpMessageVisible = TRUE;
     
     
     
     
 }
-
-
-//not used for now..
-/*
--(void)processShowTextMessageNotification:(NSNotification *)notification{
-    
-    NSDictionary *userInfo = notification.userInfo;
-    
-    NSInteger width = [[userInfo valueForKey:@"width"] intValue];
-    
-    NSString *string = [userInfo valueForKey:@"TextToDisplay"];
-    
-    //[self displayMessageWithText:string andWidth:width];
-    
-    
-}*/
-
 
 
 -(void)processSuccessfulLoginNotification:(NSNotification *)notification{
@@ -463,58 +416,21 @@
         
          [self.textMessageController showSuccessfulLoginMessage];
         
-        //set active controller to mainView to display it when status item clicked after message
+        //this needed for processStatusItemClickedNotification
+        self.isSuccessfulLoginMessageVisible = TRUE;
         
+    }
+    else{
+        
+        
+        //display main window if it is not first launch
+        
+        [self displayMainWindow];
         
         
     }
     
-    
-   
-    
-    //[self displayMainWindow];
-    
-    
-    //hide login window
-    //[self hideAttachedWindow:self.loginWindow];
-    
-    
-    //NSLog(@"%@",text);
-    //load text message view controller from nib file
-    //TextMessageViewController *controller = [[TextMessageViewController alloc] initWithNibName:@"TextMessageViewController" bundle:nil];
-    
-    
-    //this is just for triggering lazy loading
-    //NSView *aView1 = controller.view;
-    
-    //this view is really used
-    //NSView *aView2 = controller.successfulLoginView;
-    
-    
-    
-    //get a location of statusItem
-    
-    
-    //NSPoint point = [self getLocationOfStatusItem];
-    
-    //instantiate attached window
-    
-   // MAAttachedWindow *attachedWindow = [[MAAttachedWindow alloc] initWithView:aView2 attachedToPoint:point];
-    
-    
-    //[self configureAttachedWindow:attachedWindow];
-    
-    //self.textMessageWindow = attachedWindow;
-    
-    
-    //display attached window
-    //self.currentAttachedWindow = self.textMessageWindow;
-    
-    
-    //[self showAttachedWindow:self.textMessageWindow];
-    
-    
-    
+
     
 }
 
@@ -524,6 +440,36 @@
 -(void)processStatusItemClickedNotification{
     
     //NSLog(@"Status Item Clicked");
+    
+    //if startup message visible -> show login window
+    //this is first launch and user not authorized
+    if (self.isStartUpMessageVisible) {
+        
+        NSLog(@"Is StartupMessageVisible!");
+        
+        self.isStartUpMessageVisible = FALSE;
+        
+        [self.textMessageController hideWindow];
+        
+        [self displayLoginWindow];
+        
+        return;
+    }
+    
+    if (self.isSuccessfulLoginMessageVisible) {
+        
+        NSLog(@"Is successful login visible!");
+        
+        self.isSuccessfulLoginMessageVisible = FALSE;
+        
+        
+        [self.textMessageController hideWindow];
+        
+        [self displayMainWindow];
+        
+        return;
+    }
+    
     
     //window of active controller is visible, hide it
     
@@ -578,67 +524,6 @@
     
     
 }
-
-#pragma mark -
-
-/*
--(void)displayMessageWithText:(NSString *)text andWidth:(NSInteger)width{
-    
-    
-    NSLog(@"%@",text);
-    //load text message view controller from nib file
-    TextMessageViewController *controller = [[TextMessageViewController alloc] initWithNibName:@"TextMessageViewController" bundle:nil];
-    
-    
-    //get a view from controller, this triggers lazy loading
-    NSView *aView = controller.view;
-    
-    //change width
-    
-    NSRect rect = [aView frame];
-    
-    rect.size.width = width;
-    
-    [aView setFrame:rect];
-    
-    //set text
-    [controller.textField setTitleWithMnemonic:text];
-    
-    
-    //get a location of statusItem
-    
-    
-    NSPoint point = [self getLocationOfStatusItem];
-    
-    
-    //instantiate and configure attached window
-    
-    MAAttachedWindow *textMessageAttachedWindow = [[MAAttachedWindow alloc] initWithView:aView attachedToPoint:point];
-    
-    textMessageAttachedWindow.borderWidth = 0;
-    
-    [textMessageAttachedWindow setBackgroundColor:[NSColor blackColor]];
-    
-    [textMessageAttachedWindow setArrowBaseWidth:20.0];
-    
-    [textMessageAttachedWindow setArrowHeight:10.0];
-    
-    
-    
-    self.textMessageWindow = textMessageAttachedWindow;
-
-    //display attached window
-    [self.textMessageWindow makeKeyAndOrderFront:self];
-    
-    
-    
-    
-}
-*/
-
-
-
-
 
 
 

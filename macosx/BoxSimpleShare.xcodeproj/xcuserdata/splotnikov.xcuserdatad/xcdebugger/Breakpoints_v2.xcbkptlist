@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxSimpleShare/AttachedWindowsController.m"
-            timestampString = "432762234.435839"
+            timestampString = "433619403.614168"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "-displayLoginWindow"
             landmarkType = "5">
          </BreakpointContent>
@@ -506,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxSimpleShare/BoxSimpleShareAppDelegate.m"
-            timestampString = "433599935.931217"
+            timestampString = "433622685.430071"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1248"
-            endingLineNumber = "1248"
+            startingLineNumber = "1294"
+            endingLineNumber = "1294"
             landmarkName = "-videoCaptureController:didCaptureVideoToPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -544,6 +544,22 @@
             startingLineNumber = "203"
             endingLineNumber = "203"
             landmarkName = "-uploadFiles:withProperties:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BoxSimpleShare/BoxSimpleShareAppDelegate.m"
+            timestampString = "433622529.681976"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "-applicationDidFinishLaunching:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
