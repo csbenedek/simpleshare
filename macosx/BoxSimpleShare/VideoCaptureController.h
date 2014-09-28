@@ -9,6 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "MAAttachedWindowController.h"
 
+
+
+@class ITSwitch;
 @class AttachedWindowsController;
 
 
@@ -16,6 +19,8 @@
 @interface VideoCaptureController : MAAttachedWindowController
 
 @property (nonatomic, assign) AttachedWindowsController *rootController;
+@property (nonatomic, retain) IBOutlet ITSwitch *microphoneSwitch;
+
 
 
 
@@ -24,5 +29,8 @@
 -(IBAction)backToMainWindow:(id)sender;
 
 -(IBAction)startVideoCapture:(id)sender;
+
+
+-(IBAction)microphoneSwitchAction:(id)sender;
 
 @end

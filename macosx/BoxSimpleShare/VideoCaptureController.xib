@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="VideoCaptureController">
             <connections>
+                <outlet property="microphoneSwitch" destination="JAJ-wF-fak" id="JZk-gR-jCf"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -30,6 +31,9 @@
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JAJ-wF-fak" customClass="ITSwitch">
                     <rect key="frame" x="145" y="84" width="42" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <connections>
+                        <action selector="microphoneSwitchAction:" target="-2" id="UcN-ED-BZL"/>
+                    </connections>
                 </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PBn-jg-M6a">
                     <rect key="frame" x="203" y="86" width="79" height="17"/>

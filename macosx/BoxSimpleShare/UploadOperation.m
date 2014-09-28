@@ -516,6 +516,7 @@
 			DbgLog(@" File [%@] already exists. Uploading a new version...", fileName);
 			
 			url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.box.com/2.0/files/%@/content", fileID]];
+            //url = [NSURL URLWithString:[NSString stringWithFormat:@"https://upload.api.box.com/2.0/files/%@/content", fileID]];
 			
 			request = [[HTTPFormDataRequest requestWithURL:url] retain];
 			[request addRequestHeader:@"If-Match" value:fileETag];
@@ -523,7 +524,8 @@
 		else
 		{
 			DbgLog(@" No file [%@] has been uploaded yet. Uploading...", fileName);
-			
+            
+            //old url
 			//url = [NSURL URLWithString:@"https://api.box.com/2.0/files/content"];
             
             url = [NSURL URLWithString:@"https://upload.box.com/api/2.0/files/content"];

@@ -8,6 +8,10 @@
 #import "VideoCaptureManagerLion.h"
 #import "StandardPaths.h"
 #import <AVFoundation/AVFoundation.h>
+#import "MainController.h"
+#import "BoxSimpleShareAppDelegate.h"
+
+
 
 @interface NSObject (VideoManagerNSObjectExtensions)
 
@@ -74,6 +78,29 @@
         return;
     }
     [_session performSelector:@selector(addInput:) withObject:input];
+    
+    //check for mute option
+    MainController *mainController = [[BoxSimpleShareAppDelegate sharedDelegate] mainController];
+    
+    
+    if (!mainController.mute_audio_check) {
+        
+        //add audio input
+        AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
+        
+        NSError *error = nil;
+        
+        AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error];
+        if (audioInput) {
+            
+            [_session performSelector:@selector(addInput:) withObject:audioInput];
+            
+        }
+
+    }
+    
+    
+    
     
     // Create a MovieFileOutput and add it to the session
 //    Class avCaptureMovieFileOutputClass = NSClassFromString(@"AVCaptureMovieFileOutput");

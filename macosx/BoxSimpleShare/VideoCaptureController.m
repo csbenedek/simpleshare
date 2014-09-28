@@ -9,6 +9,9 @@
 #import "VideoCaptureController.h"
 #import "AttachedWindowsController.h"
 #import "BoxSimpleShareAppDelegate.h"
+#import "MainController.h"
+#import "ITSwitch.h"
+
 
 
 @interface VideoCaptureController ()
@@ -73,6 +76,14 @@
         
         [self.window setDelegate:self];
         
+        
+        //set microphone switch state
+        MainController *mainController = (MainController *)[[BoxSimpleShareAppDelegate sharedDelegate] mainController];
+        
+        self.microphoneSwitch.isOn = !mainController.mute_audio_check;
+        
+        
+        
     }
     
     
@@ -103,6 +114,18 @@
     //display mainWindow
     [self.rootController displayMainWindow] ;
     
+    
+    
+    
+}
+
+-(IBAction)microphoneSwitchAction:(id)sender{
+    
+    //set mute audio check
+    
+    MainController *mainController = (MainController *)[[BoxSimpleShareAppDelegate sharedDelegate] mainController];
+    
+    mainController.mute_audio_check = !self.microphoneSwitch.isOn;
     
     
     
