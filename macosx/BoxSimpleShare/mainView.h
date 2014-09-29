@@ -50,8 +50,7 @@
 
 
 
--(IBAction)quitApp:(id)sender;
--(IBAction)toggleEnableUploads:(id)sender;
+
 
 
 
@@ -67,9 +66,9 @@
 -(IBAction)uploadFile:(id)sender;
 
 -(IBAction)showPreferencesWindow:(id)sender;
-
-
-
+-(IBAction)quitApp:(id)sender;
+-(IBAction)toggleEnableUploads:(id)sender;
+-(IBAction)sendFeedback:(id)sender;
 
 
 

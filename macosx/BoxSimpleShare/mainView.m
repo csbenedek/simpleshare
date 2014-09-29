@@ -379,6 +379,16 @@
     
 }
 
+-(IBAction)sendFeedback:(id)sender{
+    
+    BoxSimpleShareAppDelegate *delegate = [BoxSimpleShareAppDelegate sharedDelegate];
+    
+    
+    [delegate sendFeedback:nil];
+    
+    
+}
+
 
 -(IBAction)takeScreenShot:(id)sender{
     

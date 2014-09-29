@@ -44,7 +44,7 @@
                         <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GRt-1k-766">
                             <rect key="frame" x="259" y="16" width="45" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" imageScaling="proportionallyUpOrDown" inset="2" pullsDown="YES" arrowPosition="noArrow" autoenablesItems="NO" id="TyZ-mK-1CU">
+                            <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" imageScaling="proportionallyUpOrDown" inset="2" pullsDown="YES" arrowPosition="noArrow" autoenablesItems="NO" selectedItem="F1f-Jc-CLm" id="TyZ-mK-1CU">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
                                 <menu key="menu" title="OtherViews" showsStateColumn="NO" autoenablesItems="NO" id="yhh-vR-xak">
@@ -56,7 +56,11 @@
                                                 <action selector="showPreferencesWindow:" target="-2" id="AcM-N9-xw0"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Feedback" id="xhG-Oe-1vC"/>
+                                        <menuItem title="Feedback" id="xhG-Oe-1vC">
+                                            <connections>
+                                                <action selector="sendFeedback:" target="-2" id="oIe-tO-fc6"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Quit SimpleShare" id="7Br-5x-UL3">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>

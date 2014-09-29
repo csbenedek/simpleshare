@@ -164,6 +164,7 @@ extern const int MaxHistoryItemCount;
 
 -(void)openBoxNetFile:(id)sender;
 
+-(void)sendFeedback:(id)sender;
 
 
 @end

@@ -49,6 +49,9 @@
 -(IBAction)sendMail:(id)sender
 {
     NSString* email =@"ajdunn83@gmail.com";
+    
+    //NSString* email =@"unpluggd.v6@gmail.com";
+    
     NSAttributedString* textAttributedString = textView.attributedString;
     NSString* mailtoLink = [NSString
                             stringWithFormat:@"mailto:%@?subject=%@&body=%@", email, @"Feedback for SimpleShare", textView.string];
