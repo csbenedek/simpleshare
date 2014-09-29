@@ -11,6 +11,7 @@
 #import "BoxFile.h"
 #import "BoxSimpleShareAppDelegate.h"
 #import "MainController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MainViewCellController ()
 
@@ -82,6 +83,14 @@
         self.imageView.image = self.fileInfoLoader.thumbnailImage;
         
         self.boxFile.thumbnailImage = self.fileInfoLoader.thumbnailImage;
+        
+        //hide spinner and stop animation
+        
+        [self.spinner stopAnimation:self];
+        
+        [self.spinner setHidden:TRUE];
+        
+        
         
     }
     

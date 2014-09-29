@@ -20,6 +20,8 @@
 
 @property(nonatomic, retain) IBOutlet NSImageView *imageView;
 
+@property(nonatomic , retain) IBOutlet NSProgressIndicator *spinner;
+
 @property(nonatomic, retain) BoxNetFileInfoLoader *fileInfoLoader;
 
 @property(nonatomic, retain) BoxFile *boxFile;

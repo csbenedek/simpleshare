@@ -34,7 +34,7 @@
 -(void)loadThumbnailImageForID:(NSString *) ID{
     
     //compose string URL to get 32x32 thumbnail
-    NSString *URLString = [NSString stringWithFormat:@"https://api.box.com/2.0/files/%@/thumbnail.png?max_height=32&max_width=32",ID];
+    NSString *URLString = [NSString stringWithFormat:@"https://api.box.com/2.0/files/%@/thumbnail.png?min_height=128&min_width=128",ID];
     
     NSURL *URL = [NSURL URLWithString:URLString];
     

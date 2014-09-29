@@ -170,7 +170,17 @@
         
         //just triggering lazy loading
         NSView *tmpView = controller.view;
-  
+        
+        
+        //configure border and corners
+        /*
+        [controller.imageView setWantsLayer:TRUE];
+        
+        controller.imageView.layer.borderWidth = 1.0;
+        controller.imageView.layer.borderColor = [[NSColor grayColor] CGColor];
+        controller.imageView.layer.cornerRadius = 4.0;
+        controller.imageView.layer.masksToBounds = TRUE;
+         */
         //set filename
         
         [controller.fileName setTitleWithMnemonic:file.fileName];
@@ -208,6 +218,11 @@
         if (!controller.boxFile.thumbnailImage) {
             
             [controller.fileInfoLoader loadThumbnailImageForID:file.fileID];
+            
+            //show spinner and start animation
+            [controller.spinner setHidden:FALSE];
+            [controller.spinner startAnimation:self];
+            
             
         }
         
