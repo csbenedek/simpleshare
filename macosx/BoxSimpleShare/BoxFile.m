@@ -11,7 +11,7 @@
 
 @implementation BoxFile
 
-@synthesize uploadStatus, fileName, fileID, isShared, publicName, folderID, shortURL, isImgur, thumbnailImage, uploadDate;
+@synthesize uploadStatus, fileName, fileID, isShared, publicName, folderID, shortURL, isImgur, thumbnailImage, uploadDate, isYouTube;
 
 - (id)init
 {
@@ -36,6 +36,7 @@
         isImgur = [aDecoder decodeBoolForKey:@"isImgur"];
         thumbnailImage = [[aDecoder decodeObjectForKey:@"thumbnailImage"] retain];
         uploadDate = [[aDecoder  decodeObjectForKey:@"uploadDate"] retain];
+        isYouTube = [aDecoder decodeBoolForKey:@"isYouTube"];
         
         if ([aDecoder decodeObjectForKey:@"shortURL"])
             shortURL = [[aDecoder decodeObjectForKey:@"shortURL"] retain];
@@ -54,6 +55,8 @@
     [aCoder encodeBool:isImgur forKey:@"isImgur"];
     [aCoder encodeObject:thumbnailImage forKey:@"thumbnailImage"];
     [aCoder encodeObject:uploadDate forKey:@"uploadDate"];
+    [aCoder encodeBool:isYouTube forKey:@"isYouTube"];
+    
     
     
     if (shortURL)

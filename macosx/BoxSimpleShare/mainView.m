@@ -14,6 +14,7 @@
 #import "MainController.h"
 #import "BoxNetFileInfoLoader.h"
 #import "ITSwitch.h"
+#import "YouTubeThumbnailLoader.h"
 
 
 
@@ -217,11 +218,35 @@
         
         if (!controller.boxFile.thumbnailImage) {
             
-            [controller.fileInfoLoader loadThumbnailImageForID:file.fileID];
+            if (controller.boxFile.isYouTube == TRUE) {
+                
+                //get video id from URL
+                
+                NSString *ID = [file.shortURL stringByReplacingOccurrencesOfString:@"http://www.youtube.com/watch?v=" withString:@""];
+                
+                
+                [controller.youTubeThumbnailLoader loadThumbnailForVideoWithID:ID];
+                
+                //show spinner and start animation
+                [controller.spinner setHidden:FALSE];
+                [controller.spinner startAnimation:self];
+                
+                
+                
+            }
             
-            //show spinner and start animation
-            [controller.spinner setHidden:FALSE];
-            [controller.spinner startAnimation:self];
+            
+            else{
+                
+                //load from box
+                [controller.fileInfoLoader loadThumbnailImageForID:file.fileID];
+                
+                //show spinner and start animation
+                [controller.spinner setHidden:FALSE];
+                [controller.spinner startAnimation:self];
+                
+            }
+            
             
             
         }

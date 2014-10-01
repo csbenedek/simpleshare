@@ -78,6 +78,8 @@
     NSTimer *prefSyncTimer;
     BOOL prefChanged;
     NSComboBox *imageHost;
+    
+    
     //1 stands for youtube as video upload host
     int upload_video_host_index;
 //    LoginHelper *loginHelper;
@@ -101,6 +103,7 @@
 @property (retain, nonatomic) IBOutlet NSTextField *youtubeLoginName;
 @property (retain, nonatomic) IBOutlet CustomNSImageView *youtubeUserImage;
 @property (retain, nonatomic) IBOutlet NSButton *youtubeLogoutBtn;
+@property (nonatomic, assign) BOOL isYouTubeLogin;
 
 
 // LOGIN VIEW

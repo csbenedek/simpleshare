@@ -10,6 +10,7 @@
 		0D01A72319CAB78D000349A7 /* MAAttachedWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D01A72219CAB78D000349A7 /* MAAttachedWindowController.m */; };
 		0D48778419D2FD2E0015961F /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48778319D2FD2E0015961F /* NSString+URLEncoding.m */; };
 		0D48778719D301DD0015961F /* NSString+HTMLTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48778619D301DD0015961F /* NSString+HTMLTags.m */; };
+		0D54348019DC45EC0002135C /* YouTubeThumbnailLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D54347F19DC45EC0002135C /* YouTubeThumbnailLoader.m */; };
 		0D6C7F3219CE022100D40BD3 /* MainPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3019CE022100D40BD3 /* MainPreferencesViewController.m */; };
 		0D6C7F3319CE022100D40BD3 /* MainPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3119CE022100D40BD3 /* MainPreferencesViewController.xib */; };
 		0D6C7F3819CE208600D40BD3 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3619CE208600D40BD3 /* AccountViewController.m */; };
@@ -387,6 +388,8 @@
 		0D48778319D2FD2E0015961F /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		0D48778519D301DD0015961F /* NSString+HTMLTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTMLTags.h"; sourceTree = "<group>"; };
 		0D48778619D301DD0015961F /* NSString+HTMLTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTMLTags.m"; sourceTree = "<group>"; };
+		0D54347E19DC45EC0002135C /* YouTubeThumbnailLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeThumbnailLoader.h; sourceTree = "<group>"; };
+		0D54347F19DC45EC0002135C /* YouTubeThumbnailLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeThumbnailLoader.m; sourceTree = "<group>"; };
 		0D6C7F2F19CE022100D40BD3 /* MainPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPreferencesViewController.h; sourceTree = "<group>"; };
 		0D6C7F3019CE022100D40BD3 /* MainPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPreferencesViewController.m; sourceTree = "<group>"; };
 		0D6C7F3119CE022100D40BD3 /* MainPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainPreferencesViewController.xib; sourceTree = "<group>"; };
@@ -996,6 +999,15 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		0D54347D19DC45950002135C /* YouTubeApi */ = {
+			isa = PBXGroup;
+			children = (
+				0D54347E19DC45EC0002135C /* YouTubeThumbnailLoader.h */,
+				0D54347F19DC45EC0002135C /* YouTubeThumbnailLoader.m */,
+			);
+			name = YouTubeApi;
+			sourceTree = "<group>";
+		};
 		0D6C7F2D19CE011800D40BD3 /* PreferencesController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1072,6 +1084,7 @@
 		0DF52E2C19C8B91C000D2D56 /* New Design */ = {
 			isa = PBXGroup;
 			children = (
+				0D54347D19DC45950002135C /* YouTubeApi */,
 				0D48778119D2FD070015961F /* Categories */,
 				0D70E23C19D1FA0C006DB515 /* BoxAPI */,
 				0DF52E3019C8BB4F000D2D56 /* AttachedWindowsController.h */,
@@ -2350,6 +2363,7 @@
 				8B69535C13C4D53400B32618 /* BoxNetUser.m in Sources */,
 				8B69536013C4E87000B32618 /* BoxFolder.m in Sources */,
 				8433B2B819ADA10E00DBA8FC /* PXListView+UserInteraction.m in Sources */,
+				0D54348019DC45EC0002135C /* YouTubeThumbnailLoader.m in Sources */,
 				84B980A018C327890053D264 /* ImgurUploadOperation.m in Sources */,
 				8406BBFF18484A7700556555 /* StartImageCaptureView.m in Sources */,
 				84F29FEA18F2B662002B12EB /* GTLYouTube_Sources.m in Sources */,

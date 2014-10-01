@@ -7,6 +7,8 @@
 //
 @class BoxNetFileInfoLoader;
 @class BoxFile;
+@class YouTubeThumbnailLoader;
+
 
 
 
@@ -24,6 +26,8 @@
 
 @property(nonatomic, retain) BoxNetFileInfoLoader *fileInfoLoader;
 
+@property(nonatomic, retain) YouTubeThumbnailLoader *youTubeThumbnailLoader;
+
 @property(nonatomic, retain) BoxFile *boxFile;
 
 
@@ -34,6 +38,10 @@
 
 
 -(void)processThumbnailInfoLoadedNotification:(NSNotification *)notification;
+
+-(void)processYouTubeThumbnailLoadedNotification:(NSNotification *)notification;
+
+
 -(void)openSharedLink;
 
 

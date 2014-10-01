@@ -650,7 +650,11 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
     [BoxNetUser saveYoutubeUser:dict];
     
     [[YoutubeAuthenticateManager shareManager] updateAuthenticateToken:dict];
-    [self setYoutubState:NO];
+    
+    self.isYouTubeLogin = TRUE;
+    
+    
+    //[self setYoutubState:NO];
 }
 -(void)doYoutubeLogin:(id)sender
 {

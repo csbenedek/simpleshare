@@ -30,6 +30,7 @@
 @property (retain, nonatomic) NSString *folderID;
 @property (retain, nonatomic) NSString *shortURL;
 @property (nonatomic) BOOL isImgur;
+@property (nonatomic, assign) BOOL isYouTube;
 @property (nonatomic, retain) NSImage *thumbnailImage;
 @property (nonatomic, retain) NSDate *uploadDate;
 

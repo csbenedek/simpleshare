@@ -12,6 +12,7 @@
 #import "BoxSimpleShareAppDelegate.h"
 #import "MainController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "YouTubeThumbnailLoader.h"
 
 @interface MainViewCellController ()
 
@@ -59,16 +60,50 @@
         
         self.fileInfoLoader = [[BoxNetFileInfoLoader alloc] init];
         
+        self.youTubeThumbnailLoader = [[YouTubeThumbnailLoader alloc] init];
+        
+        
         //register self for notifications from fileInfoLoader
         
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(processThumbnailInfoLoadedNotification:) name:@"ThumbnailLoadedNotification" object:self.fileInfoLoader];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(processYouTubeThumbnailLoadedNotification:) name:@"YouTubeThumbnailLoadedNotification" object:self.youTubeThumbnailLoader];
+        
+        
         
         
         
     }
     return self;
 }
+
+
+-(void)processYouTubeThumbnailLoadedNotification:(NSNotification *)notification{
+    
+    NSLog(@"YouTubeThumbnailLoadedNotification");
+    
+    if (self.youTubeThumbnailLoader.thumbnail) {
+        
+        self.imageView.image = self.youTubeThumbnailLoader.thumbnail;
+        
+        self.boxFile.thumbnailImage = self.youTubeThumbnailLoader.thumbnail;
+        
+        //hide spinner and stop animation
+        
+        [self.spinner stopAnimation:self];
+        
+        [self.spinner setHidden:TRUE];
+        
+        
+    }
+    
+    
+    [self.view display];
+    
+    
+}
+
 
 
 -(void)processThumbnailInfoLoadedNotification:(NSNotification *) notification{
