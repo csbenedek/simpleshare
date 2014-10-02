@@ -46,7 +46,7 @@ static NSString *visibleactions = @"http://schemas.google.com/AddActivity";
 {
     [self.window setLevel:NSModalPanelWindowLevel];
   
-    NSString *url = [NSString stringWithFormat:@"https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=%@&redirect_uri=%@&scope=%@&max_auth_age=0&access_type=offline",clientId,callback,scope];
+    NSString *url = [NSString stringWithFormat:@"https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=%@&redirect_uri=%@&scope=%@&max_auth_age=0&access_type=offline&approval_prompt=force",clientId,callback,scope];
     
     [webview setMainFrameURL:url];
 }

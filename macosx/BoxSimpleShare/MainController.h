@@ -99,10 +99,12 @@
 @property (retain, nonatomic) IBOutlet NSTextField *verField1;
 @property (retain, nonatomic) IBOutlet NSTextField *storageStatus;
 
-///YOUTUBE VIEW
-@property (retain, nonatomic) IBOutlet NSTextField *youtubeLoginName;
-@property (retain, nonatomic) IBOutlet CustomNSImageView *youtubeUserImage;
-@property (retain, nonatomic) IBOutlet NSButton *youtubeLogoutBtn;
+///YOUTUBE Control variable, used in BoxNetHandler uploadFile method
+
+//@property (retain, nonatomic) IBOutlet NSTextField *youtubeLoginName;
+//@property (retain, nonatomic) IBOutlet CustomNSImageView *youtubeUserImage;
+//@property (retain, nonatomic) IBOutlet NSButton *youtubeLogoutBtn;
+
 @property (nonatomic, assign) BOOL isYouTubeLogin;
 
 
@@ -171,6 +173,8 @@
 
 
 -(void)doYoutubeLogin:(id)sender;
+-(void)doYoutubeLogout:(id)sender;
+
 
 
 @end

@@ -27,10 +27,59 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Initialization code here.
+        //add KVO observing
+        
+        MainController *mainController = [[BoxSimpleShareAppDelegate sharedDelegate] mainController];
+        
+        [mainController addObserver:self forKeyPath:@"isYouTubeLogin" options:NSKeyValueObservingOptionNew context:nil];
+        
+        //set youtubeLoginButton image
+        /*
+        BOOL isYouTubeLogin = mainController.isYouTubeLogin;
+        
+        
+        if (isYouTubeLogin) {
+            [self setYouTubeLogoutButtonImage];
+        }
+        
+        else{
+            
+            
+            [self setYouTubeLoginButtonImage];
+            
+        }
+
+        */
+        
+        
         
     }
     return self;
+}
+
+-(void)loadView{
+    [super loadView];
+    
+    MainController *mainController = [[BoxSimpleShareAppDelegate sharedDelegate] mainController];
+    
+    //set youtubeLoginButton image
+    
+    BOOL isYouTubeLogin = mainController.isYouTubeLogin;
+    
+    
+    if (isYouTubeLogin) {
+        [self setYouTubeLogoutButtonImage];
+    }
+    
+    else{
+        
+        
+        [self setYouTubeLoginButtonImage];
+        
+    }
+
+    
+    
 }
 
 
@@ -52,8 +101,17 @@
     //get main controller
     MainController *mainController = [[BoxSimpleShareAppDelegate sharedDelegate] mainController];
     
+    if (!mainController.isYouTubeLogin) {
+        
+        [mainController doYoutubeLogin:nil];
+    }
+    else{
+        
+        [mainController doYoutubeLogout:nil];
+        
+    }
     
-    [mainController doYoutubeLogin:nil];
+    
     
     
     
@@ -97,6 +155,53 @@
 }
 
 //method to control login/logout button view
+
+#pragma mark - buttons images control methods
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    
+    
+    
+    if ([keyPath isEqualTo: @"isYouTubeLogin"]) {
+        
+        //BOOL isYouTubeLogin = [[change valueForKey:@"NSKeyValueChangeNewKey"] boolValue];
+        
+        BOOL isYouTubeLogin = [[change valueForKey:@"new"] boolValue];
+        
+        if (isYouTubeLogin) {
+            [self setYouTubeLogoutButtonImage];
+        }
+        
+        else{
+            
+            
+            [self setYouTubeLoginButtonImage];
+            
+        }
+        
+    }
+}
+
+
+
+-(void)setYouTubeLoginButtonImage{
+    
+    self.youTubeLoginButton.image = [NSImage imageNamed:@"login-with-youtube-button"];
+    
+    [self.youTubeLoginButton display];
+}
+
+-(void)setYouTubeLogoutButtonImage{
+    
+    
+    self.youTubeLoginButton.image = [NSImage imageNamed:@"logout-from-youtube-button"];
+    
+    [self.youTubeLoginButton display];
+    
+    
+}
+
+
+
 
 -(void)updateLoginButton{
     

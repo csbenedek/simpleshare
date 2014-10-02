@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0D01A72319CAB78D000349A7 /* MAAttachedWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D01A72219CAB78D000349A7 /* MAAttachedWindowController.m */; };
+		0D2B34CD19DDF186009B06EF /* logout-from-youtube-button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2B34C919DDF186009B06EF /* logout-from-youtube-button-pressed.png */; };
+		0D2B34CE19DDF187009B06EF /* logout-from-youtube-button-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2B34CA19DDF186009B06EF /* logout-from-youtube-button-pressed@2x.png */; };
+		0D2B34CF19DDF187009B06EF /* logout-from-youtube-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2B34CB19DDF186009B06EF /* logout-from-youtube-button.png */; };
+		0D2B34D019DDF187009B06EF /* logout-from-youtube-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2B34CC19DDF186009B06EF /* logout-from-youtube-button@2x.png */; };
 		0D48778419D2FD2E0015961F /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48778319D2FD2E0015961F /* NSString+URLEncoding.m */; };
 		0D48778719D301DD0015961F /* NSString+HTMLTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48778619D301DD0015961F /* NSString+HTMLTags.m */; };
 		0D54348019DC45EC0002135C /* YouTubeThumbnailLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D54347F19DC45EC0002135C /* YouTubeThumbnailLoader.m */; };
@@ -134,10 +138,10 @@
 		848F99DD19609C2F00984731 /* login-app-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F999F19609C2F00984731 /* login-app-icon@2x.png */; };
 		848F99DE19609C2F00984731 /* login-to-box-button-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A019609C2F00984731 /* login-to-box-button-pressed@2x.png */; };
 		848F99DF19609C2F00984731 /* login-to-box-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A119609C2F00984731 /* login-to-box-button@2x.png */; };
-		848F99E019609C2F00984731 /* login-with-imgur-button-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A219609C2F00984731 /* login-with-imgur-button-pressed@2x.png */; };
-		848F99E119609C2F00984731 /* login-with-imgur-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A319609C2F00984731 /* login-with-imgur-button@2x.png */; };
-		848F99E219609C2F00984731 /* login-with-youtube-button-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A419609C2F00984731 /* login-with-youtube-button-pressed@2x.png */; };
-		848F99E319609C2F00984731 /* login-with-youtube-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A519609C2F00984731 /* login-with-youtube-button@2x.png */; };
+		848F99E019609C2F00984731 /* login-with-youtube-button-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A219609C2F00984731 /* login-with-youtube-button-pressed@2x.png */; };
+		848F99E119609C2F00984731 /* login-with-youtube-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A319609C2F00984731 /* login-with-youtube-button@2x.png */; };
+		848F99E219609C2F00984731 /* login-with-imgur-button-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A419609C2F00984731 /* login-with-imgur-button-pressed@2x.png */; };
+		848F99E319609C2F00984731 /* login-with-imgur-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A519609C2F00984731 /* login-with-imgur-button@2x.png */; };
 		848F99E419609C2F00984731 /* prefs-accounts@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A619609C2F00984731 /* prefs-accounts@2x.png */; };
 		848F99E519609C2F00984731 /* prefs-prefs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A719609C2F00984731 /* prefs-prefs@2x.png */; };
 		848F99E619609C2F00984731 /* prefs-shortcuts@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A819609C2F00984731 /* prefs-shortcuts@2x.png */; };
@@ -165,10 +169,10 @@
 		848F99FC19609C2F00984731 /* login-app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99BE19609C2F00984731 /* login-app-icon.png */; };
 		848F99FD19609C2F00984731 /* login-to-box-button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99BF19609C2F00984731 /* login-to-box-button-pressed.png */; };
 		848F99FE19609C2F00984731 /* login-to-box-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C019609C2F00984731 /* login-to-box-button.png */; };
-		848F99FF19609C2F00984731 /* login-with-imgur-button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C119609C2F00984731 /* login-with-imgur-button-pressed.png */; };
-		848F9A0019609C2F00984731 /* login-with-imgur-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C219609C2F00984731 /* login-with-imgur-button.png */; };
-		848F9A0119609C2F00984731 /* login-with-youtube-button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C319609C2F00984731 /* login-with-youtube-button-pressed.png */; };
-		848F9A0219609C2F00984731 /* login-with-youtube-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C419609C2F00984731 /* login-with-youtube-button.png */; };
+		848F99FF19609C2F00984731 /* login-with-youtube-button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C119609C2F00984731 /* login-with-youtube-button-pressed.png */; };
+		848F9A0019609C2F00984731 /* login-with-youtube-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C219609C2F00984731 /* login-with-youtube-button.png */; };
+		848F9A0119609C2F00984731 /* login-with-imgur-button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C319609C2F00984731 /* login-with-imgur-button-pressed.png */; };
+		848F9A0219609C2F00984731 /* login-with-imgur-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C419609C2F00984731 /* login-with-imgur-button.png */; };
 		848F9A0319609C2F00984731 /* prefs-accounts.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C519609C2F00984731 /* prefs-accounts.png */; };
 		848F9A0419609C2F00984731 /* prefs-prefs.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C619609C2F00984731 /* prefs-prefs.png */; };
 		848F9A0519609C2F00984731 /* prefs-shortcuts.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C719609C2F00984731 /* prefs-shortcuts.png */; };
@@ -384,6 +388,10 @@
 /* Begin PBXFileReference section */
 		0D01A72119CAB78D000349A7 /* MAAttachedWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindowController.h; sourceTree = "<group>"; };
 		0D01A72219CAB78D000349A7 /* MAAttachedWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindowController.m; sourceTree = "<group>"; };
+		0D2B34C919DDF186009B06EF /* logout-from-youtube-button-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logout-from-youtube-button-pressed.png"; path = "New Images/logout-from-youtube-button-pressed.png"; sourceTree = "<group>"; };
+		0D2B34CA19DDF186009B06EF /* logout-from-youtube-button-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logout-from-youtube-button-pressed@2x.png"; path = "New Images/logout-from-youtube-button-pressed@2x.png"; sourceTree = "<group>"; };
+		0D2B34CB19DDF186009B06EF /* logout-from-youtube-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logout-from-youtube-button.png"; path = "New Images/logout-from-youtube-button.png"; sourceTree = "<group>"; };
+		0D2B34CC19DDF186009B06EF /* logout-from-youtube-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logout-from-youtube-button@2x.png"; path = "New Images/logout-from-youtube-button@2x.png"; sourceTree = "<group>"; };
 		0D48778219D2FD2E0015961F /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
 		0D48778319D2FD2E0015961F /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		0D48778519D301DD0015961F /* NSString+HTMLTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTMLTags.h"; sourceTree = "<group>"; };
@@ -563,10 +571,10 @@
 		848F999F19609C2F00984731 /* login-app-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-app-icon@2x.png"; path = "New Images/login-app-icon@2x.png"; sourceTree = "<group>"; };
 		848F99A019609C2F00984731 /* login-to-box-button-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-to-box-button-pressed@2x.png"; path = "New Images/login-to-box-button-pressed@2x.png"; sourceTree = "<group>"; };
 		848F99A119609C2F00984731 /* login-to-box-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-to-box-button@2x.png"; path = "New Images/login-to-box-button@2x.png"; sourceTree = "<group>"; };
-		848F99A219609C2F00984731 /* login-with-imgur-button-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-imgur-button-pressed@2x.png"; path = "New Images/login-with-imgur-button-pressed@2x.png"; sourceTree = "<group>"; };
-		848F99A319609C2F00984731 /* login-with-imgur-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-imgur-button@2x.png"; path = "New Images/login-with-imgur-button@2x.png"; sourceTree = "<group>"; };
-		848F99A419609C2F00984731 /* login-with-youtube-button-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-youtube-button-pressed@2x.png"; path = "New Images/login-with-youtube-button-pressed@2x.png"; sourceTree = "<group>"; };
-		848F99A519609C2F00984731 /* login-with-youtube-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-youtube-button@2x.png"; path = "New Images/login-with-youtube-button@2x.png"; sourceTree = "<group>"; };
+		848F99A219609C2F00984731 /* login-with-youtube-button-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-youtube-button-pressed@2x.png"; path = "New Images/login-with-youtube-button-pressed@2x.png"; sourceTree = "<group>"; };
+		848F99A319609C2F00984731 /* login-with-youtube-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-youtube-button@2x.png"; path = "New Images/login-with-youtube-button@2x.png"; sourceTree = "<group>"; };
+		848F99A419609C2F00984731 /* login-with-imgur-button-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-imgur-button-pressed@2x.png"; path = "New Images/login-with-imgur-button-pressed@2x.png"; sourceTree = "<group>"; };
+		848F99A519609C2F00984731 /* login-with-imgur-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-imgur-button@2x.png"; path = "New Images/login-with-imgur-button@2x.png"; sourceTree = "<group>"; };
 		848F99A619609C2F00984731 /* prefs-accounts@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "prefs-accounts@2x.png"; path = "New Images/prefs-accounts@2x.png"; sourceTree = "<group>"; };
 		848F99A719609C2F00984731 /* prefs-prefs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "prefs-prefs@2x.png"; path = "New Images/prefs-prefs@2x.png"; sourceTree = "<group>"; };
 		848F99A819609C2F00984731 /* prefs-shortcuts@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "prefs-shortcuts@2x.png"; path = "New Images/prefs-shortcuts@2x.png"; sourceTree = "<group>"; };
@@ -594,10 +602,10 @@
 		848F99BE19609C2F00984731 /* login-app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-app-icon.png"; path = "New Images/login-app-icon.png"; sourceTree = "<group>"; };
 		848F99BF19609C2F00984731 /* login-to-box-button-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-to-box-button-pressed.png"; path = "New Images/login-to-box-button-pressed.png"; sourceTree = "<group>"; };
 		848F99C019609C2F00984731 /* login-to-box-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-to-box-button.png"; path = "New Images/login-to-box-button.png"; sourceTree = "<group>"; };
-		848F99C119609C2F00984731 /* login-with-imgur-button-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-imgur-button-pressed.png"; path = "New Images/login-with-imgur-button-pressed.png"; sourceTree = "<group>"; };
-		848F99C219609C2F00984731 /* login-with-imgur-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-imgur-button.png"; path = "New Images/login-with-imgur-button.png"; sourceTree = "<group>"; };
-		848F99C319609C2F00984731 /* login-with-youtube-button-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-youtube-button-pressed.png"; path = "New Images/login-with-youtube-button-pressed.png"; sourceTree = "<group>"; };
-		848F99C419609C2F00984731 /* login-with-youtube-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-youtube-button.png"; path = "New Images/login-with-youtube-button.png"; sourceTree = "<group>"; };
+		848F99C119609C2F00984731 /* login-with-youtube-button-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-youtube-button-pressed.png"; path = "New Images/login-with-youtube-button-pressed.png"; sourceTree = "<group>"; };
+		848F99C219609C2F00984731 /* login-with-youtube-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-youtube-button.png"; path = "New Images/login-with-youtube-button.png"; sourceTree = "<group>"; };
+		848F99C319609C2F00984731 /* login-with-imgur-button-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-imgur-button-pressed.png"; path = "New Images/login-with-imgur-button-pressed.png"; sourceTree = "<group>"; };
+		848F99C419609C2F00984731 /* login-with-imgur-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-imgur-button.png"; path = "New Images/login-with-imgur-button.png"; sourceTree = "<group>"; };
 		848F99C519609C2F00984731 /* prefs-accounts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "prefs-accounts.png"; path = "New Images/prefs-accounts.png"; sourceTree = "<group>"; };
 		848F99C619609C2F00984731 /* prefs-prefs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "prefs-prefs.png"; path = "New Images/prefs-prefs.png"; sourceTree = "<group>"; };
 		848F99C719609C2F00984731 /* prefs-shortcuts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "prefs-shortcuts.png"; path = "New Images/prefs-shortcuts.png"; sourceTree = "<group>"; };
@@ -1249,10 +1257,18 @@
 				848F999F19609C2F00984731 /* login-app-icon@2x.png */,
 				848F99A019609C2F00984731 /* login-to-box-button-pressed@2x.png */,
 				848F99A119609C2F00984731 /* login-to-box-button@2x.png */,
-				848F99A219609C2F00984731 /* login-with-imgur-button-pressed@2x.png */,
-				848F99A319609C2F00984731 /* login-with-imgur-button@2x.png */,
-				848F99A419609C2F00984731 /* login-with-youtube-button-pressed@2x.png */,
-				848F99A519609C2F00984731 /* login-with-youtube-button@2x.png */,
+				848F99A219609C2F00984731 /* login-with-youtube-button-pressed@2x.png */,
+				848F99A319609C2F00984731 /* login-with-youtube-button@2x.png */,
+				848F99A419609C2F00984731 /* login-with-imgur-button-pressed@2x.png */,
+				848F99A519609C2F00984731 /* login-with-imgur-button@2x.png */,
+				848F99C119609C2F00984731 /* login-with-youtube-button-pressed.png */,
+				848F99C219609C2F00984731 /* login-with-youtube-button.png */,
+				848F99C319609C2F00984731 /* login-with-imgur-button-pressed.png */,
+				848F99C419609C2F00984731 /* login-with-imgur-button.png */,
+				0D2B34C919DDF186009B06EF /* logout-from-youtube-button-pressed.png */,
+				0D2B34CA19DDF186009B06EF /* logout-from-youtube-button-pressed@2x.png */,
+				0D2B34CB19DDF186009B06EF /* logout-from-youtube-button.png */,
+				0D2B34CC19DDF186009B06EF /* logout-from-youtube-button@2x.png */,
 				848F99A619609C2F00984731 /* prefs-accounts@2x.png */,
 				848F99A719609C2F00984731 /* prefs-prefs@2x.png */,
 				848F99A819609C2F00984731 /* prefs-shortcuts@2x.png */,
@@ -1280,10 +1296,6 @@
 				848F99BE19609C2F00984731 /* login-app-icon.png */,
 				848F99BF19609C2F00984731 /* login-to-box-button-pressed.png */,
 				848F99C019609C2F00984731 /* login-to-box-button.png */,
-				848F99C119609C2F00984731 /* login-with-imgur-button-pressed.png */,
-				848F99C219609C2F00984731 /* login-with-imgur-button.png */,
-				848F99C319609C2F00984731 /* login-with-youtube-button-pressed.png */,
-				848F99C419609C2F00984731 /* login-with-youtube-button.png */,
 				848F99C519609C2F00984731 /* prefs-accounts.png */,
 				848F99C619609C2F00984731 /* prefs-prefs.png */,
 				848F99C719609C2F00984731 /* prefs-shortcuts.png */,
@@ -2123,10 +2135,10 @@
 				848F99F919609C2F00984731 /* box-account-logout-button.png in Resources */,
 				847EF05618BB187300C5CDEE /* FeedbackWindowController.xib in Resources */,
 				8BA5383B13C73F47008E5AC3 /* icon_account.png in Resources */,
-				848F99E319609C2F00984731 /* login-with-youtube-button@2x.png in Resources */,
+				848F99E319609C2F00984731 /* login-with-imgur-button@2x.png in Resources */,
 				848F99EE19609C2F00984731 /* small-toggle-on@2x.png in Resources */,
 				8BA5383C13C73F47008E5AC3 /* icon_file.png in Resources */,
-				848F9A0119609C2F00984731 /* login-with-youtube-button-pressed.png in Resources */,
+				848F9A0119609C2F00984731 /* login-with-imgur-button-pressed.png in Resources */,
 				8BA5383D13C73F47008E5AC3 /* icon_image.png in Resources */,
 				8433B2BE19AE76C100DBA8FC /* ItemCell.xib in Resources */,
 				84CC87F01916C33C00A239E0 /* DragDropWindowController.xib in Resources */,
@@ -2137,12 +2149,13 @@
 				8BA5384013C73F47008E5AC3 /* image_hotkey_drawregion.png in Resources */,
 				84CC880119177F6000A239E0 /* image_hotkey_drawregion@2x.png in Resources */,
 				8BA5384113C73F47008E5AC3 /* image_hotkey_fullscreen.png in Resources */,
-				848F9A0019609C2F00984731 /* login-with-imgur-button.png in Resources */,
+				848F9A0019609C2F00984731 /* login-with-youtube-button.png in Resources */,
 				848F99D819609C2F00984731 /* box-account-login-button@2x.png in Resources */,
 				8BA5384213C73F47008E5AC3 /* image_hotkey_screencast.png in Resources */,
 				8BA5384313C73F47008E5AC3 /* image_howto_step1.png in Resources */,
 				8BA5384413C73F47008E5AC3 /* image_howto_step2.png in Resources */,
 				848F99EC19609C2F00984731 /* settings-icon@2x.png in Resources */,
+				0D2B34CE19DDF187009B06EF /* logout-from-youtube-button-pressed@2x.png in Resources */,
 				848F99EF19609C2F00984731 /* take-full-screen-icon@2x.png in Resources */,
 				848F9A1119609C2F00984731 /* upload-target-button-pressed.png in Resources */,
 				848F99DF19609C2F00984731 /* login-to-box-button@2x.png in Resources */,
@@ -2159,11 +2172,11 @@
 				8B84068F13D375C30025EA39 /* bookmark.png in Resources */,
 				84CC87FA19177F0100A239E0 /* icon_account_small@2x.png in Resources */,
 				8B84069013D375C30025EA39 /* compress.png in Resources */,
-				848F99FF19609C2F00984731 /* login-with-imgur-button-pressed.png in Resources */,
+				848F99FF19609C2F00984731 /* login-with-youtube-button-pressed.png in Resources */,
 				0DF52E3E19C8BBD3000D2D56 /* TextMessageViewController.xib in Resources */,
 				8B84069113D375C30025EA39 /* excel.png in Resources */,
 				848F9A0719609C2F00984731 /* record-button.png in Resources */,
-				848F99E119609C2F00984731 /* login-with-imgur-button@2x.png in Resources */,
+				848F99E119609C2F00984731 /* login-with-youtube-button@2x.png in Resources */,
 				848F99FE19609C2F00984731 /* login-to-box-button.png in Resources */,
 				8B84069213D375C30025EA39 /* flash.png in Resources */,
 				848F99E619609C2F00984731 /* prefs-shortcuts@2x.png in Resources */,
@@ -2203,7 +2216,7 @@
 				2CAFB71816B1C3B800418D61 /* default-icon@2x.png in Resources */,
 				848F9A1319609C2F00984731 /* screencast-recording-icon.png in Resources */,
 				0D75692419CB13CA0084FA0D /* backArrow.png in Resources */,
-				848F9A0219609C2F00984731 /* login-with-youtube-button.png in Resources */,
+				848F9A0219609C2F00984731 /* login-with-imgur-button.png in Resources */,
 				2CAFB71916B1C3B800418D61 /* icon-animation-1.png in Resources */,
 				2CAFB71A16B1C3B800418D61 /* icon-animation-1@2x.png in Resources */,
 				2CAFB71B16B1C3B800418D61 /* icon-animation-2.png in Resources */,
@@ -2221,6 +2234,7 @@
 				2CAFB74016B1C3D000418D61 /* icon-animation-5@2x.png in Resources */,
 				2CAFB74116B1C3D000418D61 /* icon-animation-6.png in Resources */,
 				848F9A0D19609C2F00984731 /* take-full-screen-icon.png in Resources */,
+				0D2B34D019DDF187009B06EF /* logout-from-youtube-button@2x.png in Resources */,
 				84CC87FC19177F0100A239E0 /* icon_preferences_small@2x.png in Resources */,
 				8411F959191F95B500C4F8CF /* drag_drop.png in Resources */,
 				848F99E919609C2F00984731 /* screencast-recording-button-pressed@2x.png in Resources */,
@@ -2232,13 +2246,14 @@
 				848F99EA19609C2F00984731 /* screencast-recording-button@2x.png in Resources */,
 				2CAFB74316B1C3D000418D61 /* icon-animation-7.png in Resources */,
 				2CAFB74416B1C3D000418D61 /* icon-animation-7@2x.png in Resources */,
-				848F99E019609C2F00984731 /* login-with-imgur-button-pressed@2x.png in Resources */,
+				848F99E019609C2F00984731 /* login-with-youtube-button-pressed@2x.png in Resources */,
 				2CAFB74516B1C3D000418D61 /* icon-animation-8.png in Resources */,
+				0D2B34CF19DDF187009B06EF /* logout-from-youtube-button.png in Resources */,
 				2CAFB74616B1C3D000418D61 /* icon-animation-8@2x.png in Resources */,
 				2CAFB74716B1C3D000418D61 /* icon-animation-9.png in Resources */,
 				2CAFB74816B1C3D000418D61 /* icon-animation-9@2x.png in Resources */,
 				84B8535A188C4D6A00D1DF26 /* GrantAccessWindowController.xib in Resources */,
-				848F99E219609C2F00984731 /* login-with-youtube-button-pressed@2x.png in Resources */,
+				848F99E219609C2F00984731 /* login-with-imgur-button-pressed@2x.png in Resources */,
 				848F998A19607FEC00984731 /* PopupWindowController.xib in Resources */,
 				848F99F019609C2F00984731 /* take-selected-region-button-pressed@2x.png in Resources */,
 				2CAFB74916B1C3D000418D61 /* icon-animation-10.png in Resources */,
@@ -2255,6 +2270,7 @@
 				848F99DA19609C2F00984731 /* box-account-logout-button@2x.png in Resources */,
 				8457515419AD12A1008AFF41 /* PopupMainViewController.xib in Resources */,
 				2CAFB74E16B1C3D000418D61 /* icon-animation-12@2x.png in Resources */,
+				0D2B34CD19DDF186009B06EF /* logout-from-youtube-button-pressed.png in Resources */,
 				848F9A0519609C2F00984731 /* prefs-shortcuts.png in Resources */,
 				848F9A1419609C2F00984731 /* upload-target-icon.png in Resources */,
 				848F99E719609C2F00984731 /* record-button-pressed@2x.png in Resources */,

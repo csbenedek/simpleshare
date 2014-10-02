@@ -24,6 +24,8 @@
 @property(nonatomic, retain) IBOutlet NSButton *loginButton;
 @property (nonatomic, retain) IBOutlet NSTextField  *loginTextField;
 @property (nonatomic, retain) IBOutlet CustomNSImageView *avatarImageView;
+@property (nonatomic, retain) IBOutlet NSButton *youTubeLoginButton;
+
 
 
 
@@ -33,6 +35,12 @@
 //process notifications
 
 -(void)processBoxAccountInfoLoadedNotification:(NSNotification *)notification;
+
+//methods to set youtube Login image
+
+-(void)setYouTubeLoginButtonImage;
+-(void)setYouTubeLogoutButtonImage;
+
 
 
 

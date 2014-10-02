@@ -99,14 +99,24 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
     
     prefSyncTimer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(serializePrefIfDirty) userInfo:nil repeats:YES];
     
+    
     self.launch_at_startup_check = [Utilities shouldLaunchOnSystemStartup];
+    
+    
     youtubeWindowController = [[LoginWindowController alloc] initWithWindowNibName:@"LoginWindowController"];
     
     NSDictionary* dict = [BoxNetUser youTubeUser];
     if (dict) {
         [[YoutubeAuthenticateManager shareManager] updateAuthenticateToken:dict];
+        
+        self.isYouTubeLogin = TRUE;
+        
+        NSLog(@"YouTube user loaded");
+        
     }
-    [self setYoutubState:dict == nil];
+    
+    //it seems this is not used anymore
+    //[self setYoutubState:dict == nil];
     
     [copy_url_to_clipboard setTintColor:[NSColor greenColor]];
     [delete_screenshot_after_upload setTintColor:[NSColor greenColor]];
@@ -168,8 +178,8 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
     [imageHost setTarget:self];
     [imageHost setAction:@selector(uploadhostChanged:)];
     
-    [self.youtubeLogoutBtn setTarget:self];
-    [self.youtubeLogoutBtn setAction:@selector(doYoutubeLogin:)];
+    //[self.youtubeLogoutBtn setTarget:self];
+    //[self.youtubeLogoutBtn setAction:@selector(doYoutubeLogin:)];
     
 }
 #pragma mark
@@ -656,6 +666,19 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
     
     //[self setYoutubState:NO];
 }
+
+-(void)doYoutubeLogout:(id)sender{
+    
+    [BoxNetUser removeYoubeUser];
+    
+    self.isYouTubeLogin = FALSE;
+    
+    
+}
+
+
+
+
 -(void)doYoutubeLogin:(id)sender
 {
     

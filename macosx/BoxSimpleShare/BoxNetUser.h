@@ -47,6 +47,7 @@
 - (void)saveUser;
 + (BoxNetUser*)savedUser;
 + (void)removeSavedUser;
+
 +(void)saveYoutubeUser:(NSDictionary*)user;
 +(void)removeYoubeUser;
 +(NSDictionary*)youTubeUser;
