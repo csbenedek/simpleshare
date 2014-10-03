@@ -134,7 +134,9 @@
         
         PostNotification(@"DoLogoutNotification");//MainController -(void)processDoLogoutNotification
         
-        
+        //get main controller
+        MainController *mainController = [[BoxSimpleShareAppDelegate sharedDelegate] mainController];
+
         self.loginButton.image = [NSImage imageNamed:@"box-account-login-button"];
         
         [self.loginTextField setTitleWithMnemonic:@""];
@@ -144,6 +146,15 @@
         [self.avatarImageView setImage:nil];
         
         [self.avatarImageView display];
+        
+        
+        //logout from Youtube
+        [mainController doYoutubeLogout:nil];
+        
+        
+        //reset Imgur preference
+        mainController.isImgur = FALSE;
+        
         
     }
     
