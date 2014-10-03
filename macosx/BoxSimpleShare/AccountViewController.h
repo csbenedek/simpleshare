@@ -18,28 +18,39 @@
 
 @property(nonatomic, assign)PreferencesController * rootController;
 
--(IBAction)loginButtonAction:(id)sender;
+
+
 
 
 @property(nonatomic, retain) IBOutlet NSButton *loginButton;
 @property (nonatomic, retain) IBOutlet NSTextField  *loginTextField;
 @property (nonatomic, retain) IBOutlet CustomNSImageView *avatarImageView;
 @property (nonatomic, retain) IBOutlet NSButton *youTubeLoginButton;
+@property (nonatomic, retain) IBOutlet NSButton *imgurLoginButton;
 
 
 
 
--(void)updateLoginButton;
+
+//button's actions methods
+-(IBAction)loginButtonAction:(id)sender;
+
+-(IBAction)imgurButtonActon:(id)sender;
+
 
 
 //process notifications
 
 -(void)processBoxAccountInfoLoadedNotification:(NSNotification *)notification;
 
-//methods to set youtube Login image
+//methods to set button's images
+-(void)updateLoginButton;
 
 -(void)setYouTubeLoginButtonImage;
 -(void)setYouTubeLogoutButtonImage;
+
+-(void)setUseImgurImage;
+-(void)setDontUseImgurImage;
 
 
 

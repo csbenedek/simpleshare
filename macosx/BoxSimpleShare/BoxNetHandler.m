@@ -181,10 +181,10 @@ static BoxNetHandler *sharedObject = nil;
         
         [opt setIsScreenshot:YES];
        
-        [[Mixpanel sharedInstance] trackCaptureRegionEvent];
+        //[[Mixpanel sharedInstance] trackCaptureRegionEvent];
 
         // Copy URL to clipboard
-        if (controller.uploadhost_index == 1)
+        if (controller.isImgur)
         {
             opt = [ImgurUploadOperation new];
             [opt addFiles:files];
@@ -193,8 +193,7 @@ static BoxNetHandler *sharedObject = nil;
         }
     }
     
-    else if (properties && [properties containsKey:@"YOUTUBE"] && controller.isYouTubeLogin == TRUE)
-    {
+    else if (properties && [properties containsKey:@"YOUTUBE"] && controller.isYouTubeLogin == TRUE){
         opt = [YoutubeUploadOperation new];
         [opt addFiles:files];
 

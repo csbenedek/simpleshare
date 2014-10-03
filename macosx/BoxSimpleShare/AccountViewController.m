@@ -33,23 +33,7 @@
         
         [mainController addObserver:self forKeyPath:@"isYouTubeLogin" options:NSKeyValueObservingOptionNew context:nil];
         
-        //set youtubeLoginButton image
-        /*
-        BOOL isYouTubeLogin = mainController.isYouTubeLogin;
-        
-        
-        if (isYouTubeLogin) {
-            [self setYouTubeLogoutButtonImage];
-        }
-        
-        else{
-            
-            
-            [self setYouTubeLoginButtonImage];
-            
-        }
-
-        */
+        [mainController addObserver:self forKeyPath:@"isImgur" options:NSKeyValueObservingOptionNew context:nil];
         
         
         
@@ -77,7 +61,19 @@
         [self setYouTubeLoginButtonImage];
         
     }
-
+    
+    
+    
+    BOOL isImgur = mainController.isImgur;
+    
+    if (isImgur) {
+        [self setDontUseImgurImage];
+    }
+    else{
+        
+        
+        [self setUseImgurImage];
+    }
     
     
 }
@@ -95,6 +91,17 @@
     
     
 }
+
+
+-(IBAction)imgurButtonActon:(id)sender{
+    
+    //get main controller
+    MainController *mainController = [[BoxSimpleShareAppDelegate sharedDelegate] mainController];
+    
+    mainController.isImgur = !mainController.isImgur;
+     
+}
+
 
 -(IBAction)youtubeLoginButtonAction:(id)sender{
     
@@ -179,8 +186,42 @@
         }
         
     }
+    
+    if ([keyPath isEqualToString:@"isImgur"]) {
+        
+        BOOL isImgur = [[change valueForKey:@"new"] boolValue];
+        
+        
+        if (isImgur) {
+            [self setDontUseImgurImage];
+        }
+        
+        else{
+            
+            [self setUseImgurImage];
+            
+        }
+        
+        
+    }
+    
+    
 }
 
+
+
+-(void)setUseImgurImage{
+    
+    
+    self.imgurLoginButton.image = [NSImage imageNamed:@"use-imgur-button"];
+    
+}
+
+-(void)setDontUseImgurImage{
+    
+    self.imgurLoginButton.image = [NSImage imageNamed:@"dont-use-imgur-button"];    
+    
+}
 
 
 -(void)setYouTubeLoginButtonImage{

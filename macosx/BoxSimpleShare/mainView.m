@@ -15,6 +15,7 @@
 #import "BoxNetFileInfoLoader.h"
 #import "ITSwitch.h"
 #import "YouTubeThumbnailLoader.h"
+#import "ImgurThumbnailLoader.h"
 
 
 
@@ -218,36 +219,78 @@
         
         if (!controller.boxFile.thumbnailImage) {
             
-            if (controller.boxFile.isYouTube == TRUE) {
+            
+            NSInteger fileType = 0;
+            
+            if (controller.boxFile.isImgur) {
                 
-                //get video id from URL
-                
-                NSString *ID = [file.shortURL stringByReplacingOccurrencesOfString:@"http://www.youtube.com/watch?v=" withString:@""];
-                
-                
-                [controller.youTubeThumbnailLoader loadThumbnailForVideoWithID:ID];
-                
-                //show spinner and start animation
-                [controller.spinner setHidden:FALSE];
-                [controller.spinner startAnimation:self];
-                
-                
+                fileType = 1;
                 
             }
             
             
-            else{
+            if (controller.boxFile.isYouTube) {
                 
-                //load from box
-                [controller.fileInfoLoader loadThumbnailImageForID:file.fileID];
-                
-                //show spinner and start animation
-                [controller.spinner setHidden:FALSE];
-                [controller.spinner startAnimation:self];
-                
+                fileType = 2;
             }
             
             
+            switch (fileType) {
+                case 1:{
+                    
+                    //get id from url
+                    
+                    
+                    NSString *ID = [file.shortURL stringByReplacingOccurrencesOfString:@"http://i.imgur.com/" withString:@""];
+                    
+                    ID = [ID stringByDeletingPathExtension];
+                    
+                    //http://i.imgur.com/ng1dvqq.png
+                    
+                    NSLog(@"Imgur ID:%@",ID);
+                    
+                    [controller.imgurThumbnailLoader loadThumbnailForImageWithID:ID];
+                    
+                    //show spinner and start animation
+                    [controller.spinner setHidden:FALSE];
+                    [controller.spinner startAnimation:self];
+                    
+                    break;
+                    
+                }
+                 
+                case 2:{
+                    
+                    //get video id from URL
+                    
+                    NSString *ID = [file.shortURL stringByReplacingOccurrencesOfString:@"http://www.youtube.com/watch?v=" withString:@""];
+                    
+                    
+                    [controller.youTubeThumbnailLoader loadThumbnailForVideoWithID:ID];
+                    
+                    //show spinner and start animation
+                    [controller.spinner setHidden:FALSE];
+                    [controller.spinner startAnimation:self];
+
+                    break;
+                }
+                   
+                    
+                default:{
+                    
+                    
+                    //load from box
+                    [controller.fileInfoLoader loadThumbnailImageForID:file.fileID];
+                    
+                    //show spinner and start animation
+                    [controller.spinner setHidden:FALSE];
+                    [controller.spinner startAnimation:self];
+                    
+                    break;
+                    
+                }
+                    
+            }
             
         }
         

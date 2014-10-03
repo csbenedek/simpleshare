@@ -115,6 +115,14 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
         
     }
     
+    //load Imgur preference
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
+    self.isImgur = [defaults  boolForKey:@"isImgur"];
+    
+    
+    
+    
     //it seems this is not used anymore
     //[self setYoutubState:dict == nil];
     
@@ -663,8 +671,6 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
     
     self.isYouTubeLogin = TRUE;
     
-    
-    //[self setYoutubState:NO];
 }
 
 -(void)doYoutubeLogout:(id)sender{
@@ -700,22 +706,6 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
 //    }
 }
 
-
--(void)setYoutubState :(BOOL)requireLogin
-{
-//    if (requireLogin) {
-//        [self.youtubeLoginName setStringValue:@""];
-//        [self.youtubeUserImage setImageURL:@""];
-//        [self.youtubeLogoutBtn setTitle:@"Login"];
-//    }
-//    else
-//    {
-//        NSDictionary* dict = [BoxNetUser youTubeUser];
-//        [self.youtubeLoginName setStringValue:[dict objectForKey:@"email"]];
-//        [self.youtubeUserImage setImageURL:[dict objectForKey:@"picture"]];
-//        [self.youtubeLogoutBtn setTitle:@"Logout"];
-//    }
-}
 #pragma itswitch 
 
 -(IBAction)onSwitchChange:(id)sender

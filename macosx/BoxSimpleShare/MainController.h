@@ -108,6 +108,12 @@
 @property (nonatomic, assign) BOOL isYouTubeLogin;
 
 
+//IMGUR Control variable
+
+@property (nonatomic, assign) BOOL isImgur;
+
+
+
 // LOGIN VIEW
 
 @property (retain, nonatomic) IBOutlet NSButton *loginBtn;

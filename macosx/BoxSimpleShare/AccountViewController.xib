@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="AccountViewController">
             <connections>
                 <outlet property="avatarImageView" destination="w5W-IP-1mH" id="NLp-V8-5tm"/>
+                <outlet property="imgurLoginButton" destination="UlQ-Ur-mc2" id="2sl-1t-whO"/>
                 <outlet property="loginButton" destination="xI4-NQ-4Ei" id="opJ-zQ-FYR"/>
                 <outlet property="loginTextField" destination="fM3-jP-Aeu" id="6bU-A8-qzF"/>
                 <outlet property="view" destination="vHO-W1-axc" id="vd0-2U-5WU"/>
@@ -70,6 +71,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="imgurButtonActon:" target="-2" id="D4D-as-WW3"/>
+                    </connections>
                 </button>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w5W-IP-1mH" customClass="CustomNSImageView">
                     <rect key="frame" x="13" y="132" width="60" height="60"/>

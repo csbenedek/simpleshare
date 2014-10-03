@@ -53,6 +53,17 @@
 
 + (void) savePreference
 {
+    //save Imgur Preference
+    
+    MainController *mainController = [[BoxSimpleShareAppDelegate sharedDelegate] mainController];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setBool:mainController.isImgur forKey:@"isImgur"];
+    
+    [defaults synchronize];
+    
+    
     if (![[[BoxNetHandler sharedHandler] boxNetUser] isAuthenticated]) return;
     
 	NSFileManager* fileManager = [NSFileManager defaultManager];

@@ -170,7 +170,11 @@
     }
     
     [[[BoxSimpleShareAppDelegate sharedDelegate] filesUploadedInSession] addObject:file];
-    [[BoxSimpleShareAppDelegate sharedDelegate] updateHistoryMenu]; // update history menu
+    //[[BoxSimpleShareAppDelegate sharedDelegate] updateHistoryMenu]; // update history menu
+    
+    //post notification to update table in NewDesign
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"NewHistoryElementNotification" object:nil userInfo:nil];
     
 
     [BoxSimpleShareAppDelegate showNotificationWithTitle:@"Upload Complete" withDescription:[NSString stringWithFormat:@"Finish uploading file '%@'", [self FileName]]];

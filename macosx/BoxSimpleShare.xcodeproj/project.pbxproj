@@ -24,6 +24,15 @@
 		0D6ECD7A19D56E0B00550AEF /* BoxNetFileInfoLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6ECD7919D56E0B00550AEF /* BoxNetFileInfoLoader.m */; };
 		0D70E23F19D1FABC006DB515 /* BoxNetAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D70E23E19D1FABC006DB515 /* BoxNetAccount.m */; };
 		0D75692419CB13CA0084FA0D /* backArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D75692319CB13CA0084FA0D /* backArrow.png */; };
+		0D9AF01119DF531D003D5275 /* dont-use-imgur-button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9AF00919DF531D003D5275 /* dont-use-imgur-button-pressed.png */; };
+		0D9AF01219DF531D003D5275 /* dont-use-imgur-button-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9AF00A19DF531D003D5275 /* dont-use-imgur-button-pressed@2x.png */; };
+		0D9AF01319DF531D003D5275 /* dont-use-imgur-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9AF00B19DF531D003D5275 /* dont-use-imgur-button.png */; };
+		0D9AF01419DF531D003D5275 /* dont-use-imgur-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9AF00C19DF531D003D5275 /* dont-use-imgur-button@2x.png */; };
+		0D9AF01519DF531D003D5275 /* use-imgur-button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9AF00D19DF531D003D5275 /* use-imgur-button-pressed.png */; };
+		0D9AF01619DF531D003D5275 /* use-imgur-button-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9AF00E19DF531D003D5275 /* use-imgur-button-pressed@2x.png */; };
+		0D9AF01719DF531D003D5275 /* use-imgur-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9AF00F19DF531D003D5275 /* use-imgur-button.png */; };
+		0D9AF01819DF531D003D5275 /* use-imgur-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9AF01019DF531D003D5275 /* use-imgur-button@2x.png */; };
+		0D9AF01C19DF571D003D5275 /* ImgurThumbnailLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9AF01B19DF571D003D5275 /* ImgurThumbnailLoader.m */; };
 		0DB634A319CCB29300F97E34 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB634A119CCB29300F97E34 /* PreferencesController.m */; };
 		0DB634A419CCB29300F97E34 /* PreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB634A219CCB29300F97E34 /* PreferencesController.xib */; };
 		0DC9DC3619D70F3100267D84 /* SHTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9DC3519D70F3100267D84 /* SHTableView.m */; };
@@ -412,6 +421,16 @@
 		0D70E23D19D1FABC006DB515 /* BoxNetAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxNetAccount.h; sourceTree = "<group>"; };
 		0D70E23E19D1FABC006DB515 /* BoxNetAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxNetAccount.m; sourceTree = "<group>"; };
 		0D75692319CB13CA0084FA0D /* backArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backArrow.png; sourceTree = "<group>"; };
+		0D9AF00919DF531D003D5275 /* dont-use-imgur-button-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dont-use-imgur-button-pressed.png"; path = "New Images/dont-use-imgur-button-pressed.png"; sourceTree = "<group>"; };
+		0D9AF00A19DF531D003D5275 /* dont-use-imgur-button-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dont-use-imgur-button-pressed@2x.png"; path = "New Images/dont-use-imgur-button-pressed@2x.png"; sourceTree = "<group>"; };
+		0D9AF00B19DF531D003D5275 /* dont-use-imgur-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dont-use-imgur-button.png"; path = "New Images/dont-use-imgur-button.png"; sourceTree = "<group>"; };
+		0D9AF00C19DF531D003D5275 /* dont-use-imgur-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dont-use-imgur-button@2x.png"; path = "New Images/dont-use-imgur-button@2x.png"; sourceTree = "<group>"; };
+		0D9AF00D19DF531D003D5275 /* use-imgur-button-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "use-imgur-button-pressed.png"; path = "New Images/use-imgur-button-pressed.png"; sourceTree = "<group>"; };
+		0D9AF00E19DF531D003D5275 /* use-imgur-button-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "use-imgur-button-pressed@2x.png"; path = "New Images/use-imgur-button-pressed@2x.png"; sourceTree = "<group>"; };
+		0D9AF00F19DF531D003D5275 /* use-imgur-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "use-imgur-button.png"; path = "New Images/use-imgur-button.png"; sourceTree = "<group>"; };
+		0D9AF01019DF531D003D5275 /* use-imgur-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "use-imgur-button@2x.png"; path = "New Images/use-imgur-button@2x.png"; sourceTree = "<group>"; };
+		0D9AF01A19DF571D003D5275 /* ImgurThumbnailLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImgurThumbnailLoader.h; sourceTree = "<group>"; };
+		0D9AF01B19DF571D003D5275 /* ImgurThumbnailLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImgurThumbnailLoader.m; sourceTree = "<group>"; };
 		0DB634A019CCB29300F97E34 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		0DB634A119CCB29300F97E34 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		0DB634A219CCB29300F97E34 /* PreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesController.xib; sourceTree = "<group>"; };
@@ -1078,6 +1097,15 @@
 			name = AttachedWindows;
 			sourceTree = "<group>";
 		};
+		0D9AF01919DF56E3003D5275 /* ImgurAPI */ = {
+			isa = PBXGroup;
+			children = (
+				0D9AF01A19DF571D003D5275 /* ImgurThumbnailLoader.h */,
+				0D9AF01B19DF571D003D5275 /* ImgurThumbnailLoader.m */,
+			);
+			name = ImgurAPI;
+			sourceTree = "<group>";
+		};
 		0DB6349A19CCAC9B00F97E34 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
@@ -1092,8 +1120,9 @@
 		0DF52E2C19C8B91C000D2D56 /* New Design */ = {
 			isa = PBXGroup;
 			children = (
-				0D54347D19DC45950002135C /* YouTubeApi */,
+				0D9AF01919DF56E3003D5275 /* ImgurAPI */,
 				0D48778119D2FD070015961F /* Categories */,
+				0D54347D19DC45950002135C /* YouTubeApi */,
 				0D70E23C19D1FA0C006DB515 /* BoxAPI */,
 				0DF52E3019C8BB4F000D2D56 /* AttachedWindowsController.h */,
 				0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */,
@@ -1246,6 +1275,14 @@
 		848F999819609BC800984731 /* New Images */ = {
 			isa = PBXGroup;
 			children = (
+				0D9AF00919DF531D003D5275 /* dont-use-imgur-button-pressed.png */,
+				0D9AF00A19DF531D003D5275 /* dont-use-imgur-button-pressed@2x.png */,
+				0D9AF00B19DF531D003D5275 /* dont-use-imgur-button.png */,
+				0D9AF00C19DF531D003D5275 /* dont-use-imgur-button@2x.png */,
+				0D9AF00D19DF531D003D5275 /* use-imgur-button-pressed.png */,
+				0D9AF00E19DF531D003D5275 /* use-imgur-button-pressed@2x.png */,
+				0D9AF00F19DF531D003D5275 /* use-imgur-button.png */,
+				0D9AF01019DF531D003D5275 /* use-imgur-button@2x.png */,
 				0D75692319CB13CA0084FA0D /* backArrow.png */,
 				84ADE14019AA4B3D009AAD62 /* nouser.png */,
 				848F999919609C2F00984731 /* box-account-login-button-pressed@2x.png */,
@@ -2135,6 +2172,7 @@
 				848F99F919609C2F00984731 /* box-account-logout-button.png in Resources */,
 				847EF05618BB187300C5CDEE /* FeedbackWindowController.xib in Resources */,
 				8BA5383B13C73F47008E5AC3 /* icon_account.png in Resources */,
+				0D9AF01119DF531D003D5275 /* dont-use-imgur-button-pressed.png in Resources */,
 				848F99E319609C2F00984731 /* login-with-imgur-button@2x.png in Resources */,
 				848F99EE19609C2F00984731 /* small-toggle-on@2x.png in Resources */,
 				8BA5383C13C73F47008E5AC3 /* icon_file.png in Resources */,
@@ -2161,6 +2199,7 @@
 				848F99DF19609C2F00984731 /* login-to-box-button@2x.png in Resources */,
 				848F99DE19609C2F00984731 /* login-to-box-button-pressed@2x.png in Resources */,
 				848F9A0C19609C2F00984731 /* small-toggle-on.png in Resources */,
+				0D9AF01719DF531D003D5275 /* use-imgur-button.png in Resources */,
 				8B4C683913CF14E80044492C /* APPL.icns in Resources */,
 				848F9A0B19609C2F00984731 /* small-toggle-off.png in Resources */,
 				8B4C683D13CF3BEE0044492C /* icon_account_small.png in Resources */,
@@ -2182,8 +2221,10 @@
 				848F99E619609C2F00984731 /* prefs-shortcuts@2x.png in Resources */,
 				8433B2A819ADA0B700DBA8FC /* ItemViewController.xib in Resources */,
 				848F99FC19609C2F00984731 /* login-app-icon.png in Resources */,
+				0D9AF01319DF531D003D5275 /* dont-use-imgur-button.png in Resources */,
 				848F99DD19609C2F00984731 /* login-app-icon@2x.png in Resources */,
 				8B84069313D375C30025EA39 /* illustrator.png in Resources */,
+				0D9AF01819DF531D003D5275 /* use-imgur-button@2x.png in Resources */,
 				8B84069413D375C30025EA39 /* pdf.png in Resources */,
 				8B84069513D375C30025EA39 /* photoshop.png in Resources */,
 				0DF52E4919C8BBFC000D2D56 /* MainViewCellController.xib in Resources */,
@@ -2202,6 +2243,7 @@
 				8B84069D13D376B40025EA39 /* default.png in Resources */,
 				8B84069E13D376B40025EA39 /* image.png in Resources */,
 				848F99FD19609C2F00984731 /* login-to-box-button-pressed.png in Resources */,
+				0D9AF01419DF531D003D5275 /* dont-use-imgur-button@2x.png in Resources */,
 				0DF52E3819C8BB8B000D2D56 /* VideoCaptureController.xib in Resources */,
 				848F9A0619609C2F00984731 /* record-button-pressed.png in Resources */,
 				9104DD15146AC1B500D1A0C9 /* README in Resources */,
@@ -2212,6 +2254,7 @@
 				2CAFB71616B1C3B800418D61 /* active-icon@2x.png in Resources */,
 				2CAFB71716B1C3B800418D61 /* default-icon.png in Resources */,
 				848F99FA19609C2F00984731 /* large-toggle-off.png in Resources */,
+				0D9AF01519DF531D003D5275 /* use-imgur-button-pressed.png in Resources */,
 				848F9A0419609C2F00984731 /* prefs-prefs.png in Resources */,
 				2CAFB71816B1C3B800418D61 /* default-icon@2x.png in Resources */,
 				848F9A1319609C2F00984731 /* screencast-recording-icon.png in Resources */,
@@ -2274,6 +2317,7 @@
 				848F9A0519609C2F00984731 /* prefs-shortcuts.png in Resources */,
 				848F9A1419609C2F00984731 /* upload-target-icon.png in Resources */,
 				848F99E719609C2F00984731 /* record-button-pressed@2x.png in Resources */,
+				0D9AF01619DF531D003D5275 /* use-imgur-button-pressed@2x.png in Resources */,
 				2CAFB74F16B1C3D000418D61 /* icon-animation-13.png in Resources */,
 				2CAFB75016B1C3D000418D61 /* icon-animation-13@2x.png in Resources */,
 				2CAFB75116B1C3D000418D61 /* icon-animation-14.png in Resources */,
@@ -2300,6 +2344,7 @@
 				2C6B37A916C5A52F00359B3F /* nointernet-icon@2x.png in Resources */,
 				0DB634A419CCB29300F97E34 /* PreferencesController.xib in Resources */,
 				849219DC18F1F642000F0E7D /* YoutubeUploadWindowController.xib in Resources */,
+				0D9AF01219DF531D003D5275 /* dont-use-imgur-button-pressed@2x.png in Resources */,
 				2C6B37AC16CD8FD100359B3F /* image_howto_step1@2x.png in Resources */,
 				2C6B37AD16CD8FD100359B3F /* image_howto_step2@2x.png in Resources */,
 			);
@@ -2367,6 +2412,7 @@
 				0DF52E4619C8BBFC000D2D56 /* mainView.m in Sources */,
 				8BDB2E9913C3A31E003BFDE0 /* ASIS3Request.m in Sources */,
 				8BDB2E9A13C3A31E003BFDE0 /* ASIS3ServiceRequest.m in Sources */,
+				0D9AF01C19DF571D003D5275 /* ImgurThumbnailLoader.m in Sources */,
 				8B69530113C3A99700B32618 /* HTTPRequest.m in Sources */,
 				0DF52E5219C8BF21000D2D56 /* MAAttachedWindow.m in Sources */,
 				8B69530313C3BBB500B32618 /* Macros.m in Sources */,
