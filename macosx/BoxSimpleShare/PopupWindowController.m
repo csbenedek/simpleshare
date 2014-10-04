@@ -15,6 +15,7 @@
 #import "PopupMainViewController.h"
 #import "BoxSimpleShareAppDelegate.h"
 #import "BoxFile.h"
+#import "AppConstants.h"
 
 @interface PopupWindowController ()
 
@@ -284,7 +285,7 @@
     int i = 0;
     NSMutableArray* filesUploadedInSession = [[BoxSimpleShareAppDelegate sharedDelegate] filesUploadedInSession];
     
-    NSArray* itemList =  [[[filesUploadedInSession reverseObjectEnumerator] allObjects] subarrayWithRange:NSMakeRange(0, MaxHistoryItemCount)];
+    NSArray* itemList =  [[[filesUploadedInSession reverseObjectEnumerator] allObjects] subarrayWithRange:NSMakeRange(0, MAX_HISTORY_ITEM_COUNT)];
 
     
 //    for (BoxFile *file in [filesUploadedInSession reverseObjectEnumerator])

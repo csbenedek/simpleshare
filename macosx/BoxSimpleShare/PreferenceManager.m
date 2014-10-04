@@ -11,6 +11,7 @@
 #import "BoxSimpleShareAppDelegate.h"
 #import "BoxNetHandler.h"
 #import "BoxNetUser.h"
+#import "AppConstants.h"
 
 /* Prederence Keys for Marshal & UnMarshal */
 
@@ -111,7 +112,7 @@
     for (id historyItem in [[[BoxSimpleShareAppDelegate sharedDelegate] filesUploadedInSession] reverseObjectEnumerator]) {
         [historyItems insertObject:historyItem atIndex:0];
         i++;
-        if (i == MaxHistoryItemCount) {
+        if (i == MAX_HISTORY_ITEM_COUNT) {
             break;
         }
     }
@@ -168,6 +169,8 @@
             controller.screencast_format_index = [[pref valueForKey:SCREENCAST_FORMAT] intValue];
             [controller.screencast_format selectItemAtIndex:controller.screencast_format_index];
             
+            //not used anymore
+            /*
             if([pref valueForKey:IMAGE_UPLOAD_HOST])
             {
                 controller.uploadhost_index = [[pref valueForKey:IMAGE_UPLOAD_HOST] intValue];
@@ -191,7 +194,7 @@
                 [pref setValue:controller.upload_video_host_index forKey:VIDEO_UPLOAD_HOST];
                 [controller.videoHost selectItemAtIndex:controller.upload_video_host_index];
             }
-            
+            */
             
             controller.screen_cast_hot_key = [NSString stringWithFormat:[pref valueForKey:HOT_KEY_SCREENCAST]];;
             controller.upload_hot_key = [NSString stringWithFormat:[pref valueForKey:HOT_KEY_UPLOAD]];

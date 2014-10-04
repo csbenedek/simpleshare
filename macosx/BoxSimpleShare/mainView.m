@@ -16,6 +16,8 @@
 #import "ITSwitch.h"
 #import "YouTubeThumbnailLoader.h"
 #import "ImgurThumbnailLoader.h"
+#import "AppConstants.h"
+
 
 
 
@@ -163,147 +165,163 @@
     
     //go through list of saved files in reverse order
     
+    int i = 0;
+    
+    
     for (BoxFile *file in [appDelegate.filesUploadedInSession reverseObjectEnumerator]) {
         
-        //make cell for each file
-        
-        //controller to load nib and set properties
-        MainViewCellController *controller = [[MainViewCellController alloc] initWithNibName:@"MainViewCellController" bundle:nil];
-        
-        //just triggering lazy loading
-        NSView *tmpView = controller.view;
-        
-        
-        //configure border and corners
-        /*
-        [controller.imageView setWantsLayer:TRUE];
-        
-        controller.imageView.layer.borderWidth = 1.0;
-        controller.imageView.layer.borderColor = [[NSColor grayColor] CGColor];
-        controller.imageView.layer.cornerRadius = 4.0;
-        controller.imageView.layer.masksToBounds = TRUE;
-         */
-        //set filename
-        
-        [controller.fileName setTitleWithMnemonic:file.fileName];
-        
-        //stamp date if not presented
-        
-        
-        if (!file.uploadDate) {
+        if (i == MAX_HISTORY_ITEM_COUNT) {
             
-            NSLog(@"Stamping date");
-            
-            file.uploadDate = [NSDate date];
-            
-            
+            break;
         }
-        
-        //set date in controller
-        
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        formatter.doesRelativeDateFormatting = YES;
-        formatter.locale = [NSLocale currentLocale];
-        formatter.dateStyle = NSDateFormatterShortStyle;
-        formatter.timeStyle = NSDateFormatterShortStyle;
-        NSString *timeString = [formatter stringFromDate:file.uploadDate];
-        
-        [controller.uploadDateTextField setTitleWithMnemonic:timeString];
-        
-        [formatter release];
-        
-        //set reference to BoxFile
-        controller.boxFile = file;
-        
-        //if box file doesn't contain thumbnail image,load it
-        
-        if (!controller.boxFile.thumbnailImage) {
-            
-            
-            NSInteger fileType = 0;
-            
-            if (controller.boxFile.isImgur) {
-                
-                fileType = 1;
-                
-            }
-            
-            
-            if (controller.boxFile.isYouTube) {
-                
-                fileType = 2;
-            }
-            
-            
-            switch (fileType) {
-                case 1:{
-                    
-                    //get id from url
-                    
-                    
-                    NSString *ID = [file.shortURL stringByReplacingOccurrencesOfString:@"http://i.imgur.com/" withString:@""];
-                    
-                    ID = [ID stringByDeletingPathExtension];
-                    
-                    //http://i.imgur.com/ng1dvqq.png
-                    
-                    NSLog(@"Imgur ID:%@",ID);
-                    
-                    [controller.imgurThumbnailLoader loadThumbnailForImageWithID:ID];
-                    
-                    //show spinner and start animation
-                    [controller.spinner setHidden:FALSE];
-                    [controller.spinner startAnimation:self];
-                    
-                    break;
-                    
-                }
-                 
-                case 2:{
-                    
-                    //get video id from URL
-                    
-                    NSString *ID = [file.shortURL stringByReplacingOccurrencesOfString:@"http://www.youtube.com/watch?v=" withString:@""];
-                    
-                    
-                    [controller.youTubeThumbnailLoader loadThumbnailForVideoWithID:ID];
-                    
-                    //show spinner and start animation
-                    [controller.spinner setHidden:FALSE];
-                    [controller.spinner startAnimation:self];
-
-                    break;
-                }
-                   
-                    
-                default:{
-                    
-                    
-                    //load from box
-                    [controller.fileInfoLoader loadThumbnailImageForID:file.fileID];
-                    
-                    //show spinner and start animation
-                    [controller.spinner setHidden:FALSE];
-                    [controller.spinner startAnimation:self];
-                    
-                    break;
-                    
-                }
-                    
-            }
-            
-        }
-        
         else{
-            
-            controller.imageView.image = controller.boxFile.thumbnailImage;
-            
+            i++;
         }
+            
+            //make cell for each file
+            
+            //controller to load nib and set properties
+            MainViewCellController *controller = [[MainViewCellController alloc] initWithNibName:@"MainViewCellController" bundle:nil];
+            
+            //just triggering lazy loading
+            NSView *tmpView = controller.view;
+            
+            
+            //configure border and corners
+            /*
+             [controller.imageView setWantsLayer:TRUE];
+             
+             controller.imageView.layer.borderWidth = 1.0;
+             controller.imageView.layer.borderColor = [[NSColor grayColor] CGColor];
+             controller.imageView.layer.cornerRadius = 4.0;
+             controller.imageView.layer.masksToBounds = TRUE;
+             */
+            //set filename
+            
+            [controller.fileName setTitleWithMnemonic:file.fileName];
+            
+            //stamp date if not presented
+            
+            
+            if (!file.uploadDate) {
+                
+                NSLog(@"Stamping date");
+                
+                file.uploadDate = [NSDate date];
+                
+                
+            }
+            
+            //set date in controller
+            
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            formatter.doesRelativeDateFormatting = YES;
+            formatter.locale = [NSLocale currentLocale];
+            formatter.dateStyle = NSDateFormatterShortStyle;
+            formatter.timeStyle = NSDateFormatterShortStyle;
+            NSString *timeString = [formatter stringFromDate:file.uploadDate];
+            
+            [controller.uploadDateTextField setTitleWithMnemonic:timeString];
+            
+            [formatter release];
+            
+            //set reference to BoxFile
+            controller.boxFile = file;
+            
+            //if box file doesn't contain thumbnail image,load it
+            
+            if (!controller.boxFile.thumbnailImage) {
+                
+                
+                NSInteger fileType = 0;
+                
+                if (controller.boxFile.isImgur) {
+                    
+                    fileType = 1;
+                    
+                }
+                
+                
+                if (controller.boxFile.isYouTube) {
+                    
+                    fileType = 2;
+                }
+                
+                
+                switch (fileType) {
+                    case 1:{
+                        
+                        //get id from url
+                        
+                        
+                        NSString *ID = [file.shortURL stringByReplacingOccurrencesOfString:@"http://i.imgur.com/" withString:@""];
+                        
+                        ID = [ID stringByDeletingPathExtension];
+                        
+                        //http://i.imgur.com/ng1dvqq.png
+                        
+                        NSLog(@"Imgur ID:%@",ID);
+                        
+                        [controller.imgurThumbnailLoader loadThumbnailForImageWithID:ID];
+                        
+                        //show spinner and start animation
+                        [controller.spinner setHidden:FALSE];
+                        [controller.spinner startAnimation:self];
+                        
+                        break;
+                        
+                    }
+                        
+                    case 2:{
+                        
+                        //get video id from URL
+                        
+                        NSString *ID = [file.shortURL stringByReplacingOccurrencesOfString:@"http://www.youtube.com/watch?v=" withString:@""];
+                        
+                        
+                        [controller.youTubeThumbnailLoader loadThumbnailForVideoWithID:ID];
+                        
+                        //show spinner and start animation
+                        [controller.spinner setHidden:FALSE];
+                        [controller.spinner startAnimation:self];
+                        
+                        break;
+                    }
+                        
+                        
+                    default:{
+                        
+                        
+                        //load from box
+                        [controller.fileInfoLoader loadThumbnailImageForID:file.fileID];
+                        
+                        //show spinner and start animation
+                        [controller.spinner setHidden:FALSE];
+                        [controller.spinner startAnimation:self];
+                        
+                        break;
+                        
+                    }
+                        
+                }
+                
+            }
+            
+            else{
+                
+                controller.imageView.image = controller.boxFile.thumbnailImage;
+                
+            }
+            
+            
+            //store controller
+            
+            [self.cells addObject:controller];
+            
+            
+
         
         
-        //store controller
-        
-        [self.cells addObject:controller];
        
     }
   

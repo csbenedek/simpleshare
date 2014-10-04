@@ -47,14 +47,6 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zqh-5V-elo">
-                    <rect key="frame" x="77" y="94" width="359" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="(User other service for screencast or images uploads, instead Box)" id="toa-eU-yc5">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y9t-ek-aMD">
                     <rect key="frame" x="11" y="8" width="194" height="52"/>
                     <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="login-with-youtube-button" imagePosition="overlaps" alignment="center" alternateImage="login-with-youtube-button-pressed" imageScaling="proportionallyDown" inset="2" id="2lc-ka-eTg">
@@ -99,6 +91,14 @@
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Login" id="9qb-zr-b9a">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zqh-5V-elo">
+                    <rect key="frame" x="85" y="94" width="363" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="(Use other service for screencast or images uploads, instead of Box)" id="toa-eU-yc5">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>

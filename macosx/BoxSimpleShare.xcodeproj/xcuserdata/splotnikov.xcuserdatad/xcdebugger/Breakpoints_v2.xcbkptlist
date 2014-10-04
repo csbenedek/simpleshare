@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxSimpleShare/PreferenceManager.m"
-            timestampString = "434069778.704009"
+            timestampString = "434104362.261089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "+loadPreference"
             landmarkType = "5">
          </BreakpointContent>
@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxSimpleShare/PreferenceManager.m"
-            timestampString = "434069778.704009"
+            timestampString = "434104362.261089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "+savePreference"
             landmarkType = "5">
          </BreakpointContent>
@@ -554,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxSimpleShare/mainView.m"
-            timestampString = "434068932.521898"
+            timestampString = "434105881.61315"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "-updateHistoryElements"
             landmarkType = "5">
          </BreakpointContent>
@@ -713,13 +713,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BoxSimpleShare/mainView.m"
-            timestampString = "434068907.602132"
+            filePath = "BoxSimpleShare/PreferenceManager.m"
+            timestampString = "434104362.261089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
-            landmarkName = "-updateHistoryElements"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
+            landmarkName = "+loadPreference"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -730,27 +730,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxSimpleShare/mainView.m"
-            timestampString = "434068909.728517"
+            timestampString = "434106219.899235"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
-            landmarkName = "-updateHistoryElements"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BoxSimpleShare/mainView.m"
-            timestampString = "434068914.161877"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "-updateHistoryElements"
             landmarkType = "5">
          </BreakpointContent>

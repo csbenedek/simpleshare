@@ -36,7 +36,7 @@
 
 
 
-const int MaxHistoryItemCount = 5;
+//const int MaxHistoryItemCount = 5;
 
 static const int MaxHistoryItemLength = 22;
 
@@ -423,7 +423,7 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
         [popUpMenu addItem:tmp];
         [tmp release];
         ++i;
-        if (i == MaxHistoryItemCount) {
+        if (i == MAX_HISTORY_ITEM_COUNT) {
             break;
         }
     }

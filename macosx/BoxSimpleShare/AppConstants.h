@@ -28,6 +28,7 @@
 
 
 #define MAX_CONCURRENT_OPERATIONS 7
+#define MAX_HISTORY_ITEM_COUNT 5
 #define SHOW_LOGS 1
 
 #define PROGRESS_MENU_ITEM_TEXT @"Show Progress Window"

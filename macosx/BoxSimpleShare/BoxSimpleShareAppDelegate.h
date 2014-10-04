@@ -18,7 +18,7 @@
 #import "MAAttachedWindow.h"
 
 
-extern const int MaxHistoryItemCount;
+//extern const int MaxHistoryItemCount;
 
 @class MainController;
 @class PopupWindowController;
