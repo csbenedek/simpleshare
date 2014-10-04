@@ -309,7 +309,7 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
         
         
         
-        //regester for ShowPreferencesWindowNotification
+        //register for ShowPreferencesWindowNotification
         
         AddNotificationObserver(self.preferencesController, @selector(processShowPreferencesWindowNotification), @"ShowPreferencesWindowNotification", nil);
         
