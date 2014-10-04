@@ -158,7 +158,7 @@
         
     }
     
-    //not authentivated, login
+    //not authenticated, login
     
     else{
         

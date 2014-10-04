@@ -394,7 +394,7 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
 #pragma mark Response Handlers
 
 - (void) loginResponse:(NSNotification *)response {
-    PostNotification(@"HIDE_LOADING");
+    //PostNotification(@"HIDE_LOADING");
     
     if ([[response object] isKindOfClass:[NSError class]]) {
         NSString* errorDomain = [(NSError*)[response object] domain];
