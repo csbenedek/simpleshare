@@ -27,6 +27,7 @@
 
 @property(nonatomic, retain) IBOutlet ITSwitch *enableUploadSwitch;
 
+@property(nonatomic, retain) IBOutlet NSButton *uploadButton;
 
 
 

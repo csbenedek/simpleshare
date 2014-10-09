@@ -414,19 +414,31 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
     } else {
     
 		[[NSFileManager defaultManager] changeCurrentDirectoryPath:TMP_PATH];
+        
+        BoxSimpleShareAppDelegate *delegate = [BoxSimpleShareAppDelegate sharedDelegate];
+        
 		
-        [self updateMainViewContent:nil];
-        [[BoxSimpleShareAppDelegate sharedDelegate] selectToolBarItem:0];
+        //[self updateMainViewContent:nil];
+        
+        //[[BoxSimpleShareAppDelegate sharedDelegate] selectToolBarItem:0];
         //[[BoxSimpleShareAppDelegate sharedDelegate] performSelectorOnMainThread:@selector(showMainView) withObject:nil waitUntilDone:YES];
 
         [PreferenceManager loadPreference];
-		[[Mixpanel sharedInstance] identify:[response object]];
-        [[BoxSimpleShareAppDelegate sharedDelegate] createMenu];
+        
+        
+		//[[Mixpanel sharedInstance] identify:[response object]];
+        
+        
+        //[[BoxSimpleShareAppDelegate sharedDelegate] createMenu];
         
         //init preference controller
         
-        [[BoxSimpleShareAppDelegate sharedDelegate] loadPreferencesController];
+        [delegate loadPreferencesController];
         
+        //set up hotkeys
+        
+        [delegate setupUploadHotKey];
+        [delegate setupVideoCaptureHotKey];
         
         
         DbgLog(@"Login Successfull!");
@@ -438,9 +450,9 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
         
     }
 
-    [loginBtn setEnabled:YES];
-    [userEmail setEditable:YES];
-    [userPassword setEditable:YES];
+    //[loginBtn setEnabled:YES];
+    //[userEmail setEditable:YES];
+    //[userPassword setEditable:YES];
 }
 
 - (void)loginFailed:(NSNotification*)notification {

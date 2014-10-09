@@ -160,9 +160,13 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     [uploadStatusPanel registerForDraggedTypes:[self acceptableTypes]];
         
     [GrowlApplicationBridge setGrowlDelegate:self];
-    [GrowlApplicationBridge setWillRegisterWhenGrowlIsReady:YES]; 
+    [GrowlApplicationBridge setWillRegisterWhenGrowlIsReady:YES];
     
+    
+    //check permission to desktop
     [[[FolderUtility alloc] init] checkPermision];
+    
+    
     UKKQueue *kqueue = [UKKQueue sharedFileWatcher];
     NSString *path = [[NSFileManager defaultManager] desktopPath];
     [kqueue addPathToQueue:path];
@@ -176,13 +180,13 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     
     //
     filesAddedToQueue = [NSMutableSet new];
-    [self setupUploadHotKey];
-    [self setupVideoCaptureHotKey];
+    
+    
+    //[self setupUploadHotKey];
+    //[self setupVideoCaptureHotKey];
     
     //prepare settings and init AttachedWindowsController
 
-    
-    
     
     //NSNumber *isFirstLaunchNumber = [NSNumber numberWithBool:FALSE];
     
@@ -823,8 +827,8 @@ void *kContextActivePanel = &kContextActivePanel;
             
         }
     } else if ([keyPath isEqualToString:@"upload_hot_key"]) {
-        [self uninstallUploadHotKey];
-        [self setupUploadHotKey];
+        //[self uninstallUploadHotKey];
+        //[self setupUploadHotKey];
     } else if ([keyPath isEqualToString:@"screen_cast_hot_key"]) {
         [self uninstallVideoCaptureHotKey];
         [self setupVideoCaptureHotKey];
@@ -1297,19 +1301,18 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)videoCaptureController:(id)controller didCaptureVideoToPath:(NSString*)path {
     if (controller == videoCaptureController && path) {
-        if(1)
-        {
+        
+        
+        NSString* filePath = [[NSFileManager defaultManager] desktopPath];
+        
+        filePath = [filePath stringByAppendingPathComponent:[path lastPathComponent]];
+        //copy file to desktop
+        BOOL copyResult = [[NSFileManager defaultManager] moveItemAtPath:path toPath:filePath error:nil];
 
-            [[Mixpanel sharedInstance] trackVideoCaptureEvent];
-            [[BoxNetHandler sharedHandler] uploadFiles:[[NSArray arrayWithObject:path] retain] withProperties:[NSDictionary dictionaryWithObject:@"YOUTUBE" forKey:@"YOUTUBE"]];
+        [[Mixpanel sharedInstance] trackVideoCaptureEvent];
+        [[BoxNetHandler sharedHandler] uploadFiles:[[NSArray arrayWithObject:path] retain] withProperties:[NSDictionary dictionaryWithObject:@"YOUTUBE" forKey:@"YOUTUBE"]];
 
-        }
-        else
-        {
-            [[Mixpanel sharedInstance] trackVideoCaptureEvent];
-            [[BoxNetHandler sharedHandler] uploadFiles:[[NSArray arrayWithObject:path] retain] withProperties:nil];
-            
-        }
+    
     }
 }
 

@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
-		<string key="IBDocument.SystemVersion">13E28</string>
-		<string key="IBDocument.InterfaceBuilderVersion">5056</string>
+		<string key="IBDocument.SystemVersion">13F34</string>
+		<string key="IBDocument.InterfaceBuilderVersion">6245</string>
 		<string key="IBDocument.AppKitVersion">1265.21</string>
 		<string key="IBDocument.HIToolboxVersion">698.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">5056</string>
+			<string key="NS.object.0">6245</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSBox</string>
@@ -735,7 +735,7 @@
 						<reference ref="805651661"/>
 						<reference ref="544443054"/>
 					</array>
-					<array class="NSMutableArray" key="NSToolbarIBDefaultItems">
+					<array key="NSToolbarIBDefaultItems">
 						<reference ref="544443054"/>
 						<reference ref="643083700"/>
 						<reference ref="913219817"/>
@@ -746,11 +746,10 @@
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<string key="NSWindowContentMaxSize">{600, 600}</string>
 				<object class="NSView" key="NSWindowView" id="631268310">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews"/>
 					<string key="NSFrameSize">{480, 200}</string>
-					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1058}}</string>
 				<string key="NSMaxSize">{600, 678}</string>
@@ -777,7 +776,7 @@
 							<int key="NSCellFlags2">71304192</int>
 							<string key="NSContents">&lt;ver&gt;</string>
 							<object class="NSFont" key="NSSupport" id="941595844">
-								<string key="NSName">.LucidaGrandeUI</string>
+								<bool key="IBIsSystemFont">YES</bool>
 								<double key="NSSize">13</double>
 								<int key="NSfFlags">1044</int>
 							</object>
@@ -849,7 +848,7 @@
 							<int key="NSCellFlags2">138675200</int>
 							<string key="NSContents"/>
 							<object class="NSFont" key="NSSupport">
-								<string key="NSName">.LucidaGrandeUI</string>
+								<bool key="IBIsSystemFont">YES</bool>
 								<double key="NSSize">9</double>
 								<int key="NSfFlags">3614</int>
 							</object>
@@ -986,7 +985,7 @@
 							<int key="NSCellFlags2">272630784</int>
 							<string key="NSContents">Log in to your account:</string>
 							<object class="NSFont" key="NSSupport" id="622167618">
-								<string key="NSName">.LucidaGrandeUI-Bold</string>
+								<bool key="IBIsSystemFont">YES</bool>
 								<double key="NSSize">13</double>
 								<int key="NSfFlags">2072</int>
 							</object>
@@ -1057,7 +1056,7 @@
 							<int key="NSCellFlags2">0</int>
 							<string key="NSContents"/>
 							<object class="NSFont" key="NSSupport" id="26">
-								<string key="NSName">.LucidaGrandeUI</string>
+								<bool key="IBIsSystemFont">YES</bool>
 								<double key="NSSize">11</double>
 								<int key="NSfFlags">3100</int>
 							</object>
@@ -1362,7 +1361,7 @@
 								<int key="NSCellFlags2">138413056</int>
 								<string key="NSContents">Can also drop file(s) and/or folder(s) here, to upload them to your Box.net account.</string>
 								<object class="NSFont" key="NSSupport">
-									<string key="NSName">.LucidaGrandeUI</string>
+									<bool key="IBIsSystemFont">YES</bool>
 									<double key="NSSize">10</double>
 									<int key="NSfFlags">1044</int>
 								</object>
@@ -1473,7 +1472,7 @@
 											<int key="NSvFlags">256</int>
 											<string key="NSFrameSize">{421, 134}</string>
 											<reference key="NSSuperview" ref="847275749"/>
-											<reference key="NSNextKeyView" ref="526382581"/>
+											<reference key="NSNextKeyView" ref="80730057"/>
 											<bool key="NSEnabled">YES</bool>
 											<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 											<bool key="NSControlAllowsExpansionToolTips">YES</bool>
@@ -1653,7 +1652,7 @@
 							</array>
 							<string key="NSFrame">{{20, 27}, {421, 151}}</string>
 							<reference key="NSSuperview" ref="1057404748"/>
-							<reference key="NSNextKeyView" ref="80730057"/>
+							<reference key="NSNextKeyView" ref="847275749"/>
 							<int key="NSsFlags">133680</int>
 							<reference key="NSVScroller" ref="526382581"/>
 							<reference key="NSHScroller" ref="898858470"/>
@@ -1847,7 +1846,7 @@
 					<int key="NSCellFlags2">2048</int>
 					<string type="base64-UTF8" key="NSContents">IA</string>
 					<object class="NSFont" key="NSSupport">
-						<string key="NSName">.LucidaGrandeUI</string>
+						<bool key="IBIsSystemFont">YES</bool>
 						<double key="NSSize">12</double>
 						<int key="NSfFlags">787</int>
 					</object>
@@ -3087,11 +3086,7 @@
 											<int key="NSCellFlags">68157504</int>
 											<int key="NSCellFlags2">272630784</int>
 											<string key="NSContents">Upload Target</string>
-											<object class="NSFont" key="NSSupport" id="572880458">
-												<string key="NSName">LucidaGrande</string>
-												<double key="NSSize">11</double>
-												<int key="NSfFlags">16</int>
-											</object>
+											<reference key="NSSupport" ref="26"/>
 											<string key="NSCellIdentifier">_NS:397</string>
 											<reference key="NSControlView" ref="657406915"/>
 											<reference key="NSBackgroundColor" ref="77580564"/>
@@ -3234,7 +3229,7 @@
 											<int key="NSCellFlags">68157504</int>
 											<int key="NSCellFlags2">272630784</int>
 											<string key="NSContents">Take Selected region</string>
-											<reference key="NSSupport" ref="572880458"/>
+											<reference key="NSSupport" ref="26"/>
 											<string key="NSCellIdentifier">_NS:397</string>
 											<reference key="NSControlView" ref="923221671"/>
 											<reference key="NSBackgroundColor" ref="77580564"/>
@@ -3374,7 +3369,7 @@
 											<int key="NSCellFlags">68157504</int>
 											<int key="NSCellFlags2">272630784</int>
 											<string key="NSContents">Screencasts Recording</string>
-											<reference key="NSSupport" ref="572880458"/>
+											<reference key="NSSupport" ref="26"/>
 											<string key="NSCellIdentifier">_NS:397</string>
 											<reference key="NSControlView" ref="558911513"/>
 											<reference key="NSBackgroundColor" ref="77580564"/>
@@ -3514,7 +3509,7 @@
 											<int key="NSCellFlags">68157504</int>
 											<int key="NSCellFlags2">272630784</int>
 											<string key="NSContents">Take full screen</string>
-											<reference key="NSSupport" ref="572880458"/>
+											<reference key="NSSupport" ref="26"/>
 											<string key="NSCellIdentifier">_NS:397</string>
 											<reference key="NSControlView" ref="369844304"/>
 											<reference key="NSBackgroundColor" ref="77580564"/>
@@ -3562,7 +3557,7 @@
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<bool key="usesAutoincrementingIDs">NO</bool>
-			<array class="NSMutableArray" key="connectionRecords">
+			<array key="connectionRecords">
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">terminate:</string>
@@ -4274,22 +4269,6 @@
 						</object>
 					</object>
 					<string key="id">905</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">screen_cast_hot_key</string>
-						<reference key="source" ref="1063473401"/>
-						<reference key="destination" ref="984563773"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="1063473401"/>
-							<reference key="NSDestination" ref="984563773"/>
-							<string key="NSLabel">value: screen_cast_hot_key</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">screen_cast_hot_key</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<string key="id">902</string>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -6747,10 +6726,6 @@
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
 			<real value="1060" key="NS.object.0"/>
-		</object>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
-			<real value="1070" key="NS.object.0"/>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.InterfaceBuilder3</string>

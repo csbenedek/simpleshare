@@ -172,10 +172,23 @@ static BoxNetHandler *sharedObject = nil;
 }
 
 - (void) uploadFiles:(id)files withProperties:(NSDictionary *)properties {
+    
+    MainController *controller = [[BoxSimpleShareAppDelegate sharedDelegate] mainController];
+    
+    //if disable upload is on, just return
+    
+    if (controller.disable_automatic_upload_check) {
+        
+        NSLog(@"Upload disabled");
+        
+        return;
+    }
+    
+    
 	UploadOperation *opt = [UploadOperation new];
     [opt addFiles:files];
     [opt setUploadToFolder:[defaultFolder folderID]];
-     MainController *controller = [[BoxSimpleShareAppDelegate sharedDelegate] mainController];
+    
     if (properties && [properties containsKey:@"SCREEN_SHOT"]) {
         
         

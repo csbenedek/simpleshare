@@ -389,6 +389,9 @@
     
     MainController *mainController = (MainController *)[[BoxSimpleShareAppDelegate sharedDelegate] mainController];
     
+    //enable / disable upload button
+    [self.uploadButton setEnabled:!self.uploadButton.isEnabled];
+    
     
     [mainController toggleUploadsEnabled];
     

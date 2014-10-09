@@ -166,5 +166,13 @@
 
 -(void)sendFeedback:(id)sender;
 
+//setup hotkeys
+-(void)setupUploadHotKey;
+
+-(void)setupVideoCaptureHotKey;
+
+
+
+
 
 @end

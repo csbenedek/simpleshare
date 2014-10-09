@@ -76,6 +76,7 @@ static const int FrameHalfWidth = 2;
     NSString* savedPath = [[[NSFileManager defaultManager] cacheDataPath] stringByAppendingPathComponent:filename];
      [_videoCaptureManager saveCurrentMovieToFile:savedPath exportFormat:format];   
     _isCapturing = NO;
+    
     [self hideStopButton];
 }
 

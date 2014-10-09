@@ -166,6 +166,10 @@
             controller.shorten_links_check = [[pref valueForKey:SHORTEN_URL] intValue];
             controller.mute_audio_check = [[pref valueForKey:MUTE_AUDIO] intValue];
             
+            
+            controller.upload_hot_key = @"u";
+            controller.screen_cast_hot_key = @"5";
+            
             controller.screencast_format_index = [[pref valueForKey:SCREENCAST_FORMAT] intValue];
             [controller.screencast_format selectItemAtIndex:controller.screencast_format_index];
             
