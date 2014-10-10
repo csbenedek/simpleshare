@@ -1307,7 +1307,14 @@ void *kContextActivePanel = &kContextActivePanel;
         
         filePath = [filePath stringByAppendingPathComponent:[path lastPathComponent]];
         //copy file to desktop
-        BOOL copyResult = [[NSFileManager defaultManager] moveItemAtPath:path toPath:filePath error:nil];
+        if (self.mainController.disable_automatic_upload_check) {
+            //if uploads disable, move file from chache to desktop
+            
+            BOOL copyResult = [[NSFileManager defaultManager] moveItemAtPath:path toPath:filePath error:nil];
+            
+        }
+        
+        
 
         [[Mixpanel sharedInstance] trackVideoCaptureEvent];
         [[BoxNetHandler sharedHandler] uploadFiles:[[NSArray arrayWithObject:path] retain] withProperties:[NSDictionary dictionaryWithObject:@"YOUTUBE" forKey:@"YOUTUBE"]];
