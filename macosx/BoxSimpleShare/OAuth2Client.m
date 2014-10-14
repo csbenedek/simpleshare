@@ -109,6 +109,7 @@ GrantAccessWindowController* accessWindowController;
         NSString* url = [NSString stringWithFormat:OAUTH2_AUTH_CODE_URL, OAUTH2_CLIENT_ID, redirectURL];
         [accessWindowController loadUrl:url];
         [accessWindowController showWindow:nil];
+        
 	}
 	else
 	{
@@ -158,10 +159,12 @@ GrantAccessWindowController* accessWindowController;
 	[request addPostValue:code forKey:@"code"];
 	[request addPostValue:OAUTH2_CLIENT_ID forKey:@"client_id"];
 	[request addPostValue:OAUTH2_CLIENT_SECRET forKey:@"client_secret"];
+    
+    //this creates query for login with received credentials
 
     NSMutableDictionary* dic = [NSMutableDictionary dictionaryWithObject:LOGIN_ACTION forKey:@"TYPE"];
     [request setUserInfo:dic];
-
+    
 	[queue addOperation:request];
 }
 

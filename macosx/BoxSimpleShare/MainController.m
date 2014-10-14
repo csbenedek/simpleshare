@@ -457,6 +457,9 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
 
 - (void)loginFailed:(NSNotification*)notification {
     
+    NSLog(@"Loginnnn failed!");
+    
+    
 }
 
 - (void) updateMainViewContent:(id)notification

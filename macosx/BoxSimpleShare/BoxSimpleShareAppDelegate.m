@@ -178,19 +178,13 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
                              object:nil];
 
     
-    //
     filesAddedToQueue = [NSMutableSet new];
     
     
-    //[self setupUploadHotKey];
-    //[self setupVideoCaptureHotKey];
     
     //prepare settings and init AttachedWindowsController
 
-    
-    //NSNumber *isFirstLaunchNumber = [NSNumber numberWithBool:FALSE];
-    
-    //NSDictionary *settingsDict = [NSDictionary dictionaryWithObject:isFirstLaunchNumber forKey:@"isFirstLaunch"];
+
     
     
     
@@ -198,8 +192,6 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     
     
     //check for the first launch
-    
-   
     
     
     NSUserDefaults *defaults = [[NSUserDefaults alloc] init];

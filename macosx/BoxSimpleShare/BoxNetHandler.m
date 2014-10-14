@@ -22,6 +22,10 @@
 #import "ImgurUploadOperation.h"
 #import "YoutubeUploadOperation.h"
 #import "Mixpanel.h"
+#import "UploadOperationNew.h"
+
+
+
 static NSString* BoxNetHandlerDefaultFolderPreferenceKey = @"BoxNetHandlerDefaultFolderPreferenceKey";
 
 static const NSTimeInterval ReloadUserInfoTimeInterval = 360; // every 6 mins

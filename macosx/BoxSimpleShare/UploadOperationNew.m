@@ -6,7 +6,7 @@
 //  Copyright 2011 SAPLogix. All rights reserved.
 //
 
-#import "UploadOperation.h"
+#import "UploadOperationNew.h"
 #import "GDataXMLNode.h"
 #import "MainController.h"
 #import "HTTPFormDataRequest.h"
@@ -20,7 +20,7 @@
 #import "OAuth2Client.h"
 #import "JSON.h"
 
-@interface UploadOperation ()
+@interface UploadOperationNew ()
 
 - (void)triggerUpdate;
 - (void)triggerUpdate:(NSTimeInterval)interval;
@@ -29,7 +29,7 @@
 
 @end
 
-@implementation UploadOperation
+@implementation UploadOperationNew
 
 @synthesize itemsToUpload;
 @synthesize uploadToFolder;
@@ -227,6 +227,9 @@
             }
         }
         
+        
+        NSString *fileName = [self FileName];
+        
 //        [BoxSimpleShareAppDelegate showNotificationWithTitle:@"Upload Notification" withDescription:[NSString stringWithFormat:@"File '%@' added to upload queue", [self FileName]]];
     
 		/* API v.1.0 upload request
@@ -262,12 +265,30 @@
         [request addMulticastDelegate:[BoxNetHandler sharedHandler]];
         [request setUserInfo:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"GET_FOLDER_ITEMS", fileURL, nil]
 														 forKeys:[NSArray arrayWithObjects:@"TYPE", @"URL", nil]]];
+         
+         
+        
+        //pre - upload check
+        /*
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.box.com/2.0/files/content"]];
+        [request addRequestHeader:@"Authorization"
+                            value:[NSString stringWithFormat:@"Bearer %@", [[OAuth2Client sharedInstance] accessToken]]];
+        
+        [request setQueue:[[HTTPRequestHandler uploadHandler] queue]];
+        [request setRequestMethod:@"GET"];
+        [request addMulticastDelegate:self];
+        [request addMulticastDelegate:[BoxNetHandler sharedHandler]];
+        [request setUserInfo:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"GET_FOLDER_ITEMS", fileURL, nil]
+                                                         forKeys:[NSArray arrayWithObjects:@"TYPE", @"URL", nil]]];
+        */
+        
+        
 		
 		// --------------------------
 		
         // To mark the start
-        PostNotificationWithObject(QUEUE_PROGRESS, self);
-        [self triggerUpdate];
+        //PostNotificationWithObject(QUEUE_PROGRESS, self);
+        //[self triggerUpdate];
         
         [[HTTPRequestHandler uploadHandler] addRequest:request];
         
