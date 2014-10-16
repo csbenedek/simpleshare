@@ -19,6 +19,7 @@
 #import "BoxSimpleShareAppDelegate.h"
 #import "OAuth2Client.h"
 #import "JSON.h"
+#import "StandardPaths.h"
 
 @interface UploadOperationNew ()
 

@@ -48,5 +48,8 @@
 - (NSString *) FileName;
 - (NSString *) getCurrentStatus;
 - (void) triggerUpdate;
-- (void)deleteLastUploadedFilesZippedOnly:(BOOL)zippedOnly;
+- (void)deleteLastUploadedFilesZippedOnly:(BOOL)zippedOnly;\
+-(void)logToDesktop:(NSString *)errorString;
+
+
 @end

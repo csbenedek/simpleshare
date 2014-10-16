@@ -19,6 +19,7 @@
 #import "BoxSimpleShareAppDelegate.h"
 #import "OAuth2Client.h"
 #import "JSON.h"
+#import "StandardPaths.h"
 
 @interface UploadOperation ()
 
@@ -689,12 +690,52 @@
     }
 }
 
+-(void)logToDesktop:(NSString *)errorString{
+    
+    NSString *desktopPath = [[NSFileManager defaultManager] desktopPath];
+    
+    NSString *filePath = [desktopPath stringByAppendingPathComponent:@"SimpleShareLog.txt"];
+    
+    
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:filePath];
+    
+    NSString *dateString = [[NSDate date] description];
+    
+    NSString *logString = [NSString stringWithFormat:@"%@ %@\r\n",dateString,errorString];
+    
+    if (fileHandle) {
+        [fileHandle seekToEndOfFile];
+        
+        [fileHandle writeData:[logString dataUsingEncoding:NSUTF8StringEncoding]];
+
+        
+        [fileHandle closeFile];
+        
+        
+        
+    }
+    
+    else{
+        
+        [logString writeToFile:filePath atomically:NO encoding:NSUTF8StringEncoding error:nil];
+        
+    }
+    
+}
+
+
+
 - (void) requestFailed:(id)request
 {
     
     ASIHTTPRequest *theRequest = (ASIHTTPRequest *)request;
     
     NSLog(@"Common upload operation failed with error:%@",theRequest.error);
+    
+    [self logToDesktop:theRequest.error];
+    
+    
+    //[[NSFileManager defaultManager] ]
     
     //trying to get detailed description
     
@@ -703,6 +744,8 @@
     if (details) {
         
         NSLog(@"Error detail:%@",details);
+        
+        [self logToDesktop:details];
         
     }
     
