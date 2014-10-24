@@ -426,7 +426,7 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
         [PreferenceManager loadPreference];
         
         
-		//[[Mixpanel sharedInstance] identify:[response object]];
+		[[Mixpanel sharedInstance] identify:[response object]];
         
         
         //[[BoxSimpleShareAppDelegate sharedDelegate] createMenu];

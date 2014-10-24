@@ -1299,6 +1299,7 @@ void *kContextActivePanel = &kContextActivePanel;
         
         filePath = [filePath stringByAppendingPathComponent:[path lastPathComponent]];
         //copy file to desktop
+        
         if (self.mainController.disable_automatic_upload_check) {
             //if uploads disable, move file from chache to desktop
             

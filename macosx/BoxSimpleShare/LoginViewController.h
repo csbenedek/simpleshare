@@ -14,9 +14,23 @@
 
 @property (nonatomic, retain) MAAttachedWindow *window;
 
+@property (nonatomic, retain) IBOutlet NSButton *loginButton;
+
+
+
+
 
 
 
 -(IBAction)loginButtonClicked:(id) sender;
+
+-(IBAction)quit:(id)sender;
+
+
+
+-(void)disableLoginButton;
+-(void)enableLoginButton;
+
+
 
 @end

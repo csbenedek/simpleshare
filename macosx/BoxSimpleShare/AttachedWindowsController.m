@@ -30,6 +30,28 @@
 
 @implementation AttachedWindowsController
 
+
+-(id)init{
+    
+    self = [super init];
+    
+    if (self) {
+        
+        //LoginViewController *controller = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        
+        //self.loginWindowController = controller;
+        
+        
+        return self;
+        
+        
+    }
+    
+    return nil;
+    
+}
+
+/*
 -(id)initWithSettings:(NSDictionary *)settingsDict{
     
     self = [super init];
@@ -44,7 +66,7 @@
     }
     
     return nil;
-}
+}*/
 
 
 

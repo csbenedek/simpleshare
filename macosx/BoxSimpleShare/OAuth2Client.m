@@ -12,6 +12,10 @@
 #import "ASINetworkQueue.h"
 #import "SBJsonParser.h"
 #import "GrantAccessWindowController.h"
+#import "BoxSimpleShareAppDelegate.h"
+#import "LoginViewController.h"
+#import "AttachedWindowsController.h"
+
 @implementation OAuth2Client
 
 static OAuth2Client* oauth2SharedInstance = nil;
@@ -93,6 +97,9 @@ GrantAccessWindowController* accessWindowController;
 
 - (void) authorize
 {
+    
+    
+    
 	if (!refreshToken)
 	{
 		NSString* redirectURL = [NSURL URLWithString: [NSString stringWithFormat:@"http://localhost:%d", (int)[server listenPort]]];
@@ -351,10 +358,22 @@ GrantAccessWindowController* accessWindowController;
 	{
 		[self refreshAccessToken];
 	}
+    
 }
 
 - (void) refreshAccessToken
 {
+    /*
+    //disable login button
+    BoxSimpleShareAppDelegate *delegate = (BoxSimpleShareAppDelegate *)[[NSApplication sharedApplication] delegate];
+    
+    LoginViewController *controller = delegate.attachedWindowsController.loginWindowController;
+    
+    
+    [controller disableLoginButton];
+     */
+    
+    
 	DbgLog(@"Refreshing OAuth2 access token...");
 
 	NSURL* url = [NSURL URLWithString:OAUTH2_AUTH_TOKEN_URL];

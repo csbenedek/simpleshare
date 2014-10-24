@@ -14,6 +14,8 @@
 		0D2B34D019DDF187009B06EF /* logout-from-youtube-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2B34CC19DDF186009B06EF /* logout-from-youtube-button@2x.png */; };
 		0D48778419D2FD2E0015961F /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48778319D2FD2E0015961F /* NSString+URLEncoding.m */; };
 		0D48778719D301DD0015961F /* NSString+HTMLTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48778619D301DD0015961F /* NSString+HTMLTags.m */; };
+		0D4FA97519FADC1500588416 /* close_button_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4FA97319FADC1500588416 /* close_button_small@2x.png */; };
+		0D4FA97719FADC6700588416 /* close_button_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4FA97619FADC6700588416 /* close_button_small.png */; };
 		0D54348019DC45EC0002135C /* YouTubeThumbnailLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D54347F19DC45EC0002135C /* YouTubeThumbnailLoader.m */; };
 		0D6C7F3219CE022100D40BD3 /* MainPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3019CE022100D40BD3 /* MainPreferencesViewController.m */; };
 		0D6C7F3319CE022100D40BD3 /* MainPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3119CE022100D40BD3 /* MainPreferencesViewController.xib */; };
@@ -406,6 +408,8 @@
 		0D48778319D2FD2E0015961F /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		0D48778519D301DD0015961F /* NSString+HTMLTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTMLTags.h"; sourceTree = "<group>"; };
 		0D48778619D301DD0015961F /* NSString+HTMLTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTMLTags.m"; sourceTree = "<group>"; };
+		0D4FA97319FADC1500588416 /* close_button_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_button_small@2x.png"; sourceTree = "<group>"; };
+		0D4FA97619FADC6700588416 /* close_button_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_button_small.png; sourceTree = "<group>"; };
 		0D54347E19DC45EC0002135C /* YouTubeThumbnailLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeThumbnailLoader.h; sourceTree = "<group>"; };
 		0D54347F19DC45EC0002135C /* YouTubeThumbnailLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeThumbnailLoader.m; sourceTree = "<group>"; };
 		0D6C7F2F19CE022100D40BD3 /* MainPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPreferencesViewController.h; sourceTree = "<group>"; };
@@ -1278,6 +1282,8 @@
 		848F999819609BC800984731 /* New Images */ = {
 			isa = PBXGroup;
 			children = (
+				0D4FA97619FADC6700588416 /* close_button_small.png */,
+				0D4FA97319FADC1500588416 /* close_button_small@2x.png */,
 				0D9AF00919DF531D003D5275 /* dont-use-imgur-button-pressed.png */,
 				0D9AF00A19DF531D003D5275 /* dont-use-imgur-button-pressed@2x.png */,
 				0D9AF00B19DF531D003D5275 /* dont-use-imgur-button.png */,
@@ -2144,7 +2150,7 @@
 				ORGANIZATIONNAME = SAPLogix;
 				TargetAttributes = {
 					8BDB2D1A13C3989F003BFDE0 = {
-						DevelopmentTeam = S9S8JXEXXT;
+						DevelopmentTeam = 956ZZDEPUK;
 					};
 				};
 			};
@@ -2232,6 +2238,7 @@
 				0D9AF01819DF531D003D5275 /* use-imgur-button@2x.png in Resources */,
 				8B84069413D375C30025EA39 /* pdf.png in Resources */,
 				8B84069513D375C30025EA39 /* photoshop.png in Resources */,
+				0D4FA97519FADC1500588416 /* close_button_small@2x.png in Resources */,
 				0DF52E4919C8BBFC000D2D56 /* MainViewCellController.xib in Resources */,
 				8B84069613D375C30025EA39 /* powerpoint.png in Resources */,
 				849219CB18F1426A000F0E7D /* LoginWindowController.xib in Resources */,
@@ -2331,6 +2338,7 @@
 				2CAFB75316B1C3D000418D61 /* icon-animation-15.png in Resources */,
 				848F99F819609C2F00984731 /* box-account-logout-button-pressed.png in Resources */,
 				2CAFB75416B1C3D000418D61 /* icon-animation-15@2x.png in Resources */,
+				0D4FA97719FADC6700588416 /* close_button_small.png in Resources */,
 				2CAFB75516B1C3D000418D61 /* icon-animation-16.png in Resources */,
 				84ADE14119AA4B3D009AAD62 /* nouser.png in Resources */,
 				2CAFB75616B1C3D000418D61 /* icon-animation-16@2x.png in Resources */,
@@ -2369,7 +2377,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "LOCATION=\"${BUILT_PRODUCTS_DIR}\"/\"${FRAMEWORKS_FOLDER_PATH}\"\nCONTENTS=\"${BUILT_PRODUCTS_DIR}\"/\"${CONTENTS_FOLDER_PATH}\"\nIDENTITY=\"Unplugged\"\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/Growl.framework/\"\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/GTL.framework/\"";
+			shellScript = "LOCATION=\"${BUILT_PRODUCTS_DIR}\"/\"${FRAMEWORKS_FOLDER_PATH}\"\nCONTENTS=\"${BUILT_PRODUCTS_DIR}\"/\"${CONTENTS_FOLDER_PATH}\"\nIDENTITY=\"Mac Developer: Aaron Levie (8TCQ7LXTCG)\"\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/Growl.framework/\"\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/GTL.framework/\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2632,7 +2640,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = SimpleShare.entitlements;
-				CODE_SIGN_IDENTITY = Unplugged;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2670,7 +2678,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = SimpleShare.entitlements;
-				CODE_SIGN_IDENTITY = Unplugged;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";

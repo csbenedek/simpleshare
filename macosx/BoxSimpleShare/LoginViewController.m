@@ -89,7 +89,21 @@
 }
 
 
+-(void)disableLoginButton{
+    
+    //[self.loginButton setEnabled:FALSE];
+    
+    //[self.window update];
+    
+    
+}
 
+-(IBAction)quit:(id)sender{
+    
+    [[NSApplication sharedApplication] terminate:nil];
+
+    
+}
 
 //-(NSInteger)tableView
 
