@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>LoginHelper.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>SimpleShare.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0D45F9C41A0119CC003A8595</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0D45F9D61A0119CD003A8595</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8BDB2D1A13C3989F003BFDE0</key>
 		<dict>
 			<key>primary</key>
