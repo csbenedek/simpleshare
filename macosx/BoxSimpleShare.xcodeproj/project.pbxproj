@@ -12,6 +12,13 @@
 		0D2B34CE19DDF187009B06EF /* logout-from-youtube-button-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2B34CA19DDF186009B06EF /* logout-from-youtube-button-pressed@2x.png */; };
 		0D2B34CF19DDF187009B06EF /* logout-from-youtube-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2B34CB19DDF186009B06EF /* logout-from-youtube-button.png */; };
 		0D2B34D019DDF187009B06EF /* logout-from-youtube-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2B34CC19DDF186009B06EF /* logout-from-youtube-button@2x.png */; };
+		0D2C6F811A0155190068B4EB /* StartAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C6F801A0155190068B4EB /* StartAtLoginController.m */; };
+		0D2C6F831A015F340068B4EB /* LoginHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0D45F9C51A0119CC003A8595 /* LoginHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0D45F9CA1A0119CC003A8595 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D45F9C91A0119CC003A8595 /* main.m */; };
+		0D45F9CD1A0119CC003A8595 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D45F9CC1A0119CC003A8595 /* AppDelegate.m */; };
+		0D45F9CF1A0119CD003A8595 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D45F9CE1A0119CD003A8595 /* Images.xcassets */; };
+		0D45F9D21A0119CD003A8595 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D45F9D01A0119CD003A8595 /* MainMenu.xib */; };
+		0D45F9E61A011A9F003A8595 /* LoginHelper.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 0D45F9E51A011A9F003A8595 /* LoginHelper.entitlements */; };
 		0D48778419D2FD2E0015961F /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48778319D2FD2E0015961F /* NSString+URLEncoding.m */; };
 		0D48778719D301DD0015961F /* NSString+HTMLTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48778619D301DD0015961F /* NSString+HTMLTags.m */; };
 		0D4FA97519FADC1500588416 /* close_button_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4FA97319FADC1500588416 /* close_button_small@2x.png */; };
@@ -230,7 +237,6 @@
 		84D7477A188C4F700033EE2F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D74779188C4F700033EE2F /* WebKit.framework */; };
 		84DE8C71184F4BA80052B7FC /* NSImage+SavingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DE8C6F184F4BA80052B7FC /* NSImage+SavingAdditions.m */; };
 		84E38B5A18532B6300547472 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E38B5918532B6300547472 /* ServiceManagement.framework */; };
-		84E38B5E18532BD900547472 /* LoginHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 84E38B5B18532BA600547472 /* LoginHelper.app */; };
 		84E9B4261863F62F00C881A5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E9B4251863F62F00C881A5 /* AVFoundation.framework */; };
 		84F29FEA18F2B662002B12EB /* GTLYouTube_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F29FE918F2B662002B12EB /* GTLYouTube_Sources.m */; };
 		84F29FED18F2BF70002B12EB /* YoutubeAuthenticateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F29FEC18F2BF70002B12EB /* YoutubeAuthenticateManager.m */; };
@@ -373,19 +379,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		84E38B5D18532BD300547472 /* CopyFiles */ = {
+		0D2C6F821A015F1A0068B4EB /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				84E38B5E18532BD900547472 /* LoginHelper.app in CopyFiles */,
+				0D2C6F831A015F340068B4EB /* LoginHelper.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8B120E4B13D329EF00604F85 /* Copy Linked Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
@@ -404,6 +410,16 @@
 		0D2B34CA19DDF186009B06EF /* logout-from-youtube-button-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logout-from-youtube-button-pressed@2x.png"; path = "New Images/logout-from-youtube-button-pressed@2x.png"; sourceTree = "<group>"; };
 		0D2B34CB19DDF186009B06EF /* logout-from-youtube-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logout-from-youtube-button.png"; path = "New Images/logout-from-youtube-button.png"; sourceTree = "<group>"; };
 		0D2B34CC19DDF186009B06EF /* logout-from-youtube-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logout-from-youtube-button@2x.png"; path = "New Images/logout-from-youtube-button@2x.png"; sourceTree = "<group>"; };
+		0D2C6F7F1A0155190068B4EB /* StartAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartAtLoginController.h; sourceTree = "<group>"; };
+		0D2C6F801A0155190068B4EB /* StartAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartAtLoginController.m; sourceTree = "<group>"; };
+		0D45F9C51A0119CC003A8595 /* LoginHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D45F9C81A0119CC003A8595 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D45F9C91A0119CC003A8595 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0D45F9CB1A0119CC003A8595 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0D45F9CC1A0119CC003A8595 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0D45F9CE1A0119CD003A8595 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0D45F9D11A0119CD003A8595 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		0D45F9E51A011A9F003A8595 /* LoginHelper.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LoginHelper.entitlements; sourceTree = "<group>"; };
 		0D48778219D2FD2E0015961F /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
 		0D48778319D2FD2E0015961F /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		0D48778519D301DD0015961F /* NSString+HTMLTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTMLTags.h"; sourceTree = "<group>"; };
@@ -690,7 +706,6 @@
 		84DE8C70184F4BA80052B7FC /* NSImage+SavingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+SavingAdditions.h"; sourceTree = "<group>"; };
 		84E38B5718532AFC00547472 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/ApplicationServices.framework; sourceTree = DEVELOPER_DIR; };
 		84E38B5918532B6300547472 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/ServiceManagement.framework; sourceTree = DEVELOPER_DIR; };
-		84E38B5B18532BA600547472 /* LoginHelper.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = LoginHelper.app; path = LoginHelper/build/Release/LoginHelper.app; sourceTree = "<group>"; };
 		84E9B4251863F62F00C881A5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		84F29FE818F2B655002B12EB /* GTLYouTube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLYouTube.h; path = Generated/GTLYouTube.h; sourceTree = "<group>"; };
 		84F29FE918F2B662002B12EB /* GTLYouTube_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLYouTube_Sources.m; path = Generated/GTLYouTube_Sources.m; sourceTree = "<group>"; };
@@ -990,6 +1005,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0D45F9C21A0119CC003A8595 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8BDB2D1813C3989F003BFDE0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1022,6 +1044,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D2C6F7E1A0154FC0068B4EB /* LoginController */ = {
+			isa = PBXGroup;
+			children = (
+				0D2C6F7F1A0155190068B4EB /* StartAtLoginController.h */,
+				0D2C6F801A0155190068B4EB /* StartAtLoginController.m */,
+			);
+			name = LoginController;
+			sourceTree = "<group>";
+		};
+		0D45F9C61A0119CC003A8595 /* LoginHelper */ = {
+			isa = PBXGroup;
+			children = (
+				0D45F9CB1A0119CC003A8595 /* AppDelegate.h */,
+				0D45F9CC1A0119CC003A8595 /* AppDelegate.m */,
+				0D45F9CE1A0119CD003A8595 /* Images.xcassets */,
+				0D45F9D01A0119CD003A8595 /* MainMenu.xib */,
+				0D45F9C71A0119CC003A8595 /* Supporting Files */,
+				0D45F9E51A011A9F003A8595 /* LoginHelper.entitlements */,
+			);
+			path = LoginHelper;
+			sourceTree = "<group>";
+		};
+		0D45F9C71A0119CC003A8595 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0D45F9C81A0119CC003A8595 /* Info.plist */,
+				0D45F9C91A0119CC003A8595 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		0D48778119D2FD070015961F /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -1757,9 +1810,9 @@
 			isa = PBXGroup;
 			children = (
 				8413C2401857839C00D5A115 /* icons.icns */,
-				84E38B5B18532BA600547472 /* LoginHelper.app */,
 				2CBDB36F16FA554D00BA81E1 /* SimpleShare.entitlements */,
 				8BDB2D2513C3989F003BFDE0 /* BoxSimpleShare */,
+				0D45F9C61A0119CC003A8595 /* LoginHelper */,
 				8BDB2D1E13C3989F003BFDE0 /* Frameworks */,
 				8BDB2D1C13C3989F003BFDE0 /* Products */,
 				8B4C683813CF14E70044492C /* APPL.icns */,
@@ -1771,6 +1824,7 @@
 			isa = PBXGroup;
 			children = (
 				8BDB2D1B13C3989F003BFDE0 /* SimpleShare.app */,
+				0D45F9C51A0119CC003A8595 /* LoginHelper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1822,6 +1876,7 @@
 		8BDB2D2513C3989F003BFDE0 /* BoxSimpleShare */ = {
 			isa = PBXGroup;
 			children = (
+				0D2C6F7E1A0154FC0068B4EB /* LoginController */,
 				0DF52E2C19C8B91C000D2D56 /* New Design */,
 				848F998519607FC000984731 /* PopupUI */,
 				8B69535D13C4D71500B32618 /* App Constants */,
@@ -2120,6 +2175,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0D45F9C41A0119CC003A8595 /* LoginHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D45F9E31A0119CD003A8595 /* Build configuration list for PBXNativeTarget "LoginHelper" */;
+			buildPhases = (
+				0D45F9C11A0119CC003A8595 /* Sources */,
+				0D45F9C21A0119CC003A8595 /* Frameworks */,
+				0D45F9C31A0119CC003A8595 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LoginHelper;
+			productName = LoginHelper;
+			productReference = 0D45F9C51A0119CC003A8595 /* LoginHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
 		8BDB2D1A13C3989F003BFDE0 /* SimpleShare */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BDB2D3913C3989F003BFDE0 /* Build configuration list for PBXNativeTarget "SimpleShare" */;
@@ -2128,8 +2200,8 @@
 				8BDB2D1813C3989F003BFDE0 /* Frameworks */,
 				8BDB2D1913C3989F003BFDE0 /* Resources */,
 				8B120E4B13D329EF00604F85 /* Copy Linked Frameworks */,
-				84E38B5D18532BD300547472 /* CopyFiles */,
-				844218E5186162FE00E0AB8C /* ShellScript */,
+				844218E5186162FE00E0AB8C /* Run Script */,
+				0D2C6F821A015F1A0068B4EB /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -2146,9 +2218,18 @@
 		8BDB2D1213C3989E003BFDE0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = SAPLogix;
 				TargetAttributes = {
+					0D45F9C41A0119CC003A8595 = {
+						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 956ZZDEPUK;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
 					8BDB2D1A13C3989F003BFDE0 = {
 						DevelopmentTeam = 956ZZDEPUK;
 					};
@@ -2160,6 +2241,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 8BDB2D1013C3989E003BFDE0;
 			productRefGroup = 8BDB2D1C13C3989F003BFDE0 /* Products */;
@@ -2167,11 +2249,22 @@
 			projectRoot = "";
 			targets = (
 				8BDB2D1A13C3989F003BFDE0 /* SimpleShare */,
+				0D45F9C41A0119CC003A8595 /* LoginHelper */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0D45F9C31A0119CC003A8595 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D45F9CF1A0119CD003A8595 /* Images.xcassets in Resources */,
+				0D45F9E61A011A9F003A8595 /* LoginHelper.entitlements in Resources */,
+				0D45F9D21A0119CD003A8595 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8BDB2D1913C3989F003BFDE0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2366,22 +2459,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		844218E5186162FE00E0AB8C /* ShellScript */ = {
+		844218E5186162FE00E0AB8C /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "LOCATION=\"${BUILT_PRODUCTS_DIR}\"/\"${FRAMEWORKS_FOLDER_PATH}\"\nCONTENTS=\"${BUILT_PRODUCTS_DIR}\"/\"${CONTENTS_FOLDER_PATH}\"\nIDENTITY=\"Mac Developer: Aaron Levie (8TCQ7LXTCG)\"\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/Growl.framework/\"\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/GTL.framework/\"";
+			shellScript = "LOCATION=\"${BUILT_PRODUCTS_DIR}\"/\"${FRAMEWORKS_FOLDER_PATH}\"\nCONTENTS=\"${BUILT_PRODUCTS_DIR}\"/\"${CONTENTS_FOLDER_PATH}\"\n#IDENTITY=\"Mac Developer: Aaron Levie (8TCQ7LXTCG)\"\n\nIDENTITY=\"3rd Party Mac Developer Application: Aaron Levie (956ZZDEPUK)\"\n\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/Growl.framework\"\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/GTL.framework\"\n#codesign --verbose --force --sign \"$IDENTITY\" \"$CONTENTS/Library/LoginItems/LoginHelper.app/\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0D45F9C11A0119CC003A8595 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D45F9CD1A0119CC003A8595 /* AppDelegate.m in Sources */,
+				0D45F9CA1A0119CC003A8595 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8BDB2D1713C3989F003BFDE0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2514,6 +2617,7 @@
 				9104DDB2146BE9B900D1A0C9 /* BoxRegisterOperation.m in Sources */,
 				9104DDB3146BE9B900D1A0C9 /* BoxRenameOperation.m in Sources */,
 				848D2D741969CE3F0054F0EF /* NSColor+ColorExtensions.m in Sources */,
+				0D2C6F811A0155190068B4EB /* StartAtLoginController.m in Sources */,
 				9104DDB4146BE9B900D1A0C9 /* BoxUploadOperation.m in Sources */,
 				84CC87F31916C55800A239E0 /* DragAnDropView.m in Sources */,
 				84ADE14419AA5EF0009AAD62 /* ITSwitch.m in Sources */,
@@ -2546,6 +2650,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		0D45F9D01A0119CD003A8595 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D45F9D11A0119CD003A8595 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		8BDB2D2813C3989F003BFDE0 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2565,6 +2677,63 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0D45F9DF1A0119CD003A8595 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_ENTITLEMENTS = LoginHelper/LoginHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = LoginHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		0D45F9E01A0119CD003A8595 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_ENTITLEMENTS = LoginHelper/LoginHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = LoginHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		8BDB2D3713C3989F003BFDE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2574,7 +2743,9 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2611,7 +2782,9 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -2668,6 +2841,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = SimpleShare;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2706,6 +2880,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = SimpleShare;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2714,6 +2889,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0D45F9E31A0119CD003A8595 /* Build configuration list for PBXNativeTarget "LoginHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D45F9DF1A0119CD003A8595 /* Debug */,
+				0D45F9E01A0119CD003A8595 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8BDB2D1513C3989E003BFDE0 /* Build configuration list for PBXProject "BoxSimpleShare" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -24,6 +24,8 @@
 #import "YoutubeAuthenticateManager.h"
 #import "YoutubeUploadWindowController.h"
 #import "ITSwitch.h"
+#import "StartAtLoginController.h"
+
 
 static NSString* SignUpURL = @"https://www.box.com/signup/personal";
 static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"http://www.box.com/business/features/";
@@ -99,8 +101,17 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
     
     prefSyncTimer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(serializePrefIfDirty) userInfo:nil repeats:YES];
     
+    StartAtLoginController *loginController = [[StartAtLoginController alloc] init];
     
-    self.launch_at_startup_check = [Utilities shouldLaunchOnSystemStartup];
+    [loginController setBundle:[NSBundle bundleWithPath:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"Contents/Library/LoginItems/LoginHelper.app"]]];
+    
+    
+    //self.launch_at_startup_check = [Utilities shouldLaunchOnSystemStartup];
+    
+    self.launch_at_startup_check = [loginController startAtLogin];
+    
+    
+    [loginController release];
     
     
     youtubeWindowController = [[LoginWindowController alloc] initWithWindowNibName:@"LoginWindowController"];

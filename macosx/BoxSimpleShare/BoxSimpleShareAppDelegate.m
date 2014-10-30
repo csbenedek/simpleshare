@@ -31,6 +31,8 @@
 
 #import "AttachedWindowsController.h"
 #import "PreferencesController.h"
+#import "StartAtLoginController.h"
+
 
 
 
@@ -826,11 +828,28 @@ void *kContextActivePanel = &kContextActivePanel;
         [self setupVideoCaptureHotKey];
     } else if ([keyPath isEqualToString:@"launch_at_startup_check"]) {
         BOOL launchOnStart = [mainController launch_at_startup_check];
+        
+        StartAtLoginController *loginController = [[StartAtLoginController alloc] init];
+        
+        [loginController setBundle:[NSBundle bundleWithPath:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"Contents/Library/LoginItems/LoginHelper.app"]]];
+        
+        
         if (launchOnStart) {
-            [Utilities addAppAsStartupItem];
+            //[Utilities addAppAsStartupItem];
+            
+            [loginController setStartAtLogin:TRUE];
+            
+            
         } else {
-            [Utilities deleteAppFromLoginItem];
+            //[Utilities deleteAppFromLoginItem];
+            
+            [loginController setStartAtLogin:FALSE];
+            
         }
+
+        [loginController release];
+        
+        
     }
 
     else {
