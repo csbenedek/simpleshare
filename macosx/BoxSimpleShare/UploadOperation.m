@@ -731,7 +731,7 @@
     ASIHTTPRequest *theRequest = (ASIHTTPRequest *)request;
     
     NSLog(@"Common upload operation failed with error:%@",theRequest.error);
-    
+    /*
     [self logToDesktop:theRequest.error];
     
     
@@ -747,7 +747,7 @@
         
         [self logToDesktop:details];
         
-    }
+    }*/
     
     
     [BoxSimpleShareAppDelegate showNotificationWithTitle:@"Upload Failed" withDescription:[NSString stringWithFormat:@"Failed to upload file '%@'", [self FileName]]];
