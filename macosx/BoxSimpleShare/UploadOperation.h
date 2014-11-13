@@ -51,5 +51,9 @@
 - (void)deleteLastUploadedFilesZippedOnly:(BOOL)zippedOnly;\
 -(void)logToDesktop:(NSString *)errorString;
 
+-(void)uploadFileWithPath:(NSString *)path;
+
+
+
 
 @end

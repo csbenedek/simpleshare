@@ -44,7 +44,6 @@
 		0D9AF01C19DF571D003D5275 /* ImgurThumbnailLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9AF01B19DF571D003D5275 /* ImgurThumbnailLoader.m */; };
 		0DB634A319CCB29300F97E34 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB634A119CCB29300F97E34 /* PreferencesController.m */; };
 		0DB634A419CCB29300F97E34 /* PreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB634A219CCB29300F97E34 /* PreferencesController.xib */; };
-		0DBB3FB919ED360900101B19 /* UploadOperationNew.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB3FB819ED360900101B19 /* UploadOperationNew.m */; };
 		0DC9DC3619D70F3100267D84 /* SHTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9DC3519D70F3100267D84 /* SHTableView.m */; };
 		0DF52E3219C8BB4F000D2D56 /* AttachedWindowsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */; };
 		0DF52E3719C8BB8B000D2D56 /* VideoCaptureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E3519C8BB8B000D2D56 /* VideoCaptureController.m */; };
@@ -455,8 +454,6 @@
 		0DB634A019CCB29300F97E34 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		0DB634A119CCB29300F97E34 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		0DB634A219CCB29300F97E34 /* PreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesController.xib; sourceTree = "<group>"; };
-		0DBB3FB719ED360900101B19 /* UploadOperationNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadOperationNew.h; sourceTree = "<group>"; };
-		0DBB3FB819ED360900101B19 /* UploadOperationNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadOperationNew.m; sourceTree = "<group>"; };
 		0DC9DC3419D70F3100267D84 /* SHTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTableView.h; sourceTree = "<group>"; };
 		0DC9DC3519D70F3100267D84 /* SHTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHTableView.m; sourceTree = "<group>"; };
 		0DF52E3019C8BB4F000D2D56 /* AttachedWindowsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachedWindowsController.h; sourceTree = "<group>"; };
@@ -1644,8 +1641,6 @@
 		8B69536413C63B3800B32618 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
-				0DBB3FB719ED360900101B19 /* UploadOperationNew.h */,
-				0DBB3FB819ED360900101B19 /* UploadOperationNew.m */,
 				84F29FE818F2B655002B12EB /* GTLYouTube.h */,
 				84F29FE918F2B662002B12EB /* GTLYouTube_Sources.m */,
 				849219C718F14269000F0E7D /* LoginWindowController.h */,
@@ -2639,7 +2634,6 @@
 				843F1B05187FD94200DA291E /* FolderUtility.m in Sources */,
 				2CAFB79B16B5C83A00418D61 /* OAuth2Server.m in Sources */,
 				848F99941960990F00984731 /* PopupLoginViewController.m in Sources */,
-				0DBB3FB919ED360900101B19 /* UploadOperationNew.m in Sources */,
 				2CAFB7CC16B71E7000418D61 /* OAuth2Connection.m in Sources */,
 				848E35261883DC17000F83B1 /* NSAlert+SynchronousSheet.m in Sources */,
 				8433B2B919ADA10E00DBA8FC /* PXListViewCell.m in Sources */,

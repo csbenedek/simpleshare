@@ -22,7 +22,7 @@
 #import "ImgurUploadOperation.h"
 #import "YoutubeUploadOperation.h"
 #import "Mixpanel.h"
-#import "UploadOperationNew.h"
+
 
 
 
@@ -177,6 +177,7 @@ static BoxNetHandler *sharedObject = nil;
 
 - (void) uploadFiles:(id)files withProperties:(NSDictionary *)properties {
     
+    
     MainController *controller = [[BoxSimpleShareAppDelegate sharedDelegate] mainController];
     
     //if disable upload is on, just return
@@ -217,6 +218,7 @@ static BoxNetHandler *sharedObject = nil;
     }
     
     [operationQueue addOperation:opt];
+    
 
     safe_release(opt);
 }
