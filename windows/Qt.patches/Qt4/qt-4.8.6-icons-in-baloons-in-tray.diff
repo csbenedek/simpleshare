@@ -1,0 +1,182 @@
+ src/gui/util/qsystemtrayicon.cpp     | 13 +++++++++++++
+ src/gui/util/qsystemtrayicon.h       |  8 +++++++-
+ src/gui/util/qsystemtrayicon_p.h     |  1 +
+ src/gui/util/qsystemtrayicon_win.cpp | 28 +++++++++++++++++++++++++++-
+ 4 files changed, 48 insertions(+), 2 deletions(-)
+
+diff --git a/src/gui/util/qsystemtrayicon.cpp b/src/gui/util/qsystemtrayicon.cpp
+index 1629286..3439da8 100644
+--- a/src/gui/util/qsystemtrayicon.cpp
++++ b/src/gui/util/qsystemtrayicon.cpp
+@@ -205,6 +205,19 @@ QIcon QSystemTrayIcon::icon() const
+     return d->icon;
+ }
+ 
++void QSystemTrayIcon::setUserBalloonIcon(const QIcon &icon)
++{
++    Q_D(QSystemTrayIcon);
++    d->icon = icon;
++    d->updateIcon_sys();
++}
++
++QIcon QSystemTrayIcon::userBalloonIcon() const
++{
++    Q_D(const QSystemTrayIcon);
++    return d->userBalloonIcon;
++}
++
+ /*!
+     \property QSystemTrayIcon::toolTip
+     \brief the tooltip for the system tray entry
+diff --git a/src/gui/util/qsystemtrayicon.h b/src/gui/util/qsystemtrayicon.h
+index ab58773..c2064c2 100644
+--- a/src/gui/util/qsystemtrayicon.h
++++ b/src/gui/util/qsystemtrayicon.h
+@@ -48,6 +48,8 @@
+ 
+ #include <QtGui/qicon.h>
+ 
++#define USER_ICONS_IN_SYSTRAY_BALLOONS
++
+ QT_BEGIN_HEADER
+ 
+ QT_BEGIN_NAMESPACE
+@@ -67,6 +69,7 @@ class Q_GUI_EXPORT QSystemTrayIcon : public QObject
+     Q_OBJECT
+     Q_PROPERTY(QString toolTip READ toolTip WRITE setToolTip)
+     Q_PROPERTY(QIcon icon READ icon WRITE setIcon)
++    Q_PROPERTY(QIcon userBalloonIcon READ userBalloonIcon WRITE setUserBalloonIcon)
+     Q_PROPERTY(bool visible READ isVisible WRITE setVisible DESIGNABLE false)
+ 
+ public:
+@@ -90,13 +93,16 @@ public:
+     QIcon icon() const;
+     void setIcon(const QIcon &icon);
+ 
++    QIcon userBalloonIcon() const;
++    void setUserBalloonIcon(const QIcon &icon);
++
+     QString toolTip() const;
+     void setToolTip(const QString &tip);
+ 
+     static bool isSystemTrayAvailable();
+     static bool supportsMessages();
+ 
+-    enum MessageIcon { NoIcon, Information, Warning, Critical };
++    enum MessageIcon { NoIcon, Information, Warning, Critical, UserIcon };
+     void showMessage(const QString &title, const QString &msg,
+                      MessageIcon icon = Information, int msecs = 10000);
+ 
+diff --git a/src/gui/util/qsystemtrayicon_p.h b/src/gui/util/qsystemtrayicon_p.h
+index afa57b2..e30649a 100644
+--- a/src/gui/util/qsystemtrayicon_p.h
++++ b/src/gui/util/qsystemtrayicon_p.h
+@@ -89,6 +89,7 @@ public:
+ 
+     QPointer<QMenu> menu;
+     QIcon icon;
++    QIcon userBalloonIcon;
+     QString toolTip;
+     QSystemTrayIconSys *sys;
+     bool visible;
+diff --git a/src/gui/util/qsystemtrayicon_win.cpp b/src/gui/util/qsystemtrayicon_win.cpp
+index 35dd808..34edb28 100644
+--- a/src/gui/util/qsystemtrayicon_win.cpp
++++ b/src/gui/util/qsystemtrayicon_win.cpp
+@@ -42,6 +42,10 @@
+ #include "qsystemtrayicon_p.h"
+ #ifndef QT_NO_SYSTEMTRAYICON
+ 
++#ifndef NTDDI_VERSION
++#define NTDDI_VERSION 0x06000000 //NTDDI_VISTA
++#endif
++
+ #ifndef _WIN32_WINNT
+ #define _WIN32_WINNT 0x0600
+ #endif
+@@ -114,6 +118,7 @@ public:
+     QRect findIconGeometry(const int a_iButtonID);
+     void createIcon();
+     HICON hIcon;
++    HICON hUserBalloonIcon;
+     QPoint globalPos;
+     QSystemTrayIcon *q;
+ private:
+@@ -135,7 +140,7 @@ static bool allowsMessages()
+ }
+ 
+ QSystemTrayIconSys::QSystemTrayIconSys(QSystemTrayIcon *object)
+-    : hIcon(0), q(object), ignoreNextMouseRelease(false)
++    : hIcon(0), hUserBalloonIcon(0), q(object), ignoreNextMouseRelease(false)
+ 
+ {
+     if (QSysInfo::windowsVersion() >= QSysInfo::WV_VISTA) {
+@@ -175,6 +180,8 @@ QSystemTrayIconSys::~QSystemTrayIconSys()
+ {
+     if (hIcon)
+         DestroyIcon(hIcon);
++    if (hUserBalloonIcon)
++        DestroyIcon(hUserBalloonIcon);
+ }
+ 
+ void QSystemTrayIconSys::setIconContents(NOTIFYICONDATA &tnd)
+@@ -182,6 +189,7 @@ void QSystemTrayIconSys::setIconContents(NOTIFYICONDATA &tnd)
+     tnd.uFlags |= NIF_MESSAGE | NIF_ICON | NIF_TIP;
+     tnd.uCallbackMessage = MYWM_NOTIFYICON;
+     tnd.hIcon = hIcon;
++    tnd.hBalloonIcon = hUserBalloonIcon;
+     QString tip = q->toolTip();
+ 
+     if (!tip.isNull()) {
+@@ -201,6 +209,8 @@ static int iconFlag( QSystemTrayIcon::MessageIcon icon )
+             return NIIF_ERROR;
+         case QSystemTrayIcon::NoIcon:
+             return NIIF_NONE;
++        case QSystemTrayIcon::UserIcon:
++            return NIIF_USER;
+         default:
+             Q_ASSERT_X(false, "QSystemTrayIconSys::showMessage", "Invalid QSystemTrayIcon::MessageIcon value");
+             return NIIF_NONE;
+@@ -217,6 +227,9 @@ bool QSystemTrayIconSys::showMessage(const QString &title, const QString &messag
+ 
+     tnd.uID = q_uNOTIFYICONID;
+     tnd.dwInfoFlags = iconFlag(type);
++    if ( type == QSystemTrayIcon::UserIcon ) {
++        tnd.hBalloonIcon = hUserBalloonIcon;
++    }
+     tnd.cbSize = notifyIconSize;
+     tnd.hWnd = winId();
+     tnd.uTimeout = uSecs;
+@@ -267,6 +280,16 @@ void QSystemTrayIconSys::createIcon()
+         return;
+ 
+     hIcon = pm.toWinHICON();
++
++    hUserBalloonIcon = 0;
++    QIcon userIcon = q->userBalloonIcon();
++    if (userIcon.isNull()) {
++        hUserBalloonIcon = hIcon;
++    } else {
++       QPixmap pm = userIcon.pixmap(size);
++       if (!pm.isNull())
++           hUserBalloonIcon = pm.toWinHICON();
++    }
+ }
+ 
+ bool QSystemTrayIconSys::winEvent( MSG *m, long *result )
+@@ -488,12 +511,15 @@ void QSystemTrayIconPrivate::updateIcon_sys()
+         return;
+ 
+     HICON hIconToDestroy = sys->hIcon;
++    HICON hIconToDestroy2 = sys->hUserBalloonIcon;
+ 
+     sys->createIcon();
+     sys->trayMessage(NIM_MODIFY);
+ 
+     if (hIconToDestroy)
+         DestroyIcon(hIconToDestroy);
++    if (hIconToDestroy2)
++        DestroyIcon(hIconToDestroy2);
+ }
+ 
+ void QSystemTrayIconPrivate::updateMenu_sys()
