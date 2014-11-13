@@ -454,6 +454,11 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
         
         DbgLog(@"Login Successfull!");
         
+        //get list of uploaded files
+        
+        [[BoxNetHandler sharedHandler] getListOfUploadedFiles];
+        
+        
         
         PostNotification(@"SuccessfulLoginNotification"); //see processShowSuccessfulLoginMessageNotification of AttachedWindowController
         
@@ -468,7 +473,7 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
 
 - (void)loginFailed:(NSNotification*)notification {
     
-    NSLog(@"Loginnnn failed!");
+    NSLog(@"Login failed!");
     
     
 }

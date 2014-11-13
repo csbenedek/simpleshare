@@ -22,6 +22,8 @@
 #import "ImgurUploadOperation.h"
 #import "YoutubeUploadOperation.h"
 #import "Mixpanel.h"
+#import "HTTPFormDataRequest.h"
+
 
 
 
@@ -223,6 +225,70 @@ static BoxNetHandler *sharedObject = nil;
     safe_release(opt);
 }
 
+-(NSMutableDictionary *)checkUploadedFilesForFileName:(NSString *)fileName{
+    
+    NSMutableArray *files = uploadedFiles;
+    
+    for (NSMutableDictionary *item in uploadedFiles) {
+        
+        if ([[item objectForKey:@"name"] isEqualToString:fileName]) {
+            
+            NSLog(@"File already uploaded, updating.");
+            
+            return item;
+            
+            
+        }
+        
+        
+    }
+    
+    //file was not uploaded before
+    
+    return nil;
+    
+}
+
+
+-(void)addInfo:(NSMutableDictionary *)fileInfo{
+    
+    [uploadedFiles addObject:fileInfo];
+    
+    
+    
+}
+
+
+-(void)getListOfUploadedFiles{
+    
+    //contruct request
+    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.box.com/2.0/folders/%@/items?limit=1000&fields=name,etag",
+                                       [[BoxNetHandler sharedHandler] folderID]]];
+    
+    HTTPFormDataRequest *request = [[HTTPFormDataRequest requestWithURL:url] retain];
+    
+    //add self as delegate
+    
+    [request addMulticastDelegate:self];
+    
+    [request addRequestHeader:@"Authorization"
+                        value:[NSString stringWithFormat:@"Bearer %@", [[OAuth2Client sharedInstance] accessToken]]];
+    
+    [request setQueue:[[HTTPRequestHandler uploadHandler] queue]];
+    [request setRequestMethod:@"GET"];
+    [request addMulticastDelegate:self];
+    [request addMulticastDelegate:[BoxNetHandler sharedHandler]];
+    [request setUserInfo:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"GET_FOLDER_ITEMS", nil]
+                                                     forKeys:[NSArray arrayWithObjects:@"TYPE", nil]]];
+    
+    //add request to queue
+    [[HTTPRequestHandler uploadHandler] addRequest:request];
+    
+    
+}
+
+
+
 #pragma mark
 #pragma mark Parsers, Response Handlers And Utility Methods
 
@@ -248,8 +314,40 @@ static BoxNetHandler *sharedObject = nil;
 
 - (void) requestFinished:(id)request
 {
+    
+    NSString *action = [[request userInfo] valueForKey:@"TYPE"];
+    
+    if ([action isEqualToString:@"GET_FOLDER_ITEMS"]) {
+        
+        
+        NSLog(@"Get folder items request finished!");
+        
+        SBJsonParser* parser = [[SBJsonParser alloc] init];
+        NSDictionary* json = [parser objectWithString:[request responseString]];
+        
+        if ([[json objectForKey:@"type"] isEqualToString:@"error"])
+        {
+            //if json parsing failed
+            
+            [self requestFailed:request];
+            
+            [parser release];
+            
+            return;
+        }
+
+        
+        uploadedFiles = [[NSMutableArray alloc] initWithArray:[json objectForKey:@"entries"]];
+        
+        
+        return;
+        
+    }
+    
 	NSArray* objs = [NSArray arrayWithObjects:[[request userInfo] valueForKey:@"TYPE"], [request responseString], [request userInfo], nil];
 	NSArray* keys = [NSArray arrayWithObjects:@"ACTION", @"DATA", @"USERINFO", nil];
+    
+    
 
 	[NSThread detachNewThreadSelector:@selector(oauth2ParseResponse:)
 							 toTarget:self
@@ -264,6 +362,10 @@ static BoxNetHandler *sharedObject = nil;
 - (void)postNotificationOnMainThread:(NSNotification*)notification {
     [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
+
+
+
+
 
 - (void) parseResponse:(NSDictionary *)params {   
     NSAutoreleasePool *pool = [NSAutoreleasePool new];
@@ -819,6 +921,8 @@ static BoxNetHandler *sharedObject = nil;
     safe_release(folderID);
     safe_release(boxNetUser);
     safe_release(defaultFolder);
+    safe_release(uploadedFiles);
+    
     
     [userInfoReloadTimer invalidate];
     

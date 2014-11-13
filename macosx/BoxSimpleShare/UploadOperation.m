@@ -231,13 +231,13 @@
             }
         }
         
-		
+		/*
+
 		NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.box.com/2.0/folders/%@/items?limit=1000&fields=name,etag",
 										   [[BoxNetHandler sharedHandler] folderID]]];
 		
         request = [[HTTPFormDataRequest requestWithURL:url] retain];
-		/*
-		[request addRequestHeader:@"Authorization"
+				[request addRequestHeader:@"Authorization"
 							value:[NSString stringWithFormat:@"Bearer %@", [[OAuth2Client sharedInstance] accessToken]]];
 		
         [request setQueue:[[HTTPRequestHandler uploadHandler] queue]];
@@ -255,8 +255,6 @@
         PostNotificationWithObject(QUEUE_PROGRESS, self);
         //[self triggerUpdate];
         
-        
-        NSLog(@"Sending request to get folder content.");
         
         //[[HTTPRequestHandler uploadHandler] addRequest:request];
         
@@ -409,9 +407,29 @@
 
 -(void)uploadFileWithPath:(NSString *)path{
     
-    NSURL *url = [NSURL URLWithString:@"https://upload.box.com/api/2.0/files/content"];
+    NSString *fileName = [path lastPathComponent];
     
-    request = [[HTTPFormDataRequest requestWithURL:url] retain];
+    NSMutableDictionary *uploadedFileInfo = [[BoxNetHandler sharedHandler] checkUploadedFilesForFileName:fileName];
+    
+    if (uploadedFileInfo) {
+        //file already uploaded and needs to be updated
+        
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://upload.box.com/api/2.0/files/%@/content", [uploadedFileInfo objectForKey:@"id"]]];
+        
+        request = [[HTTPFormDataRequest requestWithURL:url] retain];
+        [request addRequestHeader:@"If-Match" value:[uploadedFileInfo objectForKey:@"etag"]];
+        
+    }
+    else{
+        
+        
+        NSURL *url = [NSURL URLWithString:@"https://upload.box.com/api/2.0/files/content"];
+        
+        request = [[HTTPFormDataRequest requestWithURL:url] retain];
+        
+        
+    }
+    
     
     [request addRequestHeader:@"Authorization"
                         value:[NSString stringWithFormat:@"Bearer %@", [[OAuth2Client sharedInstance] accessToken]]];
@@ -584,15 +602,57 @@
 	else if ([[[request1 userInfo] objectForKey:@"TYPE"] isEqualToString:UPLOAD_ACTION])
 	{
 		DbgLog(@" Creating shared link for uploaded file ...");
-		[self oauth2CreateSharedLink:[[[json objectForKey:@"entries"] objectAtIndex:0] objectForKey:@"id"]];
+        
+        NSDictionary *uploadedFileInfo = [[json objectForKey:@"entries"] objectAtIndex:0];
+        
+		[self oauth2CreateSharedLink:[uploadedFileInfo objectForKey:@"id"]];
+        
+        
+        
 			
 		[parser release];
 		return;
+        
 	}
 	else if ([[[request1 userInfo] objectForKey:@"TYPE"] isEqualToString:@"CREATE_SHARED_LINK"])
+        
 	{
+        
+        //NSDictionary *uploadedFileInfo = [[json objectForKey:@"entries"] objectAtIndex:0];
+        
+        NSDictionary *uploadedFileInfo = json;
+        
+        NSDictionary *fileInfoFromUploadsList = [[BoxNetHandler sharedHandler] checkUploadedFilesForFileName:[uploadedFileInfo objectForKey:@"name"]];
+        
+        if (fileInfoFromUploadsList) {
+            
+            //update stored info
+            
+            [fileInfoFromUploadsList setValue:[uploadedFileInfo objectForKey:@"id"] forKey:@"id"];
+            
+            [fileInfoFromUploadsList setValue:[uploadedFileInfo objectForKey:@"etag"] forKey:@"etag"];
+            
+            
+        }
+        else{
+            
+            //store info of new file
+            NSArray *values = [NSArray arrayWithObjects:[uploadedFileInfo objectForKey:@"name"],[uploadedFileInfo objectForKey:@"id"],[uploadedFileInfo objectForKey:@"etag"],@"file", nil];
+            
+            NSArray *keys = [NSArray arrayWithObjects:@"name",@"id",@"etag",@"type", nil];
+            
+            NSMutableDictionary *newFileInfo = [NSMutableDictionary dictionaryWithObjects:values forKeys:keys];
+            
+            
+            [[BoxNetHandler sharedHandler] addInfo:newFileInfo];
+            
+            
+            
+        }
+        
+        
 		DbgLog(@" File has been uploaded");
-		
+        
 		file = [BoxFile new];
 		
 		[file setUploadStatus:@"upload_ok"];
