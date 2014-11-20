@@ -23,7 +23,6 @@
 #define ANIMATION_TIMER_TICK    200
 
 #define GOOGLE_SHORTENER_API_KEY    "AIzaSyDa2a7hMeFm85zmEIQBUAescjQSUsNiV_w"
-#define BOXNET_API_KEY              "tl21gh5qncigu2e8nneo2fvro5m0h5aa"
 
 class BxNet;
 class LoginDialog;

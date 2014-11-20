@@ -75,7 +75,6 @@ PreferencesWidget::PreferencesWidget(QWidget *parent)
     connect(this, SIGNAL(currentChanged(int)), this, SLOT(currentTabChanged(int)));
 
     m_bxnet  = new BxNet();
-    m_bxnet->setApiKey(BOXNET_API_KEY);
 
 #ifdef UI_SHORTEN_URL
     m_urlShortener = new UrlShortener(this);

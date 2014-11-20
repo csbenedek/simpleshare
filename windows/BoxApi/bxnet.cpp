@@ -23,6 +23,16 @@
 #include <windows.h>
 #endif
 
+#define BOXNET_API_KEY              "eo0cww5szjn2wywnkcje927zdk0opxxp"
+
+// OAuth2
+
+#define OAUTH2_AUTH_CODE_URL  "https://api.box.com/oauth2/authorize?response_type=code&client_id=%s&redirect_uri=%s"
+#define OAUTH2_AUTH_TOKEN_URL "https://api.box.com/oauth2/token"
+
+#define OAUTH2_CLIENT_ID      "eo0cww5szjn2wywnkcje927zdk0opxxp"
+#define OAUTH2_CLIENT_SECRET  "YrtmNDYRVSPuchqX6yv52c4AkIhNydh9"
+
 
 // BxNet
 
@@ -610,11 +620,11 @@ void BxNet::shareFile(const QString& fileId, const QString& fileName)
 
     if (m_https)
     {
-        request = "https://www.box.net/api/1.0/rest?action=public_share&api_key="+m_apiKey+"&auth_token="+m_authToken+"&target=file&target_id=" + fileId + "&password=&message=&emails=";
+        request = "https://www.box.net/api/1.0/rest?action=public_share&api_key=" BOXNET_API_KEY "&auth_token="+m_authToken+"&target=file&target_id=" + fileId + "&password=&message=&emails=";
     }
     else
     {
-        request = "http://www.box.net/api/1.0/rest?action=public_share&api_key="+m_apiKey+"&auth_token="+m_authToken+"&target=file&target_id=" + fileId + "&password=&message=&emails=";
+        request = "http://www.box.net/api/1.0/rest?action=public_share&api_key=" BOXNET_API_KEY "&auth_token="+m_authToken+"&target=file&target_id=" + fileId + "&password=&message=&emails=";
     }
 
     qDebug() << Q_FUNC_INFO << "sharing file " << fileName << " id=" << fileId;
@@ -919,12 +929,7 @@ void BxNet::createFolderFinished()
 
 QString BxNet::apiKeyParam() const
 {
-    if (m_apiKey.isEmpty())
-    {
-        return QString();
-    }
-
-    return "api_key=" + m_apiKey;
+    return "api_key=" BOXNET_API_KEY;
 }
 
 QString BxNet::apiUrl(bool https, RequestType type, const QString& path)
@@ -1018,16 +1023,6 @@ bool BxNet::isLoadAvatarEnabled() const
 void BxNet::enableLoadAvatar(bool value)
 {
     m_loadAvatar = value;
-}
-
-void BxNet::setApiKey(const QString& apiKey)
-{
-    m_apiKey = apiKey;
-}
-
-QString BxNet::apiKey()
-{
-    return m_apiKey;
 }
 
 void BxNet::onSslError(const QList<QSslError> & errors)
@@ -2225,6 +2220,9 @@ void BxNet::enableProxying(const QString& host, const QString& port,
 
 void BxNet::ssoLogin(const QString &name)
 {
+    oauth2Login();
+    return;
+
     if (m_checkingAuthToken)
     {
         qDebug() << Q_FUNC_INFO << "trying to login while authenticating in progress";
@@ -2238,9 +2236,11 @@ void BxNet::ssoLogin(const QString &name)
     requestTicket();
 }
 
-
 void BxNet::login()
 {
+    oauth2Login();
+    return;
+
     if (m_checkingAuthToken)
     {
         qDebug() << Q_FUNC_INFO << "trying to login while authenticating in progress";
@@ -2793,4 +2793,25 @@ void BxNet::readUserFromXML(QDomNode& node)
 
     elemUser        = element.firstChildElement("max_upload_size");
     m_maxUploadSize = elemUser.text().toDouble();
+}
+
+void BxNet::oauth2Authorize()
+{
+    //https://app.box.com/api/oauth2/authorize?response_type=code&client_id=MY_CLIENT_ID&state=security_token%3DKnhMJatFipTAnM0nHlZA
+
+    QString request = "https://app.box.com/api/oauth2/authorize?"
+                      "response_type=code&client_id=" OAUTH2_CLIENT_ID "&"
+                      "redirect_uri=http://localhost:80&"
+                      "state=security_token%3DKnhMJatFipTAnM0nHlZA";
+
+    qDebug() << Q_FUNC_INFO << "OAuth2 1. Authorize";
+    openLoginForm(request);
+}
+
+
+void BxNet::oauth2Login()
+{
+    qDebug() << Q_FUNC_INFO << "OAuth2 login:";
+
+    oauth2Authorize();
 }

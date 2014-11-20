@@ -95,7 +95,6 @@ int main(int argc, char *argv[])
         if (commandLogout)
         {
             BxNet* bxnet  = new BxNet();
-            bxnet->setApiKey(BOXNET_API_KEY);
             bxnet->logout();
             delete bxnet;
 

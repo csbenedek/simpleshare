@@ -23,9 +23,11 @@ class Settings;
 class WebLoginForm;
 class SyncHTTP;
 
+
 #define DEFAULT_UPLOAD_FOLDER       "SimpleShare Uploads"
 #define AUTH_FILE                   "box.net"
 #define AUTH_DO_NOT_USE_MD5
+
 
 class BxNet: public QObject
 {
@@ -106,8 +108,6 @@ public:
     QString proxySettings() const;
     void setProxySettings(const QString& proxy);
 
-    void setApiKey(const QString& apiKey);
-    QString apiKey();
     bool isLoadAvatarEnabled() const;
     void enableLoadAvatar(bool value = true);
     void setUploadFolder(const QString& folderName);
@@ -122,6 +122,8 @@ public:
     void login();
     void directLogin(const QString &name, const QString &password);
     void ssoLogin(const QString &name);
+    void oauth2Login();
+
     void newUser(const QString& name, QString password);
     bool isEmailExists(const QString& email);
     bool checkAuth(bool silent = false);
@@ -195,6 +197,7 @@ private:
     void waitingForAuthToken();
     void openLoginForm(const QString& url);
     void closeLoginForm();
+    void oauth2Authorize();
 
     RESPONSE_STATUS responseStatus(QNetworkReply* reply, QDomElement* root = NULL);
     RESPONSE_STATUS responseStatusFromString(const QString& status) const;
@@ -276,7 +279,6 @@ private:
     QPointer<QNetworkAccessManager> m_networkManager;
     QPointer<QNetworkReply>         m_uploadsReply;
 
-    QString     m_apiKey;
     bool        m_https;
 
     bool        m_loadAvatar;
