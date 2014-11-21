@@ -303,6 +303,7 @@ private:
     //QString     m_oauth2_code;
     QString     m_oauth2_token;
     QString     m_oauth2_refresh_token;
+    QString     m_oauth2_token_type;
 
     QString     m_login;
     QString     m_email;

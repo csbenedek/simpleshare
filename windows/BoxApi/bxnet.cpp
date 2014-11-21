@@ -1134,7 +1134,42 @@ void BxNet::onOAuth2TokenFinished()
 
     QString response(reply->readAll());
 
-    qDebug() << Q_FUNC_INFO << response;
+    // {"access_token":"MaWMWqkmWqd6aWI3YphkhjgDroGVvrA1","expires_in":3711,"restricted_to":[],"refresh_token":"4T8kn7Ou51QRTKCseK7lpjgMx92IWhIKG3xPKhXiivgkEAoH2X82sLMkT0frciEA","token_type":"bearer"}
+
+    const QStringList items = response.mid(1, response.length()-2).split(',');
+
+    foreach(const QString item, items)
+    {
+        const QStringList list = item.split(':');
+        QString name = list[0];
+        if (name.startsWith('"'))
+        {
+            name = name.mid(1, name.length()-2);
+        }
+            //if ( name == "access_token" )
+        QString value = list[1];
+        if (value.startsWith('"'))
+        {
+            value = value.mid(1, value.length()-2);
+        }
+
+        qDebug() << Q_FUNC_INFO << name << "=" << value;
+
+        if ( name == "access_token" )
+        {
+            m_oauth2_token = value;
+        }
+        else if ( name == "refresh_token" )
+        {
+            m_oauth2_refresh_token = value;
+        }
+        else if ( name == "token_type" )
+        {
+            m_oauth2_token_type = value;
+        }
+    }
+
+
 }
 
 void BxNet::onAuthError(BxNet::RESPONSE_STATUS status)
