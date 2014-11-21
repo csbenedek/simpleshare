@@ -103,14 +103,16 @@ public:
     explicit WebLoginForm(QWidget *parent = 0);
     ~WebLoginForm();
 
-    void goToUrl(const QString& url);
+    void goToOAuth2LoginUrl();
 
 signals:
-    void onSSOTicketId(const QString& ticketId);
-    void onSSOError(BxNet::RESPONSE_STATUS err);
-    void beginSSO();
+    void onAuthError(BxNet::RESPONSE_STATUS err);
+    void onAuthSuccess(BxNet::RESPONSE_STATUS err, const QString& code);
+    void beginOAuthLogin();
 
 protected:
+    virtual void goToUrl(const QString& url);
+
     virtual void closeEvent(QCloseEvent *event);
     virtual void timerEvent(QTimerEvent *event);
 

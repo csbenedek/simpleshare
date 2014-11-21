@@ -28,6 +28,8 @@ class SyncHTTP;
 #define AUTH_FILE                   "box.net"
 #define AUTH_DO_NOT_USE_MD5
 
+#define BOXNET_API_KEY        "eo0cww5szjn2wywnkcje927zdk0opxxp"
+
 
 class BxNet: public QObject
 {
@@ -120,9 +122,6 @@ public:
     int retryCount() const;
 
     void login();
-    void directLogin(const QString &name, const QString &password);
-    void ssoLogin(const QString &name);
-    void oauth2Login();
 
     void newUser(const QString& name, QString password);
     bool isEmailExists(const QString& email);
@@ -195,9 +194,8 @@ private:
     void onGetAccountInfoCompleted();
     void onGetAccountInfoFailed();
     void waitingForAuthToken();
-    void openLoginForm(const QString& url);
+    void openLoginForm();
     void closeLoginForm();
-    void oauth2Authorize();
 
     RESPONSE_STATUS responseStatus(QNetworkReply* reply, QDomElement* root = NULL);
     RESPONSE_STATUS responseStatusFromString(const QString& status) const;
@@ -247,21 +245,17 @@ private slots:
     void readTreeReadyRead();
     void readTreeFinished();
     void avatarReplyFinished();
-    void getTicketFinished();
-    void directLoginFinished();
     void getUserInfoFinished();
     void getAccountInfoFinished();
     void getAccountInfoFinishedSilent();
-    void getAuthTokenFinished();
     void shareFileFinished();
     void uploadFinished();   
     void createFolderFinished();
     void newUserFinished();
     //void createBookmarkFinished();
 
-    void requestAuthToken();
-    void onSSOTicketId(const QString& ticketId);
-    void onSSOError(BxNet::RESPONSE_STATUS status);
+    void onAuthSuccess(BxNet::RESPONSE_STATUS status, const QString& ticketId);
+    void onAuthError(BxNet::RESPONSE_STATUS status);
 
     void onError(QNetworkReply::NetworkError);
     void onSilentError(QNetworkReply::NetworkError);
@@ -291,6 +285,8 @@ private:
     QString     m_userId;
     QString     m_avatarUrl;
     //QString     m_password; // temporary storage.
+
+    QString     m_oauth2_code;
 
     QString     m_login;
     QString     m_email;

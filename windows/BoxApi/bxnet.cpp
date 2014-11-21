@@ -23,16 +23,6 @@
 #include <windows.h>
 #endif
 
-#define BOXNET_API_KEY              "eo0cww5szjn2wywnkcje927zdk0opxxp"
-
-// OAuth2
-
-#define OAUTH2_AUTH_CODE_URL  "https://api.box.com/oauth2/authorize?response_type=code&client_id=%s&redirect_uri=%s"
-#define OAUTH2_AUTH_TOKEN_URL "https://api.box.com/oauth2/token"
-
-#define OAUTH2_CLIENT_ID      "eo0cww5szjn2wywnkcje927zdk0opxxp"
-#define OAUTH2_CLIENT_SECRET  "YrtmNDYRVSPuchqX6yv52c4AkIhNydh9"
-
 
 // BxNet
 
@@ -1105,255 +1095,23 @@ void BxNet::avatarReplyFinished()
     }
 }
 
-void BxNet::requestTicket()
+void BxNet::onAuthSuccess(BxNet::RESPONSE_STATUS status, const QString& oauth2_code)
 {
-    if (!m_ticket.isEmpty())
-    {
-        useTicketToLogin(m_ticket);
-        return;
-    }
-
-    // QString request="https://www.box.net/api/1.0/rest?action=get_ticket&api_key="+this->appKey;
-
-    QString request = command("action=get_ticket");
-    const QString requestUrl = apiUrl(true);
-
-    qDebug() << Q_FUNC_INFO << "requesting ticket";
-
-    QNetworkReply* reply = m_networkManager->get(QNetworkRequest(QUrl(requestUrl + "?" + request)));
-
-    connect(reply, SIGNAL(finished()), this, SLOT(getTicketFinished()));
-    connect(reply, SIGNAL(sslErrors(const QList<QSslError>&)), this, SLOT(onSslError(const QList<QSslError>&)));
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(onAuthError(QNetworkReply::NetworkError)));
-}
-
-void BxNet::getTicketFinished()
-{
-    QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
-    Q_ASSERT(reply);
-    if (reply == NULL)
-    {
-        qDebug() << Q_FUNC_INFO << "reply is NULL";
-        emit authFailed(network_error);
-        return;
-    }
-    if (reply == NULL || reply->error() != QNetworkReply::NoError)
-    {
-        qDebug() << Q_FUNC_INFO << "reply error: " << reply->error();
-        emit authFailed(network_error);
-        return;
-    }
-
-    //    if(waitingForAutentification)
-    //    {
-    //        qDebug("manageTicketReplay skiped because waitingForAuthentification is set to true");
-    //        return;
-    //    }
-
-    QDomElement root;
-    RESPONSE_STATUS status = responseStatus(reply, &root);
-
-    qDebug() << Q_FUNC_INFO << "get ticket with status=" << statusStringToStatus(status);
-
-    if(status != get_ticket_ok)
-    {
-        emit authFailed(replay_parssing_error);
-        return;
-    }
-
-    const QDomNode child = root.firstChild().nextSibling();
-    const QDomElement element = child.toElement();
-    QString ticket = element.text();
-
-    if (!m_ticket.isEmpty())
-    {
-        // already have ticket but open browser again
-        ticket = m_ticket;
-    }
-
-    //open browser here
-    useTicketToLogin(ticket);
-}
-
-
-void BxNet::useTicketToLogin(const QString &ticket)
-{
-    Q_ASSERT(!ticket.isEmpty());
-    if (ticket.isEmpty())
-    {
-        //TODO: ???
-        return;
-    }
-
-    m_ticket = ticket;
-    QString url = "https://www.box.net/api/1.0/auth/" + m_ticket;
-    if (!m_email.isEmpty())
-    {
-        // SSO login
-        url = url + "?sso_user_login=" + m_email;
-        openLoginForm(url);
-    }
-    else
-    {
-        //waitingForAutentification = true;
-
-        bool openUrl = QDesktopServices::openUrl(url);
-        if (!openUrl)
-        {
-            emit errorOpenBrowser(url);
-        }
-        //waitingForAutentification = true;
-
-        waitingForAuthToken();
-    }
-}
-
-void BxNet::openLoginForm(const QString& url)
-{
-    //emit beginSSO();
-
-    if (m_webLoginForm == NULL)
-    {
-        m_webLoginForm = new WebLoginForm(NULL);
-    }
-
-    if (m_webLoginForm)
-    {
-        connect(m_webLoginForm, SIGNAL(onSSOTicketId(QString)), this, SLOT(onSSOTicketId(QString)));
-        connect(m_webLoginForm, SIGNAL(onSSOError(BxNet::RESPONSE_STATUS)), this, SLOT(onSSOError(BxNet::RESPONSE_STATUS)));
-        connect(m_webLoginForm, SIGNAL(beginSSO()), this, SIGNAL(beginSSO()));
-
-        centrateWidget(m_webLoginForm);
-        m_webLoginForm->goToUrl(url);
-    }
-    else
-    {
-        onSSOError(BxNet::no_memory);
-    }
-}
-
-void BxNet::closeLoginForm()
-{
-    if (m_webLoginForm)
-    {
-        m_webLoginForm->hide();
-        m_webLoginForm->deleteLater();
-        m_webLoginForm = NULL;
-    }
-}
-
-void BxNet::onSSOTicketId(const QString& ticketId)
-{
-    qDebug() << Q_FUNC_INFO << ticketId;
-
+    qDebug() << Q_FUNC_INFO << "oauth2_code=" << oauth2_code;
     closeLoginForm();
 
-    m_ticket = ticketId;
-    requestAuthToken();
+    m_oauth2_code = oauth2_code;
 }
 
-void BxNet::onSSOError(BxNet::RESPONSE_STATUS status)
+void BxNet::onAuthError(BxNet::RESPONSE_STATUS status)
 {
     qDebug() << Q_FUNC_INFO << "status=" << status;
 
     closeLoginForm();
 
-    m_ticket = "";
+    m_oauth2_code = "";
 
     emit authFailed(status);
-}
-
-
-void BxNet::waitingForAuthToken()
-{
-    qDebug() << "waiting for auth token...";
-
-    m_waitingForAuthToken = true;
-    requestAuthToken();
-}
-
-void BxNet::directLogin(const QString& name, const QString& password)
-{
-    //do not redirect the user browser to the authentification page
-    //QString url="https://www.box.net/api/1.0/auth/"+ticket;
-
-    RequestType type = RequestXML; //Using XML, becoause REST can't process emails with "+" character
-    QNetworkReply* reply = NULL;
-
-    const QString encodedPass =
-#ifdef AUTH_DO_NOT_USE_MD5
-    password;
-#else
-    QString(QCryptographicHash::hash((name + password).toLatin1(), QCryptographicHash::Md5).toHex().constData());
-#endif
-
-    Q_ASSERT(type != RequestRest);
-    if (type == RequestXML)
-    {
-        const QString request = command(QStringList()
-                                    << apiKeyParam()
-                                    << "action=authorization"
-                                    << "login=" + name
-                                    << "password=" + encodedPass
-#ifdef AUTH_DO_NOT_USE_MD5
-                                    << "method=plain", type);
-#else
-                                    << "method=md5", type);
-#endif
-
-        const QString requestUrl = apiUrl(true, type);
-        reply = m_networkManager->post(QNetworkRequest(QUrl(requestUrl)), request.toUtf8());
-
-    }
-
-    qDebug() << Q_FUNC_INFO << "direct login " << name;
-
-    Q_ASSERT(reply);
-    if (reply != NULL)
-    {
-        connect(reply, SIGNAL(finished()), this, SLOT(directLoginFinished()));
-        connect(reply, SIGNAL(sslErrors(const QList<QSslError>&)), this, SLOT(onSslError(const QList<QSslError>&)));
-        connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(onAuthError(QNetworkReply::NetworkError)));
-    }
-}
-
-void BxNet::directLoginFinished()
-{
-    QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
-    Q_ASSERT(reply);
-
-    if (reply == NULL)
-    {
-        qDebug() << Q_FUNC_INFO << "reply is NULL";
-        emit authFailed(network_error);
-        return;
-    }
-    if (reply == NULL || reply->error() != QNetworkReply::NoError)
-    {
-        qDebug() << Q_FUNC_INFO << "reply error: " << reply->error();
-        //emit authFailed(network_error);
-        return;
-    }
-
-    QDomElement root;
-    RESPONSE_STATUS status = responseStatus(reply, &root);
-
-    qDebug() << Q_FUNC_INFO << "direct login finished with status=" << statusStringToStatus(status);
-
-    if(status != logged)
-    {
-        emit authFailed(status);
-        return;
-    }
-
-    QDomNode child = root.firstChild().nextSibling();
-    readUserFromXML(child);
-
-    emit accountInfoCompleted();
-    onFinishAuth();
-
-    // get more user info
-    getUserInfo();
 }
 
 void BxNet::getAccountInfo(bool silent)
@@ -1558,76 +1316,6 @@ void BxNet::getUserInfoFinished()
             loadAvatar(nodes.at(0).toElement().text());
         }
     }
-}
-
-void BxNet::requestAuthToken()
-{
-    //"https://www.box.net/api/1.0/rest?action=get_auth_token&api_key="+m_apiKey+"&ticket="+m_ticket
-
-    const QString request = command(QStringList()
-                                        << "action=get_auth_token"
-                                        << apiKeyParam()
-                                        << "ticket="+m_ticket);
-    const QString requestUrl = apiUrl(true, RequestRest);
-
-    qDebug() << Q_FUNC_INFO << "requesting auth token";
-
-    const QString url = requestUrl + "?" + request;
-
-    QNetworkReply* reply = m_networkManager->get(QNetworkRequest(QUrl(url)));
-    connect(reply, SIGNAL(finished()), this, SLOT(getAuthTokenFinished()));
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(onAuthError(QNetworkReply::NetworkError)));
-    connect(reply, SIGNAL(sslErrors(const QList<QSslError>&)), this, SLOT(onSslError(const QList<QSslError>&)));
-}
-
-void BxNet::getAuthTokenFinished()
-{
-    QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
-    Q_ASSERT(reply);
-    if (reply == NULL)
-    {
-        qDebug() << Q_FUNC_INFO << "reply is NULL";
-        emit authFailed(network_error);
-        return;
-    }
-    if (reply == NULL || reply->error() != QNetworkReply::NoError)
-    {
-        qDebug() << Q_FUNC_INFO << "reply error: " << reply->error();
-        emit authFailed(network_error);
-        return;
-    }
-
-    QDomElement root;
-    RESPONSE_STATUS status = responseStatus(reply, &root);
-
-    qDebug() << Q_FUNC_INFO << "get auth token finished with status=" << statusStringToStatus(status);
-
-    if (m_waitingForAuthToken && (status == not_logged_in))
-    {
-        qDebug() << "not authentificated...";
-        QTimer::singleShot(10000, this, SLOT(requestAuthToken())); // delay
-        return;
-    }
-
-    if (status != get_auth_token_ok)
-    {
-        emit authFailed(status);
-        return;
-    }    
-
-    QDomNode child = root.firstChild().nextSibling();
-    readUserFromXML(child);
-
-    securelyErase(m_ticket);
-    m_authentificated = true;
-
-    emit accountInfoCompleted();
-    onFinishAuth();
-
-    // get more user info
-    getUserInfo();
-
-    m_waitingForAuthToken = false;
 }
 
 void BxNet::onGetAccountInfoCompleted()
@@ -2218,40 +1906,17 @@ void BxNet::enableProxying(const QString& host, const QString& port,
     }
 }
 
-void BxNet::ssoLogin(const QString &name)
-{
-    oauth2Login();
-    return;
-
-    if (m_checkingAuthToken)
-    {
-        qDebug() << Q_FUNC_INFO << "trying to login while authenticating in progress";
-        return;
-    }
-
-    qDebug() << Q_FUNC_INFO << "SSO login";
-
-    m_email = name;
-
-    requestTicket();
-}
-
 void BxNet::login()
 {
-    oauth2Login();
-    return;
-
+    /*
     if (m_checkingAuthToken)
     {
         qDebug() << Q_FUNC_INFO << "trying to login while authenticating in progress";
         return;
     }
-
-    qDebug() << Q_FUNC_INFO << "login";
-
-    m_email = "";
-
-    requestTicket();
+*/
+    // Start OAuth2 login
+    openLoginForm();
 }
 
 int BxNet::uploadingQueueLength() const
@@ -2795,23 +2460,37 @@ void BxNet::readUserFromXML(QDomNode& node)
     m_maxUploadSize = elemUser.text().toDouble();
 }
 
-void BxNet::oauth2Authorize()
+
+void BxNet::openLoginForm()
 {
-    //https://app.box.com/api/oauth2/authorize?response_type=code&client_id=MY_CLIENT_ID&state=security_token%3DKnhMJatFipTAnM0nHlZA
+    //emit beginSSO();
 
-    QString request = "https://app.box.com/api/oauth2/authorize?"
-                      "response_type=code&client_id=" OAUTH2_CLIENT_ID "&"
-                      "redirect_uri=https://app.box.com/api/oauth2/logged_in&"
-                      "state=security_token%3DKnhMJatFipTAnM0nHlZA";
+    if (m_webLoginForm == NULL)
+    {
+        m_webLoginForm = new WebLoginForm(NULL);
+    }
 
-    qDebug() << Q_FUNC_INFO << "OAuth2 1. Authorize";
-    openLoginForm(request);
+    if (m_webLoginForm)
+    {
+        connect(m_webLoginForm, SIGNAL(onAuthSuccess(BxNet::RESPONSE_STATUS, QString)), this, SLOT(onAuthSuccess(BxNet::RESPONSE_STATUS, QString)));
+        connect(m_webLoginForm, SIGNAL(onAuthError(BxNet::RESPONSE_STATUS)), this, SLOT(onAuthError(BxNet::RESPONSE_STATUS)));
+        connect(m_webLoginForm, SIGNAL(beginSSO()), this, SIGNAL(beginSSO()));
+
+        m_webLoginForm->goToOAuth2LoginUrl();
+    }
+    else
+    {
+        onAuthError(BxNet::no_memory);
+    }
 }
 
-
-void BxNet::oauth2Login()
+void BxNet::closeLoginForm()
 {
-    qDebug() << Q_FUNC_INFO << "OAuth2 login:";
-
-    oauth2Authorize();
+    if (m_webLoginForm)
+    {
+        m_webLoginForm->hide();
+        m_webLoginForm->deleteLater();
+        m_webLoginForm = NULL;
+    }
 }
+

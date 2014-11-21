@@ -4,12 +4,15 @@
 #include <QCloseEvent>
 #include "utils.h"
 
+// OAuth2
 
-const QString g_boxNetServicesString = "https://sso.services.box.net/";
-const QString g_boxNetString = "https://www.box.com/";
-const QString g_authString = "/auth/";
-const QString g_authorizedString = "?authorized=1";
-const QString g_strError = "/error/1";
+#define OAUTH2_CLIENT_ID      BOXNET_API_KEY
+
+#define OAUTH2_AUTHORIZE_URL       "https://api.box.com/oauth2/authorize?"
+#define OAUTH2_AUTHORIZE_CODE_URL  OAUTH2_AUTH_AUTHORIZE_URL "response_type=code&client_id=%s&redirect_uri=%s"
+
+#define OAUTH2_AUTH_TOKEN_URL "https://api.box.com/oauth2/token"
+
 
 WebLoginForm::WebLoginForm(QWidget *parent) :
     QWidget(parent),
@@ -53,7 +56,7 @@ void WebLoginForm::closeEvent(QCloseEvent *event)
     if (m_response == BxNet::unknown_status)
     {
         m_response = BxNet::sign_on_canceled;
-        emit onSSOError(m_response);
+        emit onAuthError(m_response);
     }
     event->accept();
 }
@@ -71,7 +74,7 @@ void WebLoginForm::timerEvent(QTimerEvent *event)
         if (m_response == BxNet::unknown_status)
         {
             m_response = BxNet::sign_on_timeout;
-            emit onSSOError(m_response);
+            emit onAuthError(m_response);
         }
     }
 }
@@ -85,7 +88,7 @@ void WebLoginForm::onUrlChanged(QUrl url)
     }
 
     m_url = url.toString();
-    if (m_url.right(g_strError.length()) == g_strError)
+    /*if (m_url.right(g_strError.length()) == g_strError)
     {
         m_response = BxNet::not_a_sso_user;
         return;
@@ -95,13 +98,13 @@ void WebLoginForm::onUrlChanged(QUrl url)
     {
         const int beginIndex = m_url.indexOf(g_authString) + g_authString.length();
         const int endIndex = m_url.indexOf(g_authorizedString);
-        const QString ticketId = m_url.mid(beginIndex, endIndex - beginIndex);
-        emit onSSOTicketId(ticketId);
+        const QString oauth2_code = m_url.mid(beginIndex, endIndex - beginIndex);
         m_response = BxNet::logged;
+        emit onAuthSuccess(m_response, oauth2_code);
         return;
     }
-
-    if (m_url.left(g_boxNetString.length()) == g_boxNetString)
+*/
+    if ( strncasecmp(m_url.toStdString().c_str(), OAUTH2_AUTHORIZE_URL, strlen(OAUTH2_AUTHORIZE_URL)) )
     {
         m_timerId = startTimer(30000); // 30 sec. timeout
     }
@@ -123,14 +126,27 @@ void WebLoginForm::goToUrl(const QString& url)
     //show();
 }
 
+void WebLoginForm::goToOAuth2LoginUrl()
+{
+    //https://app.box.com/api/oauth2/authorize?response_type=code&client_id=MY_CLIENT_ID&state=security_token%3DKnhMJatFipTAnM0nHlZA
+
+    const QString request = "https://app.box.com/api/oauth2/authorize?"
+                      "response_type=code&client_id=" OAUTH2_CLIENT_ID "&"
+                      "redirect_uri=https://app.box.com/api/oauth2/logged_in&"
+                      "state=security_token%3DKnhMJatFipTAnM0nHlZA";
+
+    goToUrl(request);
+}
+
 void WebLoginForm::onLoadFinished(bool ok)
 {
     if (m_response == BxNet::unknown_status && !isVisible()
             && !m_url.isEmpty() && (m_url != "about:blank")
-            && (m_url.left(g_boxNetServicesString.length()) != g_boxNetServicesString)
-            && (m_url.left(g_boxNetString.length()) != g_boxNetString))
+            /*&& (m_url.left(g_boxNetServicesString.length()) != g_boxNetServicesString)
+            && (m_url.left(g_boxNetString.length()) != g_boxNetString) */
+            )
     {
-        emit beginSSO();
+        emit beginOAuthLogin();
         show();
         activateWindow();
         raise();
@@ -138,11 +154,11 @@ void WebLoginForm::onLoadFinished(bool ok)
 
     if (m_response == BxNet::not_a_sso_user)
     {
-        emit onSSOError(m_response);
+        emit onAuthError(m_response);
         return;
     }
 
-    if (!ok && (m_url.left(g_boxNetString.length()) == g_boxNetString))
+    if (!ok) // && (m_url.left(g_boxNetString.length()) == g_boxNetString))
     {
         if (m_timerId != -1)
         {
@@ -153,7 +169,7 @@ void WebLoginForm::onLoadFinished(bool ok)
         if (m_response == BxNet::unknown_status)
         {
             m_response = BxNet::sign_on_canceled;
-            emit onSSOError(m_response);
+            emit onAuthError(m_response);
         }
         return;
     }
