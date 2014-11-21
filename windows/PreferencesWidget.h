@@ -25,7 +25,6 @@
 #define GOOGLE_SHORTENER_API_KEY    "AIzaSyDa2a7hMeFm85zmEIQBUAescjQSUsNiV_w"
 
 class BxNet;
-class LoginDialog;
 
 class QxtGlobalShortcut;
 class QKeySequenceWidget;
@@ -202,8 +201,6 @@ private slots:
 
 private:
     Ui::PreferencesWidget *ui;
-
-    QPointer<LoginDialog>  m_loginDialog;
 
     Settings            m_settings;
     BxNet*              m_bxnet;

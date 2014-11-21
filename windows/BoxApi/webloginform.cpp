@@ -6,7 +6,7 @@
 
 
 const QString g_boxNetServicesString = "https://sso.services.box.net/";
-const QString g_boxNetString = "https://www.box.net/";
+const QString g_boxNetString = "https://www.box.com/";
 const QString g_authString = "/auth/";
 const QString g_authorizedString = "?authorized=1";
 const QString g_strError = "/error/1";

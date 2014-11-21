@@ -22,7 +22,6 @@
 #include "urlshortener.h"
 #include "imageeditor.h"
 #include "utils.h"
-#include "logindialog.h"
 #include "messagedialog.h"
 #ifdef Q_WS_MAC
 #include <CoreServices/CoreServices.h>
@@ -45,7 +44,6 @@ const QString fullAppName()
 PreferencesWidget::PreferencesWidget(QWidget *parent)
     : QTabWidget(parent)
     , ui(new Ui::PreferencesWidget)
-    , m_loginDialog(NULL)
     , m_bxnet(NULL)
     , m_contextMenu(NULL)
     , m_uploadPercent(0)
@@ -225,7 +223,6 @@ PreferencesWidget::~PreferencesWidget()
 
     endCaptureVideo();
 
-    delete m_loginDialog;
     delete m_fileDialog;
     delete m_saveDialog;
     delete m_editor;
@@ -629,23 +626,8 @@ void PreferencesWidget::showOptions(int index)
 {
     if (!m_bxnet->authentificated())
     {
-        showLoginDialog();
+        m_bxnet->login();
         return;
-    }
-
-    if (!m_loginDialog.isNull())
-    {
-        if (m_loginDialog->isWelcomePage())
-        {
-            m_loginDialog->close();
-        }
-        else
-        {
-            m_loginDialog->activateWindow();
-            m_loginDialog->setFocus();
-            //m_loginDialog->raise();
-            return;
-        }
     }
 
     if (index != -1)
@@ -1608,7 +1590,7 @@ void PreferencesWidget::logout()
 void PreferencesWidget::login()
 {
     hide();
-    showLoginDialog();
+    m_bxnet->login();
 }
 
 
@@ -1647,16 +1629,6 @@ void PreferencesWidget::onLoginCompleted()
     //{
     //    notify(tr("Box SimpleShare"), tr("Login Successful\nuser: ") + m_bxnet->userName(), SystemTrayIcon_::UserIcon);
     //    m_showLoginNotify = true;
-    //}
-    //else
-    //{
-        if (m_loginDialog.isNull() || !m_loginDialog->isVisible())
-        {
-            setCurrentIndex(0);
-            show();
-            //activateWindow();
-            raise();
-        }
     //}
 }
 
@@ -1729,7 +1701,7 @@ void PreferencesWidget::onAuthFailed(BxNet::RESPONSE_STATUS err)
     case BxNet::sign_on_canceled:
     case BxNet::sign_on_timeout:
         break; // processed in login dialog
-    default:
+    /*default:
         {
             if (m_loginDialog && !m_loginDialog->isVisible())
             {
@@ -1741,7 +1713,7 @@ void PreferencesWidget::onAuthFailed(BxNet::RESPONSE_STATUS err)
                 qDebug() << "This error type should never be here in onAutentificationError " << err;
             }
             break;
-        }
+        }*/
     }
 
 }
@@ -1904,7 +1876,7 @@ void PreferencesWidget::onNotLoggedIn()
     if (!m_bxnet->isConnected())
     {
         //notify(tr("Network error"), tr("You are not logged in"), SystemTrayIcon_::Critical);
-        showLoginDialog();
+        m_bxnet->login();
     }
     else
     {
@@ -2830,29 +2802,6 @@ void PreferencesWidget::currentTabChanged(int index)
     {
         // remove "enter shortcut..." text in focused element:
         ui->defaultsShortcutsPushButton->setFocus();
-    }
-}
-
-
-void PreferencesWidget::showLoginDialog()
-{
-    hideApplication();
-
-    if (m_loginDialog == NULL)
-    {
-        m_loginDialog = new LoginDialog(m_bxnet);
-        centrateWidget(m_loginDialog);
-        qApp->setActiveWindow(m_loginDialog);
-    }
-
-    Q_ASSERT(!m_loginDialog.isNull());
-    if (m_loginDialog)
-    {
-        m_loginDialog->show();
-        m_loginDialog->activateWindow();
-        m_loginDialog->setFocus();
-
-        //m_loginDialog->raise();
     }
 }
 

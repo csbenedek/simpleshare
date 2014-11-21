@@ -1,4 +1,4 @@
-VERSION = 1.0.45
+VERSION = 1.1.50
 
 RC_FILE = icon.rc
 ICON = icon.ico
@@ -70,7 +70,6 @@ SOURCES += \
     ./3rdparty/qzip/qzip.cpp \
     ./3rdparty/systray/systemtrayicon_win.cpp \
     ./3rdparty/systray/systemtrayicon.cpp \
-    logindialog.cpp \
     textinputwidget.cpp \
     tooltipwidget.cpp \
     messagedialog.cpp \
@@ -120,7 +119,6 @@ HEADERS += \
     ./3rdparty/qzip/qzipwriter_p.h \
     ./3rdparty/qzip/qzipreader_p.h \
     ./3rdparty/systray/systemtrayicon.h \
-    logindialog.h \
     textinputwidget.h \
     tooltipwidget.h \
     messagedialog.h \
@@ -131,7 +129,6 @@ FORMS += \
     ./BoxApi/webloginform.ui \
     preferenceswidget.ui \
     recordingframe.ui \
-    logindialog.ui \
     messagedialog.ui \
     folderdialog.ui
 

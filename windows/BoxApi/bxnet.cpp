@@ -2801,7 +2801,7 @@ void BxNet::oauth2Authorize()
 
     QString request = "https://app.box.com/api/oauth2/authorize?"
                       "response_type=code&client_id=" OAUTH2_CLIENT_ID "&"
-                      "redirect_uri=http://localhost:80&"
+                      "redirect_uri=https://app.box.com/api/oauth2/logged_in&"
                       "state=security_token%3DKnhMJatFipTAnM0nHlZA";
 
     qDebug() << Q_FUNC_INFO << "OAuth2 1. Authorize";
