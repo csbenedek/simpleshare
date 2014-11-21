@@ -1095,12 +1095,46 @@ void BxNet::avatarReplyFinished()
     }
 }
 
-void BxNet::onAuthSuccess(BxNet::RESPONSE_STATUS status, const QString& oauth2_code)
+void BxNet::onOAuth2Code(BxNet::RESPONSE_STATUS status, const QString& oauth2_code)
 {
     qDebug() << Q_FUNC_INFO << "oauth2_code=" << oauth2_code;
     closeLoginForm();
 
-    m_oauth2_code = oauth2_code;
+    QByteArray postData("grant_type=authorization_code&code=");
+    postData.append(oauth2_code);
+    postData.append("&client_id=" OAUTH2_CLIENT_ID "&client_secret=" OAUTH2_CLIENT_SECRET);
+
+    // For your "Content-Length" header
+    QByteArray postDataSize = QByteArray::number(postData.size());
+
+    // Time for building your request
+    QUrl serviceURL(OAUTH2_AUTH_TOKEN_URL);
+    QNetworkRequest request(serviceURL);
+
+    // Add the headers specifying their names and their values with the following method : void QNetworkRequest::setRawHeader(const QByteArray & headerName, const QByteArray & headerValue);
+    request.setRawHeader("User-Agent",     "Mozilla/5.0 (Windows; U; Windows NT 5.1; ru; rv:1.9.1.3) Gecko/20090824 Firefox/3.5.3 (.NET CLR 3.5.30729)");
+    request.setRawHeader("Content-Type",   "application/x-www-form-urlencoded");
+    request.setRawHeader("Content-Length", postDataSize);
+
+    QNetworkReply* reply = m_networkManager->post(request, postData);
+    connect(reply, SIGNAL(finished()), this, SLOT(onOAuth2TokenFinished()));
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(onOAuth2Error(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(sslErrors(const QList<QSslError>&)), this, SLOT(onSslError(const QList<QSslError>&)));
+}
+
+void BxNet::onOAuth2TokenFinished()
+{
+    QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
+    Q_ASSERT(reply);
+    if (reply == NULL)
+    {
+        qDebug() << Q_FUNC_INFO << "reply is NULL";
+        return;
+    }
+
+    QString response(reply->readAll());
+
+    qDebug() << Q_FUNC_INFO << response;
 }
 
 void BxNet::onAuthError(BxNet::RESPONSE_STATUS status)
@@ -1108,8 +1142,6 @@ void BxNet::onAuthError(BxNet::RESPONSE_STATUS status)
     qDebug() << Q_FUNC_INFO << "status=" << status;
 
     closeLoginForm();
-
-    m_oauth2_code = "";
 
     emit authFailed(status);
 }
@@ -2472,7 +2504,7 @@ void BxNet::openLoginForm()
 
     if (m_webLoginForm)
     {
-        connect(m_webLoginForm, SIGNAL(onAuthSuccess(BxNet::RESPONSE_STATUS, QString)), this, SLOT(onAuthSuccess(BxNet::RESPONSE_STATUS, QString)));
+        connect(m_webLoginForm, SIGNAL(onAuthSuccess(BxNet::RESPONSE_STATUS, QString)), this, SLOT(onOAuth2Code(BxNet::RESPONSE_STATUS, QString)));
         connect(m_webLoginForm, SIGNAL(onAuthError(BxNet::RESPONSE_STATUS)), this, SLOT(onAuthError(BxNet::RESPONSE_STATUS)));
         connect(m_webLoginForm, SIGNAL(beginSSO()), this, SIGNAL(beginSSO()));
 

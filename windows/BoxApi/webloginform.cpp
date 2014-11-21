@@ -2,19 +2,9 @@
 #include "ui_webloginform.h"
 #include <QDebug>
 #include <QCloseEvent>
+#include <QMessageBox>
+#include <QString>
 #include "utils.h"
-
-// OAuth2
-
-#define OAUTH2_CLIENT_ID      BOXNET_API_KEY
-
-#define OAUTH2_AUTHORIZE_URL       "https://api.box.com/oauth2/authorize?"
-#define OAUTH2_AUTHORIZE_CODE_URL  OAUTH2_AUTH_AUTHORIZE_URL "response_type=code&client_id=%s&redirect_uri=%s"
-
-#define OAUTH2_REDIRECT_URL        "https://app.box.com/oauth2/logged_in"
-
-#define OAUTH2_AUTH_TOKEN_URL "https://api.box.com/oauth2/token"
-
 
 WebLoginForm::WebLoginForm(QWidget *parent) :
     QWidget(parent),
@@ -91,6 +81,28 @@ void WebLoginForm::onUrlChanged(QUrl url)
 
     if ( strncasecmp(url.toString().toStdString().c_str(), OAUTH2_REDIRECT_URL, strlen(OAUTH2_REDIRECT_URL)) == 0 )
     {
+        QString error = url.queryItemValue("error");
+        if ( !error.isEmpty() )
+        {
+            //invalid_request	The request is missing a required parameter, includes an invalid parameter value, includes a parameter more than once, or is otherwise malformed.
+            //unsupported_response_type	The authorization server does not support obtaining an authorization code using this method.
+            //Check the value of the code param in your request.
+            //access_denied	The resource owner or authorization server denied the request.
+            //server_error	The device the user is trying to log in from is not authorized to access the user’s account.
+            //temporarily_unavailable
+
+
+            if ( error != "access_denied" )
+            {
+                QString error_description = url.queryItemValue("error_description");
+                error_description.replace('+', ' ');
+                QMessageBox::critical(this, "OAuth2 Error", error + ": " + error_description);
+            }
+            m_response = BxNet::not_logged_in;
+            emit onAuthError(m_response);
+            return;
+        }
+
         QString state = url.queryItemValue("state");
         if (m_state.compare(state) != 0)
         {

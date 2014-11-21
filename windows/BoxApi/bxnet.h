@@ -28,7 +28,20 @@ class SyncHTTP;
 #define AUTH_FILE                   "box.net"
 #define AUTH_DO_NOT_USE_MD5
 
-#define BOXNET_API_KEY        "eo0cww5szjn2wywnkcje927zdk0opxxp"
+// OAuth2
+
+#define OAUTH2_CLIENT_ID      "eo0cww5szjn2wywnkcje927zdk0opxxp"
+#define OAUTH2_CLIENT_SECRET  "YrtmNDYRVSPuchqX6yv52c4AkIhNydh9"
+
+#define OAUTH2_AUTHORIZE_URL       "https://api.box.com/oauth2/authorize?"
+#define OAUTH2_AUTHORIZE_CODE_URL  OAUTH2_AUTH_AUTHORIZE_URL "response_type=code&client_id=%s&redirect_uri=%s"
+
+#define OAUTH2_REDIRECT_URL        "https://app.box.com/oauth2/logged_in"
+
+#define OAUTH2_AUTH_TOKEN_URL      "https://api.box.com/oauth2/token"
+
+
+#define BOXNET_API_KEY        OAUTH2_CLIENT_ID
 
 
 class BxNet: public QObject
@@ -254,8 +267,9 @@ private slots:
     void newUserFinished();
     //void createBookmarkFinished();
 
-    void onAuthSuccess(BxNet::RESPONSE_STATUS status, const QString& ticketId);
+    void onOAuth2Code(BxNet::RESPONSE_STATUS status, const QString& oauth2_code);
     void onAuthError(BxNet::RESPONSE_STATUS status);
+    void onOAuth2TokenFinished();
 
     void onError(QNetworkReply::NetworkError);
     void onSilentError(QNetworkReply::NetworkError);
@@ -286,7 +300,9 @@ private:
     QString     m_avatarUrl;
     //QString     m_password; // temporary storage.
 
-    QString     m_oauth2_code;
+    //QString     m_oauth2_code;
+    QString     m_oauth2_token;
+    QString     m_oauth2_refresh_token;
 
     QString     m_login;
     QString     m_email;
