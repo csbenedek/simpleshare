@@ -126,10 +126,10 @@ private slots:
 private:
     Ui::WebLoginForm *ui;
 
-    QString     m_initialUrl;
     int         m_timerId;
     BxNet::RESPONSE_STATUS m_response;
-    QString     m_url;
+
+    QString m_state;
 };
 
 #endif // WEBLOGINFORM_H

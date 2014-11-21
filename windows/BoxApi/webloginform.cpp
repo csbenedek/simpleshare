@@ -11,6 +11,8 @@
 #define OAUTH2_AUTHORIZE_URL       "https://api.box.com/oauth2/authorize?"
 #define OAUTH2_AUTHORIZE_CODE_URL  OAUTH2_AUTH_AUTHORIZE_URL "response_type=code&client_id=%s&redirect_uri=%s"
 
+#define OAUTH2_REDIRECT_URL        "https://app.box.com/oauth2/logged_in"
+
 #define OAUTH2_AUTH_TOKEN_URL "https://api.box.com/oauth2/token"
 
 
@@ -87,27 +89,36 @@ void WebLoginForm::onUrlChanged(QUrl url)
         m_timerId = -1;
     }
 
-    m_url = url.toString();
-    /*if (m_url.right(g_strError.length()) == g_strError)
+    if ( strncasecmp(url.toString().toStdString().c_str(), OAUTH2_REDIRECT_URL, strlen(OAUTH2_REDIRECT_URL)) == 0 )
     {
-        m_response = BxNet::not_a_sso_user;
-        return;
+        QString state = url.queryItemValue("state");
+        if (m_state.compare(state) != 0)
+        {
+            m_response = BxNet::wrong_auth_token;
+            emit onAuthError(m_response);
+            return;
+        }
+        QString oauth2_code = url.queryItemValue("code");
+        if ( !oauth2_code.isEmpty() )
+        {
+            m_response = BxNet::logged;
+            emit onAuthSuccess(m_response, oauth2_code);
+            securelyErase(m_state);
+            securelyErase(state);
+            securelyErase(oauth2_code);
+            return;
+        }
+        else
+        {
+            m_response = BxNet::wrong_auth_token;
+            emit onAuthError(m_response);
+            return;
+        }
     }
-
-    if (m_url.right(g_authorizedString.length()) == g_authorizedString)
-    {
-        const int beginIndex = m_url.indexOf(g_authString) + g_authString.length();
-        const int endIndex = m_url.indexOf(g_authorizedString);
-        const QString oauth2_code = m_url.mid(beginIndex, endIndex - beginIndex);
-        m_response = BxNet::logged;
-        emit onAuthSuccess(m_response, oauth2_code);
-        return;
-    }
-*/
-    if ( strncasecmp(m_url.toStdString().c_str(), OAUTH2_AUTHORIZE_URL, strlen(OAUTH2_AUTHORIZE_URL)) )
+    else if ( strncasecmp(url.toString().toStdString().c_str(), OAUTH2_AUTHORIZE_URL, strlen(OAUTH2_AUTHORIZE_URL)) == 0 )
     {
         m_timerId = startTimer(30000); // 30 sec. timeout
-    }
+    }   
 }
 
 void WebLoginForm::goToUrl(const QString& url)
@@ -124,27 +135,27 @@ void WebLoginForm::goToUrl(const QString& url)
     ui->webView->load(QUrl(url));
     ui->webView->show();
     //show();
+
 }
 
 void WebLoginForm::goToOAuth2LoginUrl()
 {
     //https://app.box.com/api/oauth2/authorize?response_type=code&client_id=MY_CLIENT_ID&state=security_token%3DKnhMJatFipTAnM0nHlZA
 
-    const QString request = "https://app.box.com/api/oauth2/authorize?"
+    m_state = "security_token%3DKnhMJatFipTAnM0nHlZA";
+
+    QString request = "https://app.box.com/api/oauth2/authorize?"
                       "response_type=code&client_id=" OAUTH2_CLIENT_ID "&"
-                      "redirect_uri=https://app.box.com/api/oauth2/logged_in&"
-                      "state=security_token%3DKnhMJatFipTAnM0nHlZA";
+                      "redirect_uri=" OAUTH2_REDIRECT_URL "&"
+                      "state=" + m_state;
 
     goToUrl(request);
+    securelyErase(request);
 }
 
 void WebLoginForm::onLoadFinished(bool ok)
 {
-    if (m_response == BxNet::unknown_status && !isVisible()
-            && !m_url.isEmpty() && (m_url != "about:blank")
-            /*&& (m_url.left(g_boxNetServicesString.length()) != g_boxNetServicesString)
-            && (m_url.left(g_boxNetString.length()) != g_boxNetString) */
-            )
+    if ( m_response == BxNet::unknown_status && !isVisible() )
     {
         emit beginOAuthLogin();
         show();
