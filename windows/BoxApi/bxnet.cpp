@@ -443,19 +443,24 @@ void BxNet::startUpload()
     }
 
     //https://upload.box.net/api/1.0/upload/"+auth_token+"/"+user->uploadFolderId;
+    // curl https://upload.box.com/api/2.0/files/content \
+    //-H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+    //-F filename=@FILE_NAME \
+    //-F folder_id=PARENT_FOLDER_ID
 
-    //qDebug() << "start upload with auth = " << m_authToken;
-
-    QString uploadUrl = m_https ? "https://" : "http://";
-    uploadUrl += "upload.box.net/api/1.0/upload/" + m_authToken + "/" + m_uploadFolderId;
+    qDebug() << "start upload with auth = " << m_oauth2_token;
 
     QByteArray boundaryRegular(QString("--" + QString::number(qrand(), 10)).toAscii());
     QByteArray boundary("\r\n--" + boundaryRegular + "\r\n");
     QByteArray boundaryLast("\r\n--" + boundaryRegular + "--\r\n");
 
-    QUrl url(uploadUrl);
-
+    QUrl url(BOXCOM_UPLOAD_FILE_URL);
     QNetworkRequest request(url);
+
+    QByteArray auth;
+    auth.append(m_oauth2_token_type).append(" ").append(m_oauth2_token);
+
+    request.setRawHeader("Authorization",   auth);
     request.setRawHeader("Host",            url.encodedHost());
     request.setRawHeader("User-Agent",      "Mozilla/5.0 (Windows; U; Windows NT 5.1; ru; rv:1.9.1.3) Gecko/20090824 Firefox/3.5.3 (.NET CLR 3.5.30729)");
     request.setRawHeader("Accept",          "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
@@ -828,20 +833,28 @@ void BxNet::createFolder(QString folderName, const QString& parentId, const QStr
     }
     m_createFolderHelper = additionalPart;
 
-    //"https://www.box.net/api/1.0/rest?action=create_folder&api_key="+appKey+"&auth_token="+auth_token+"&parent_id="+parentID+"&name="+folderName+"&share=0"
-    QString request = command(QStringList()
-                                    << apiKeyParam()
-                                    << "action=create_folder"
-                                    << "auth_token=" + m_authToken
-                                    << "parent_id=" + parentId
-                                    << "name=" + folderName
-                                    << "share=0");
-    const QString requestUrl = apiUrl(m_https, RequestRest);
-
     qDebug() << Q_FUNC_INFO << "creating folder: " << folderName << " parentId=" << parentId;
 
-    QNetworkReply* reply = m_networkManager->get(QNetworkRequest(QUrl(requestUrl + "?" + request)));
-    securelyErase(request);
+    QByteArray postData("{\"name\":\"");
+    postData.append(folderName);
+    postData.append("\", \"parent\": {\"id\": \"0\"}}");
+
+    // For your "Content-Length" header
+    QByteArray postDataSize = QByteArray::number(postData.size());
+
+    // Time for building your request
+    QUrl url(BOXCOM_FOLDERS_URL);
+    QNetworkRequest request(url);
+
+    // Add the headers specifying their names and their values with the following method : void QNetworkRequest::setRawHeader(const QByteArray & headerName, const QByteArray & headerValue);
+
+    QByteArray auth;
+    auth.append(m_oauth2_token_type).append(" ").append(m_oauth2_token);
+
+    request.setRawHeader("Authorization",  auth);
+    request.setRawHeader("Content-Length", postDataSize);
+
+    QNetworkReply* reply = m_networkManager->post(request, postData);
 
     connect(reply, SIGNAL(finished()),this,SLOT(createFolderFinished()));
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(onCreateFolderError(QNetworkReply::NetworkError)));
@@ -925,7 +938,7 @@ QString BxNet::apiKeyParam() const
 QString BxNet::apiUrl(bool https, RequestType type, const QString& path)
 {
     QString command = https ? "https://" : "http://";
-    command += "www.box.net/api/1.0";
+    command += "https://api.box.com/2.0";
     switch(type)
     {
     case RequestXML:
@@ -1108,7 +1121,7 @@ void BxNet::onOAuth2Code(BxNet::RESPONSE_STATUS status, const QString& oauth2_co
     QByteArray postDataSize = QByteArray::number(postData.size());
 
     // Time for building your request
-    QUrl serviceURL(OAUTH2_AUTH_TOKEN_URL);
+    QUrl serviceURL(OAUTH2_TOKEN_URL);
     QNetworkRequest request(serviceURL);
 
     // Add the headers specifying their names and their values with the following method : void QNetworkRequest::setRawHeader(const QByteArray & headerName, const QByteArray & headerValue);

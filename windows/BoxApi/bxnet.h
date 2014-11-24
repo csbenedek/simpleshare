@@ -38,8 +38,11 @@ class SyncHTTP;
 
 #define OAUTH2_REDIRECT_URL        "https://app.box.com/oauth2/logged_in"
 
-#define OAUTH2_AUTH_TOKEN_URL      "https://api.box.com/oauth2/token"
+#define OAUTH2_TOKEN_URL           "https://api.box.com/oauth2/token"
 
+
+#define BOXCOM_FOLDERS_URL         "https://api.box.com/2.0/folders"
+#define BOXCOM_UPLOAD_FILE_URL     "https://upload.box.com/api/2.0/files/content"
 
 #define BOXNET_API_KEY        OAUTH2_CLIENT_ID
 
