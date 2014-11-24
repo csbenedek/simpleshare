@@ -1,3 +1,8 @@
+/* webview.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
+
 #include "webview.h"
 #include <QNetworkReply>
 #include <QtDebug>

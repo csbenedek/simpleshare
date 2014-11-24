@@ -1,3 +1,8 @@
+/* webloginform.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
+
 #ifndef WEBLOGINFORM_H
 #define WEBLOGINFORM_H
 
@@ -9,10 +14,6 @@
 namespace Ui {
     class WebLoginForm;
 }
-
-// example
-//"state=security_token%253DKnhMJatFipTAnM0nHlZA&code=KbPLRkqdMzqIfqGt9o90LsN46JF2uArB"
-//QDesktopServices::openUrl(QUrl("https://www.box.com/reset"));
 
 //    const QString lastUserName = settings.value("options/lastUserName", "").toString();
 //    const bool isSSO = settings.value("options/lastSSO", false).toBool();
@@ -127,7 +128,7 @@ private:
     Ui::WebLoginForm *ui;
 
     int         m_timerId;
-    BxNet::RESPONSE_STATUS m_response;
+    BoxCom::RESPONSE_STATUS m_response;
 
     QString m_state;
 };
