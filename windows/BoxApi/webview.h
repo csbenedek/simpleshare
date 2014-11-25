@@ -1,3 +1,8 @@
+/* webview.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
+
 #ifndef WEBVIEW_H
 #define WEBVIEW_H
 
