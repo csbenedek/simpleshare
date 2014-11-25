@@ -1,3 +1,7 @@
+/* ffmpegrunner.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef FFMPEGRUNNER_H
 #define FFMPEGRUNNER_H
 

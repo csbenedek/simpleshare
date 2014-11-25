@@ -1,3 +1,7 @@
+/* pixmapitem.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "pixmapitem.h"
 #include "itemutils.h"
 #include <QPainter>

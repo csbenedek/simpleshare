@@ -1,3 +1,7 @@
+/* utils.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "utils.h"
 #include <QtCore/QCoreApplication>
 #include <QtNetwork/QNetworkInterface>

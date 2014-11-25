@@ -1,3 +1,7 @@
+/* tooltipwidget.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef TOOLTIPWIDGET_H
 #define TOOLTIPWIDGET_H
 

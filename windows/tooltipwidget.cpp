@@ -1,3 +1,7 @@
+/* tooltipwidget.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "tooltipwidget.h"
 #include <QResizeEvent>
 #include <QDebug>

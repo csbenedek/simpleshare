@@ -1,3 +1,7 @@
+/* webviewex.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef WEBVIEWEX_H
 #define WEBVIEWEX_H
 

@@ -1,3 +1,7 @@
+/* shellutils.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "stdafx.h"
 #include <shlobj.h>
 #include <shldisp.h>

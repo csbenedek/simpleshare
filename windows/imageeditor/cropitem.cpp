@@ -1,3 +1,7 @@
+/* cropitem.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "cropitem.h"
 #include "itemutils.h"
 #include <QGraphicsScene>

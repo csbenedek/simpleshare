@@ -1,3 +1,7 @@
+/* ziphelper.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef ZIPHELPER_H
 #define ZIPHELPER_H
 

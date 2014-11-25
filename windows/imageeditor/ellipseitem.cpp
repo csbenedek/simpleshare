@@ -1,3 +1,7 @@
+/* ellipseitem.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "ellipseitem.h"
 #include "itemutils.h"
 #include <QStyleOptionGraphicsItem>

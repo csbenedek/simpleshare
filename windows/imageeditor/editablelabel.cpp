@@ -1,3 +1,7 @@
+/* editablelabel.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "editablelabel.h"
 #include <QPainter>
 

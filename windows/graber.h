@@ -1,3 +1,7 @@
+/* graber.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef GRABER_H
 #define GRABER_H
 

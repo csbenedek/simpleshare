@@ -1,3 +1,8 @@
+/* bluritem.h
+ * fixup for invalid blur function in Qt.
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef GRAPHICSBLURITEM_H
 #define GRAPHICSBLURITEM_H
 

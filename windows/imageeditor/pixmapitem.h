@@ -1,3 +1,7 @@
+/* pixmapitem.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef GRAPHICSPIXMAPITEM_H
 #define GRAPHICSPIXMAPITEM_H
 

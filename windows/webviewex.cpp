@@ -1,3 +1,7 @@
+/* webviewex.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "webviewex.h"
 #include <QMouseEvent>
 #include <QWebView>

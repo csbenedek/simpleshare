@@ -1,3 +1,7 @@
+/* imageeditor.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef IMAGEEDITOR_H
 #define IMAGEEDITOR_H
 

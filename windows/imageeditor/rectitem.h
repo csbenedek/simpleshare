@@ -1,3 +1,7 @@
+/* rectitem.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef GRAPHICSRECTITEM_H
 #define GRAPHICSRECTITEM_H
 

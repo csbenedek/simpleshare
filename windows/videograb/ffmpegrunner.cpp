@@ -1,3 +1,7 @@
+/* ffmpegrunner.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "ffmpegrunner.h"
 #include <QDebug>
 

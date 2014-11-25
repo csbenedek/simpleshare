@@ -1,3 +1,7 @@
+/* recordingframe.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef WIDGET_H
 #define WIDGET_H
 

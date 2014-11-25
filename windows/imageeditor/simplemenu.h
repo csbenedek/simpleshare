@@ -1,3 +1,7 @@
+/* simplemenu.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef SIMPLEMENU_H
 #define SIMPLEMENU_H
 

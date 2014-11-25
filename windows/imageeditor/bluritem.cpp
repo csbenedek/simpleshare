@@ -1,3 +1,7 @@
+/* bluritem.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "bluritem.h"
 #include <QPainter>
 #include <QStyleOptionGraphicsItem>

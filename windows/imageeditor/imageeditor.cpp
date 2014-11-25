@@ -1,3 +1,7 @@
+/* imageeditor.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "imageeditor.h"
 #include "ui_imageeditor.h"
 #include <QFileInfo>

@@ -1,3 +1,7 @@
+/* droptargetsystray.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "droptargetsystray.h"
 #include <QResizeEvent>
 #include <QDragEnterEvent>

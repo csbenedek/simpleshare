@@ -1,3 +1,7 @@
+/* rectitem.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "rectitem.h"
 #include "itemutils.h"
 #include <QStyleOptionGraphicsItem>

@@ -1,3 +1,7 @@
+/* boxshellfolder.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include <windows.h>
 #include <shlobj.h>
 #include <shlwapi.h>

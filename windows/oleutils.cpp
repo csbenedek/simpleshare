@@ -1,3 +1,7 @@
+/* oleutils.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "oleutils.h"
 
 #include <windows.h>

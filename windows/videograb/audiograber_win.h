@@ -1,3 +1,7 @@
+/* audiograbber_win.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef AUDIOGRABER_H
 #define AUDIOGRABER_H
 

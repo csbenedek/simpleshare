@@ -1,3 +1,7 @@
+/* arrowitem.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include <QtGui>
 
 #include "arrowitem.h"

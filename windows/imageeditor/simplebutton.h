@@ -1,3 +1,7 @@
+/* simplebutton.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef SIMPLEBUTTON_H
 #define SIMPLEBUTTON_H
 

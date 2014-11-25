@@ -1,3 +1,7 @@
+/* messagedialog.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "messagedialog.h"
 #include "ui_messagedialog.h"
 #include "messagedialog.h"

@@ -1,3 +1,7 @@
+/* utils.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef UTILS_H
 #define UTILS_H
 

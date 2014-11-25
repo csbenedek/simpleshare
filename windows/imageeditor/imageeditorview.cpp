@@ -1,3 +1,7 @@
+/* imageeditorview.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "imageeditorview.h"
 #include "qgraphicsview.h"
 

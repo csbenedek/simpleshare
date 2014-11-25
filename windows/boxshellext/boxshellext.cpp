@@ -1,3 +1,7 @@
+/* boxshellext.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include <windows.h>
 #include <shlwapi.h>
 #include <objbase.h>

@@ -1,3 +1,7 @@
+/* textitem.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "textitem.h"
 #include "itemutils.h"
 #include <QtGui>

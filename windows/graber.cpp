@@ -1,3 +1,7 @@
+/* graber.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "graber.h"
 #include <QWidget>
 #include <QApplication>

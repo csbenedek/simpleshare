@@ -1,3 +1,7 @@
+/* videograbber_win.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef VIDEOGRABER_H
 #define VIDEOGRABER_H
 

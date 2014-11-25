@@ -1,3 +1,7 @@
+/* abstractdroptargetwidget.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef ABSTRACTDROPTARGETWIDGET_H
 #define ABSTRACTDROPTARGETWIDGET_H
 

@@ -1,3 +1,7 @@
+/* itemutils.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef GRAPHICSITEMUTILS_H
 #define GRAPHICSITEMUTILS_H
 

@@ -1,3 +1,7 @@
+/* preferencerwidget.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef PreferencesWidget_H
 #define PreferencesWidget_H
 

@@ -1,3 +1,7 @@
+/* penitem.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef GRAPHICSPENITEM_H
 #define GRAPHICSPENITEM_H
 

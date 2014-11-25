@@ -1,3 +1,7 @@
+/* videograbber_x11.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef X11VIDEOGRABER_H
 #define X11VIDEOGRABER_H
 

@@ -1,3 +1,7 @@
+/* main.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "applicationex.h"
 #include "preferenceswidget.h"
 #include <QSettings>

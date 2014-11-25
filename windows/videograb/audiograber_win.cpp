@@ -1,3 +1,7 @@
+/* audiograber_win.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "audiograber_win.h"
 
 #include <aviriff.h>

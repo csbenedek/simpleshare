@@ -1,3 +1,7 @@
+/* preferenceswidget.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "PreferencesWidget.h"
 #include "graber.h"
 #include "bxnet.h"

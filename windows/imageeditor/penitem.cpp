@@ -1,3 +1,7 @@
+/* penitem.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "penitem.h"
 #include "itemutils.h"
 #include <QPainter>

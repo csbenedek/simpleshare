@@ -1,3 +1,7 @@
+/* synchttp.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "synchttp.h"
 #include <QBuffer>
 

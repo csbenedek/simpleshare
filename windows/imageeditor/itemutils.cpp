@@ -1,3 +1,7 @@
+/* itemutils.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "itemutils.h"
 #include "utils.h"
 #include <QPen>

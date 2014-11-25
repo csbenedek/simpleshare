@@ -1,3 +1,7 @@
+/* shellutils.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef SHELLUTILS_H
 #define SHELLUTILS_H
 

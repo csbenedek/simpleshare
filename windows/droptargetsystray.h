@@ -1,3 +1,7 @@
+/* droptargetsystray.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef DROPTARGETSYSTRAY_H
 #define DROPTARGETSYSTRAY_H
 

@@ -1,3 +1,7 @@
+/* synchttp.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef SYNCHTTP_H
 #define SYNCHTTP_H
 

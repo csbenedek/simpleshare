@@ -1,3 +1,11 @@
+/* boxcom.h
+ * box.com api class
+ * - oauth2 authorization
+ * - file uploads
+ * - user info
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef BXNET_H
 #define BXNET_H
 #include <QObject>

@@ -1,3 +1,7 @@
+/* ellipseitem.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef GRAPHICSELLOPSEITEM_H
 #define GRAPHICSELLOPSEITEM_H
 

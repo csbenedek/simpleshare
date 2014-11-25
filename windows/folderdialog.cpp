@@ -1,3 +1,7 @@
+/* folderdialog.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "folderdialog.h"
 #include "ui_folderdialog.h"
 #include <QStringList>

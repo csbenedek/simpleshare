@@ -1,3 +1,7 @@
+/* arrowitem.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef GRAPHICSARROWITEM_H
 #define GRAPHICSARROWITEM_H
 

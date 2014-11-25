@@ -1,3 +1,7 @@
+/* settings.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "settings.h"
 
 #include <QSettings>

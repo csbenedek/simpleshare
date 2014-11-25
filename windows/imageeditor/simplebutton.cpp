@@ -1,3 +1,7 @@
+/* simplebutton.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "simplebutton.h"
 #include <QPainter>
 #include <QPaintEvent>

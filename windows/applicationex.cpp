@@ -1,3 +1,7 @@
+/* applicationex.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "applicationex.h"
 #include <QMouseEvent>
 #include <QDebug>

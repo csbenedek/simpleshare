@@ -1,3 +1,7 @@
+/* textitem.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef GRAPHICSTEXTITEM_H
 #define GRAPHICSTEXTITEM_H
 

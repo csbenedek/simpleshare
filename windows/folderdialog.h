@@ -1,3 +1,7 @@
+/* folderdialog.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef FOLDERDIALOG_H
 #define FOLDERDIALOG_H
 

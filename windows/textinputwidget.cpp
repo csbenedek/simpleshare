@@ -1,3 +1,7 @@
+/* textinputwidget.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "textinputwidget.h"
 #include <QPainter>
 #include <QDebug>

@@ -1,3 +1,7 @@
+/* settings.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef SETTINGS_H
 #define SETTINGS_H
 

@@ -1,3 +1,11 @@
+/* boxcom.cpp
+ * box.com api class
+ * - oauth2 authorization
+ * - file uploads
+ * - user info
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "bxnet.h"
 #include <QtNetwork>
 #include <QtCore>
@@ -473,23 +481,14 @@ void BxNet::startUpload()
     request.setRawHeader("Content-Type",    QByteArray("multipart/form-data; boundary=").append(boundaryRegular));
 
     QByteArray mimedata1("--"+boundaryRegular+"\r\n");
-    mimedata1.append("Content-Disposition: form-data; name=\"action\"\r\n\r\n");
-    mimedata1.append("file_upload");
+    mimedata1.append("Content-Disposition: form-data; name=\"name\"\r\n\r\ntest.txt");
     mimedata1.append(boundary);
-    mimedata1.append("Content-Disposition: form-data; name=\"sfile\"; filename=\""+fileName.toUtf8()+"\"\r\n");
     mimedata1.append("Content-Type: application/octet-stream\r\n\r\n");
 
-    QString passw = "";
-    QString descr = "";
+
     QByteArray mimedata2(boundary);
-    //mimedata2.append("Content-Disposition: form-data; name=\"password\"\r\n\r\n");
-    //mimedata2.append(passw.toUtf8());
-    mimedata2.append(boundary);
-    mimedata2.append("Content-Disposition: form-data; name=\"description\"\r\n\r\n");
-    mimedata2.append(descr.toUtf8());
-    mimedata2.append(boundary);
-    mimedata2.append("Content-Disposition: form-data; name=\"agree\"\r\n\r\n");
-    mimedata2.append("1");
+    mimedata2.append("Content-Disposition: form-data; name=\"parent\"\r\n\r\n");
+    mimedata2.append("0");
     mimedata2.append(boundaryLast);
 
     m_currentUploadingName = fileName;
@@ -509,6 +508,8 @@ void BxNet::startUpload()
     emit uploadQueueChanged();
 
     qDebug() << Q_FUNC_INFO << "starting uploading "<< fileName;
+
+    qDebug() << Q_FUNC_INFO << "uploading file content" << m_upf->readAll();
 
     m_uploadsReply = m_networkManager->post(request, m_upf);
     connect(m_uploadsReply, SIGNAL(finished()), this, SLOT(uploadFinished()));
@@ -1171,6 +1172,7 @@ void BxNet::onOAuth2TokenFinished()
         if ( name == "access_token" )
         {
             m_oauth2_token = value;
+            m_authentificated = true;
         }
         else if ( name == "refresh_token" )
         {
@@ -1181,14 +1183,13 @@ void BxNet::onOAuth2TokenFinished()
             m_oauth2_token_type = value;
         }
     }
-
-
 }
 
 void BxNet::onAuthError(BxNet::RESPONSE_STATUS status)
 {
     qDebug() << Q_FUNC_INFO << "status=" << status;
 
+    m_authentificated = false;
     closeLoginForm();
 
     emit authFailed(status);

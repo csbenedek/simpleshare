@@ -1,3 +1,7 @@
+/* imageeditorview.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef IMAGEEDITORVIEW_H
 #define IMAGEEDITORVIEW_H
 

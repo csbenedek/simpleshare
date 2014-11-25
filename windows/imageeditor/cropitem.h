@@ -1,3 +1,7 @@
+/* cropitem.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef GRAPHICSCROPITEM_H
 #define GRAPHICSCROPITEM_H
 

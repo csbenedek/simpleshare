@@ -1,3 +1,7 @@
+/* videograbber_win.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "videograber_win.h"
 #include "utils.h"
 #include <QApplication>

@@ -1,3 +1,7 @@
+/* messagedialog.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef MESSAGEDIALOG_H
 #define MESSAGEDIALOG_H
 

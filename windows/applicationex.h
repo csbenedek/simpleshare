@@ -1,5 +1,9 @@
-#ifndef QAPPLICATIONEX_H
-#define QAPPLICATIONEX_H
+/* applicationex.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
+#ifndef APPLICATIONEX_H
+#define APPLICATIONEX_H
 
 #include "qtsingleapplication.h"
 

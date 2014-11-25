@@ -1,3 +1,7 @@
+/* simplemenu.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "simplemenu.h"
 #include <QPainter>
 #include <QMouseEvent>

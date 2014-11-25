@@ -1,3 +1,7 @@
+/* urlshortener.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef URLSHORTENER_H
 #define URLSHORTENER_H
 

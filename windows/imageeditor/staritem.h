@@ -1,3 +1,7 @@
+/* staritem.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef GRAPHICSSTARITEM_H
 #define GRAPHICSSTARITEM_H
 

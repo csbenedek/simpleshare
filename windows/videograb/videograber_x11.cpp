@@ -1,3 +1,7 @@
+/* videograbber_x11.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "videograber_x11.h"
 #include <QApplication>
 #include <QDesktopWidget>

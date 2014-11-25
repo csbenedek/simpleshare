@@ -1,3 +1,7 @@
+/* ziphelper.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include <QtNetwork>
 #include <QtCore>
 #include <QtXml>

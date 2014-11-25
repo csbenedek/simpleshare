@@ -1,3 +1,7 @@
+/* recordingframe.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "recordingframe.h"
 #include "ui_recordingframe.h"
 

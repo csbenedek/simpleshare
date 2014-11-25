@@ -1,3 +1,7 @@
+/* textinputwidget.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef TEXTINPUTWIDGET_H
 #define TEXTINPUTWIDGET_H
 

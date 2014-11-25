@@ -1,3 +1,7 @@
+/* abstractdroptargetwidget.cpp
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #include "abstractdroptargetwidget.h"
 #include <QResizeEvent>
 #include <QDragEnterEvent>

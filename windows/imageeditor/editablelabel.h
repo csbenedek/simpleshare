@@ -1,3 +1,7 @@
+/* editlabel.h
+ * Author: Evgeniy Sergeev, <evgeniy.sereev@gmail.com>
+ */
+
 #ifndef EDITABLELABEL_H
 #define EDITABLELABEL_H
 
