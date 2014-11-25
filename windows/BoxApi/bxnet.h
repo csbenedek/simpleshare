@@ -50,7 +50,7 @@ class SyncHTTP;
 
 
 #define BOXCOM_FOLDERS_URL         "https://api.box.com/2.0/folders"
-#define BOXCOM_UPLOAD_FILE_URL     "https://upload.box.com/api/2.0/files/content"
+#define BOXCOM_UPLOAD_FILE_URL     "http://upload.box.com/api/2.0/files/content"
 
 #define BOXNET_API_KEY        OAUTH2_CLIENT_ID
 

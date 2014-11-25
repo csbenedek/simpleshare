@@ -372,7 +372,7 @@ void BxNet::startUpload()
         emit queueEmpty();
         return;
     }
-
+/*
     //Q_ASSERT(m_authentificated);
     if (!m_authentificated)
     {
@@ -417,7 +417,7 @@ void BxNet::startUpload()
         }
         m_disconnected = false;
     }
-
+*/
     if (!m_upf.isNull() || isUploading())
     {
         QTimer::singleShot(15000, this, SLOT(startUpload()));
@@ -458,38 +458,88 @@ void BxNet::startUpload()
 
     qDebug() << "start upload with auth = " << m_oauth2_token;
 
-    QByteArray boundaryRegular(QString("--" + QString::number(qrand(), 10)).toAscii());
-    QByteArray boundary("\r\n--" + boundaryRegular + "\r\n");
-    QByteArray boundaryLast("\r\n--" + boundaryRegular + "--\r\n");
+    QString boundary("------------------------");
+    for(int i =0; i < 2; i++)
+    {
+        boundary += QString::number(qrand(), 10);
+    }
+
+    /*
+    NSURL *upUrl = [NSURL URLWithString:urlString];
+    NSMutableURLRequest *postRequest = [NSMutableURLRequest requestWithURL:upUrl];
+
+    //adding header information
+    [postRequest setHTTPMethod:@"POST"];
+
+    NSString *stringBoundary = @"0xKhTmLbOuNdArY";
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data;boundary=%@", stringBoundary];
+    [postRequest addValue:contentType forHTTPHeaderField:@"Content-Type"];
+
+    //setting up the body
+    NSMutableData *postBody = [NSMutableData data];
+
+    if (shouldShare) {
+        [postBody appendData:[self postBodyDataChunkForStringBoundary:stringBoundary
+                                                            valueName:@"share"
+                                                                 data:[@"1" dataUsingEncoding:NSUTF8StringEncoding]]];
+        [postBody appendData:[self postBodyDataChunkForStringBoundary:stringBoundary
+                                                            valueName:@"message"
+                                                                 data:[message dataUsingEncoding:NSUTF8StringEncoding]]];
+
+        for (NSString *email in emails) {
+            [postBody appendData:[self postBodyDataChunkForStringBoundary:stringBoundary
+                                                                valueName:@"emails[]"
+                                                                     data:[email dataUsingEncoding:NSUTF8StringEncoding]]];
+        }
+    }
+
+    [postBody appendData:[[NSString stringWithFormat:@"--%@\r\n", stringBoundary]
+                          dataUsingEncoding:NSUTF8StringEncoding]];
+
+    [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition:form-data;name=\"file_name\";filename=\"%@\"\r\n", filename]
+                           dataUsingEncoding:NSUTF8StringEncoding]];
+
+    [postBody appendData:[[NSString stringWithFormat:@"Content-type:%@\r\n\r\n", dataContentType]
+                          dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:data];
+    [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", stringBoundary]
+                          dataUsingEncoding: NSUTF8StringEncoding]];
+
+    [postRequest setHTTPBody: postBody];
+
+    return postRequest;
+     */
+
+    QByteArray boundaryRegular("\r\n--");
+    boundaryRegular.append(boundary).append("\r\n");
+    QByteArray boundaryLast("\r\n--");
+    boundaryLast.append(boundary).append("--\r\n");
 
     QUrl url(BOXCOM_UPLOAD_FILE_URL);
     QNetworkRequest request(url);
 
     QByteArray auth;
-    auth.append(m_oauth2_token_type).append(" ").append(m_oauth2_token);
+    auth.append("Bearer ");
+    auth.append(m_oauth2_token);
 
     request.setRawHeader("Authorization",   auth);
-    request.setRawHeader("Host",            url.encodedHost());
-    request.setRawHeader("User-Agent",      "Mozilla/5.0 (Windows; U; Windows NT 5.1; ru; rv:1.9.1.3) Gecko/20090824 Firefox/3.5.3 (.NET CLR 3.5.30729)");
-    request.setRawHeader("Accept",          "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
-    request.setRawHeader("Accept-Language", "en-us;q=0.7,en;q=0.3");
-    request.setRawHeader("Accept-Encoding", "gzip,deflate");
-    request.setRawHeader("Accept-Charset",  "windows-1251,utf-8;q=0.7,*;q=0.7");
-    request.setRawHeader("Keep-Alive",      "300");
-    request.setRawHeader("Connection",      "keep-alive");
-    request.setRawHeader("Referer",         "https://box.net");
-    request.setRawHeader("Content-Type",    QByteArray("multipart/form-data; boundary=").append(boundaryRegular));
+    //request.setRawHeader("User-Agent",      "curl/7.38.0");
+    request.setRawHeader("Host",            "upload.box.com");
+    request.setRawHeader("Accept",          "*/*");
+    //Content-Length: 132798
+    //request.setRawHeader("Expect",          "100-continue");
 
-    QByteArray mimedata1("--"+boundaryRegular+"\r\n");
-    mimedata1.append("Content-Disposition: form-data; name=\"name\"\r\n\r\ntest.txt");
-    mimedata1.append(boundary);
-    mimedata1.append("Content-Type: application/octet-stream\r\n\r\n");
+    request.setRawHeader("Content-Type",    QByteArray("multipart/form-data; boundary=").append(boundary));
 
+    QByteArray mimedata1(boundaryRegular);
+    mimedata1.append("Content-Disposition: form-data; name=\"attributes\"\r\n\r\n");
+    mimedata1.append("{\"name\":\"test.txt\", \"parent\":{\"id\":\"0\"}}");
+    mimedata1.append(boundaryRegular);
+    mimedata1.append("Content-Disposition: form-data; name=\"file\"; filename=\"test.txt\"\r\n");
+    //mimedata1.append("Content-Type: application/octet-stream\r\n\r\n");
+    mimedata1.append("Content-Type: text/plain\r\n\r\n");
 
-    QByteArray mimedata2(boundary);
-    mimedata2.append("Content-Disposition: form-data; name=\"parent\"\r\n\r\n");
-    mimedata2.append("0");
-    mimedata2.append(boundaryLast);
+    QByteArray mimedata2(boundaryLast);
 
     m_currentUploadingName = fileName;
 
