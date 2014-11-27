@@ -69,6 +69,14 @@ typedef enum {
     {
         statusItem = item;
         [self setNotificationsObserver];
+        
+        //NSImage *image = [NSImage imageNamed:@"default-icon.png"];
+        
+        //[item setTitle:@"Test"];
+        
+        //[item setImage:image];
+        
+        
         [self loadView];
         [self updateFrame:StatusItemStateIconOnly];
     }
@@ -163,10 +171,15 @@ typedef enum {
 {
     [layerDelegate setImage:img];
     [imageLayer setNeedsDisplay];
+    
+    //[self.statusItem setImage:img];
+    
 }
 
 - (void)setImageIndex:(int)idx 
 {
+    
+    
     if (currentProgressImageIndex != idx) {
         NSArray *images = [[BoxSimpleShareAppDelegate sharedDelegate] statusBarImages];
         if (currentProgressImageIndex + 1 != idx && idx > currentProgressImageIndex) {
@@ -192,7 +205,9 @@ typedef enum {
         NSNumber* imageIndex = [imageQueue objectAtIndex:0];
         currentProgressImageIndex = [imageIndex intValue];
         NSArray *images = [[BoxSimpleShareAppDelegate sharedDelegate] statusBarImages];
-        [self setImageForStatus:[images objectAtIndex:currentProgressImageIndex]];
+        NSImage *image = [images objectAtIndex:currentProgressImageIndex];
+        
+        [self setImageForStatus:image];
         [imageQueue removeObjectAtIndex:0];
         [self performSelector:@selector(processNextImage) withObject:nil afterDelay:0.05];
     }
@@ -254,6 +269,7 @@ typedef enum {
                 if (!mouseDown)
                 {
                     [self setImageIndex:index];
+                    
                 }
             }
 

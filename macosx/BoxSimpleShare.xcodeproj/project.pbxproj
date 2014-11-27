@@ -44,6 +44,7 @@
 		0D9AF01C19DF571D003D5275 /* ImgurThumbnailLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9AF01B19DF571D003D5275 /* ImgurThumbnailLoader.m */; };
 		0DB634A319CCB29300F97E34 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB634A119CCB29300F97E34 /* PreferencesController.m */; };
 		0DB634A419CCB29300F97E34 /* PreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB634A219CCB29300F97E34 /* PreferencesController.xib */; };
+		0DB98CC21A24D0E600260C1E /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB98CC11A24D0E600260C1E /* 3.png */; };
 		0DC9DC3619D70F3100267D84 /* SHTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9DC3519D70F3100267D84 /* SHTableView.m */; };
 		0DF52E3219C8BB4F000D2D56 /* AttachedWindowsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */; };
 		0DF52E3719C8BB8B000D2D56 /* VideoCaptureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E3519C8BB8B000D2D56 /* VideoCaptureController.m */; };
@@ -454,6 +455,7 @@
 		0DB634A019CCB29300F97E34 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		0DB634A119CCB29300F97E34 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		0DB634A219CCB29300F97E34 /* PreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesController.xib; sourceTree = "<group>"; };
+		0DB98CC11A24D0E600260C1E /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
 		0DC9DC3419D70F3100267D84 /* SHTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTableView.h; sourceTree = "<group>"; };
 		0DC9DC3519D70F3100267D84 /* SHTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHTableView.m; sourceTree = "<group>"; };
 		0DF52E3019C8BB4F000D2D56 /* AttachedWindowsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachedWindowsController.h; sourceTree = "<group>"; };
@@ -1668,6 +1670,7 @@
 		8B84068113D375C30025EA39 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				0DB98CC11A24D0E600260C1E /* 3.png */,
 				8B84069B13D376B40025EA39 /* default.png */,
 				8B84069C13D376B40025EA39 /* image.png */,
 				8B84068213D375C30025EA39 /* audio.png */,
@@ -2394,6 +2397,7 @@
 				0D2B34CF19DDF187009B06EF /* logout-from-youtube-button.png in Resources */,
 				2CAFB74616B1C3D000418D61 /* icon-animation-8@2x.png in Resources */,
 				2CAFB74716B1C3D000418D61 /* icon-animation-9.png in Resources */,
+				0DB98CC21A24D0E600260C1E /* 3.png in Resources */,
 				2CAFB74816B1C3D000418D61 /* icon-animation-9@2x.png in Resources */,
 				84B8535A188C4D6A00D1DF26 /* GrantAccessWindowController.xib in Resources */,
 				848F99E219609C2F00984731 /* login-with-imgur-button-pressed@2x.png in Resources */,

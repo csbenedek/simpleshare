@@ -17,16 +17,24 @@
         [statusItem setHighlightMode:YES];
         NSImage* img =  [NSImage imageNamed:@"menubar"];
         [img setSize:NSMakeSize(18, 18)];
+        
+        
+        
+        
         _statusItemView = [[StatusItemView alloc] initWithStatusItem:statusItem];
         [_statusItemView setFrame:NSMakeRect(0, 0, 25, 50)];
         
         [statusItem setView:_statusItemView];
+        
+        
+        
         
         //[view release];
         //_statusItemView.image =  img ;//[NSImage imageNamed:@"menubar"];
        // _statusItemView.alternateImage = img;// [NSImage imageNamed:@"menubar"];
         _statusItemView.action = @selector(togglePanel:);
         [_statusItemView setDelegate:self]; // =@selector(rightClickMenu:);
+        
     }
     return self;
 }

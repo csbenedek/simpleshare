@@ -142,11 +142,13 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
 	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-12"]];
 	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-13"]];
 	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-14"]];
+    /*
 	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-15"]];
 	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-16"]];
 	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-17"]];
 	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-18"]];
 	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-19"]];
+    */
 	[statusBarImages addObject:[NSImage imageNamed:@"active-icon"]];
     
 	
