@@ -66,8 +66,14 @@
     NSMutableSet *filesAddedToQueue;
     NSMutableDictionary *icons;
     
+    
+    //this needed to uninstall global hotkeys
     EventHotKeyRef uploadFileHotkeyRef;
     EventHotKeyRef videoCaptureHotkeyRef;
+    EventHotKeyRef screenCaptureHotkeyRef;
+    EventHotKeyRef fullScreenCaptureHotkeyRef;
+    
+    
     
     // video capture
     
@@ -159,6 +165,9 @@
 
 -(IBAction)startVideoCapture:(id)sender;
 
+-(IBAction)startImageCaptureFull:(id)sender;
+
+
 - (void)showPreferenceView;
 
 
@@ -166,10 +175,18 @@
 
 -(void)sendFeedback:(id)sender;
 
+
+
 //setup hotkeys
 -(void)setupUploadHotKey;
 
 -(void)setupVideoCaptureHotKey;
+
+-(void)setupFullScreenCaptureHotKey;
+
+-(void)setupScreenCaptureHotKey;
+
+
 
 
 

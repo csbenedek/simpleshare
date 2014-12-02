@@ -451,6 +451,10 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
         [delegate setupUploadHotKey];
         [delegate setupVideoCaptureHotKey];
         
+        [delegate setupFullScreenCaptureHotKey];
+        
+        [delegate setupScreenCaptureHotKey];
+        
         
         DbgLog(@"Login Successfull!");
         

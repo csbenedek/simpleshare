@@ -109,6 +109,21 @@ static Mixpanel* mixpanelSharedInstance = nil;
 	DbgLog(@"ERROR: Mixpanel request failed: %@", [request error]);
 }
 
+
+-(void) trackDisableUploads{
+    
+    [self track:@"OnDisableUploads"];
+    
+    
+}
+
+-(void) trackFileDragEvent{
+    
+    
+    [self track:@"OnFileDragged"];
+    
+}
+
 - (void) trackCaptureRegionEvent
 {
 	[self track:@"OnCaptureRegion"];

@@ -201,7 +201,7 @@ static BoxNetHandler *sharedObject = nil;
         
         [opt setIsScreenshot:YES];
        
-        [[Mixpanel sharedInstance] trackCaptureRegionEvent];
+        //[[Mixpanel sharedInstance] trackCaptureRegionEvent];
 
         // Copy URL to clipboard
         if (controller.isImgur)

@@ -404,6 +404,8 @@ typedef enum {
     return [[BoxSimpleShareAppDelegate sharedDelegate] prepareForDragOperation:sender];
 }
 
+
+
 #pragma mark -
 
 - (void)setMouseDown:(BOOL)down {

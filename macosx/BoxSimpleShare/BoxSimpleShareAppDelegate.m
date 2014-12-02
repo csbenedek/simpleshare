@@ -44,6 +44,10 @@ static const int MaxHistoryItemLength = 22;
 
 static const int UploadHotKeyEventId = 11;
 static const int VideoCaptureHotKeyEventId = 111;
+static const int FullScreenCaptureHotKeyEventID = 112;
+static const int ScreenCaptureHotKeyEventID = 113;
+
+
 
 static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, void* inUserData);
 
@@ -171,11 +175,15 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     [[[FolderUtility alloc] init] checkPermision];
     
     
+    //set desktop monitoring for new files, needed for screenshots
+    
+    
     UKKQueue *kqueue = [UKKQueue sharedFileWatcher];
     NSString *path = [[NSFileManager defaultManager] desktopPath];
     [kqueue addPathToQueue:path];
     NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
     NSNotificationCenter *notificationCenter = [workspace notificationCenter];
+    
     [notificationCenter addObserver:self 
                            selector:@selector(fileSystemNotificationsHandler:) 
                                name:UKFileWatcherWriteNotification 
@@ -186,11 +194,9 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     
     
     
+    
     //prepare settings and init AttachedWindowsController
 
-
-    
-    
     
     self.attachedWindowsController  = [[AttachedWindowsController alloc] init];
     
@@ -369,7 +375,7 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
             int keyCode = [code intValue];
             unichar keyChar = [hotKeyString characterAtIndex:0];
             EventHotKeyID uploadFileHotkeyId = { keyChar, eventId };
-            RegisterEventHotKey(keyCode,
+           OSStatus result =  RegisterEventHotKey(keyCode,
                                 shiftKey | cmdKey, 
                                 uploadFileHotkeyId, 
                                 GetApplicationEventTarget(), 
@@ -400,6 +406,28 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     NSString* hotKeyString = [[mainController screen_cast_hot_key] lowercaseString];
     [self installHotKey:hotKeyString eventId:VideoCaptureHotKeyEventId eventHotKeyRef:&videoCaptureHotkeyRef];
 }
+
+-(void)setupFullScreenCaptureHotKey{
+    
+    NSString *hotkeyString = @"3";
+    
+    [self installHotKey:hotkeyString eventId:FullScreenCaptureHotKeyEventID eventHotKeyRef:&fullScreenCaptureHotkeyRef];
+    
+    
+    
+}
+
+
+-(void)setupScreenCaptureHotKey{
+    
+    NSString *hotkeyString = @"4";
+    
+    [self installHotKey:hotkeyString eventId:ScreenCaptureHotKeyEventID  eventHotKeyRef:&screenCaptureHotkeyRef];
+    
+    
+}
+
+
 
 - (void)uninstallVideoCaptureHotKey {
     [self uninstallHotKey:videoCaptureHotkeyRef];
@@ -620,13 +648,11 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     return NSDragOperationNone;
 }
 
-- (void) draggingEnded:(id<NSDraggingInfo>)sender
-{
-    
-}
 
 - (BOOL) performDragOperation:(id<NSDraggingInfo>)sender
 {
+    
+    [[Mixpanel sharedInstance] trackFileDragEvent];
     return YES;
 }
 
@@ -1119,7 +1145,9 @@ void *kContextActivePanel = &kContextActivePanel;
     if ([[self window] isVisible]) {
         [[self window] close];
     }
+    
     [[Mixpanel sharedInstance] trackCaptureFullScreenEvent];
+    
     [imageCaptureController captureFullScreen];
 
 }
@@ -1135,6 +1163,8 @@ void *kContextActivePanel = &kContextActivePanel;
         }
 
     [BoxSimpleShareAppDelegate showNotificationWithTitle:@"Capture Region" withDescription:@"Hold and drag to take screenshot"];
+    
+    //track mixpanel event
 	[[Mixpanel sharedInstance] trackCaptureRegionEvent];
     
         [imageCaptureController showWindows];
@@ -1194,6 +1224,7 @@ void *kContextActivePanel = &kContextActivePanel;
 	CFRelease(shiftKey);
 }
 
+/*
 - (IBAction) triggerRegionCapture:(id)sender
 {
     [BoxSimpleShareAppDelegate showNotificationWithTitle:@"Capture Region" withDescription:@"Hold and drag to take screenshot"];
@@ -1236,6 +1267,7 @@ void *kContextActivePanel = &kContextActivePanel;
 	// release modifiers
 	[self performSelector:@selector(modifierDepressMagic) withObject:nil afterDelay:0.5f];
 }
+*/
 
 - (void)toggleUploadsEnabled:(id)sender {
     [mainController toggleUploadsEnabled];
@@ -1364,6 +1396,22 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     
     EventHotKeyID hotKeyId;
     GetEventParameter(inEvent, kEventParamDirectObject, typeEventHotKeyID, NULL, sizeof(hotKeyId), NULL, &hotKeyId);
+    
+    if (hotKeyId.id == FullScreenCaptureHotKeyEventID) {
+        //NSLog(@"Full screen capture!");
+        
+        [[Mixpanel sharedInstance] trackCaptureFullScreenEvent];
+        
+        
+    }
+    
+    if (hotKeyId.id == ScreenCaptureHotKeyEventID) {
+        NSLog(@"Partial screen capture with hotkey");
+        
+        [[Mixpanel sharedInstance] trackCaptureRegionEvent];
+        
+    }
+    
     
     if (hotKeyId.id == VideoCaptureHotKeyEventId) {
         [appDelegate startVideoCapture:nil];

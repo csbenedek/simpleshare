@@ -41,12 +41,12 @@ NSString * const NEY_COPY_ACTION = @"https://upload.box.com/api/1.0/new_copy/<au
 
 //NSString * const MIXPANEL_TOKEN = @"de25386f737fe56de4baee18c1a26eec";
 //Aaron's account
-NSString * const MIXPANEL_TOKEN = @"59b8cd4ab8944d85a13d3788280075ad";
+//NSString * const MIXPANEL_TOKEN = @"59b8cd4ab8944d85a13d3788280075ad";
 
 
 //my account
 
-//NSString * const MIXPANEL_TOKEN = @"8c94fecbfca5fc14c7e7280cb2c30198";
+NSString * const MIXPANEL_TOKEN = @"8c94fecbfca5fc14c7e7280cb2c30198";
 
 NSString * const MIXPANEL_ENGAGE_URL = @"http://api.mixpanel.com/engage/?data=";
 

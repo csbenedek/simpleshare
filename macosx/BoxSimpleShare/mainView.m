@@ -17,6 +17,8 @@
 #import "YouTubeThumbnailLoader.h"
 #import "ImgurThumbnailLoader.h"
 #import "AppConstants.h"
+#import "Mixpanel.h"
+
 
 
 
@@ -49,6 +51,9 @@
     [window setArrowBaseWidth:20.0];
     
     [window setArrowHeight:10.0];
+    
+    //support for fullscreen mode
+    [window setCollectionBehavior:NSWindowCollectionBehaviorStationary|NSWindowCollectionBehaviorCanJoinAllSpaces|NSWindowCollectionBehaviorFullScreenAuxiliary];
     
     
     
@@ -389,6 +394,14 @@
     
     MainController *mainController = (MainController *)[[BoxSimpleShareAppDelegate sharedDelegate] mainController];
     
+    if (self.uploadButton.isEnabled) {
+        //track Mixpanel event
+        
+        [[Mixpanel sharedInstance] trackDisableUploads];
+        
+        
+    }
+    
     //enable / disable upload button
     [self.uploadButton setEnabled:!self.uploadButton.isEnabled];
     
@@ -491,6 +504,8 @@
     //make partial screenshot
     
     [delegate startImageCapture:nil];
+    
+    //[delegate startImageCaptureFull:nil];
     
     
     //NSLog(@"Take screenshot!");
