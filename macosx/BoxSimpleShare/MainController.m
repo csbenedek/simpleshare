@@ -436,6 +436,7 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
 
         [PreferenceManager loadPreference];
         
+        //identify new user in Mixpanel
         
 		[[Mixpanel sharedInstance] identify:[response object]];
         

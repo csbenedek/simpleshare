@@ -239,6 +239,7 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     
     //check for first launch
     
+    
     if (self.attachedWindowsController.isFirstLaunch) {
         
         //post message for attachedWindowsController to show start message

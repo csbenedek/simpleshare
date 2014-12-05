@@ -12,6 +12,9 @@
 #import "ASINetworkQueue.h"
 #import "NSData+Base64.h"
 #import "JSON.h"
+#import "MainController.h"
+#import "BoxSimpleShareAppDelegate.h"
+
 
 @implementation Mixpanel
 
@@ -187,10 +190,41 @@ static Mixpanel* mixpanelSharedInstance = nil;
 	{
 		return;
 	}
+    
+    MainController *controller = (MainController *)[[BoxSimpleShareAppDelegate   sharedDelegate] mainController];
 	
 	NSMutableDictionary* action = [NSMutableDictionary dictionary];
 	[action setObject:userName forKey:@"$first_name"];
 	[action setObject:userEmail forKey:@"$email"];
+    //set user preferences
+    [action setObject:[NSNumber numberWithBool:controller.delete_screenshot_after_upload_check] forKey:@"deleteScreenShotAfterUpload"];
+    
+    [action setObject:[NSNumber numberWithBool:controller.delete_all_after_upload_check] forKey:@"deleteAllAfterUpload"];
+    [action setObject:[NSNumber numberWithBool:controller.launch_at_startup_check] forKey:@"launchAtLogin"];
+    [action setObject:[NSNumber numberWithBool:controller.shorten_links_check] forKey:@"shortenLinks"];
+    [action setObject:[NSNumber numberWithBool:controller.copy_url_to_clipboard_check] forKey:@"copyURLToClipboard"];
+    [action setObject:[NSNumber numberWithBool:controller.mute_audio_check] forKey:@"muteAudio"];
+    
+    if (controller.isImgur) {
+        
+        [action setObject:@"Imgur" forKey:@"Image Host"];
+    }
+    
+    else{
+        
+        [action setObject:@"Box" forKey:@"Image Host"];
+    }
+    
+    if (controller.isYouTubeLogin) {
+        
+        [action setObject:@"YouTube" forKey:@"Video Host"];
+    }
+    else{
+        
+        [action setObject:@"Box" forKey:@"Video Host"];
+        
+    }
+    
 
 	NSMutableDictionary* properties = [NSMutableDictionary dictionary];
 	[properties setObject:action forKey:@"$set"];
