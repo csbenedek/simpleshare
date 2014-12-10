@@ -282,6 +282,8 @@ GrantAccessWindowController* accessWindowController;
 			{
 				isAuthorized = YES;
 //				[self getUserInformation];
+                
+                NSLog(@"Requesting user info");
 				
 				[[BoxNetHandler sharedHandler] oauth2GetUserInformation];
 			}

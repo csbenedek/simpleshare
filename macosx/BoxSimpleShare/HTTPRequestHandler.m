@@ -150,6 +150,13 @@ static HTTPRequestHandler *sharedObject1;
 
 - (void) requestDidFinish:(id)request
 {
+    
+    //get request type
+    
+    NSString *requestType = [[request userInfo] valueForKey:@"TYPE"];
+    
+    NSLog(@"Request type:%@",requestType);
+    
     // Finished - Success 
     
     DbgLog(@"request data: %@", [request responseString]);

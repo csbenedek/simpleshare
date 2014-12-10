@@ -170,12 +170,39 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     [GrowlApplicationBridge setGrowlDelegate:self];
     [GrowlApplicationBridge setWillRegisterWhenGrowlIsReady:YES];
     
+    //get user defaults
+    
+     NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
+    
+    //remove permission for desktop access
+    //[defaults removeObjectForKey:@"PathToFolder"];
+    
     
     //check permission to desktop
     [[[FolderUtility alloc] init] checkPermision];
     
     
-    //set desktop monitoring for new files, needed for screenshots
+    
+    
+    //check for the first launch
+    
+    
+   
+    //uncomment to reset SHnotFirstLaunch
+    
+    //[defaults removeObjectForKey:@"SHnotFirstLaunch"];
+    
+    self.attachedWindowsController.isFirstLaunch = ![defaults boolForKey:@"SHnotFirstLaunch"];
+    
+    //set isFirstLaunch to true in defaults
+    
+    [defaults setBool:TRUE forKey:@"SHnotFirstLaunch"];
+    
+    [defaults synchronize];
+    
+    
+    
+    //set desktop monitoring for new files, needed for screenshots taken with system hotkeys
     
     
     UKKQueue *kqueue = [UKKQueue sharedFileWatcher];
@@ -201,21 +228,6 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     self.attachedWindowsController  = [[AttachedWindowsController alloc] init];
     
     
-    //check for the first launch
-    
-    
-    NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
-    //uncomment to reset SHnotFirstLaunch
-    
-    //[defaults removeObjectForKey:@"SHnotFirstLaunch"];
-    
-    self.attachedWindowsController.isFirstLaunch = ![defaults boolForKey:@"SHnotFirstLaunch"];
-    
-    //set isFirstLaunch to true in defaults
-    
-    [defaults setBool:TRUE forKey:@"SHnotFirstLaunch"];
-    
-    [defaults synchronize];
     
     
     
