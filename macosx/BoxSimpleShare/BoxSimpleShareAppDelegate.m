@@ -179,8 +179,13 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     
     
     //check permission to desktop
-    [[[FolderUtility alloc] init] checkPermision];
     
+    FolderUtility *folderUtility = [[FolderUtility alloc] init];
+    
+    
+    //[folderUtility checkPermision];
+    
+    self.isDesktopGranted = [folderUtility getPathToDesktopFolder];
     
     
     
@@ -271,14 +276,34 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
         {
             NSLog(@"Saved credentials, refresh token");
             
-            [[OAuth2Client sharedInstance] authorize];
+            if (self.isDesktopGranted) {
+                
+                
+                [[OAuth2Client sharedInstance] authorize];
+                
+            }
+            
+            else{
+                
+                NSLog(@"No permissions granted 1111");
+                
+                //[self.attachedWindowsController displayLoginWindow];
+                
+                [folderUtility checkPermision];
+                
+            }
+            
+            
         }
         else{
             
             
             NSLog(@"No saved credentials, display login window");
             
-            [self.attachedWindowsController displayLoginWindow];
+            //[self.attachedWindowsController displayLoginWindow];
+            
+            [folderUtility checkPermision];
+            
             
         }
         

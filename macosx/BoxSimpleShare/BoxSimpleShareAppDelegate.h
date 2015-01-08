@@ -122,6 +122,9 @@
 //preferences controller
 @property (nonatomic, retain) PreferencesController* preferencesController;
 
+//is permission to desktop aws granted to app
+
+@property (nonatomic, assign) BOOL isDesktopGranted;
 
 
 

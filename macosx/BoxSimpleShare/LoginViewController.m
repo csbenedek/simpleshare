@@ -9,6 +9,8 @@
 #import "LoginViewController.h"
 #import "MAAttachedWindow.h"
 #import "AttachedWindowsController.h"
+#import "FolderUtility.h"
+#import "BoxSimpleShareAppDelegate.h"
 
 
 
@@ -109,6 +111,31 @@
 
 -(IBAction)loginButtonClicked:(id) sender{
     
+    //get app delegate
+    
+    
+    BoxSimpleShareAppDelegate *delegate = (BoxSimpleShareAppDelegate *)[[NSApplication sharedApplication] delegate];
+    
+    
+    
+    //check desktop permissions if no permissions, cancel login, display permissions dialog
+    
+    
+    FolderUtility *folderUtility = [[FolderUtility alloc] init];
+    
+    
+    
+    
+    if (!delegate.isDesktopGranted) {
+        
+        NSLog(@"No desktop permissions");
+        
+        [folderUtility checkPermision];
+        
+        
+        return;
+        
+    }
     
     
     //post message after login
