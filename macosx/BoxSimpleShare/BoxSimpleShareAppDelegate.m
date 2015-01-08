@@ -172,7 +172,7 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     
     //get user defaults
     
-     NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
+     //NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
     
     //remove permission for desktop access
     //[defaults removeObjectForKey:@"PathToFolder"];
