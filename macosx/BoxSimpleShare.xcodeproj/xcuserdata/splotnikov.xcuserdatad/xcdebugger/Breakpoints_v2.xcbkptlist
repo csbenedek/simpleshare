@@ -751,7 +751,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "453"
             endingLineNumber = "453"
-            landmarkName = "-updateHistoryMenuImpl"
+            landmarkName = "-setupFullScreenCaptureHotKey"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -767,7 +767,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1369"
             endingLineNumber = "1369"
-            landmarkName = "-videoCaptureController:didCaptureVideoToPath:"
+            landmarkName = "-imageCaptureController:didCaptureVideoToPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1055,8 +1055,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1302"
             endingLineNumber = "1302"
-            landmarkName = "-dealloc"
-            landmarkType = "5">
+            landmarkName = "@implementation BoxSimpleShareAppDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1071,7 +1071,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1196"
             endingLineNumber = "1196"
-            landmarkName = "-startVideoCapture:"
+            landmarkName = "-startImageCapture:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1103,7 +1103,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1215"
             endingLineNumber = "1215"
-            landmarkName = "-startVideoCapture:"
+            landmarkName = "-startImageCapture:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1119,7 +1119,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "405"
             endingLineNumber = "405"
-            landmarkName = "-uninstallHotKey:"
+            landmarkName = "-installHotKey:eventId:eventHotKeyRef:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1183,7 +1183,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1199"
             endingLineNumber = "1199"
-            landmarkName = "-startVideoCapture:"
+            landmarkName = "-startImageCapture:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1215,7 +1215,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "428"
             endingLineNumber = "428"
-            landmarkName = "-setupFullScreenCaptureHotKey"
+            landmarkName = "-uninstallHotKey:"
             landmarkType = "5">
             <Locations>
                <Location
