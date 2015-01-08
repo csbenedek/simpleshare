@@ -150,10 +150,19 @@
     
     NSMutableData *data = [[NSMutableData alloc] initWithContentsOfFile:path];
     
+    // uncommentnext string to simulate defaults loading
+    
+    //data = nil;
+    
+    
+    
     if (data && [[NSFileManager defaultManager] fileExistsAtPath:path])
     {
         NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
         NSMutableDictionary *pref = [[unarchiver decodeObjectForKey:@"net.box.simpleshare.pref"] retain];
+        
+        
+        
         
         if (pref)
         {
@@ -230,7 +239,9 @@
         
         // DEFAULT SETTINGS
         
-        controller.delete_screenshot_after_upload_check = 0;
+        NSLog(@"Loading defaults settings");
+        
+        controller.delete_screenshot_after_upload_check = 1;
         controller.delete_all_after_upload_check = 0;
         controller.disable_automatic_upload_check = 0;  
         controller.copy_url_to_clipboard_check = 1;
