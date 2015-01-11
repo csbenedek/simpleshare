@@ -1194,11 +1194,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxSimpleShare/BoxSimpleShareAppDelegate.m"
-            timestampString = "439989309.860997"
+            timestampString = "442705961.141362"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1447"
-            endingLineNumber = "1447"
+            startingLineNumber = "1482"
+            endingLineNumber = "1482"
             landmarkName = "HotKeyHandler()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1256,11 +1256,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxSimpleShare/BoxSimpleShareAppDelegate.m"
-            timestampString = "439989309.860997"
+            timestampString = "442705961.141362"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1455"
-            endingLineNumber = "1455"
+            startingLineNumber = "1490"
+            endingLineNumber = "1490"
             landmarkName = "HotKeyHandler()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1326,6 +1326,70 @@
             startingLineNumber = "22"
             endingLineNumber = "22"
             landmarkName = "-checkPermision"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BoxSimpleShare/VideoCaptureManagerLion.m"
+            timestampString = "442532429.096827"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "-startVideoCaptureInRect:screen:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BoxSimpleShare/VideoCaptureManagerLion.m"
+            timestampString = "442532560.502138"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "-saveCurrentMovieToFile:exportFormat:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BoxSimpleShare/BoxSimpleShareAppDelegate.m"
+            timestampString = "442705961.141362"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1427"
+            endingLineNumber = "1427"
+            landmarkName = "-videoCaptureController:didCaptureVideoToPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BoxSimpleShare/VideoCaptureManagerBase.m"
+            timestampString = "442624723.700786"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "-notifySaveFinishedToPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

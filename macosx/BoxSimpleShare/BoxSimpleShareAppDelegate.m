@@ -172,10 +172,10 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     
     //get user defaults
     
-     //NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
+     NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
     
-    //remove permission for desktop access
-    [defaults removeObjectForKey:@"PathToFolder"];
+    //uncomment to remove permission for desktop access
+    //[defaults removeObjectForKey:@"PathToFolder"];
     
     
     //check permission to desktop
@@ -1218,7 +1218,7 @@ void *kContextActivePanel = &kContextActivePanel;
         [videoCaptureController stopVideoRecording];
         [videoCaptureController hideAllWindows];
         [videoCaptureController clear];
-        [videoCaptureMenuItem setTitle:InterfaceString(@"VideoCapture")];
+        //[videoCaptureMenuItem setTitle:InterfaceString(@"VideoCapture")];
     } else {
         if (!videoCaptureController) {
             videoCaptureController = [[StartVideoCaptureController alloc] init];
@@ -1238,7 +1238,7 @@ void *kContextActivePanel = &kContextActivePanel;
         
         [[NSCursor crosshairCursor] set];
         shouldSetCaptureCursor = YES;
-        [videoCaptureMenuItem setTitle:InterfaceString(@"StopVideoCapture")];
+        //[videoCaptureMenuItem setTitle:InterfaceString(@"StopVideoCapture")];
     }
 }
 
@@ -1388,21 +1388,56 @@ void *kContextActivePanel = &kContextActivePanel;
         
         NSString* filePath = [[NSFileManager defaultManager] desktopPath];
         
+        //filePath = [filePath stringByAppendingPathComponent:@"Screencasts"];
+        
         filePath = [filePath stringByAppendingPathComponent:[path lastPathComponent]];
+        
+        //if upload is disabled, just copy file to desktop
+        
+         if (self.mainController.disable_automatic_upload_check) {
+         //if uploads disable, move file from chache to desktop
+         NSError *error;
+         
+         
+         BOOL copyResult = [[NSFileManager defaultManager] moveItemAtPath:path toPath:filePath error:&error];
+         
+         
+         //NSLog(@"Video file copy error:%@",[error description]);
+         
+             return;
+         
+         }
+         
+        
+        
+        
+        
         //copy file to desktop
         
+        BOOL copyResult = [[NSFileManager defaultManager] moveItemAtPath:path toPath:filePath error:nil];
+        /*
         if (self.mainController.disable_automatic_upload_check) {
             //if uploads disable, move file from chache to desktop
+            NSError *error;
             
-            BOOL copyResult = [[NSFileManager defaultManager] moveItemAtPath:path toPath:filePath error:nil];
+            
+            BOOL copyResult = [[NSFileManager defaultManager] moveItemAtPath:path toPath:filePath error:&error];
+            
+            
+            //NSLog(@"Video file copy error:%@",[error description]);
+            
             
         }
-        
+        */
         
 
         [[Mixpanel sharedInstance] trackVideoCaptureEvent];
-        [[BoxNetHandler sharedHandler] uploadFiles:[[NSArray arrayWithObject:path] retain] withProperties:[NSDictionary dictionaryWithObject:@"YOUTUBE" forKey:@"YOUTUBE"]];
+        
+        //upload files
+        //[[BoxNetHandler sharedHandler] uploadFiles:[[NSArray arrayWithObject:path] retain] withProperties:[NSDictionary dictionaryWithObject:@"YOUTUBE" forKey:@"YOUTUBE"]];
 
+        
+        [[BoxNetHandler sharedHandler] uploadFiles:[[NSArray arrayWithObject:filePath] retain] withProperties:[NSDictionary dictionaryWithObject:@"YOUTUBE" forKey:@"YOUTUBE"]];
     
     }
 }

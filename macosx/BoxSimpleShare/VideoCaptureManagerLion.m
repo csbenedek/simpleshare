@@ -111,7 +111,7 @@
     [_session performSelector:@selector(startRunning) withObject:nil];
     
     [_tempFileName release];
-    _tempFileName = [[NSTemporaryDirectory() stringByAppendingPathComponent:@"movie_tmp.mov"] retain];
+    //_tempFileName = [[NSTemporaryDirectory() stringByAppendingPathComponent:@"movie_tmp.mov"] retain];
     _tempFileName = [[[[NSFileManager defaultManager] cacheDataPath]stringByAppendingPathComponent:@"movie_tmp.mov"] retain];
 
     NSURL* destPath = [NSURL fileURLWithPath:_tempFileName];
@@ -137,6 +137,9 @@
     NSError* err = nil;
     
     BOOL result = [[NSFileManager defaultManager]moveItemAtPath:_tempFileName toPath:filename error:&err];
+    
+    
+    
     if (result) {
 
         [self performSelectorOnMainThread:@selector(notifySaveFinishedToPath:) withObject:filename waitUntilDone:NO];
@@ -192,8 +195,8 @@
     [_session performSelector:@selector(stopRunning) withObject:nil];
     
     // Release the session
-    //[_session release];
-    //_session = nil;
+    [_session release];
+    _session = nil;
 }
 
 @end

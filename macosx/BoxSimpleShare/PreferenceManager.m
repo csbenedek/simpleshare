@@ -245,7 +245,7 @@
         controller.delete_all_after_upload_check = 0;
         controller.disable_automatic_upload_check = 0;  
         controller.copy_url_to_clipboard_check = 1;
-        controller.shorten_links_check = 0;
+        controller.shorten_links_check = 1;
         controller.mute_audio_check = 0;
         
         controller.screencast_format_index = 0;
