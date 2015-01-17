@@ -801,7 +801,40 @@ exit:
                 {
                     DbgLog(@"UPLOADING!!!!!!!");
                     [filesAddedToQueue addObject:path];
-                    [[BoxNetHandler sharedHandler] uploadFiles:[NSArray arrayWithObject:path] withProperties:[NSDictionary dictionaryWithObject:@"SCREEN_SHOT" forKey:@"SCREEN_SHOT"]];
+                    
+                    //create CGImageRef
+                    
+                    CGDataProviderRef dataProvider = CGDataProviderCreateWithFilename([path UTF8String]);
+                    CGImageRef image = CGImageCreateWithPNGDataProvider(dataProvider, NULL, NO, kCGRenderingIntentDefault);
+                    
+                    //convert to jpg
+                    
+                    
+                    //dictionary with options
+                    CFMutableDictionaryRef mSaveMetaAndOpts = CFDictionaryCreateMutable(nil, 0,
+                                                                                        &kCFTypeDictionaryKeyCallBacks,  &kCFTypeDictionaryValueCallBacks);
+                    CFDictionarySetValue(mSaveMetaAndOpts, kCGImageDestinationLossyCompressionQuality,
+                                         [NSNumber numberWithFloat:0.8]);	// set the compression quality here
+                    
+                    //path to save jpeg
+                    
+                    //NSString *tempString = [path stringByDeletingLastPathComponent];
+                    
+                  
+                    NSString *outPath = [NSString stringWithFormat:@"%@/compressed_%@.jpg",[path stringByDeletingLastPathComponent], [[path lastPathComponent] stringByDeletingPathExtension]];
+                    
+                    
+                    
+                    NSURL *outURL = [[NSURL alloc] initFileURLWithPath:outPath];
+                    
+                    CGImageDestinationRef dr = CGImageDestinationCreateWithURL ((CFURLRef)outURL, (CFStringRef)@"public.jpeg" , 1, NULL);
+                    CGImageDestinationAddImage(dr, image, mSaveMetaAndOpts);
+                    
+                    CGImageDestinationFinalize(dr);
+                    
+                    
+                    
+                    [[BoxNetHandler sharedHandler] uploadFiles:[NSArray arrayWithObject:outPath] withProperties:[NSDictionary dictionaryWithObject:@"SCREEN_SHOT" forKey:@"SCREEN_SHOT"]];
                 }
             }
         }

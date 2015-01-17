@@ -142,6 +142,8 @@
 @property (nonatomic) BOOL shorten_links_check;
 @property (nonatomic) BOOL launch_at_startup_check;
 @property (nonatomic) BOOL mute_audio_check;
+@property (nonatomic) BOOL compress_screenshots;
+
 
 @property (nonatomic) int uploadhost_index;
 @property (nonatomic) int upload_video_host_index;

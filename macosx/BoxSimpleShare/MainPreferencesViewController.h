@@ -17,6 +17,8 @@
 @property(nonatomic, retain) IBOutlet ITSwitch *deleteScreenshotsSwitch;
 @property(nonatomic, retain) IBOutlet ITSwitch *deleteAllFileTypesSwitch;
 @property(nonatomic, retain) IBOutlet ITSwitch *copyToPasteboardSwitch;
+@property (nonatomic, retain) IBOutlet ITSwitch *compressScreenshotsSwitch;
+
 
 
 
@@ -28,6 +30,8 @@
 -(IBAction)deleteScreenshotsControlSwitched:(id)sender;
 -(IBAction)deleteAllFileTypesControlSwitched:(id)sender;
 -(IBAction)copyToPasteboardControlSwitched:(id)sender;
+-(IBAction)compressImagesControlSwitched:(id)sender;
+
 
 
 

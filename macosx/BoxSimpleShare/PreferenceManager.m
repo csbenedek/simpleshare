@@ -101,6 +101,10 @@
     
     [pref setObject:[NSNumber numberWithInt:controller.upload_video_host_index] forKey:VIDEO_UPLOAD_HOST];
     
+    
+    [pref setObject:[NSNumber numberWithBool:controller.compress_screenshots] forKeyedSubscript:@"compress_screenshots"];
+    
+    
 //    [pref setObject:[[[BoxNetHandler sharedHandler] boxNetUser] getEncryptedCredentials]  forKey:CREDENTIAL];
     
     
@@ -174,6 +178,8 @@
             controller.copy_url_to_clipboard_check = [[pref valueForKey:COPY_URL_TO_CLIPBOARD] intValue];
             controller.shorten_links_check = [[pref valueForKey:SHORTEN_URL] intValue];
             controller.mute_audio_check = [[pref valueForKey:MUTE_AUDIO] intValue];
+            
+            controller.compress_screenshots = [[pref valueForKey:@"compress_screenshots"] boolValue];
             
             
             controller.upload_hot_key = @"u";

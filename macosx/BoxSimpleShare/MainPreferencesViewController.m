@@ -52,6 +52,8 @@
     self.deleteScreenshotsSwitch.isOn = controller.delete_screenshot_after_upload_check;
     self.deleteAllFileTypesSwitch.isOn = controller.delete_all_after_upload_check;
     self.copyToPasteboardSwitch.isOn = controller.copy_url_to_clipboard_check;
+    self.compressScreenshotsSwitch.isOn = controller.compress_screenshots;
+    
 
     //[self.view display];
     
@@ -146,6 +148,21 @@
     [controller preferencePageValueChangeNotification:nil];
     
 
+}
+
+-(IBAction)compressImagesControlSwitched:(id)sender{
+    
+    MainController *controller = (MainController *)[[BoxSimpleShareAppDelegate   sharedDelegate] mainController];
+    
+    ITSwitch *control = (ITSwitch *)sender;
+    
+    controller.compress_screenshots = control.isOn;
+    
+    //mark preferences as dirty
+    
+    [controller preferencePageValueChangeNotification:nil];
+    
+    
 }
 
 

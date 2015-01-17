@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxSimpleShare/PreferenceManager.m"
-            timestampString = "442444580.268139"
+            timestampString = "443223589.831055"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "+loadPreference"
             landmarkType = "5">
          </BreakpointContent>
@@ -698,11 +698,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxSimpleShare/PreferenceManager.m"
-            timestampString = "442444580.268139"
+            timestampString = "443223589.831055"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "+loadPreference"
             landmarkType = "5">
          </BreakpointContent>
@@ -762,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxSimpleShare/BoxSimpleShareAppDelegate.m"
-            timestampString = "439989309.860997"
+            timestampString = "443026720.311946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1369"
-            endingLineNumber = "1369"
+            startingLineNumber = "1402"
+            endingLineNumber = "1402"
             landmarkName = "-imageCaptureController:didCaptureVideoToPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1050,11 +1050,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxSimpleShare/BoxSimpleShareAppDelegate.m"
-            timestampString = "439989309.860997"
+            timestampString = "443026720.311946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1302"
-            endingLineNumber = "1302"
+            startingLineNumber = "1335"
+            endingLineNumber = "1335"
             landmarkName = "@implementation BoxSimpleShareAppDelegate"
             landmarkType = "3">
          </BreakpointContent>
@@ -1066,11 +1066,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxSimpleShare/BoxSimpleShareAppDelegate.m"
-            timestampString = "439989309.860997"
+            timestampString = "443026720.311946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1196"
-            endingLineNumber = "1196"
+            startingLineNumber = "1229"
+            endingLineNumber = "1229"
             landmarkName = "-startImageCapture:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1098,11 +1098,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxSimpleShare/BoxSimpleShareAppDelegate.m"
-            timestampString = "439989309.860997"
+            timestampString = "443026720.311946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1215"
-            endingLineNumber = "1215"
+            startingLineNumber = "1248"
+            endingLineNumber = "1248"
             landmarkName = "-startImageCapture:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1146,11 +1146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxSimpleShare/BoxSimpleShareAppDelegate.m"
-            timestampString = "439989309.860997"
+            timestampString = "443026720.311946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1279"
-            endingLineNumber = "1279"
+            startingLineNumber = "1312"
+            endingLineNumber = "1312"
             landmarkName = "@implementation BoxSimpleShareAppDelegate"
             landmarkType = "3">
          </BreakpointContent>
@@ -1178,11 +1178,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxSimpleShare/BoxSimpleShareAppDelegate.m"
-            timestampString = "439989309.860997"
+            timestampString = "443026720.311946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1199"
-            endingLineNumber = "1199"
+            startingLineNumber = "1232"
+            endingLineNumber = "1232"
             landmarkName = "-startImageCapture:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1194,11 +1194,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxSimpleShare/BoxSimpleShareAppDelegate.m"
-            timestampString = "442705961.141362"
+            timestampString = "443026720.311946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1482"
-            endingLineNumber = "1482"
+            startingLineNumber = "1515"
+            endingLineNumber = "1515"
             landmarkName = "HotKeyHandler()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1256,11 +1256,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxSimpleShare/BoxSimpleShareAppDelegate.m"
-            timestampString = "442705961.141362"
+            timestampString = "443026720.311946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1490"
-            endingLineNumber = "1490"
+            startingLineNumber = "1523"
+            endingLineNumber = "1523"
             landmarkName = "HotKeyHandler()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1368,11 +1368,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxSimpleShare/BoxSimpleShareAppDelegate.m"
-            timestampString = "442705961.141362"
+            timestampString = "443026720.311946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1427"
-            endingLineNumber = "1427"
+            startingLineNumber = "1460"
+            endingLineNumber = "1460"
             landmarkName = "-videoCaptureController:didCaptureVideoToPath:"
             landmarkType = "5">
          </BreakpointContent>
