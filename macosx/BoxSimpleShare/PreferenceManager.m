@@ -256,6 +256,10 @@
         
         controller.screencast_format_index = 0;
         
+        controller.compress_screenshots = 1;
+        
+        
+        
         [controller.screencast_format selectItemAtIndex:controller.screencast_format_index];
         
         controller.screen_cast_hot_key = @"5";
