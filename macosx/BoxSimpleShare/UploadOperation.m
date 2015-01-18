@@ -706,6 +706,39 @@
 				
 				CopyURLToClipBoardForType(url, NSStringPboardType, nil);
             }
+        
+        
+        
+        //remove compressed screenshot
+        if (isScreenshot && controller.compress_screenshots) {
+            
+            //NSString *uploadFileName1 = uploadFileName;
+            
+            NSLog(@"Remove compressed file after upload block.");
+            
+            //remove compressed jpg from cache folder
+            [[NSFileManager defaultManager] removeItemAtPath:uploadFileName error:nil];
+            
+            //delete screenshot from desktop
+            
+            if (controller.delete_screenshot_after_upload_check) {
+                
+                NSString *fileName = [[uploadFileName lastPathComponent] stringByDeletingPathExtension];
+                
+                
+                NSString *pathToDelete = [NSString stringWithFormat:@"%@/%@.png",[[NSFileManager defaultManager] desktopPath],fileName];
+                
+                
+                [[NSFileManager defaultManager] removeItemAtPath:pathToDelete error:nil];
+                
+                
+                
+                
+            }
+            
+            
+            
+        }
             
             
             // remove file
@@ -715,7 +748,11 @@
             if (deleteFiles || isZipped) {
                 [self deleteLastUploadedFilesZippedOnly:!deleteFiles];
             }
-            
+        
+        
+        
+        
+        
             controller = nil;
             
             [[[BoxSimpleShareAppDelegate sharedDelegate] filesUploadedInSession] addObject:file];

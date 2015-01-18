@@ -23,6 +23,7 @@
 #import "YoutubeUploadOperation.h"
 #import "Mixpanel.h"
 #import "HTTPFormDataRequest.h"
+#import "StandardPaths.h"
 
 
 
@@ -193,17 +194,86 @@ static BoxNetHandler *sharedObject = nil;
     
     
 	UploadOperation *opt = [UploadOperation new];
-    [opt addFiles:files];
+    
     [opt setUploadToFolder:[defaultFolder folderID]];
     
     if (properties && [properties containsKey:@"SCREEN_SHOT"]) {
+        
+        //compress file if option checked
+        
+        NSArray *compressedFiles = [NSArray array];
+        
+        
+        if (controller.compress_screenshots) {
+            
+            NSLog(@"Compress screenshots block called!");
+            
+            NSString *path = [files objectAtIndex:0];
+            
+             //create CGImageRef
+             
+             CGDataProviderRef dataProvider = CGDataProviderCreateWithFilename([path UTF8String]);
+             CGImageRef image = CGImageCreateWithPNGDataProvider(dataProvider, NULL, NO, kCGRenderingIntentDefault);
+             
+             //convert to jpg
+             
+             
+             //dictionary with options
+             CFMutableDictionaryRef mSaveMetaAndOpts = CFDictionaryCreateMutable(nil, 0,
+             &kCFTypeDictionaryKeyCallBacks,  &kCFTypeDictionaryValueCallBacks);
+             CFDictionarySetValue(mSaveMetaAndOpts, kCGImageDestinationLossyCompressionQuality,
+             [NSNumber numberWithFloat:0.8]);	// set the compression quality here
+             
+             //path to save jpeg
+             
+             //NSString *tempString = [path stringByDeletingLastPathComponent];
+             
+             
+            // NSString *outPath = [NSString stringWithFormat:@"%@/compressed_%@.jpg",[path stringByDeletingLastPathComponent], [[path lastPathComponent] stringByDeletingPathExtension]];
+            
+            
+            NSString *outPath = [NSString stringWithFormat:@"%@/%@.jpg",[[NSFileManager defaultManager] cacheDataPath], [[path lastPathComponent] stringByDeletingPathExtension]];
+            
+           // NSString *outPath = [[[NSFileManager defaultManager] cacheDataPath] stringByAppendingPathComponent:@"compressed.jpeg"];
+             
+             
+             
+             NSURL *outURL = [[NSURL alloc] initFileURLWithPath:outPath];
+             
+             CGImageDestinationRef dr = CGImageDestinationCreateWithURL ((CFURLRef)outURL, (CFStringRef)@"public.jpeg" , 1, NULL);
+             CGImageDestinationAddImage(dr, image, mSaveMetaAndOpts);
+             
+             CGImageDestinationFinalize(dr);
+            
+            //release
+            
+            CFRelease(dataProvider);
+            
+            CFRelease(image);
+            
+            CFRelease(mSaveMetaAndOpts);
+            
+            CFRelease(dr);
+
+            [outURL release];
+            
+             
+            compressedFiles = [NSArray arrayWithObject:outPath];
+            
+            NSLog(@"New array");
+            
+        }
+        
+        
         
         
         [opt setIsScreenshot:YES];
        
         //[[Mixpanel sharedInstance] trackCaptureRegionEvent];
 
-        // Copy URL to clipboard
+        
+        //check for imgur option
+        
         if (controller.isImgur)
         {
             opt = [ImgurUploadOperation new];
@@ -211,13 +281,50 @@ static BoxNetHandler *sharedObject = nil;
             [opt setIsScreenshot:YES];
 
         }
+        
+        
+        //if there is compressed files, use it
+        
+        if ([compressedFiles count] > 0) {
+            
+            
+            [opt addFiles:compressedFiles];
+            
+        }
+        
+        else{
+            
+            [opt addFiles:files];
+            
+        }
+        
+        
+        
+        
+        [operationQueue addOperation:opt];
+        
+        
+        safe_release(opt);
+
+        return;
+        
     }
     
     else if (properties && [properties containsKey:@"YOUTUBE"] && controller.isYouTubeLogin == TRUE){
         opt = [YoutubeUploadOperation new];
+        
         [opt addFiles:files];
+        
+        [operationQueue addOperation:opt];
+
+        safe_release(opt);
+        
+        return;
 
     }
+    
+    
+    [opt addFiles:files];
     
     [operationQueue addOperation:opt];
     
