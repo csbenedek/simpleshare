@@ -60,6 +60,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
+        
         self.fileInfoLoader = [[BoxNetFileInfoLoader alloc] init];
         
         self.youTubeThumbnailLoader = [[YouTubeThumbnailLoader alloc] init];
@@ -75,6 +76,15 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(processYouTubeThumbnailLoadedNotification:) name:@"YouTubeThumbnailLoadedNotification" object:self.youTubeThumbnailLoader];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(processImgurThumbnailLoadedNotification:) name:@"ImgurThumbnailLoadedNotification" object:self.imgurThumbnailLoader];
+        
+        
+        //release
+        
+        [self.fileInfoLoader release];
+        [self.youTubeThumbnailLoader release];
+        [self.imgurThumbnailLoader release];
+        
+        
         
         
         
