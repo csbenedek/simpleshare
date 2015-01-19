@@ -8,6 +8,7 @@
 
 #import "BoxNetFileInfoLoader.h"
 #import "OAuth2Client.h"
+#import "AppConstants.h"
 
 
 @implementation BoxNetFileInfoLoader
@@ -147,11 +148,17 @@
     if (connection == self.loadThumbnailURLConnection) {
         
         
-        self.thumbnailImage = [[NSImage alloc] initWithData:self.thumbnailImageData];
+        NSImage *image = [[NSImage alloc] initWithData:self.thumbnailImageData];
+        
+        
+        self.thumbnailImage = image;
+        
         
         //post notification with self as object
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ThumbnailLoadedNotification" object:self];
+        
+        [image release];
         
         
         
@@ -159,6 +166,18 @@
         
     }
     
+    
+    
+}
+
+-(void)dealloc{
+    
+    safe_release(_thumbnailImage);
+    safe_release(_thumbnailImageData);
+    safe_release(_loadThumbnailURLConnection);
+    
+    
+    [super dealloc];
     
     
 }

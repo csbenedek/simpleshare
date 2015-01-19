@@ -7,6 +7,7 @@
 //
 
 #import "YouTubeThumbnailLoader.h"
+#import "AppConstants.h"
 
 @implementation YouTubeThumbnailLoader
 
@@ -112,7 +113,14 @@
     
 }
 
-
+-(void)dealloc{
+    
+    safe_release(_data);
+    safe_release(_thumbnail);
+    
+    [super dealloc];
+    
+}
 
 
 

@@ -180,6 +180,7 @@
             break;
         }
         else{
+            
             i++;
         }
             
@@ -326,7 +327,7 @@
             
 
         
-        
+        [controller release];
        
     }
   

@@ -14,6 +14,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "YouTubeThumbnailLoader.h"
 #import "ImgurThumbnailLoader.h"
+#import "AppConstants.h"
 
 @interface MainViewCellController ()
 
@@ -160,6 +161,25 @@
     
     //update view
     [self.view display];
+    
+}
+
+
+
+-(void)dealloc{
+    
+    safe_release(_fileName);
+    safe_release(_uploadDateTextField);
+    safe_release(_imageView);
+    safe_release(_spinner);
+    safe_release(_fileInfoLoader);
+    safe_release(_youTubeThumbnailLoader);
+    safe_release(_imgurThumbnailLoader);
+    safe_release(_boxFile);
+    
+    
+    [super dealloc];
+    
     
 }
 
