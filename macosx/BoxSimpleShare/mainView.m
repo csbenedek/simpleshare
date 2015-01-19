@@ -133,6 +133,9 @@
     
     self.enableUploadSwitch.isOn = controller.disable_automatic_upload_check;
     
+    [nib release];
+    
+    
     
 }
 
@@ -180,6 +183,7 @@
             break;
         }
         else{
+            
             i++;
         }
             
@@ -326,7 +330,7 @@
             
 
         
-        
+        [controller release];
        
     }
   

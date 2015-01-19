@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface ImgurThumbnailLoader : NSObject <NSURLConnectionDataDelegate, NSURLConnectionDelegate>
 
 @property (nonatomic, retain) NSMutableData *data;

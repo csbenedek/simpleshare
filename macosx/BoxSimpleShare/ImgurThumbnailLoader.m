@@ -7,6 +7,7 @@
 //
 
 #import "ImgurThumbnailLoader.h"
+#import "AppConstants.h"
 
 @implementation ImgurThumbnailLoader
 
@@ -113,5 +114,17 @@
     
     
 }
+
+-(void)dealloc{
+    
+    safe_release(_data);
+    safe_release(_thumbnail);
+    
+    [super dealloc];
+    
+    
+}
+
+
 
 @end

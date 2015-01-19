@@ -109,7 +109,13 @@
         
         NSLog(@"Avatar loaded");
         
-        self.avatar = [[NSImage alloc] initWithData:self.imageData];
+        
+        NSImage *img = [[NSImage alloc] initWithData:self.imageData];
+        
+        self.avatar = img;
+        
+        [img release];
+        
         
         PostNotification(@"BoxAccountInfoLoadedNotification");
         
