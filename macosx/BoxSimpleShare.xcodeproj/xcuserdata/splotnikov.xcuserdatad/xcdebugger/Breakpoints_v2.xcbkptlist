@@ -495,7 +495,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "301"
             endingLineNumber = "301"
-            landmarkName = "-addTokenAndFolderID:withFolder:"
+            landmarkName = "-uploadFiles:withProperties:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -511,7 +511,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "317"
             endingLineNumber = "317"
-            landmarkName = "-requestFinished:"
+            landmarkName = "-uploadFiles:withProperties:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1135,7 +1135,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "277"
             endingLineNumber = "277"
-            landmarkName = "-getListOfUploadedFiles"
+            landmarkName = "-uploadFiles:withProperties:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1405,7 +1405,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "241"
             endingLineNumber = "241"
-            landmarkName = "-checkUploadedFilesForFileName:"
+            landmarkName = "-uploadFiles:withProperties:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
