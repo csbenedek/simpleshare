@@ -19,6 +19,7 @@
 #import "BoxSimpleShareAppDelegate.h"
 #import "OAuth2Client.h"
 #import "JSON.h"
+#import "StandardPaths.h"
 
 @interface UploadOperation ()
 
@@ -86,6 +87,9 @@
 
 - (void) start
 {
+    NSLog(@"File upload operation started!");
+    
+    
 	BOOL hasFolder = NO;
 	
 	NSFileManager* fileManager = [NSFileManager defaultManager];
@@ -227,33 +231,13 @@
             }
         }
         
-//        [BoxSimpleShareAppDelegate showNotificationWithTitle:@"Upload Notification" withDescription:[NSString stringWithFormat:@"File '%@' added to upload queue", [self FileName]]];
-    
-		/* API v.1.0 upload request
-		
-        NSString *url = [NSString stringWithString:UPLOAD_ACTION];
-        url = [[BoxNetHandler sharedHandler] addTokenAndFolderID:url];
-        
-        request = [[HTTPFormDataRequest requestWithURL:[NSURL URLWithString:url]] retain];
-        
-        DbgLog(@"Operation URL %@", url);
-        
-        [request setQueue:[[HTTPRequestHandler uploadHandler] queue]];
-        [request setRequestMethod:@"POST"];
-        [request addMulticastDelegate:self];
-        [request addMulticastDelegate:[BoxNetHandler sharedHandler]];
-        [request setFile:fileURL forKey:@"file"];
-        [request setPostValue:[NSNumber numberWithInt:1] forKey:@"share"];
-        [request setUserInfo:[NSDictionary dictionaryWithObject:UPLOAD_ACTION forKey:@"TYPE"]];
-		 
-		*/
-		
+		/*
+
 		NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.box.com/2.0/folders/%@/items?limit=1000&fields=name,etag",
 										   [[BoxNetHandler sharedHandler] folderID]]];
 		
         request = [[HTTPFormDataRequest requestWithURL:url] retain];
-		
-		[request addRequestHeader:@"Authorization"
+				[request addRequestHeader:@"Authorization"
 							value:[NSString stringWithFormat:@"Bearer %@", [[OAuth2Client sharedInstance] accessToken]]];
 		
         [request setQueue:[[HTTPRequestHandler uploadHandler] queue]];
@@ -262,14 +246,20 @@
         [request addMulticastDelegate:[BoxNetHandler sharedHandler]];
         [request setUserInfo:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"GET_FOLDER_ITEMS", fileURL, nil]
 														 forKeys:[NSArray arrayWithObjects:@"TYPE", @"URL", nil]]];
+         
+         */
 		
 		// --------------------------
 		
         // To mark the start
         PostNotificationWithObject(QUEUE_PROGRESS, self);
-        [self triggerUpdate];
+        //[self triggerUpdate];
         
-        [[HTTPRequestHandler uploadHandler] addRequest:request];
+        
+        //[[HTTPRequestHandler uploadHandler] addRequest:request];
+        
+        [self uploadFileWithPath:fileURL];
+        
         
         fileURL = nil;
     }
@@ -413,6 +403,53 @@
     return [request contentLength] + [request partialDownloadSize];
 }
 
+#pragma mark - helpers
+
+-(void)uploadFileWithPath:(NSString *)path{
+    
+    NSString *fileName = [path lastPathComponent];
+    
+    NSMutableDictionary *uploadedFileInfo = [[BoxNetHandler sharedHandler] checkUploadedFilesForFileName:fileName];
+    
+    if (uploadedFileInfo) {
+        //file already uploaded and needs to be updated
+        
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://upload.box.com/api/2.0/files/%@/content", [uploadedFileInfo objectForKey:@"id"]]];
+        
+        request = [[HTTPFormDataRequest requestWithURL:url] retain];
+        [request addRequestHeader:@"If-Match" value:[uploadedFileInfo objectForKey:@"etag"]];
+        
+    }
+    else{
+        
+        
+        NSURL *url = [NSURL URLWithString:@"https://upload.box.com/api/2.0/files/content"];
+        
+        request = [[HTTPFormDataRequest requestWithURL:url] retain];
+        
+        
+    }
+    
+    
+    [request addRequestHeader:@"Authorization"
+                        value:[NSString stringWithFormat:@"Bearer %@", [[OAuth2Client sharedInstance] accessToken]]];
+    
+    [request setQueue:[[HTTPRequestHandler uploadHandler] queue]];
+    [request setRequestMethod:@"POST"];
+    [request addMulticastDelegate:self];
+    [request addMulticastDelegate:[BoxNetHandler sharedHandler]];
+    [request setFile:path forKey:@"filename"];
+    [request setPostValue:[[BoxNetHandler sharedHandler] folderID] forKey:@"parent_id"];
+    
+    [request setUserInfo:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:UPLOAD_ACTION, nil]
+                                                     forKeys:[NSArray arrayWithObjects:@"TYPE", nil]]];
+    
+    [[HTTPRequestHandler uploadHandler] addRequest:request];
+    
+    
+    
+}
+
 
 
 #pragma mark
@@ -423,8 +460,8 @@
 //    [BoxSimpleShareAppDelegate showNotificationWithTitle:@"Upload Notification" withDescription:[NSString stringWithFormat:@"Uploading file '%@'", [self FileName]]];
     
     operationStatus = UPLOADING;
-    PostNotificationWithObject(REQUEST_PROGRESS, self);
-    [self triggerUpdate];
+    //PostNotificationWithObject(REQUEST_PROGRESS, self);
+    //[self triggerUpdate];
 }
 
 - (void) oauth2CreateSharedLink:(NSString *)fileID
@@ -483,6 +520,9 @@
 	
 	if ([[[request1 userInfo] objectForKey:@"TYPE"] isEqualToString:@"GET_FOLDER_ITEMS"])
 	{
+        
+        NSLog(@"Folder items received!");
+        
 		NSString* fileID = nil;
 		NSString* fileETag = nil;
 		NSString* fileURL = [[request1 userInfo] objectForKey:@"URL"];
@@ -511,11 +551,15 @@
 		
 		NSURL* url = nil;
 		
+        
+        
+        /*
 		if (fileID)
 		{
 			DbgLog(@" File [%@] already exists. Uploading a new version...", fileName);
 			
-			url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.box.com/2.0/files/%@/content", fileID]];
+			//url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.box.com/2.0/files/%@/content", fileID]];
+            url = [NSURL URLWithString:[NSString stringWithFormat:@"https://upload.box.com/api/2.0/files/%@/content", fileID]];
 			
 			request = [[HTTPFormDataRequest requestWithURL:url] retain];
 			[request addRequestHeader:@"If-Match" value:fileETag];
@@ -523,8 +567,12 @@
 		else
 		{
 			DbgLog(@" No file [%@] has been uploaded yet. Uploading...", fileName);
-			
-			url = [NSURL URLWithString:@"https://api.box.com/2.0/files/content"];
+            
+            //old url
+			//url = [NSURL URLWithString:@"https://api.box.com/2.0/files/content"];
+            
+            url = [NSURL URLWithString:@"https://upload.box.com/api/2.0/files/content"];
+            
 			request = [[HTTPFormDataRequest requestWithURL:url] retain];
 		}
 		
@@ -542,22 +590,69 @@
 														 forKeys:[NSArray arrayWithObjects:@"TYPE", nil]]];
 		
 		[[HTTPRequestHandler uploadHandler] addRequest:request];
-		
+		*/
+        
+        [self uploadFileWithPath:fileURL];
+        
+        
+        
 		[parser release];
 		return;
 	}
 	else if ([[[request1 userInfo] objectForKey:@"TYPE"] isEqualToString:UPLOAD_ACTION])
 	{
 		DbgLog(@" Creating shared link for uploaded file ...");
-		[self oauth2CreateSharedLink:[[[json objectForKey:@"entries"] objectAtIndex:0] objectForKey:@"id"]];
+        
+        NSDictionary *uploadedFileInfo = [[json objectForKey:@"entries"] objectAtIndex:0];
+        
+		[self oauth2CreateSharedLink:[uploadedFileInfo objectForKey:@"id"]];
+        
+        
+        
 			
 		[parser release];
 		return;
+        
 	}
 	else if ([[[request1 userInfo] objectForKey:@"TYPE"] isEqualToString:@"CREATE_SHARED_LINK"])
+        
 	{
+        
+        //NSDictionary *uploadedFileInfo = [[json objectForKey:@"entries"] objectAtIndex:0];
+        
+        NSDictionary *uploadedFileInfo = json;
+        
+        NSDictionary *fileInfoFromUploadsList = [[BoxNetHandler sharedHandler] checkUploadedFilesForFileName:[uploadedFileInfo objectForKey:@"name"]];
+        
+        if (fileInfoFromUploadsList) {
+            
+            //update stored info
+            
+            [fileInfoFromUploadsList setValue:[uploadedFileInfo objectForKey:@"id"] forKey:@"id"];
+            
+            [fileInfoFromUploadsList setValue:[uploadedFileInfo objectForKey:@"etag"] forKey:@"etag"];
+            
+            
+        }
+        else{
+            
+            //store info of new file
+            NSArray *values = [NSArray arrayWithObjects:[uploadedFileInfo objectForKey:@"name"],[uploadedFileInfo objectForKey:@"id"],[uploadedFileInfo objectForKey:@"etag"],@"file", nil];
+            
+            NSArray *keys = [NSArray arrayWithObjects:@"name",@"id",@"etag",@"type", nil];
+            
+            NSMutableDictionary *newFileInfo = [NSMutableDictionary dictionaryWithObjects:values forKeys:keys];
+            
+            
+            [[BoxNetHandler sharedHandler] addInfo:newFileInfo];
+            
+            
+            
+        }
+        
+        
 		DbgLog(@" File has been uploaded");
-		
+        
 		file = [BoxFile new];
 		
 		[file setUploadStatus:@"upload_ok"];
@@ -571,7 +666,7 @@
 		[BoxSimpleShareAppDelegate showNotificationWithTitle:@"Upload Complete" withDescription:[NSString stringWithFormat:@"Finish uploading file '%@'", [self FileName]]];
 		
 		operationStatus = COMPLETED;
-		[self triggerUpdate:5];
+		//[self triggerUpdate:5];
 		
 		[parser release];
 	}
@@ -582,45 +677,6 @@
 	}
 	
     {
-        // Add URL to clipboard
-        
-        // Parse
-        /*
-         <response>
-            <status>upload_ok</status>
-            <files>
-                <file file_name="Archive_2011-07-17_10.41.09 PM.zip" id="824227784" folder_id="84213682" shared="1" public_name="qi3e2rx6yl9k7x99jd4l" />
-            </files>
-         </response>
-         */
-        
-		/* API v1.0 implementation
-        GDataXMLDocument *xmlDoc = [[GDataXMLDocument alloc] initWithData:[request1 responseData] options:0 error:nil];
-        
-        if (xmlDoc)
-        {
-            GDataXMLElement *root = [xmlDoc rootElement];
-            
-            BoxFile *file = [BoxFile new];
-            
-            [file setUploadStatus:[[[root elementsForName:@"status"] objectAtIndex:0] stringValue]];
-            
-            if (![[file uploadStatus] isEqualToString:@"upload_ok"])
-            {
-                [BoxSimpleShareAppDelegate showNotificationWithTitle:@"Upload Failed" withDescription:[NSString stringWithFormat:@"Failed to upload file '%@'", [self FileName]]];
-                
-                goto exit;
-            }
-    
-            root = [[[[root elementsForName:@"files"] objectAtIndex:0] elementsForName:@"file"] objectAtIndex:0];
-            
-            [file setFileName:[[root attributeForName:@"file_name"] stringValue]];
-            [file setFileID:[[root attributeForName:@"id"] stringValue]];
-            [file setPublicName:[[root attributeForName:@"public_name"] stringValue]];
-            [file setFolderID:[[root attributeForName:@"folder_id"] stringValue]];
-            [file setIsShared:[[[root attributeForName:@"shared"] stringValue] intValue]];
-			*/
-            
             MainController *controller = [[BoxSimpleShareAppDelegate sharedDelegate] mainController];
                         
             // Copy URL to clipboard
@@ -650,6 +706,39 @@
 				
 				CopyURLToClipBoardForType(url, NSStringPboardType, nil);
             }
+        
+        
+        
+        //remove compressed screenshot
+        if (isScreenshot && controller.compress_screenshots) {
+            
+            //NSString *uploadFileName1 = uploadFileName;
+            
+            NSLog(@"Remove compressed file after upload block.");
+            
+            //remove compressed jpg from cache folder
+            [[NSFileManager defaultManager] removeItemAtPath:uploadFileName error:nil];
+            
+            //delete screenshot from desktop
+            
+            if (controller.delete_screenshot_after_upload_check) {
+                
+                NSString *fileName = [[uploadFileName lastPathComponent] stringByDeletingPathExtension];
+                
+                
+                NSString *pathToDelete = [NSString stringWithFormat:@"%@/%@.png",[[NSFileManager defaultManager] desktopPath],fileName];
+                
+                
+                [[NSFileManager defaultManager] removeItemAtPath:pathToDelete error:nil];
+                
+                
+                
+                
+            }
+            
+            
+            
+        }
             
             
             // remove file
@@ -659,11 +748,25 @@
             if (deleteFiles || isZipped) {
                 [self deleteLastUploadedFilesZippedOnly:!deleteFiles];
             }
-            
+        
+        
+        
+        
+        
             controller = nil;
             
             [[[BoxSimpleShareAppDelegate sharedDelegate] filesUploadedInSession] addObject:file];
             [[BoxSimpleShareAppDelegate sharedDelegate] updateHistoryMenu]; // update history menu
+        
+            //post updateHistoryElementsNotification for new interface
+        
+    #warning add User dictionary with new element!
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"NewHistoryElementNotification" object:nil userInfo:nil];
+        
+        
+        
+        
+        
             
         exit:
             
@@ -674,8 +777,68 @@
     }
 }
 
+
+//function to log error to desktop, not used for now
+-(void)logToDesktop:(NSString *)errorString{
+    
+    NSString *desktopPath = [[NSFileManager defaultManager] desktopPath];
+    
+    NSString *filePath = [desktopPath stringByAppendingPathComponent:@"SimpleShareLog.txt"];
+    
+    
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:filePath];
+    
+    NSString *dateString = [[NSDate date] description];
+    
+    NSString *logString = [NSString stringWithFormat:@"%@ %@\r\n",dateString,errorString];
+    
+    if (fileHandle) {
+        [fileHandle seekToEndOfFile];
+        
+        [fileHandle writeData:[logString dataUsingEncoding:NSUTF8StringEncoding]];
+
+        
+        [fileHandle closeFile];
+        
+        
+        
+    }
+    
+    else{
+        
+        [logString writeToFile:filePath atomically:NO encoding:NSUTF8StringEncoding error:nil];
+        
+    }
+    
+}
+
+
+
 - (void) requestFailed:(id)request
 {
+    
+    ASIHTTPRequest *theRequest = (ASIHTTPRequest *)request;
+    
+    NSLog(@"Common upload operation failed with error:%@",theRequest.error);
+    /*
+    [self logToDesktop:theRequest.error];
+    
+    
+    //[[NSFileManager defaultManager] ]
+    
+    //trying to get detailed description
+    
+    NSString *details = [theRequest.error.userInfo objectForKey:@"NSUnderlyingErrorKey"];
+    
+    if (details) {
+        
+        NSLog(@"Error detail:%@",details);
+        
+        [self logToDesktop:details];
+        
+    }*/
+    
+    
     [BoxSimpleShareAppDelegate showNotificationWithTitle:@"Upload Failed" withDescription:[NSString stringWithFormat:@"Failed to upload file '%@'", [self FileName]]];
     
     operationStatus = FAILED;

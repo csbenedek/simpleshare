@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1070" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AccountViewController">
+            <connections>
+                <outlet property="avatarImageView" destination="w5W-IP-1mH" id="NLp-V8-5tm"/>
+                <outlet property="imgurLoginButton" destination="UlQ-Ur-mc2" id="2sl-1t-whO"/>
+                <outlet property="loginButton" destination="xI4-NQ-4Ei" id="opJ-zQ-FYR"/>
+                <outlet property="loginTextField" destination="fM3-jP-Aeu" id="6bU-A8-qzF"/>
+                <outlet property="view" destination="vHO-W1-axc" id="vd0-2U-5WU"/>
+                <outlet property="youTubeLoginButton" destination="y9t-ek-aMD" id="zm7-uH-gsx"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="vHO-W1-axc" userLabel="AccountView" customClass="CustomNSView">
+            <rect key="frame" x="0.0" y="0.0" width="536" height="264"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QFD-ja-6yq">
+                    <rect key="frame" x="11" y="217" width="118" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Box Account" id="hEp-h9-91X">
+                        <font key="font" metaFont="systemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xI4-NQ-4Ei">
+                    <rect key="frame" x="463" y="150" width="64" height="25"/>
+                    <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="box-account-login-button" imagePosition="overlaps" alignment="center" alternateImage="box-account-login-button-pressed" imageScaling="proportionallyDown" inset="2" id="JPx-IF-kWc">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="loginButtonAction:" target="-2" id="2Eo-im-uPN"/>
+                    </connections>
+                </button>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oKg-yh-6Sg">
+                    <rect key="frame" x="11" y="96" width="118" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Optional:" id="2pu-Td-J5R">
+                        <font key="font" metaFont="systemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y9t-ek-aMD">
+                    <rect key="frame" x="11" y="8" width="194" height="52"/>
+                    <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="login-with-youtube-button" imagePosition="overlaps" alignment="center" alternateImage="login-with-youtube-button-pressed" imageScaling="proportionallyDown" inset="2" id="2lc-ka-eTg">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="youtubeLoginButtonAction:" target="-2" id="oLJ-SI-3hB"/>
+                    </connections>
+                </button>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UlQ-Ur-mc2">
+                    <rect key="frame" x="333" y="8" width="194" height="52"/>
+                    <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="login-with-imgur-button" imagePosition="overlaps" alignment="center" alternateImage="login-with-imgur-button-pressed" imageScaling="proportionallyDown" inset="2" id="bxA-tV-IZv">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="imgurButtonActon:" target="-2" id="D4D-as-WW3"/>
+                    </connections>
+                </button>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w5W-IP-1mH" customClass="CustomNSImageView">
+                    <rect key="frame" x="13" y="132" width="60" height="60"/>
+                </customView>
+                <box autoresizesSubviews="NO" fixedFrame="YES" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="QiG-Hv-lul">
+                    <rect key="frame" x="12" y="214" width="509" height="1"/>
+                    <view key="contentView">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <color key="borderColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                    <color key="fillColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                </box>
+                <box autoresizesSubviews="NO" fixedFrame="YES" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="cjd-nv-HwX">
+                    <rect key="frame" x="13" y="94" width="509" height="1"/>
+                    <view key="contentView">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <color key="borderColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                    <color key="fillColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                </box>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fM3-jP-Aeu">
+                    <rect key="frame" x="89" y="154" width="363" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Login" id="9qb-zr-b9a">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zqh-5V-elo">
+                    <rect key="frame" x="85" y="94" width="363" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="(Use other service for screencast or images uploads, instead of Box)" id="toa-eU-yc5">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="95" y="222"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="box-account-login-button" width="74" height="28"/>
+        <image name="box-account-login-button-pressed" width="74" height="28"/>
+        <image name="login-with-imgur-button" width="238" height="42"/>
+        <image name="login-with-imgur-button-pressed" width="238" height="42"/>
+        <image name="login-with-youtube-button" width="238" height="42"/>
+        <image name="login-with-youtube-button-pressed" width="238" height="42"/>
+    </resources>
+</document>

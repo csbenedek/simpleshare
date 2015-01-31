@@ -30,5 +30,9 @@
 - (void) trackCaptureFullScreenEvent;
 - (void) trackVideoCaptureEvent;
 - (void) trackUploadFileEvent;
+-(void) trackFileDragEvent;
+-(void) trackDisableUploads;
+
+
 
 @end

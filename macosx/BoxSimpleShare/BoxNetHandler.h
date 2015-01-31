@@ -24,6 +24,10 @@
     OperationQueue *operationQueue;
     
     NSTimer* userInfoReloadTimer;
+    
+    //result of json parsing
+    NSMutableArray *uploadedFiles;
+    
 }
 
 @property (readonly, nonatomic) NSString *token;
@@ -48,5 +52,21 @@
 - (void) oauth2GetUserInformation;
 
 - (void) deallocSharedHandler;
+
+
+//when app is loading, get list of uploaded files to avoid error with equal names in one box folder
+-(void)getListOfUploadedFiles;
+
+//method to check filename in uploadedFiles list, returns etag if file already uploaded
+-(NSMutableDictionary *)checkUploadedFilesForFileName:(NSString *)fileName;
+
+
+//add info of recently uploaded file
+
+-(void)addInfo:(NSMutableDictionary *)fileInfo;
+
+
+
+
 
 @end

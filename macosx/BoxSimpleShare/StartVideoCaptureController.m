@@ -61,7 +61,7 @@ static const int FrameHalfWidth = 2;
 - (void)stopVideoRecording {
 
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH-mm"];
+    [formatter setDateFormat:@"yyyy-MM-dd HH-mm-ss"];
     NSString* extension = [[[BoxSimpleShareAppDelegate sharedDelegate] mainController] videoFormatExtension];
     long format = 1;//kQTFileTypeMP4;;
 //    if ([extension isEqualToString:@"flv"]) {
@@ -76,6 +76,7 @@ static const int FrameHalfWidth = 2;
     NSString* savedPath = [[[NSFileManager defaultManager] cacheDataPath] stringByAppendingPathComponent:filename];
      [_videoCaptureManager saveCurrentMovieToFile:savedPath exportFormat:format];   
     _isCapturing = NO;
+    
     [self hideStopButton];
 }
 

@@ -9,6 +9,10 @@
 #import "FolderUtility.h"
 #import "StandardPaths.h"
 #import "NSAlert+SynchronousSheet.h"
+#import "BoxSimpleShareAppDelegate.h"
+#import "AttachedWindowsController.h"
+
+
 @implementation FolderUtility
 
 
@@ -57,6 +61,9 @@
     
     [openPanel beginWithCompletionHandler:^(NSInteger result){
         
+        //get app delegate
+        
+        BoxSimpleShareAppDelegate *delegate = (BoxSimpleShareAppDelegate *)[[NSApplication sharedApplication] delegate];
 
         if (result == NSFileHandlingPanelOKButton) {
             for (NSURL *fileURL in [openPanel URLs]) {
@@ -79,13 +86,25 @@
                     return ;
                     //[NSApp presentError:error];
                 } else {
+                    
+                    
+                    
+                    delegate.isDesktopGranted = TRUE;
+                    
                     [[NSUserDefaults standardUserDefaults] setObject:bookmark forKey:@"PathToFolder"];
                     [[NSUserDefaults standardUserDefaults] synchronize];
+                    
+                    //open login window
+                    
+                    
+                    
                     
                 }
                 break;
             }
-        }        
+        }
+        
+        [delegate.attachedWindowsController displayLoginWindow];
     }];
 }
 @end

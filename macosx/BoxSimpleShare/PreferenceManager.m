@@ -11,6 +11,7 @@
 #import "BoxSimpleShareAppDelegate.h"
 #import "BoxNetHandler.h"
 #import "BoxNetUser.h"
+#import "AppConstants.h"
 
 /* Prederence Keys for Marshal & UnMarshal */
 
@@ -53,6 +54,17 @@
 
 + (void) savePreference
 {
+    //save Imgur Preference
+    
+    MainController *mainController = [[BoxSimpleShareAppDelegate sharedDelegate] mainController];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setBool:mainController.isImgur forKey:@"isImgur"];
+    
+    [defaults synchronize];
+    
+    
     if (![[[BoxNetHandler sharedHandler] boxNetUser] isAuthenticated]) return;
     
 	NSFileManager* fileManager = [NSFileManager defaultManager];
@@ -89,6 +101,10 @@
     
     [pref setObject:[NSNumber numberWithInt:controller.upload_video_host_index] forKey:VIDEO_UPLOAD_HOST];
     
+    
+    [pref setObject:[NSNumber numberWithBool:controller.compress_screenshots] forKeyedSubscript:@"compress_screenshots"];
+    
+    
 //    [pref setObject:[[[BoxNetHandler sharedHandler] boxNetUser] getEncryptedCredentials]  forKey:CREDENTIAL];
     
     
@@ -100,7 +116,7 @@
     for (id historyItem in [[[BoxSimpleShareAppDelegate sharedDelegate] filesUploadedInSession] reverseObjectEnumerator]) {
         [historyItems insertObject:historyItem atIndex:0];
         i++;
-        if (i == MaxHistoryItemCount) {
+        if (i == MAX_HISTORY_ITEM_COUNT) {
             break;
         }
     }
@@ -138,10 +154,19 @@
     
     NSMutableData *data = [[NSMutableData alloc] initWithContentsOfFile:path];
     
+    // uncommentnext string to simulate defaults loading
+    
+    //data = nil;
+    
+    
+    
     if (data && [[NSFileManager defaultManager] fileExistsAtPath:path])
     {
         NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
         NSMutableDictionary *pref = [[unarchiver decodeObjectForKey:@"net.box.simpleshare.pref"] retain];
+        
+        
+        
         
         if (pref)
         {
@@ -154,9 +179,17 @@
             controller.shorten_links_check = [[pref valueForKey:SHORTEN_URL] intValue];
             controller.mute_audio_check = [[pref valueForKey:MUTE_AUDIO] intValue];
             
+            controller.compress_screenshots = [[pref valueForKey:@"compress_screenshots"] boolValue];
+            
+            
+            controller.upload_hot_key = @"u";
+            controller.screen_cast_hot_key = @"5";
+            
             controller.screencast_format_index = [[pref valueForKey:SCREENCAST_FORMAT] intValue];
             [controller.screencast_format selectItemAtIndex:controller.screencast_format_index];
             
+            //not used anymore
+            /*
             if([pref valueForKey:IMAGE_UPLOAD_HOST])
             {
                 controller.uploadhost_index = [[pref valueForKey:IMAGE_UPLOAD_HOST] intValue];
@@ -180,15 +213,18 @@
                 [pref setValue:controller.upload_video_host_index forKey:VIDEO_UPLOAD_HOST];
                 [controller.videoHost selectItemAtIndex:controller.upload_video_host_index];
             }
-            
+            */
             
             controller.screen_cast_hot_key = [NSString stringWithFormat:[pref valueForKey:HOT_KEY_SCREENCAST]];;
             controller.upload_hot_key = [NSString stringWithFormat:[pref valueForKey:HOT_KEY_UPLOAD]];
             
+            
+            //restore uploaded files
             id obj = [[[unarchiver decodeObjectForKey:@"files_uploaded_in_session"] retain] autorelease];
             
             if (obj) {
                 [BoxSimpleShareAppDelegate sharedDelegate].filesUploadedInSession = [NSMutableArray arrayWithArray:obj];
+                
             } else {
                 [BoxSimpleShareAppDelegate sharedDelegate].filesUploadedInSession = [NSMutableArray array];
             }
@@ -209,7 +245,9 @@
         
         // DEFAULT SETTINGS
         
-        controller.delete_screenshot_after_upload_check = 0;
+        NSLog(@"Loading defaults settings");
+        
+        controller.delete_screenshot_after_upload_check = 1;
         controller.delete_all_after_upload_check = 0;
         controller.disable_automatic_upload_check = 0;  
         controller.copy_url_to_clipboard_check = 1;
@@ -217,6 +255,10 @@
         controller.mute_audio_check = 0;
         
         controller.screencast_format_index = 0;
+        
+        controller.compress_screenshots = 1;
+        
+        
         
         [controller.screencast_format selectItemAtIndex:controller.screencast_format_index];
         

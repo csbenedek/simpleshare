@@ -24,6 +24,8 @@
 #import "YoutubeAuthenticateManager.h"
 #import "YoutubeUploadWindowController.h"
 #import "ITSwitch.h"
+#import "StartAtLoginController.h"
+
 
 static NSString* SignUpURL = @"https://www.box.com/signup/personal";
 static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"http://www.box.com/business/features/";
@@ -99,14 +101,41 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
     
     prefSyncTimer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(serializePrefIfDirty) userInfo:nil repeats:YES];
     
-    self.launch_at_startup_check = [Utilities shouldLaunchOnSystemStartup];
+    StartAtLoginController *loginController = [[StartAtLoginController alloc] init];
+    
+    [loginController setBundle:[NSBundle bundleWithPath:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"Contents/Library/LoginItems/LoginHelper.app"]]];
+    
+    
+    //self.launch_at_startup_check = [Utilities shouldLaunchOnSystemStartup];
+    
+    self.launch_at_startup_check = [loginController startAtLogin];
+    
+    
+    [loginController release];
+    
+    
     youtubeWindowController = [[LoginWindowController alloc] initWithWindowNibName:@"LoginWindowController"];
     
     NSDictionary* dict = [BoxNetUser youTubeUser];
     if (dict) {
         [[YoutubeAuthenticateManager shareManager] updateAuthenticateToken:dict];
+        
+        self.isYouTubeLogin = TRUE;
+        
+        NSLog(@"YouTube user loaded");
+        
     }
-    [self setYoutubState:dict == nil];
+    
+    //load Imgur preference
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
+    self.isImgur = [defaults  boolForKey:@"isImgur"];
+    
+    
+    
+    
+    //it seems this is not used anymore
+    //[self setYoutubState:dict == nil];
     
     [copy_url_to_clipboard setTintColor:[NSColor greenColor]];
     [delete_screenshot_after_upload setTintColor:[NSColor greenColor]];
@@ -168,10 +197,20 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
     [imageHost setTarget:self];
     [imageHost setAction:@selector(uploadhostChanged:)];
     
-    [self.youtubeLogoutBtn setTarget:self];
-    [self.youtubeLogoutBtn setAction:@selector(doYoutubeLogin:)];
+    //[self.youtubeLogoutBtn setTarget:self];
+    //[self.youtubeLogoutBtn setAction:@selector(doYoutubeLogin:)];
     
 }
+#pragma mark
+#pragma mark Process Notifications methods
+
+-(void)processDoLogoutNotification:(NSNotification *)notification{
+    
+    [self doLogout:self];
+    
+    
+}
+
 
 #pragma mark
 #pragma mark Actions
@@ -233,7 +272,7 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
         return;
     }
 */
-    PostNotificationWithObject(@"SHOW_LOADING", [NSString stringWithString:@"Logging In ..."]);
+    //PostNotificationWithObject(@"SHOW_LOADING", [NSString stringWithString:@"Logging In ..."]);
 
 	[[OAuth2Client sharedInstance] authorize];
 	
@@ -277,7 +316,7 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
     //    [userPassword setStringValue:@""];
     
     [[BoxSimpleShareAppDelegate sharedDelegate] createMenu];
-    [[BoxSimpleShareAppDelegate sharedDelegate] showLoginView];
+    //[[BoxSimpleShareAppDelegate sharedDelegate] showLoginView];
 }
 
 - (void) switchView:(id)sender
@@ -366,7 +405,7 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
 #pragma mark Response Handlers
 
 - (void) loginResponse:(NSNotification *)response {
-    PostNotification(@"HIDE_LOADING");
+    //PostNotification(@"HIDE_LOADING");
     
     if ([[response object] isKindOfClass:[NSError class]]) {
         NSString* errorDomain = [(NSError*)[response object] domain];
@@ -386,23 +425,61 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
     } else {
     
 		[[NSFileManager defaultManager] changeCurrentDirectoryPath:TMP_PATH];
+        
+        BoxSimpleShareAppDelegate *delegate = [BoxSimpleShareAppDelegate sharedDelegate];
+        
 		
-        [self updateMainViewContent:nil];
-        [[BoxSimpleShareAppDelegate sharedDelegate] selectToolBarItem:0];
-        [[BoxSimpleShareAppDelegate sharedDelegate] performSelectorOnMainThread:@selector(showMainView) withObject:nil waitUntilDone:YES];
+        //[self updateMainViewContent:nil];
+        
+        //[[BoxSimpleShareAppDelegate sharedDelegate] selectToolBarItem:0];
+        //[[BoxSimpleShareAppDelegate sharedDelegate] performSelectorOnMainThread:@selector(showMainView) withObject:nil waitUntilDone:YES];
 
         [PreferenceManager loadPreference];
+        
+        //identify new user in Mixpanel
+        
 		[[Mixpanel sharedInstance] identify:[response object]];
-        [[BoxSimpleShareAppDelegate sharedDelegate] createMenu];
+        
+        
+        //[[BoxSimpleShareAppDelegate sharedDelegate] createMenu];
+        
+        //init preference controller
+        
+        [delegate loadPreferencesController];
+        
+        //set up hotkeys
+        
+        [delegate setupUploadHotKey];
+        [delegate setupVideoCaptureHotKey];
+        
+        [delegate setupFullScreenCaptureHotKey];
+        
+        [delegate setupScreenCaptureHotKey];
+        
+        
         DbgLog(@"Login Successfull!");
+        
+        //get list of uploaded files
+        
+        [[BoxNetHandler sharedHandler] getListOfUploadedFiles];
+        
+        
+        
+        PostNotification(@"SuccessfulLoginNotification"); //see processShowSuccessfulLoginMessageNotification of AttachedWindowController
+        
+        PostNotification(@"LoadAccountInfoNotification"); //see processLoadAccountInfoNotification of Preferences Controller
+        
     }
 
-    [loginBtn setEnabled:YES];
-    [userEmail setEditable:YES];
-    [userPassword setEditable:YES];
+    //[loginBtn setEnabled:YES];
+    //[userEmail setEditable:YES];
+    //[userPassword setEditable:YES];
 }
 
 - (void)loginFailed:(NSNotification*)notification {
+    
+    NSLog(@"Login failed!");
+    
     
 }
 
@@ -627,8 +704,23 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
     [BoxNetUser saveYoutubeUser:dict];
     
     [[YoutubeAuthenticateManager shareManager] updateAuthenticateToken:dict];
-    [self setYoutubState:NO];
+    
+    self.isYouTubeLogin = TRUE;
+    
 }
+
+-(void)doYoutubeLogout:(id)sender{
+    
+    [BoxNetUser removeYoubeUser];
+    
+    self.isYouTubeLogin = FALSE;
+    
+    
+}
+
+
+
+
 -(void)doYoutubeLogin:(id)sender
 {
     
@@ -650,22 +742,6 @@ static NSString* LearnMoreURL = @"https://app.box.com/signup/personal/";  //@"ht
 //    }
 }
 
-
--(void)setYoutubState :(BOOL)requireLogin
-{
-//    if (requireLogin) {
-//        [self.youtubeLoginName setStringValue:@""];
-//        [self.youtubeUserImage setImageURL:@""];
-//        [self.youtubeLogoutBtn setTitle:@"Login"];
-//    }
-//    else
-//    {
-//        NSDictionary* dict = [BoxNetUser youTubeUser];
-//        [self.youtubeLoginName setStringValue:[dict objectForKey:@"email"]];
-//        [self.youtubeUserImage setImageURL:[dict objectForKey:@"picture"]];
-//        [self.youtubeLogoutBtn setTitle:@"Logout"];
-//    }
-}
 #pragma itswitch 
 
 -(IBAction)onSwitchChange:(id)sender

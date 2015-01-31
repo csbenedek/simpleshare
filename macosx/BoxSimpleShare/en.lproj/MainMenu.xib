@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
-		<string key="IBDocument.SystemVersion">13E28</string>
-		<string key="IBDocument.InterfaceBuilderVersion">5053</string>
-		<string key="IBDocument.AppKitVersion">1265.21</string>
-		<string key="IBDocument.HIToolboxVersion">698.00</string>
+		<string key="IBDocument.SystemVersion">14B25</string>
+		<string key="IBDocument.InterfaceBuilderVersion">6245</string>
+		<string key="IBDocument.AppKitVersion">1343.16</string>
+		<string key="IBDocument.HIToolboxVersion">755.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">5053</string>
+			<string key="NS.object.0">6245</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSBox</string>
@@ -748,9 +748,10 @@
 				<object class="NSView" key="NSWindowView" id="631268310">
 					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
+					<array class="NSMutableArray" key="NSSubviews"/>
 					<string key="NSFrameSize">{480, 200}</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1920, 1057}}</string>
 				<string key="NSMaxSize">{600, 678}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -775,7 +776,7 @@
 							<int key="NSCellFlags2">71304192</int>
 							<string key="NSContents">&lt;ver&gt;</string>
 							<object class="NSFont" key="NSSupport" id="941595844">
-								<string key="NSName">.LucidaGrandeUI</string>
+								<bool key="IBIsSystemFont">YES</bool>
 								<double key="NSSize">13</double>
 								<int key="NSfFlags">1044</int>
 							</object>
@@ -825,9 +826,11 @@
 									<bytes key="NSWhite">MQA</bytes>
 								</object>
 							</object>
-							<object class="NSColor" key="NSTextColor">
-								<int key="NSColorSpace">3</int>
-								<bytes key="NSWhite">MCAwLjgAA</bytes>
+							<object class="NSColor" key="NSTextColor" id="125702626">
+								<int key="NSColorSpace">6</int>
+								<string key="NSCatalogName">System</string>
+								<string key="NSColorName">labelColor</string>
+								<reference key="NSColor" ref="713728351"/>
 							</object>
 						</object>
 						<int key="NSBorderType">3</int>
@@ -847,7 +850,7 @@
 							<int key="NSCellFlags2">138675200</int>
 							<string key="NSContents"/>
 							<object class="NSFont" key="NSSupport">
-								<string key="NSName">.LucidaGrandeUI</string>
+								<bool key="IBIsSystemFont">YES</bool>
 								<double key="NSSize">9</double>
 								<int key="NSfFlags">3614</int>
 							</object>
@@ -876,10 +879,7 @@
 							<string key="NSContents">Box</string>
 							<reference key="NSSupport" ref="941595844"/>
 							<reference key="NSBackgroundColor" ref="525253734"/>
-							<object class="NSColor" key="NSTextColor">
-								<int key="NSColorSpace">3</int>
-								<bytes key="NSWhite">MCAwLjgAA</bytes>
-							</object>
+							<reference key="NSTextColor" ref="125702626"/>
 						</object>
 						<int key="NSBorderType">3</int>
 						<int key="NSBoxType">2</int>
@@ -984,7 +984,7 @@
 							<int key="NSCellFlags2">272630784</int>
 							<string key="NSContents">Log in to your account:</string>
 							<object class="NSFont" key="NSSupport" id="622167618">
-								<string key="NSName">.LucidaGrandeUI-Bold</string>
+								<bool key="IBIsSystemFont">YES</bool>
 								<double key="NSSize">13</double>
 								<int key="NSfFlags">2072</int>
 							</object>
@@ -1055,15 +1055,12 @@
 							<int key="NSCellFlags2">0</int>
 							<string key="NSContents"/>
 							<object class="NSFont" key="NSSupport" id="26">
-								<string key="NSName">.LucidaGrandeUI</string>
+								<bool key="IBIsSystemFont">YES</bool>
 								<double key="NSSize">11</double>
 								<int key="NSfFlags">3100</int>
 							</object>
 							<reference key="NSBackgroundColor" ref="525253734"/>
-							<object class="NSColor" key="NSTextColor">
-								<int key="NSColorSpace">3</int>
-								<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
-							</object>
+							<reference key="NSTextColor" ref="125702626"/>
 						</object>
 						<reference key="NSContentView" ref="389296160"/>
 						<int key="NSBorderType">1</int>
@@ -1113,10 +1110,7 @@
 							<string key="NSContents"/>
 							<reference key="NSSupport" ref="26"/>
 							<reference key="NSBackgroundColor" ref="525253734"/>
-							<object class="NSColor" key="NSTextColor">
-								<int key="NSColorSpace">3</int>
-								<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
-							</object>
+							<reference key="NSTextColor" ref="125702626"/>
 						</object>
 						<reference key="NSContentView" ref="441538920"/>
 						<int key="NSBorderType">1</int>
@@ -1360,7 +1354,7 @@
 								<int key="NSCellFlags2">138413056</int>
 								<string key="NSContents">Can also drop file(s) and/or folder(s) here, to upload them to your Box.net account.</string>
 								<object class="NSFont" key="NSSupport">
-									<string key="NSName">.LucidaGrandeUI</string>
+									<bool key="IBIsSystemFont">YES</bool>
 									<double key="NSSize">10</double>
 									<int key="NSfFlags">1044</int>
 								</object>
@@ -1480,14 +1474,13 @@
 												<int key="NSvFlags">256</int>
 												<string key="NSFrameSize">{421, 17}</string>
 												<reference key="NSSuperview" ref="80730057"/>
-												<reference key="NSNextKeyView" ref="551419617"/>
+												<reference key="NSNextKeyView" ref="847275749"/>
 												<reference key="NSTableView" ref="590381164"/>
 											</object>
-											<object class="_NSCornerView" key="NSCornerView" id="551419617">
-												<reference key="NSNextResponder" ref="300600784"/>
+											<object class="_NSCornerView" key="NSCornerView">
+												<nil key="NSNextResponder"/>
 												<int key="NSvFlags">-2147483392</int>
 												<string key="NSFrameSize">{15, 20}</string>
-												<reference key="NSSuperview" ref="300600784"/>
 												<reference key="NSNextKeyView" ref="847275749"/>
 											</object>
 											<array class="NSMutableArray" key="NSTableColumns">
@@ -1614,6 +1607,7 @@
 									<reference key="NSDocView" ref="590381164"/>
 									<reference key="NSBGColor" ref="138804959"/>
 									<int key="NScvFlags">4</int>
+									<bool key="NSAutomaticallyAdjustsContentInsets">YES</bool>
 								</object>
 								<object class="NSClipView" id="80730057">
 									<reference key="NSNextResponder" ref="300600784"/>
@@ -1625,8 +1619,7 @@
 									<reference key="NSSuperview" ref="300600784"/>
 									<reference key="NSNextKeyView" ref="121235377"/>
 									<reference key="NSDocView" ref="121235377"/>
-									<reference key="NSBGColor" ref="138804959"/>
-									<int key="NScvFlags">4</int>
+									<bool key="NSAutomaticallyAdjustsContentInsets">YES</bool>
 								</object>
 								<object class="NSScroller" id="526382581">
 									<reference key="NSNextResponder" ref="300600784"/>
@@ -1635,6 +1628,8 @@
 									<reference key="NSSuperview" ref="300600784"/>
 									<reference key="NSNextKeyView" ref="898858470"/>
 									<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+									<string key="NSControlAction">_doScroller:</string>
+									<reference key="NSControlTarget" ref="300600784"/>
 									<reference key="NSTarget" ref="300600784"/>
 									<string key="NSAction">_doScroller:</string>
 								</object>
@@ -1645,11 +1640,12 @@
 									<reference key="NSSuperview" ref="300600784"/>
 									<reference key="NSNextKeyView" ref="818466739"/>
 									<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+									<string key="NSControlAction">_doScroller:</string>
+									<reference key="NSControlTarget" ref="300600784"/>
 									<int key="NSsFlags">1</int>
 									<reference key="NSTarget" ref="300600784"/>
 									<string key="NSAction">_doScroller:</string>
 								</object>
-								<reference ref="551419617"/>
 							</array>
 							<string key="NSFrame">{{20, 27}, {421, 151}}</string>
 							<reference key="NSSuperview" ref="1057404748"/>
@@ -1659,7 +1655,6 @@
 							<reference key="NSHScroller" ref="898858470"/>
 							<reference key="NSContentView" ref="847275749"/>
 							<reference key="NSHeaderClipView" ref="80730057"/>
-							<reference key="NSCornerView" ref="551419617"/>
 							<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
 							<double key="NSMinMagnification">0.25</double>
 							<double key="NSMaxMagnification">4</double>
@@ -1669,7 +1664,7 @@
 					<string key="NSFrameSize">{458, 259}</string>
 					<reference key="NSNextKeyView" ref="715486363"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1920, 1057}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -1787,6 +1782,7 @@
 						<reference key="NSDocView" ref="351690784"/>
 						<reference key="NSBGColor" ref="138804959"/>
 						<int key="NScvFlags">4</int>
+						<bool key="NSAutomaticallyAdjustsContentInsets">YES</bool>
 					</object>
 					<object class="NSClipView" id="661365831">
 						<reference key="NSNextResponder" ref="703688066"/>
@@ -1798,8 +1794,7 @@
 						<reference key="NSSuperview" ref="703688066"/>
 						<reference key="NSNextKeyView" ref="380124496"/>
 						<reference key="NSDocView" ref="380124496"/>
-						<reference key="NSBGColor" ref="138804959"/>
-						<int key="NScvFlags">4</int>
+						<bool key="NSAutomaticallyAdjustsContentInsets">YES</bool>
 					</object>
 					<object class="NSScroller" id="392512129">
 						<reference key="NSNextResponder" ref="703688066"/>
@@ -1808,6 +1803,8 @@
 						<reference key="NSSuperview" ref="703688066"/>
 						<reference key="NSNextKeyView" ref="867965312"/>
 						<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+						<string key="NSControlAction">_doScroller:</string>
+						<reference key="NSControlTarget" ref="703688066"/>
 						<reference key="NSTarget" ref="703688066"/>
 						<string key="NSAction">_doScroller:</string>
 						<double key="NSCurValue">1</double>
@@ -1818,6 +1815,8 @@
 						<string key="NSFrame">{{1, 119}, {223, 15}}</string>
 						<reference key="NSSuperview" ref="703688066"/>
 						<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+						<string key="NSControlAction">_doScroller:</string>
+						<reference key="NSControlTarget" ref="703688066"/>
 						<int key="NSsFlags">1</int>
 						<reference key="NSTarget" ref="703688066"/>
 						<string key="NSAction">_doScroller:</string>
@@ -1848,7 +1847,7 @@
 					<int key="NSCellFlags2">2048</int>
 					<string type="base64-UTF8" key="NSContents">IA</string>
 					<object class="NSFont" key="NSSupport">
-						<string key="NSName">.LucidaGrandeUI</string>
+						<bool key="IBIsSystemFont">YES</bool>
 						<double key="NSSize">12</double>
 						<int key="NSfFlags">787</int>
 					</object>
@@ -1917,6 +1916,8 @@
 								<bool key="NSEnabled">YES</bool>
 								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								<bool key="NSControlAllowsExpansionToolTips">YES</bool>
+								<string key="NSControlAction">tableViewAction:</string>
+								<reference key="NSControlTarget" ref="550487464"/>
 								<array class="NSMutableArray" key="NSTableColumns">
 									<object class="NSTableColumn">
 										<string key="NSIdentifier">0</string>
@@ -2248,10 +2249,7 @@
 							<string key="NSContents">Box</string>
 							<reference key="NSSupport" ref="941595844"/>
 							<reference key="NSBackgroundColor" ref="525253734"/>
-							<object class="NSColor" key="NSTextColor">
-								<int key="NSColorSpace">3</int>
-								<bytes key="NSWhite">MCAwLjgAA</bytes>
-							</object>
+							<reference key="NSTextColor" ref="125702626"/>
 						</object>
 						<int key="NSBorderType">3</int>
 						<int key="NSBoxType">2</int>
@@ -2273,10 +2271,7 @@
 							<string key="NSContents">Box</string>
 							<reference key="NSSupport" ref="941595844"/>
 							<reference key="NSBackgroundColor" ref="525253734"/>
-							<object class="NSColor" key="NSTextColor">
-								<int key="NSColorSpace">3</int>
-								<bytes key="NSWhite">MCAwLjgAA</bytes>
-							</object>
+							<reference key="NSTextColor" ref="125702626"/>
 						</object>
 						<int key="NSBorderType">3</int>
 						<int key="NSBoxType">2</int>
@@ -2334,6 +2329,8 @@
 								<bool key="NSEnabled">YES</bool>
 								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								<bool key="NSControlAllowsExpansionToolTips">YES</bool>
+								<string key="NSControlAction">tableViewAction:</string>
+								<reference key="NSControlTarget" ref="83632883"/>
 								<array class="NSMutableArray" key="NSTableColumns">
 									<object class="NSTableColumn">
 										<string key="NSIdentifier">0</string>
@@ -2575,10 +2572,7 @@
 							<string key="NSContents">Box</string>
 							<reference key="NSSupport" ref="941595844"/>
 							<reference key="NSBackgroundColor" ref="525253734"/>
-							<object class="NSColor" key="NSTextColor">
-								<int key="NSColorSpace">3</int>
-								<bytes key="NSWhite">MCAwLjgAA</bytes>
-							</object>
+							<reference key="NSTextColor" ref="125702626"/>
 						</object>
 						<int key="NSBorderType">3</int>
 						<int key="NSBoxType">2</int>
@@ -2748,10 +2742,7 @@
 							<string key="NSContents"/>
 							<reference key="NSSupport" ref="26"/>
 							<reference key="NSBackgroundColor" ref="525253734"/>
-							<object class="NSColor" key="NSTextColor">
-								<int key="NSColorSpace">3</int>
-								<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
-							</object>
+							<reference key="NSTextColor" ref="125702626"/>
 						</object>
 						<reference key="NSContentView" ref="240800292"/>
 						<int key="NSBorderType">1</int>
@@ -2813,10 +2804,7 @@
 							<string key="NSContents"/>
 							<reference key="NSSupport" ref="26"/>
 							<reference key="NSBackgroundColor" ref="525253734"/>
-							<object class="NSColor" key="NSTextColor">
-								<int key="NSColorSpace">3</int>
-								<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
-							</object>
+							<reference key="NSTextColor" ref="125702626"/>
 						</object>
 						<reference key="NSContentView" ref="965725142"/>
 						<int key="NSBorderType">1</int>
@@ -2878,10 +2866,7 @@
 							<string key="NSContents"/>
 							<reference key="NSSupport" ref="26"/>
 							<reference key="NSBackgroundColor" ref="525253734"/>
-							<object class="NSColor" key="NSTextColor">
-								<int key="NSColorSpace">3</int>
-								<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
-							</object>
+							<reference key="NSTextColor" ref="125702626"/>
 						</object>
 						<reference key="NSContentView" ref="784562638"/>
 						<int key="NSBorderType">1</int>
@@ -2943,10 +2928,7 @@
 							<string key="NSContents"/>
 							<reference key="NSSupport" ref="26"/>
 							<reference key="NSBackgroundColor" ref="525253734"/>
-							<object class="NSColor" key="NSTextColor">
-								<int key="NSColorSpace">3</int>
-								<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
-							</object>
+							<reference key="NSTextColor" ref="125702626"/>
 						</object>
 						<reference key="NSContentView" ref="324681823"/>
 						<int key="NSBorderType">1</int>
@@ -3039,10 +3021,7 @@
 											<string key="NSContents">Box</string>
 											<reference key="NSSupport" ref="941595844"/>
 											<reference key="NSBackgroundColor" ref="525253734"/>
-											<object class="NSColor" key="NSTextColor">
-												<int key="NSColorSpace">3</int>
-												<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
-											</object>
+											<reference key="NSTextColor" ref="125702626"/>
 										</object>
 										<int key="NSBorderType">3</int>
 										<int key="NSBoxType">2</int>
@@ -3088,11 +3067,7 @@
 											<int key="NSCellFlags">68157504</int>
 											<int key="NSCellFlags2">272630784</int>
 											<string key="NSContents">Upload Target</string>
-											<object class="NSFont" key="NSSupport" id="572880458">
-												<string key="NSName">LucidaGrande</string>
-												<double key="NSSize">11</double>
-												<int key="NSfFlags">16</int>
-											</object>
+											<reference key="NSSupport" ref="26"/>
 											<string key="NSCellIdentifier">_NS:397</string>
 											<reference key="NSControlView" ref="657406915"/>
 											<reference key="NSBackgroundColor" ref="77580564"/>
@@ -3119,10 +3094,7 @@
 							<string key="NSContents"/>
 							<reference key="NSSupport" ref="26"/>
 							<reference key="NSBackgroundColor" ref="525253734"/>
-							<object class="NSColor" key="NSTextColor">
-								<int key="NSColorSpace">3</int>
-								<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
-							</object>
+							<reference key="NSTextColor" ref="125702626"/>
 						</object>
 						<reference key="NSContentView" ref="431734452"/>
 						<int key="NSBorderType">1</int>
@@ -3190,10 +3162,7 @@
 											<string key="NSContents">Box</string>
 											<reference key="NSSupport" ref="941595844"/>
 											<reference key="NSBackgroundColor" ref="525253734"/>
-											<object class="NSColor" key="NSTextColor">
-												<int key="NSColorSpace">3</int>
-												<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
-											</object>
+											<reference key="NSTextColor" ref="125702626"/>
 										</object>
 										<int key="NSBorderType">3</int>
 										<int key="NSBoxType">2</int>
@@ -3235,7 +3204,7 @@
 											<int key="NSCellFlags">68157504</int>
 											<int key="NSCellFlags2">272630784</int>
 											<string key="NSContents">Take Selected region</string>
-											<reference key="NSSupport" ref="572880458"/>
+											<reference key="NSSupport" ref="26"/>
 											<string key="NSCellIdentifier">_NS:397</string>
 											<reference key="NSControlView" ref="923221671"/>
 											<reference key="NSBackgroundColor" ref="77580564"/>
@@ -3262,10 +3231,7 @@
 							<string key="NSContents"/>
 							<reference key="NSSupport" ref="26"/>
 							<reference key="NSBackgroundColor" ref="525253734"/>
-							<object class="NSColor" key="NSTextColor">
-								<int key="NSColorSpace">3</int>
-								<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
-							</object>
+							<reference key="NSTextColor" ref="125702626"/>
 						</object>
 						<reference key="NSContentView" ref="396234586"/>
 						<int key="NSBorderType">1</int>
@@ -3330,10 +3296,7 @@
 											<string key="NSContents">Box</string>
 											<reference key="NSSupport" ref="941595844"/>
 											<reference key="NSBackgroundColor" ref="525253734"/>
-											<object class="NSColor" key="NSTextColor">
-												<int key="NSColorSpace">3</int>
-												<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
-											</object>
+											<reference key="NSTextColor" ref="125702626"/>
 										</object>
 										<int key="NSBorderType">3</int>
 										<int key="NSBoxType">2</int>
@@ -3375,7 +3338,7 @@
 											<int key="NSCellFlags">68157504</int>
 											<int key="NSCellFlags2">272630784</int>
 											<string key="NSContents">Screencasts Recording</string>
-											<reference key="NSSupport" ref="572880458"/>
+											<reference key="NSSupport" ref="26"/>
 											<string key="NSCellIdentifier">_NS:397</string>
 											<reference key="NSControlView" ref="558911513"/>
 											<reference key="NSBackgroundColor" ref="77580564"/>
@@ -3402,10 +3365,7 @@
 							<string key="NSContents"/>
 							<reference key="NSSupport" ref="26"/>
 							<reference key="NSBackgroundColor" ref="525253734"/>
-							<object class="NSColor" key="NSTextColor">
-								<int key="NSColorSpace">3</int>
-								<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
-							</object>
+							<reference key="NSTextColor" ref="125702626"/>
 						</object>
 						<reference key="NSContentView" ref="350302739"/>
 						<int key="NSBorderType">1</int>
@@ -3470,10 +3430,7 @@
 											<string key="NSContents">Box</string>
 											<reference key="NSSupport" ref="941595844"/>
 											<reference key="NSBackgroundColor" ref="525253734"/>
-											<object class="NSColor" key="NSTextColor">
-												<int key="NSColorSpace">3</int>
-												<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
-											</object>
+											<reference key="NSTextColor" ref="125702626"/>
 										</object>
 										<int key="NSBorderType">3</int>
 										<int key="NSBoxType">2</int>
@@ -3515,7 +3472,7 @@
 											<int key="NSCellFlags">68157504</int>
 											<int key="NSCellFlags2">272630784</int>
 											<string key="NSContents">Take full screen</string>
-											<reference key="NSSupport" ref="572880458"/>
+											<reference key="NSSupport" ref="26"/>
 											<string key="NSCellIdentifier">_NS:397</string>
 											<reference key="NSControlView" ref="369844304"/>
 											<reference key="NSBackgroundColor" ref="77580564"/>
@@ -3542,10 +3499,7 @@
 							<string key="NSContents"/>
 							<reference key="NSSupport" ref="26"/>
 							<reference key="NSBackgroundColor" ref="525253734"/>
-							<object class="NSColor" key="NSTextColor">
-								<int key="NSColorSpace">3</int>
-								<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
-							</object>
+							<reference key="NSTextColor" ref="125702626"/>
 						</object>
 						<reference key="NSContentView" ref="269730328"/>
 						<int key="NSBorderType">1</int>
@@ -3563,7 +3517,7 @@
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<bool key="usesAutoincrementingIDs">NO</bool>
-			<array class="NSMutableArray" key="connectionRecords">
+			<array key="connectionRecords">
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">terminate:</string>
@@ -4278,22 +4232,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">screen_cast_hot_key</string>
-						<reference key="source" ref="1063473401"/>
-						<reference key="destination" ref="984563773"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="1063473401"/>
-							<reference key="NSDestination" ref="984563773"/>
-							<string key="NSLabel">value: screen_cast_hot_key</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">screen_cast_hot_key</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<string key="id">902</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
 						<string key="label">mute_audio_check</string>
 						<reference key="source" ref="403923383"/>
 						<reference key="destination" ref="984563773"/>
@@ -4563,6 +4501,7 @@
 					<object class="IBObjectRecord">
 						<string key="id">372</string>
 						<reference key="object" ref="631268310"/>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="640462685"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -6237,7 +6176,7 @@
 				<boolean value="YES" key="371.IBNSWindowAutoPositionCentersHorizontal"/>
 				<boolean value="NO" key="371.IBNSWindowAutoPositionCentersVertical"/>
 				<string key="371.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<boolean value="YES" key="371.NSWindowTemplate.visibleAtLaunch"/>
+				<boolean value="NO" key="371.NSWindowTemplate.visibleAtLaunch"/>
 				<boolean value="NO" key="371.showNotes"/>
 				<string key="372.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<reference key="372.IBUserGuides" ref="0"/>
@@ -6364,6 +6303,7 @@
 				<boolean value="NO" key="706.showNotes"/>
 				<boolean value="YES" key="709.IBNSWindowAutoPositionCentersHorizontal"/>
 				<boolean value="YES" key="709.IBNSWindowAutoPositionCentersVertical"/>
+				<string key="709.IBPersistedLastKnownCanvasPosition">{225, 236.5}</string>
 				<string key="709.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="NO" key="709.showNotes"/>
 				<string key="710.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -6748,10 +6688,6 @@
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
 			<real value="1060" key="NS.object.0"/>
 		</object>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
-			<real value="1070" key="NS.object.0"/>
-		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.InterfaceBuilder3</string>
 			<integer value="4600" key="NS.object.0"/>
@@ -6759,8 +6695,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NSMenuCheckmark">{11, 11}</string>
-			<string key="NSMenuMixedState">{10, 3}</string>
+			<string key="NSMenuCheckmark">{12, 12}</string>
+			<string key="NSMenuMixedState">{10, 2}</string>
 			<string key="NSSwitch">{15, 15}</string>
 			<string key="box-account-login-button">{74, 28}</string>
 			<string key="box-account-login-button-pressed">{74, 28}</string>

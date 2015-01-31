@@ -29,12 +29,25 @@
 #import "MenubarController.h"
 
 
-const int MaxHistoryItemCount = 5;
+#import "AttachedWindowsController.h"
+#import "PreferencesController.h"
+#import "StartAtLoginController.h"
+
+
+
+
+
+
+//const int MaxHistoryItemCount = 5;
 
 static const int MaxHistoryItemLength = 22;
 
 static const int UploadHotKeyEventId = 11;
 static const int VideoCaptureHotKeyEventId = 111;
+static const int FullScreenCaptureHotKeyEventID = 112;
+static const int ScreenCaptureHotKeyEventID = 113;
+
+
 
 static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, void* inUserData);
 
@@ -70,6 +83,8 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
 
 - (void) applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+
+    
     // Check if we have plist file from previous version which contains user password in open form - delete password
     
     NSString* plistPath = [BASE_PATH stringByAppendingPathComponent:@"net.box.simpleshare.plist"];
@@ -89,6 +104,7 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     
     [mainController setAppVersion];
     [mainController wireAllButtons];
+    
     [mainController addObserver:self
                      forKeyPath:@"disable_automatic_upload_check"
                         options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld 
@@ -105,12 +121,13 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
                      forKeyPath:@"launch_at_startup_check"
                         options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld 
                         context:NULL];
-        
- 
     
-//    [[self window] setDelegate:self];
-//    [[self window] makeKeyWindow];
-//    [[self window] makeMainWindow];
+    
+    //register MainController for DoLogoutNotification
+    
+    AddNotificationObserver(mainController, @selector(processDoLogoutNotification:), @"DoLogoutNotification", nil);
+ 
+
     
     statusBarImages = [NSMutableArray new];
 	
@@ -129,42 +146,175 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
 	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-12"]];
 	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-13"]];
 	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-14"]];
+    /*
 	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-15"]];
 	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-16"]];
 	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-17"]];
 	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-18"]];
 	[statusBarImages addObject:[NSImage imageNamed:@"icon-animation-19"]];
+    */
 	[statusBarImages addObject:[NSImage imageNamed:@"active-icon"]];
     
 	
-   // [self createMenu];
+    //[self createMenu];
+    
 //    [statusBarItem setHighlightMode:YES];
 //    [statusBarItem setEnabled:YES];
+    
+    
      self.menubarController = [[MenubarController alloc] init];
     
     [uploadStatusPanel setDelegate:self];
     [uploadStatusPanel registerForDraggedTypes:[self acceptableTypes]];
         
     [GrowlApplicationBridge setGrowlDelegate:self];
-    [GrowlApplicationBridge setWillRegisterWhenGrowlIsReady:YES]; 
+    [GrowlApplicationBridge setWillRegisterWhenGrowlIsReady:YES];
     
-    [[[FolderUtility alloc] init] checkPermision];
+    //get user defaults
+    
+     NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
+    
+    //uncomment to remove permission for desktop access
+    //[defaults removeObjectForKey:@"PathToFolder"];
+    
+    
+    //check permission to desktop
+    
+    FolderUtility *folderUtility = [[FolderUtility alloc] init];
+    
+    
+    //[folderUtility checkPermision];
+    
+    self.isDesktopGranted = [folderUtility getPathToDesktopFolder];
+    
+    
+    
+    //check for the first launch
+    
+    
+   
+    //uncomment to reset SHnotFirstLaunch
+    
+    //[defaults removeObjectForKey:@"SHnotFirstLaunch"];
+    
+    self.attachedWindowsController.isFirstLaunch = ![defaults boolForKey:@"SHnotFirstLaunch"];
+    
+    //set isFirstLaunch to true in defaults
+    
+    [defaults setBool:TRUE forKey:@"SHnotFirstLaunch"];
+    
+    [defaults synchronize];
+    
+    
+    
+    //set desktop monitoring for new files, needed for screenshots taken with system hotkeys
+    
+    
     UKKQueue *kqueue = [UKKQueue sharedFileWatcher];
     NSString *path = [[NSFileManager defaultManager] desktopPath];
     [kqueue addPathToQueue:path];
     NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
     NSNotificationCenter *notificationCenter = [workspace notificationCenter];
+    
     [notificationCenter addObserver:self 
                            selector:@selector(fileSystemNotificationsHandler:) 
                                name:UKFileWatcherWriteNotification 
                              object:nil];
 
     
-    //
     filesAddedToQueue = [NSMutableSet new];
-    [self setupUploadHotKey];
-    [self setupVideoCaptureHotKey];
-	
+    
+    
+    
+    
+    //prepare settings and init AttachedWindowsController
+
+    
+    self.attachedWindowsController  = [[AttachedWindowsController alloc] init];
+    
+    
+    
+    
+    
+    
+    
+    
+    //register for ShowTextMessage notification
+    AddNotificationObserver(self.attachedWindowsController, @selector(processShowStartMessageNotification:), @"ShowStartMessageNotification", nil);
+    
+    //resiter for ShowSuccessfulLoginMessageNotification
+    
+    AddNotificationObserver(self.attachedWindowsController, @selector(processSuccessfulLoginNotification:), @"SuccessfulLoginNotification", nil);
+    
+    //register to StatusItemClicked notification
+    
+    AddNotificationObserver(self.attachedWindowsController, @selector(processStatusItemClickedNotification), @"StatusItemClickedNotification", nil);
+    
+    
+    //register for NewHistoryElementNotification
+    AddNotificationObserver(self.attachedWindowsController, @selector(processNewHistoryElementNotification:), @"NewHistoryElementNotification", nil);
+    
+    //check for first launch
+    
+    
+    if (self.attachedWindowsController.isFirstLaunch) {
+        
+        //post message for attachedWindowsController to show start message
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowStartMessageNotification" object:self userInfo:nil];
+        
+        
+    }
+    
+    else{
+        
+        NSLog(@"Not first launch. ");
+        
+        
+        
+        if ([[OAuth2Client sharedInstance] isAuthorized])
+        {
+            NSLog(@"Saved credentials, refresh token");
+            
+            if (self.isDesktopGranted) {
+                
+                
+                [[OAuth2Client sharedInstance] authorize];
+                
+            }
+            
+            else{
+                
+                NSLog(@"No permissions granted 1111");
+                
+                //[self.attachedWindowsController displayLoginWindow];
+                
+                [folderUtility checkPermision];
+                
+            }
+            
+            
+        }
+        else{
+            
+            
+            NSLog(@"No saved credentials, display login window");
+            
+            //[self.attachedWindowsController displayLoginWindow];
+            
+            [folderUtility checkPermision];
+            
+            
+        }
+        
+        
+        
+        
+    }
+ 
+    
+    
+	/*
 	if ([[OAuth2Client sharedInstance] isAuthorized])
 	{
 		PostNotificationWithObject(@"SHOW_LOADING", [NSString stringWithUTF8String:"Logging In ..."]);
@@ -173,20 +323,76 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     else
     {
         [self.popupWindowController showLogin];
-    }
+    }*/
     
     
-
+    /*
     if (![[[BoxNetHandler sharedHandler] boxNetUser] isAuthenticated])
     {
         //[self.popupWindowController showWindow:nil];
         
         //[self addAndResizeWindowForView:loginView];
-    }/* else {
+    } else {
       //        [self showMainView];
       [self addAndResizeWindowForView:mainView];
       }*/
 }
+#pragma mark New interface Helpers
+
+-(void)loadPreferencesController{
+    
+    //preferenes controller
+    
+    if (!self.preferencesController) {
+        
+        self.preferencesController = [[PreferencesController alloc] initWithWindowNibName:@"PreferencesController"];
+        
+        //trigger lazy loading
+        
+        NSWindow *window = self.preferencesController.window;
+        
+        
+        
+        //register for ShowPreferencesWindowNotification
+        
+        AddNotificationObserver(self.preferencesController, @selector(processShowPreferencesWindowNotification), @"ShowPreferencesWindowNotification", nil);
+        
+        
+        //register for LoadAccountInfoNotification
+        AddNotificationObserver(self.preferencesController, @selector(processLoadAccountInfoNotification), @"LoadAccountInfoNotification", nil);
+
+    }
+    
+    
+    
+}
+
+
+
+-(NSRect)getStatusItemRectInMainScreen{
+    
+    //NSView *view  = statusBarItem.view;
+    
+    NSView *view  = self.menubarController.statusItemView;
+    
+    
+    NSRect rect = view.frame;
+    
+    //NSRect mainScreenRect = [[NSScreen mainScreen] frame];
+    
+    NSRect result = [view.window convertRectToScreen:rect];
+    
+    
+    
+    return result;
+    
+    
+    
+    
+}
+
+
+
 
 #pragma mark Hotkeys
 
@@ -207,7 +413,7 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
             int keyCode = [code intValue];
             unichar keyChar = [hotKeyString characterAtIndex:0];
             EventHotKeyID uploadFileHotkeyId = { keyChar, eventId };
-            RegisterEventHotKey(keyCode,
+           OSStatus result =  RegisterEventHotKey(keyCode,
                                 shiftKey | cmdKey, 
                                 uploadFileHotkeyId, 
                                 GetApplicationEventTarget(), 
@@ -239,6 +445,28 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     [self installHotKey:hotKeyString eventId:VideoCaptureHotKeyEventId eventHotKeyRef:&videoCaptureHotkeyRef];
 }
 
+-(void)setupFullScreenCaptureHotKey{
+    
+    NSString *hotkeyString = @"3";
+    
+    [self installHotKey:hotkeyString eventId:FullScreenCaptureHotKeyEventID eventHotKeyRef:&fullScreenCaptureHotkeyRef];
+    
+    
+    
+}
+
+
+-(void)setupScreenCaptureHotKey{
+    
+    NSString *hotkeyString = @"4";
+    
+    [self installHotKey:hotkeyString eventId:ScreenCaptureHotKeyEventID  eventHotKeyRef:&screenCaptureHotkeyRef];
+    
+    
+}
+
+
+
 - (void)uninstallVideoCaptureHotKey {
     [self uninstallHotKey:videoCaptureHotkeyRef];
 }
@@ -261,7 +489,7 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
         [popUpMenu addItem:tmp];
         [tmp release];
         ++i;
-        if (i == MaxHistoryItemCount) {
+        if (i == MAX_HISTORY_ITEM_COUNT) {
             break;
         }
     }
@@ -458,13 +686,11 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     return NSDragOperationNone;
 }
 
-- (void) draggingEnded:(id<NSDraggingInfo>)sender
-{
-    
-}
 
 - (BOOL) performDragOperation:(id<NSDraggingInfo>)sender
 {
+    
+    [[Mixpanel sharedInstance] trackFileDragEvent];
     return YES;
 }
 
@@ -575,6 +801,7 @@ exit:
                 {
                     DbgLog(@"UPLOADING!!!!!!!");
                     [filesAddedToQueue addObject:path];
+                                        
                     [[BoxNetHandler sharedHandler] uploadFiles:[NSArray arrayWithObject:path] withProperties:[NSDictionary dictionaryWithObject:@"SCREEN_SHOT" forKey:@"SCREEN_SHOT"]];
                 }
             }
@@ -646,6 +873,8 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
+    
+    NSLog(@"Observe value for key Startup");
 //    if (context == kContextActivePanel) {
 //        self.menubarController.hasActiveIcon = self.popupWindowController.hasActivePanel;
 //    }
@@ -659,18 +888,35 @@ void *kContextActivePanel = &kContextActivePanel;
             
         }
     } else if ([keyPath isEqualToString:@"upload_hot_key"]) {
-        [self uninstallUploadHotKey];
-        [self setupUploadHotKey];
+        //[self uninstallUploadHotKey];
+        //[self setupUploadHotKey];
     } else if ([keyPath isEqualToString:@"screen_cast_hot_key"]) {
         [self uninstallVideoCaptureHotKey];
         [self setupVideoCaptureHotKey];
     } else if ([keyPath isEqualToString:@"launch_at_startup_check"]) {
         BOOL launchOnStart = [mainController launch_at_startup_check];
+        
+        StartAtLoginController *loginController = [[StartAtLoginController alloc] init];
+        
+        [loginController setBundle:[NSBundle bundleWithPath:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"Contents/Library/LoginItems/LoginHelper.app"]]];
+        
+        
         if (launchOnStart) {
-            [Utilities addAppAsStartupItem];
+            //[Utilities addAppAsStartupItem];
+            
+            [loginController setStartAtLogin:TRUE];
+            
+            
         } else {
-            [Utilities deleteAppFromLoginItem];
+            //[Utilities deleteAppFromLoginItem];
+            
+            [loginController setStartAtLogin:FALSE];
+            
         }
+
+        [loginController release];
+        
+        
     }
 
     else {
@@ -938,7 +1184,9 @@ void *kContextActivePanel = &kContextActivePanel;
     if ([[self window] isVisible]) {
         [[self window] close];
     }
+    
     [[Mixpanel sharedInstance] trackCaptureFullScreenEvent];
+    
     [imageCaptureController captureFullScreen];
 
 }
@@ -954,6 +1202,8 @@ void *kContextActivePanel = &kContextActivePanel;
         }
 
     [BoxSimpleShareAppDelegate showNotificationWithTitle:@"Capture Region" withDescription:@"Hold and drag to take screenshot"];
+    
+    //track mixpanel event
 	[[Mixpanel sharedInstance] trackCaptureRegionEvent];
     
         [imageCaptureController showWindows];
@@ -969,7 +1219,7 @@ void *kContextActivePanel = &kContextActivePanel;
         [videoCaptureController stopVideoRecording];
         [videoCaptureController hideAllWindows];
         [videoCaptureController clear];
-        [videoCaptureMenuItem setTitle:InterfaceString(@"VideoCapture")];
+        //[videoCaptureMenuItem setTitle:InterfaceString(@"VideoCapture")];
     } else {
         if (!videoCaptureController) {
             videoCaptureController = [[StartVideoCaptureController alloc] init];
@@ -989,7 +1239,7 @@ void *kContextActivePanel = &kContextActivePanel;
         
         [[NSCursor crosshairCursor] set];
         shouldSetCaptureCursor = YES;
-        [videoCaptureMenuItem setTitle:InterfaceString(@"StopVideoCapture")];
+        //[videoCaptureMenuItem setTitle:InterfaceString(@"StopVideoCapture")];
     }
 }
 
@@ -1013,6 +1263,7 @@ void *kContextActivePanel = &kContextActivePanel;
 	CFRelease(shiftKey);
 }
 
+/*
 - (IBAction) triggerRegionCapture:(id)sender
 {
     [BoxSimpleShareAppDelegate showNotificationWithTitle:@"Capture Region" withDescription:@"Hold and drag to take screenshot"];
@@ -1055,6 +1306,7 @@ void *kContextActivePanel = &kContextActivePanel;
 	// release modifiers
 	[self performSelector:@selector(modifierDepressMagic) withObject:nil afterDelay:0.5f];
 }
+*/
 
 - (void)toggleUploadsEnabled:(id)sender {
     [mainController toggleUploadsEnabled];
@@ -1133,19 +1385,61 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)videoCaptureController:(id)controller didCaptureVideoToPath:(NSString*)path {
     if (controller == videoCaptureController && path) {
-        if(1)
-        {
-
-            [[Mixpanel sharedInstance] trackVideoCaptureEvent];
-            [[BoxNetHandler sharedHandler] uploadFiles:[[NSArray arrayWithObject:path] retain] withProperties:[NSDictionary dictionaryWithObject:@"YOUTUBE" forKey:@"YOUTUBE"]];
-
-        }
-        else
-        {
-            [[Mixpanel sharedInstance] trackVideoCaptureEvent];
-            [[BoxNetHandler sharedHandler] uploadFiles:[[NSArray arrayWithObject:path] retain] withProperties:nil];
+        
+        
+        NSString* filePath = [[NSFileManager defaultManager] desktopPath];
+        
+        //filePath = [filePath stringByAppendingPathComponent:@"Screencasts"];
+        
+        filePath = [filePath stringByAppendingPathComponent:[path lastPathComponent]];
+        
+        //if upload is disabled, just copy file to desktop
+        
+         if (self.mainController.disable_automatic_upload_check) {
+         //if uploads disable, move file from chache to desktop
+         NSError *error;
+         
+         
+         BOOL copyResult = [[NSFileManager defaultManager] moveItemAtPath:path toPath:filePath error:&error];
+         
+         
+         //NSLog(@"Video file copy error:%@",[error description]);
+         
+             return;
+         
+         }
+         
+        
+        
+        
+        
+        //copy file to desktop
+        
+        BOOL copyResult = [[NSFileManager defaultManager] moveItemAtPath:path toPath:filePath error:nil];
+        /*
+        if (self.mainController.disable_automatic_upload_check) {
+            //if uploads disable, move file from chache to desktop
+            NSError *error;
+            
+            
+            BOOL copyResult = [[NSFileManager defaultManager] moveItemAtPath:path toPath:filePath error:&error];
+            
+            
+            //NSLog(@"Video file copy error:%@",[error description]);
+            
             
         }
+        */
+        
+
+        [[Mixpanel sharedInstance] trackVideoCaptureEvent];
+        
+        //upload files
+        //[[BoxNetHandler sharedHandler] uploadFiles:[[NSArray arrayWithObject:path] retain] withProperties:[NSDictionary dictionaryWithObject:@"YOUTUBE" forKey:@"YOUTUBE"]];
+
+        
+        [[BoxNetHandler sharedHandler] uploadFiles:[[NSArray arrayWithObject:filePath] retain] withProperties:[NSDictionary dictionaryWithObject:@"YOUTUBE" forKey:@"YOUTUBE"]];
+    
     }
 }
 
@@ -1176,6 +1470,22 @@ static OSStatus HotKeyHandler(EventHandlerCallRef inCallRef, EventRef inEvent, v
     
     EventHotKeyID hotKeyId;
     GetEventParameter(inEvent, kEventParamDirectObject, typeEventHotKeyID, NULL, sizeof(hotKeyId), NULL, &hotKeyId);
+    
+    if (hotKeyId.id == FullScreenCaptureHotKeyEventID) {
+        //NSLog(@"Full screen capture!");
+        
+        [[Mixpanel sharedInstance] trackCaptureFullScreenEvent];
+        
+        
+    }
+    
+    if (hotKeyId.id == ScreenCaptureHotKeyEventID) {
+        NSLog(@"Partial screen capture with hotkey");
+        
+        [[Mixpanel sharedInstance] trackCaptureRegionEvent];
+        
+    }
+    
     
     if (hotKeyId.id == VideoCaptureHotKeyEventId) {
         [appDelegate startVideoCapture:nil];

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="PreferencesController">
+            <connections>
+                <outlet property="toolbar" destination="1bD-OK-OeB" id="XBe-0e-OK1"/>
+                <outlet property="window" destination="NTG-Az-mUy" id="vAP-cF-b7D"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="9ib-eK-QBc" customClass="BoxSimpleShareAppDelegate"/>
+        <window title="SimpleShare" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="NTG-Az-mUy">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="355" y="280" width="536" height="341"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <value key="maxSize" type="size" width="600" height="600"/>
+            <view key="contentView" id="9l3-hd-685">
+                <rect key="frame" x="0.0" y="0.0" width="536" height="341"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </view>
+            <toolbar key="toolbar" implicitIdentifier="F2687EE5-3AE9-4662-ADD7-5BE055385BEC" explicitIdentifier="net.box.mainToolBar" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="regular" id="1bD-OK-OeB">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="79B33D52-F8C6-48CB-88B0-28F120931463" explicitItemIdentifier="net.box.preferencesView" label="Preferences" paletteLabel="Preferences" tag="1" image="prefs-prefs" autovalidates="NO" selectable="YES" id="WAc-4b-kJw">
+                        <connections>
+                            <action selector="mainPreferencesToolbarItemAction:" target="-2" id="jRo-zR-aqW"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="75F4D1B6-D757-4806-8478-98254730D04A" explicitItemIdentifier="net.box.mainView" label="Account" paletteLabel="Account" image="prefs-accounts" autovalidates="NO" selectable="YES" id="Gm5-Vn-GJz">
+                        <connections>
+                            <action selector="accountToolbarItemAction:" target="-2" id="16Y-xm-Jb1"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="DE1B8153-1599-4879-B9CB-1A8BC567DF4F" explicitItemIdentifier="net.box.shortcutView" label="Shortcuts" paletteLabel="Shortcuts" tag="2" image="prefs-shortcuts" autovalidates="NO" selectable="YES" id="Mm8-YS-vDh">
+                        <connections>
+                            <action selector="shortcutsToolbarItemAction:" target="-2" id="EWr-BF-ISn"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="1Xq-LB-4lj"/>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="1Xq-LB-4lj"/>
+                    <toolbarItem reference="Gm5-Vn-GJz"/>
+                    <toolbarItem reference="WAc-4b-kJw"/>
+                    <toolbarItem reference="Mm8-YS-vDh"/>
+                    <toolbarItem reference="1Xq-LB-4lj"/>
+                </defaultToolbarItems>
+            </toolbar>
+            <connections>
+                <outlet property="delegate" destination="-2" id="M9Q-71-xXt"/>
+            </connections>
+        </window>
+    </objects>
+    <resources>
+        <image name="prefs-accounts" width="32" height="32"/>
+        <image name="prefs-prefs" width="32" height="32"/>
+        <image name="prefs-shortcuts" width="32" height="32"/>
+    </resources>
+</document>

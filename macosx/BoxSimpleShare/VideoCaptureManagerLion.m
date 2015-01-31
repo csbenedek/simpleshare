@@ -8,6 +8,10 @@
 #import "VideoCaptureManagerLion.h"
 #import "StandardPaths.h"
 #import <AVFoundation/AVFoundation.h>
+#import "MainController.h"
+#import "BoxSimpleShareAppDelegate.h"
+
+
 
 @interface NSObject (VideoManagerNSObjectExtensions)
 
@@ -75,6 +79,29 @@
     }
     [_session performSelector:@selector(addInput:) withObject:input];
     
+    //check for mute option
+    MainController *mainController = [[BoxSimpleShareAppDelegate sharedDelegate] mainController];
+    
+    
+    if (!mainController.mute_audio_check) {
+        
+        //add audio input
+        AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
+        
+        NSError *error = nil;
+        
+        AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error];
+        if (audioInput) {
+            
+            [_session performSelector:@selector(addInput:) withObject:audioInput];
+            
+        }
+
+    }
+    
+    
+    
+    
     // Create a MovieFileOutput and add it to the session
 //    Class avCaptureMovieFileOutputClass = NSClassFromString(@"AVCaptureMovieFileOutput");
     _movieFileOutput =    [[[AVCaptureMovieFileOutput alloc] init] autorelease];  //[[[avCaptureMovieFileOutputClass alloc] init] autorelease];
@@ -84,7 +111,7 @@
     [_session performSelector:@selector(startRunning) withObject:nil];
     
     [_tempFileName release];
-    _tempFileName = [[NSTemporaryDirectory() stringByAppendingPathComponent:@"movie_tmp.mov"] retain];
+    //_tempFileName = [[NSTemporaryDirectory() stringByAppendingPathComponent:@"movie_tmp.mov"] retain];
     _tempFileName = [[[[NSFileManager defaultManager] cacheDataPath]stringByAppendingPathComponent:@"movie_tmp.mov"] retain];
 
     NSURL* destPath = [NSURL fileURLWithPath:_tempFileName];
@@ -110,6 +137,9 @@
     NSError* err = nil;
     
     BOOL result = [[NSFileManager defaultManager]moveItemAtPath:_tempFileName toPath:filename error:&err];
+    
+    
+    
     if (result) {
 
         [self performSelectorOnMainThread:@selector(notifySaveFinishedToPath:) withObject:filename waitUntilDone:NO];
@@ -165,8 +195,8 @@
     [_session performSelector:@selector(stopRunning) withObject:nil];
     
     // Release the session
-    //[_session release];
-    //_session = nil;
+    [_session release];
+    _session = nil;
 }
 
 @end

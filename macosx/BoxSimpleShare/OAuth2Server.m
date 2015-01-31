@@ -17,6 +17,8 @@
 {
 	if ((self = [super init]))
 	{
+        
+        // 0 for automatic port assignment
 		socket = [[NSSocketPort alloc] initWithTCPPort:0];
 		handle = [[NSFileHandle alloc] initWithFileDescriptor:[socket socket] closeOnDealloc:YES];
 		
@@ -39,7 +41,7 @@
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
-	[delegate release];
+	//[delegate release];
 	
 	[connections release];
 	
@@ -67,6 +69,8 @@
 		return;
 	}
 	
+    //continue to listen for connections
+    
 	[handle acceptConnectionInBackgroundAndNotify];
 	
 	if (remoteHandle)

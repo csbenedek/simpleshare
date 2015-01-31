@@ -69,6 +69,14 @@ typedef enum {
     {
         statusItem = item;
         [self setNotificationsObserver];
+        
+        //NSImage *image = [NSImage imageNamed:@"default-icon.png"];
+        
+        //[item setTitle:@"Test"];
+        
+        //[item setImage:image];
+        
+        
         [self loadView];
         [self updateFrame:StatusItemStateIconOnly];
     }
@@ -163,10 +171,15 @@ typedef enum {
 {
     [layerDelegate setImage:img];
     [imageLayer setNeedsDisplay];
+    
+    //[self.statusItem setImage:img];
+    
 }
 
 - (void)setImageIndex:(int)idx 
 {
+    
+    
     if (currentProgressImageIndex != idx) {
         NSArray *images = [[BoxSimpleShareAppDelegate sharedDelegate] statusBarImages];
         if (currentProgressImageIndex + 1 != idx && idx > currentProgressImageIndex) {
@@ -192,7 +205,9 @@ typedef enum {
         NSNumber* imageIndex = [imageQueue objectAtIndex:0];
         currentProgressImageIndex = [imageIndex intValue];
         NSArray *images = [[BoxSimpleShareAppDelegate sharedDelegate] statusBarImages];
-        [self setImageForStatus:[images objectAtIndex:currentProgressImageIndex]];
+        NSImage *image = [images objectAtIndex:currentProgressImageIndex];
+        
+        [self setImageForStatus:image];
         [imageQueue removeObjectAtIndex:0];
         [self performSelector:@selector(processNextImage) withObject:nil afterDelay:0.05];
     }
@@ -254,6 +269,7 @@ typedef enum {
                 if (!mouseDown)
                 {
                     [self setImageIndex:index];
+                    
                 }
             }
 
@@ -388,6 +404,8 @@ typedef enum {
     return [[BoxSimpleShareAppDelegate sharedDelegate] prepareForDragOperation:sender];
 }
 
+
+
 #pragma mark -
 
 - (void)setMouseDown:(BOOL)down {
@@ -422,7 +440,11 @@ typedef enum {
 - (void) mouseDown:(NSEvent *)theEvent
 {
     [self setMouseDown:YES];
-     [NSApp sendAction:self.action to:self.target from:self];
+    
+    [self postStatusItemClickedNotification];
+    
+    
+     //[NSApp sendAction:self.action to:self.target from:self];
 //    [[statusItem menu] setDelegate:self];
 //    [statusItem popUpStatusItemMenu:[statusItem menu]];
 }
@@ -434,12 +456,17 @@ typedef enum {
 
 - (void)rightMouseDown:(NSEvent *)event
 {
-	[self mouseDown:event];
+	//[self mouseDown:event];
+    
+    NSLog(@"Right mouse down");
+    
+    [[statusItem menu] setDelegate:self];
+    [statusItem popUpStatusItemMenu:[statusItem menu]];
 }
 
 - (void)rightMouseUp:(NSEvent *)event
 {
-	[self mouseUp:event];
+	//[self mouseUp:event];
 }
 
 //- (void) menuDidClose:(NSMenu *)menu
@@ -471,6 +498,17 @@ typedef enum {
     frame.origin = [self.window convertBaseToScreen:frame.origin];
     return frame;
 }
+
+-(void)postStatusItemClickedNotification{
+    
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"StatusItemClickedNotification" object:self];
+    
+    //see processStatusItemClickedNotificetion of AttachedWindowsController
+    
+}
+
+
 #pragma mark Memory Management
 
 - (void) dealloc

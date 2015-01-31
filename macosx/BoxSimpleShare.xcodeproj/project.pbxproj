@@ -7,6 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D01A72319CAB78D000349A7 /* MAAttachedWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D01A72219CAB78D000349A7 /* MAAttachedWindowController.m */; };
+		0D2B34CD19DDF186009B06EF /* logout-from-youtube-button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2B34C919DDF186009B06EF /* logout-from-youtube-button-pressed.png */; };
+		0D2B34CE19DDF187009B06EF /* logout-from-youtube-button-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2B34CA19DDF186009B06EF /* logout-from-youtube-button-pressed@2x.png */; };
+		0D2B34CF19DDF187009B06EF /* logout-from-youtube-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2B34CB19DDF186009B06EF /* logout-from-youtube-button.png */; };
+		0D2B34D019DDF187009B06EF /* logout-from-youtube-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2B34CC19DDF186009B06EF /* logout-from-youtube-button@2x.png */; };
+		0D2C6F811A0155190068B4EB /* StartAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C6F801A0155190068B4EB /* StartAtLoginController.m */; };
+		0D2C6F831A015F340068B4EB /* LoginHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0D45F9C51A0119CC003A8595 /* LoginHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0D45F9CA1A0119CC003A8595 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D45F9C91A0119CC003A8595 /* main.m */; };
+		0D45F9CD1A0119CC003A8595 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D45F9CC1A0119CC003A8595 /* AppDelegate.m */; };
+		0D45F9CF1A0119CD003A8595 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D45F9CE1A0119CD003A8595 /* Images.xcassets */; };
+		0D45F9D21A0119CD003A8595 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D45F9D01A0119CD003A8595 /* MainMenu.xib */; };
+		0D45F9E61A011A9F003A8595 /* LoginHelper.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 0D45F9E51A011A9F003A8595 /* LoginHelper.entitlements */; };
+		0D48778419D2FD2E0015961F /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48778319D2FD2E0015961F /* NSString+URLEncoding.m */; };
+		0D48778719D301DD0015961F /* NSString+HTMLTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48778619D301DD0015961F /* NSString+HTMLTags.m */; };
+		0D4FA97519FADC1500588416 /* close_button_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4FA97319FADC1500588416 /* close_button_small@2x.png */; };
+		0D4FA97719FADC6700588416 /* close_button_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4FA97619FADC6700588416 /* close_button_small.png */; };
+		0D54348019DC45EC0002135C /* YouTubeThumbnailLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D54347F19DC45EC0002135C /* YouTubeThumbnailLoader.m */; };
+		0D6C7F3219CE022100D40BD3 /* MainPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3019CE022100D40BD3 /* MainPreferencesViewController.m */; };
+		0D6C7F3319CE022100D40BD3 /* MainPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3119CE022100D40BD3 /* MainPreferencesViewController.xib */; };
+		0D6C7F3819CE208600D40BD3 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3619CE208600D40BD3 /* AccountViewController.m */; };
+		0D6C7F3919CE208600D40BD3 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3719CE208600D40BD3 /* AccountViewController.xib */; };
+		0D6C7F3E19CE26EB00D40BD3 /* ShortcutsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3C19CE26EB00D40BD3 /* ShortcutsViewController.m */; };
+		0D6C7F3F19CE26EB00D40BD3 /* ShortcutsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6C7F3D19CE26EB00D40BD3 /* ShortcutsViewController.xib */; };
+		0D6ECD7A19D56E0B00550AEF /* BoxNetFileInfoLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6ECD7919D56E0B00550AEF /* BoxNetFileInfoLoader.m */; };
+		0D70E23F19D1FABC006DB515 /* BoxNetAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D70E23E19D1FABC006DB515 /* BoxNetAccount.m */; };
+		0D75692419CB13CA0084FA0D /* backArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D75692319CB13CA0084FA0D /* backArrow.png */; };
+		0D9AF01119DF531D003D5275 /* dont-use-imgur-button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9AF00919DF531D003D5275 /* dont-use-imgur-button-pressed.png */; };
+		0D9AF01219DF531D003D5275 /* dont-use-imgur-button-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9AF00A19DF531D003D5275 /* dont-use-imgur-button-pressed@2x.png */; };
+		0D9AF01319DF531D003D5275 /* dont-use-imgur-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9AF00B19DF531D003D5275 /* dont-use-imgur-button.png */; };
+		0D9AF01419DF531D003D5275 /* dont-use-imgur-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9AF00C19DF531D003D5275 /* dont-use-imgur-button@2x.png */; };
+		0D9AF01519DF531D003D5275 /* use-imgur-button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9AF00D19DF531D003D5275 /* use-imgur-button-pressed.png */; };
+		0D9AF01619DF531D003D5275 /* use-imgur-button-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9AF00E19DF531D003D5275 /* use-imgur-button-pressed@2x.png */; };
+		0D9AF01719DF531D003D5275 /* use-imgur-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9AF00F19DF531D003D5275 /* use-imgur-button.png */; };
+		0D9AF01819DF531D003D5275 /* use-imgur-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9AF01019DF531D003D5275 /* use-imgur-button@2x.png */; };
+		0D9AF01C19DF571D003D5275 /* ImgurThumbnailLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9AF01B19DF571D003D5275 /* ImgurThumbnailLoader.m */; };
+		0DB634A319CCB29300F97E34 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB634A119CCB29300F97E34 /* PreferencesController.m */; };
+		0DB634A419CCB29300F97E34 /* PreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB634A219CCB29300F97E34 /* PreferencesController.xib */; };
+		0DB98CC21A24D0E600260C1E /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB98CC11A24D0E600260C1E /* 3.png */; };
+		0DC9DC3619D70F3100267D84 /* SHTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9DC3519D70F3100267D84 /* SHTableView.m */; };
+		0DF52E3219C8BB4F000D2D56 /* AttachedWindowsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */; };
+		0DF52E3719C8BB8B000D2D56 /* VideoCaptureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E3519C8BB8B000D2D56 /* VideoCaptureController.m */; };
+		0DF52E3819C8BB8B000D2D56 /* VideoCaptureController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF52E3619C8BB8B000D2D56 /* VideoCaptureController.xib */; };
+		0DF52E3D19C8BBD3000D2D56 /* TextMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E3B19C8BBD3000D2D56 /* TextMessageViewController.m */; };
+		0DF52E3E19C8BBD3000D2D56 /* TextMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF52E3C19C8BBD3000D2D56 /* TextMessageViewController.xib */; };
+		0DF52E4619C8BBFC000D2D56 /* mainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E4119C8BBFC000D2D56 /* mainView.m */; };
+		0DF52E4719C8BBFC000D2D56 /* mainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF52E4219C8BBFC000D2D56 /* mainView.xib */; };
+		0DF52E4819C8BBFC000D2D56 /* MainViewCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E4419C8BBFC000D2D56 /* MainViewCellController.m */; };
+		0DF52E4919C8BBFC000D2D56 /* MainViewCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF52E4519C8BBFC000D2D56 /* MainViewCellController.xib */; };
+		0DF52E4E19C8BF09000D2D56 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E4C19C8BF09000D2D56 /* LoginViewController.m */; };
+		0DF52E4F19C8BF09000D2D56 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF52E4D19C8BF09000D2D56 /* LoginViewController.xib */; };
+		0DF52E5219C8BF21000D2D56 /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF52E5119C8BF21000D2D56 /* MAAttachedWindow.m */; };
 		2C11BB3116A00417005C240C /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C11BB3016A00417005C240C /* OpenGL.framework */; };
 		2C11BB3316A00443005C240C /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C11BB3216A00443005C240C /* libxml2.2.dylib */; };
 		2C11BB3516A00462005C240C /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C11BB3416A00462005C240C /* libz.1.2.5.dylib */; };
@@ -106,10 +157,10 @@
 		848F99DD19609C2F00984731 /* login-app-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F999F19609C2F00984731 /* login-app-icon@2x.png */; };
 		848F99DE19609C2F00984731 /* login-to-box-button-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A019609C2F00984731 /* login-to-box-button-pressed@2x.png */; };
 		848F99DF19609C2F00984731 /* login-to-box-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A119609C2F00984731 /* login-to-box-button@2x.png */; };
-		848F99E019609C2F00984731 /* login-with-imgur-button-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A219609C2F00984731 /* login-with-imgur-button-pressed@2x.png */; };
-		848F99E119609C2F00984731 /* login-with-imgur-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A319609C2F00984731 /* login-with-imgur-button@2x.png */; };
-		848F99E219609C2F00984731 /* login-with-youtube-button-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A419609C2F00984731 /* login-with-youtube-button-pressed@2x.png */; };
-		848F99E319609C2F00984731 /* login-with-youtube-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A519609C2F00984731 /* login-with-youtube-button@2x.png */; };
+		848F99E019609C2F00984731 /* login-with-youtube-button-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A219609C2F00984731 /* login-with-youtube-button-pressed@2x.png */; };
+		848F99E119609C2F00984731 /* login-with-youtube-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A319609C2F00984731 /* login-with-youtube-button@2x.png */; };
+		848F99E219609C2F00984731 /* login-with-imgur-button-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A419609C2F00984731 /* login-with-imgur-button-pressed@2x.png */; };
+		848F99E319609C2F00984731 /* login-with-imgur-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A519609C2F00984731 /* login-with-imgur-button@2x.png */; };
 		848F99E419609C2F00984731 /* prefs-accounts@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A619609C2F00984731 /* prefs-accounts@2x.png */; };
 		848F99E519609C2F00984731 /* prefs-prefs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A719609C2F00984731 /* prefs-prefs@2x.png */; };
 		848F99E619609C2F00984731 /* prefs-shortcuts@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99A819609C2F00984731 /* prefs-shortcuts@2x.png */; };
@@ -137,10 +188,10 @@
 		848F99FC19609C2F00984731 /* login-app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99BE19609C2F00984731 /* login-app-icon.png */; };
 		848F99FD19609C2F00984731 /* login-to-box-button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99BF19609C2F00984731 /* login-to-box-button-pressed.png */; };
 		848F99FE19609C2F00984731 /* login-to-box-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C019609C2F00984731 /* login-to-box-button.png */; };
-		848F99FF19609C2F00984731 /* login-with-imgur-button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C119609C2F00984731 /* login-with-imgur-button-pressed.png */; };
-		848F9A0019609C2F00984731 /* login-with-imgur-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C219609C2F00984731 /* login-with-imgur-button.png */; };
-		848F9A0119609C2F00984731 /* login-with-youtube-button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C319609C2F00984731 /* login-with-youtube-button-pressed.png */; };
-		848F9A0219609C2F00984731 /* login-with-youtube-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C419609C2F00984731 /* login-with-youtube-button.png */; };
+		848F99FF19609C2F00984731 /* login-with-youtube-button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C119609C2F00984731 /* login-with-youtube-button-pressed.png */; };
+		848F9A0019609C2F00984731 /* login-with-youtube-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C219609C2F00984731 /* login-with-youtube-button.png */; };
+		848F9A0119609C2F00984731 /* login-with-imgur-button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C319609C2F00984731 /* login-with-imgur-button-pressed.png */; };
+		848F9A0219609C2F00984731 /* login-with-imgur-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C419609C2F00984731 /* login-with-imgur-button.png */; };
 		848F9A0319609C2F00984731 /* prefs-accounts.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C519609C2F00984731 /* prefs-accounts.png */; };
 		848F9A0419609C2F00984731 /* prefs-prefs.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C619609C2F00984731 /* prefs-prefs.png */; };
 		848F9A0519609C2F00984731 /* prefs-shortcuts.png in Resources */ = {isa = PBXBuildFile; fileRef = 848F99C719609C2F00984731 /* prefs-shortcuts.png */; };
@@ -186,7 +237,6 @@
 		84D7477A188C4F700033EE2F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D74779188C4F700033EE2F /* WebKit.framework */; };
 		84DE8C71184F4BA80052B7FC /* NSImage+SavingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DE8C6F184F4BA80052B7FC /* NSImage+SavingAdditions.m */; };
 		84E38B5A18532B6300547472 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E38B5918532B6300547472 /* ServiceManagement.framework */; };
-		84E38B5E18532BD900547472 /* LoginHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 84E38B5B18532BA600547472 /* LoginHelper.app */; };
 		84E9B4261863F62F00C881A5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E9B4251863F62F00C881A5 /* AVFoundation.framework */; };
 		84F29FEA18F2B662002B12EB /* GTLYouTube_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F29FE918F2B662002B12EB /* GTLYouTube_Sources.m */; };
 		84F29FED18F2BF70002B12EB /* YoutubeAuthenticateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F29FEC18F2BF70002B12EB /* YoutubeAuthenticateManager.m */; };
@@ -329,19 +379,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		84E38B5D18532BD300547472 /* CopyFiles */ = {
+		0D2C6F821A015F1A0068B4EB /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				84E38B5E18532BD900547472 /* LoginHelper.app in CopyFiles */,
+				0D2C6F831A015F340068B4EB /* LoginHelper.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8B120E4B13D329EF00604F85 /* Copy Linked Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
@@ -354,6 +404,79 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D01A72119CAB78D000349A7 /* MAAttachedWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindowController.h; sourceTree = "<group>"; };
+		0D01A72219CAB78D000349A7 /* MAAttachedWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindowController.m; sourceTree = "<group>"; };
+		0D2B34C919DDF186009B06EF /* logout-from-youtube-button-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logout-from-youtube-button-pressed.png"; path = "New Images/logout-from-youtube-button-pressed.png"; sourceTree = "<group>"; };
+		0D2B34CA19DDF186009B06EF /* logout-from-youtube-button-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logout-from-youtube-button-pressed@2x.png"; path = "New Images/logout-from-youtube-button-pressed@2x.png"; sourceTree = "<group>"; };
+		0D2B34CB19DDF186009B06EF /* logout-from-youtube-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logout-from-youtube-button.png"; path = "New Images/logout-from-youtube-button.png"; sourceTree = "<group>"; };
+		0D2B34CC19DDF186009B06EF /* logout-from-youtube-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logout-from-youtube-button@2x.png"; path = "New Images/logout-from-youtube-button@2x.png"; sourceTree = "<group>"; };
+		0D2C6F7F1A0155190068B4EB /* StartAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartAtLoginController.h; sourceTree = "<group>"; };
+		0D2C6F801A0155190068B4EB /* StartAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartAtLoginController.m; sourceTree = "<group>"; };
+		0D45F9C51A0119CC003A8595 /* LoginHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D45F9C81A0119CC003A8595 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D45F9C91A0119CC003A8595 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0D45F9CB1A0119CC003A8595 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0D45F9CC1A0119CC003A8595 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0D45F9CE1A0119CD003A8595 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0D45F9D11A0119CD003A8595 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		0D45F9E51A011A9F003A8595 /* LoginHelper.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LoginHelper.entitlements; sourceTree = "<group>"; };
+		0D48778219D2FD2E0015961F /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		0D48778319D2FD2E0015961F /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		0D48778519D301DD0015961F /* NSString+HTMLTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTMLTags.h"; sourceTree = "<group>"; };
+		0D48778619D301DD0015961F /* NSString+HTMLTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTMLTags.m"; sourceTree = "<group>"; };
+		0D4FA97319FADC1500588416 /* close_button_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_button_small@2x.png"; sourceTree = "<group>"; };
+		0D4FA97619FADC6700588416 /* close_button_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_button_small.png; sourceTree = "<group>"; };
+		0D54347E19DC45EC0002135C /* YouTubeThumbnailLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeThumbnailLoader.h; sourceTree = "<group>"; };
+		0D54347F19DC45EC0002135C /* YouTubeThumbnailLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeThumbnailLoader.m; sourceTree = "<group>"; };
+		0D6C7F2F19CE022100D40BD3 /* MainPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPreferencesViewController.h; sourceTree = "<group>"; };
+		0D6C7F3019CE022100D40BD3 /* MainPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPreferencesViewController.m; sourceTree = "<group>"; };
+		0D6C7F3119CE022100D40BD3 /* MainPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainPreferencesViewController.xib; sourceTree = "<group>"; };
+		0D6C7F3519CE208600D40BD3 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
+		0D6C7F3619CE208600D40BD3 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
+		0D6C7F3719CE208600D40BD3 /* AccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
+		0D6C7F3B19CE26EB00D40BD3 /* ShortcutsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortcutsViewController.h; sourceTree = "<group>"; };
+		0D6C7F3C19CE26EB00D40BD3 /* ShortcutsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortcutsViewController.m; sourceTree = "<group>"; };
+		0D6C7F3D19CE26EB00D40BD3 /* ShortcutsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShortcutsViewController.xib; sourceTree = "<group>"; };
+		0D6ECD7819D56E0B00550AEF /* BoxNetFileInfoLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxNetFileInfoLoader.h; sourceTree = "<group>"; };
+		0D6ECD7919D56E0B00550AEF /* BoxNetFileInfoLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxNetFileInfoLoader.m; sourceTree = "<group>"; };
+		0D70E23D19D1FABC006DB515 /* BoxNetAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxNetAccount.h; sourceTree = "<group>"; };
+		0D70E23E19D1FABC006DB515 /* BoxNetAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxNetAccount.m; sourceTree = "<group>"; };
+		0D75692319CB13CA0084FA0D /* backArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backArrow.png; sourceTree = "<group>"; };
+		0D9AF00919DF531D003D5275 /* dont-use-imgur-button-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dont-use-imgur-button-pressed.png"; path = "New Images/dont-use-imgur-button-pressed.png"; sourceTree = "<group>"; };
+		0D9AF00A19DF531D003D5275 /* dont-use-imgur-button-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dont-use-imgur-button-pressed@2x.png"; path = "New Images/dont-use-imgur-button-pressed@2x.png"; sourceTree = "<group>"; };
+		0D9AF00B19DF531D003D5275 /* dont-use-imgur-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dont-use-imgur-button.png"; path = "New Images/dont-use-imgur-button.png"; sourceTree = "<group>"; };
+		0D9AF00C19DF531D003D5275 /* dont-use-imgur-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dont-use-imgur-button@2x.png"; path = "New Images/dont-use-imgur-button@2x.png"; sourceTree = "<group>"; };
+		0D9AF00D19DF531D003D5275 /* use-imgur-button-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "use-imgur-button-pressed.png"; path = "New Images/use-imgur-button-pressed.png"; sourceTree = "<group>"; };
+		0D9AF00E19DF531D003D5275 /* use-imgur-button-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "use-imgur-button-pressed@2x.png"; path = "New Images/use-imgur-button-pressed@2x.png"; sourceTree = "<group>"; };
+		0D9AF00F19DF531D003D5275 /* use-imgur-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "use-imgur-button.png"; path = "New Images/use-imgur-button.png"; sourceTree = "<group>"; };
+		0D9AF01019DF531D003D5275 /* use-imgur-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "use-imgur-button@2x.png"; path = "New Images/use-imgur-button@2x.png"; sourceTree = "<group>"; };
+		0D9AF01A19DF571D003D5275 /* ImgurThumbnailLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImgurThumbnailLoader.h; sourceTree = "<group>"; };
+		0D9AF01B19DF571D003D5275 /* ImgurThumbnailLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImgurThumbnailLoader.m; sourceTree = "<group>"; };
+		0DB634A019CCB29300F97E34 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
+		0DB634A119CCB29300F97E34 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
+		0DB634A219CCB29300F97E34 /* PreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesController.xib; sourceTree = "<group>"; };
+		0DB98CC11A24D0E600260C1E /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		0DC9DC3419D70F3100267D84 /* SHTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTableView.h; sourceTree = "<group>"; };
+		0DC9DC3519D70F3100267D84 /* SHTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHTableView.m; sourceTree = "<group>"; };
+		0DF52E3019C8BB4F000D2D56 /* AttachedWindowsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachedWindowsController.h; sourceTree = "<group>"; };
+		0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachedWindowsController.m; sourceTree = "<group>"; };
+		0DF52E3419C8BB8B000D2D56 /* VideoCaptureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCaptureController.h; sourceTree = "<group>"; };
+		0DF52E3519C8BB8B000D2D56 /* VideoCaptureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCaptureController.m; sourceTree = "<group>"; };
+		0DF52E3619C8BB8B000D2D56 /* VideoCaptureController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCaptureController.xib; sourceTree = "<group>"; };
+		0DF52E3A19C8BBD3000D2D56 /* TextMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextMessageViewController.h; sourceTree = "<group>"; };
+		0DF52E3B19C8BBD3000D2D56 /* TextMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextMessageViewController.m; sourceTree = "<group>"; };
+		0DF52E3C19C8BBD3000D2D56 /* TextMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextMessageViewController.xib; sourceTree = "<group>"; };
+		0DF52E4019C8BBFC000D2D56 /* mainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainView.h; sourceTree = "<group>"; };
+		0DF52E4119C8BBFC000D2D56 /* mainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainView.m; sourceTree = "<group>"; };
+		0DF52E4219C8BBFC000D2D56 /* mainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = mainView.xib; sourceTree = "<group>"; };
+		0DF52E4319C8BBFC000D2D56 /* MainViewCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewCellController.h; sourceTree = "<group>"; };
+		0DF52E4419C8BBFC000D2D56 /* MainViewCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewCellController.m; sourceTree = "<group>"; };
+		0DF52E4519C8BBFC000D2D56 /* MainViewCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewCellController.xib; sourceTree = "<group>"; };
+		0DF52E4B19C8BF09000D2D56 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		0DF52E4C19C8BF09000D2D56 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		0DF52E4D19C8BF09000D2D56 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		0DF52E5019C8BF21000D2D56 /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
+		0DF52E5119C8BF21000D2D56 /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		2C11BB2E16A003F7005C240C /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
 		2C11BB3016A00417005C240C /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		2C11BB3216A00443005C240C /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
@@ -489,10 +612,10 @@
 		848F999F19609C2F00984731 /* login-app-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-app-icon@2x.png"; path = "New Images/login-app-icon@2x.png"; sourceTree = "<group>"; };
 		848F99A019609C2F00984731 /* login-to-box-button-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-to-box-button-pressed@2x.png"; path = "New Images/login-to-box-button-pressed@2x.png"; sourceTree = "<group>"; };
 		848F99A119609C2F00984731 /* login-to-box-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-to-box-button@2x.png"; path = "New Images/login-to-box-button@2x.png"; sourceTree = "<group>"; };
-		848F99A219609C2F00984731 /* login-with-imgur-button-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-imgur-button-pressed@2x.png"; path = "New Images/login-with-imgur-button-pressed@2x.png"; sourceTree = "<group>"; };
-		848F99A319609C2F00984731 /* login-with-imgur-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-imgur-button@2x.png"; path = "New Images/login-with-imgur-button@2x.png"; sourceTree = "<group>"; };
-		848F99A419609C2F00984731 /* login-with-youtube-button-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-youtube-button-pressed@2x.png"; path = "New Images/login-with-youtube-button-pressed@2x.png"; sourceTree = "<group>"; };
-		848F99A519609C2F00984731 /* login-with-youtube-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-youtube-button@2x.png"; path = "New Images/login-with-youtube-button@2x.png"; sourceTree = "<group>"; };
+		848F99A219609C2F00984731 /* login-with-youtube-button-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-youtube-button-pressed@2x.png"; path = "New Images/login-with-youtube-button-pressed@2x.png"; sourceTree = "<group>"; };
+		848F99A319609C2F00984731 /* login-with-youtube-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-youtube-button@2x.png"; path = "New Images/login-with-youtube-button@2x.png"; sourceTree = "<group>"; };
+		848F99A419609C2F00984731 /* login-with-imgur-button-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-imgur-button-pressed@2x.png"; path = "New Images/login-with-imgur-button-pressed@2x.png"; sourceTree = "<group>"; };
+		848F99A519609C2F00984731 /* login-with-imgur-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-imgur-button@2x.png"; path = "New Images/login-with-imgur-button@2x.png"; sourceTree = "<group>"; };
 		848F99A619609C2F00984731 /* prefs-accounts@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "prefs-accounts@2x.png"; path = "New Images/prefs-accounts@2x.png"; sourceTree = "<group>"; };
 		848F99A719609C2F00984731 /* prefs-prefs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "prefs-prefs@2x.png"; path = "New Images/prefs-prefs@2x.png"; sourceTree = "<group>"; };
 		848F99A819609C2F00984731 /* prefs-shortcuts@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "prefs-shortcuts@2x.png"; path = "New Images/prefs-shortcuts@2x.png"; sourceTree = "<group>"; };
@@ -520,10 +643,10 @@
 		848F99BE19609C2F00984731 /* login-app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-app-icon.png"; path = "New Images/login-app-icon.png"; sourceTree = "<group>"; };
 		848F99BF19609C2F00984731 /* login-to-box-button-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-to-box-button-pressed.png"; path = "New Images/login-to-box-button-pressed.png"; sourceTree = "<group>"; };
 		848F99C019609C2F00984731 /* login-to-box-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-to-box-button.png"; path = "New Images/login-to-box-button.png"; sourceTree = "<group>"; };
-		848F99C119609C2F00984731 /* login-with-imgur-button-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-imgur-button-pressed.png"; path = "New Images/login-with-imgur-button-pressed.png"; sourceTree = "<group>"; };
-		848F99C219609C2F00984731 /* login-with-imgur-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-imgur-button.png"; path = "New Images/login-with-imgur-button.png"; sourceTree = "<group>"; };
-		848F99C319609C2F00984731 /* login-with-youtube-button-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-youtube-button-pressed.png"; path = "New Images/login-with-youtube-button-pressed.png"; sourceTree = "<group>"; };
-		848F99C419609C2F00984731 /* login-with-youtube-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-youtube-button.png"; path = "New Images/login-with-youtube-button.png"; sourceTree = "<group>"; };
+		848F99C119609C2F00984731 /* login-with-youtube-button-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-youtube-button-pressed.png"; path = "New Images/login-with-youtube-button-pressed.png"; sourceTree = "<group>"; };
+		848F99C219609C2F00984731 /* login-with-youtube-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-youtube-button.png"; path = "New Images/login-with-youtube-button.png"; sourceTree = "<group>"; };
+		848F99C319609C2F00984731 /* login-with-imgur-button-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-imgur-button-pressed.png"; path = "New Images/login-with-imgur-button-pressed.png"; sourceTree = "<group>"; };
+		848F99C419609C2F00984731 /* login-with-imgur-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-with-imgur-button.png"; path = "New Images/login-with-imgur-button.png"; sourceTree = "<group>"; };
 		848F99C519609C2F00984731 /* prefs-accounts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "prefs-accounts.png"; path = "New Images/prefs-accounts.png"; sourceTree = "<group>"; };
 		848F99C619609C2F00984731 /* prefs-prefs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "prefs-prefs.png"; path = "New Images/prefs-prefs.png"; sourceTree = "<group>"; };
 		848F99C719609C2F00984731 /* prefs-shortcuts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "prefs-shortcuts.png"; path = "New Images/prefs-shortcuts.png"; sourceTree = "<group>"; };
@@ -582,7 +705,6 @@
 		84DE8C70184F4BA80052B7FC /* NSImage+SavingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+SavingAdditions.h"; sourceTree = "<group>"; };
 		84E38B5718532AFC00547472 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/ApplicationServices.framework; sourceTree = DEVELOPER_DIR; };
 		84E38B5918532B6300547472 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/ServiceManagement.framework; sourceTree = DEVELOPER_DIR; };
-		84E38B5B18532BA600547472 /* LoginHelper.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = LoginHelper.app; path = LoginHelper/build/Release/LoginHelper.app; sourceTree = "<group>"; };
 		84E9B4251863F62F00C881A5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		84F29FE818F2B655002B12EB /* GTLYouTube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLYouTube.h; path = Generated/GTLYouTube.h; sourceTree = "<group>"; };
 		84F29FE918F2B662002B12EB /* GTLYouTube_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLYouTube_Sources.m; path = Generated/GTLYouTube_Sources.m; sourceTree = "<group>"; };
@@ -882,6 +1004,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0D45F9C21A0119CC003A8595 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8BDB2D1813C3989F003BFDE0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -914,6 +1043,203 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D2C6F7E1A0154FC0068B4EB /* LoginController */ = {
+			isa = PBXGroup;
+			children = (
+				0D2C6F7F1A0155190068B4EB /* StartAtLoginController.h */,
+				0D2C6F801A0155190068B4EB /* StartAtLoginController.m */,
+			);
+			name = LoginController;
+			sourceTree = "<group>";
+		};
+		0D45F9C61A0119CC003A8595 /* LoginHelper */ = {
+			isa = PBXGroup;
+			children = (
+				0D45F9CB1A0119CC003A8595 /* AppDelegate.h */,
+				0D45F9CC1A0119CC003A8595 /* AppDelegate.m */,
+				0D45F9CE1A0119CD003A8595 /* Images.xcassets */,
+				0D45F9D01A0119CD003A8595 /* MainMenu.xib */,
+				0D45F9C71A0119CC003A8595 /* Supporting Files */,
+				0D45F9E51A011A9F003A8595 /* LoginHelper.entitlements */,
+			);
+			path = LoginHelper;
+			sourceTree = "<group>";
+		};
+		0D45F9C71A0119CC003A8595 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0D45F9C81A0119CC003A8595 /* Info.plist */,
+				0D45F9C91A0119CC003A8595 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0D48778119D2FD070015961F /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				0D48778519D301DD0015961F /* NSString+HTMLTags.h */,
+				0D48778619D301DD0015961F /* NSString+HTMLTags.m */,
+				0D48778219D2FD2E0015961F /* NSString+URLEncoding.h */,
+				0D48778319D2FD2E0015961F /* NSString+URLEncoding.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		0D54347D19DC45950002135C /* YouTubeApi */ = {
+			isa = PBXGroup;
+			children = (
+				0D54347E19DC45EC0002135C /* YouTubeThumbnailLoader.h */,
+				0D54347F19DC45EC0002135C /* YouTubeThumbnailLoader.m */,
+			);
+			name = YouTubeApi;
+			sourceTree = "<group>";
+		};
+		0D6C7F2D19CE011800D40BD3 /* PreferencesController */ = {
+			isa = PBXGroup;
+			children = (
+				0DB634A019CCB29300F97E34 /* PreferencesController.h */,
+				0DB634A119CCB29300F97E34 /* PreferencesController.m */,
+				0DB634A219CCB29300F97E34 /* PreferencesController.xib */,
+			);
+			name = PreferencesController;
+			sourceTree = "<group>";
+		};
+		0D6C7F2E19CE013D00D40BD3 /* MainPreferences */ = {
+			isa = PBXGroup;
+			children = (
+				0D6C7F2F19CE022100D40BD3 /* MainPreferencesViewController.h */,
+				0D6C7F3019CE022100D40BD3 /* MainPreferencesViewController.m */,
+				0D6C7F3119CE022100D40BD3 /* MainPreferencesViewController.xib */,
+			);
+			name = MainPreferences;
+			sourceTree = "<group>";
+		};
+		0D6C7F3419CE205E00D40BD3 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				0D6C7F3519CE208600D40BD3 /* AccountViewController.h */,
+				0D6C7F3619CE208600D40BD3 /* AccountViewController.m */,
+				0D6C7F3719CE208600D40BD3 /* AccountViewController.xib */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		0D6C7F3A19CE26BC00D40BD3 /* Shortcuts */ = {
+			isa = PBXGroup;
+			children = (
+				0D6C7F3B19CE26EB00D40BD3 /* ShortcutsViewController.h */,
+				0D6C7F3C19CE26EB00D40BD3 /* ShortcutsViewController.m */,
+				0D6C7F3D19CE26EB00D40BD3 /* ShortcutsViewController.xib */,
+			);
+			name = Shortcuts;
+			sourceTree = "<group>";
+		};
+		0D70E23C19D1FA0C006DB515 /* BoxAPI */ = {
+			isa = PBXGroup;
+			children = (
+				0D70E23D19D1FABC006DB515 /* BoxNetAccount.h */,
+				0D70E23E19D1FABC006DB515 /* BoxNetAccount.m */,
+				0D6ECD7819D56E0B00550AEF /* BoxNetFileInfoLoader.h */,
+				0D6ECD7919D56E0B00550AEF /* BoxNetFileInfoLoader.m */,
+			);
+			name = BoxAPI;
+			sourceTree = "<group>";
+		};
+		0D8EEB3319D0AB1D0028C5E9 /* AttachedWindows */ = {
+			isa = PBXGroup;
+			children = (
+				0DF52E4A19C8BEF5000D2D56 /* loginView */,
+				0DF52E3F19C8BBE2000D2D56 /* mainView */,
+				0DF52E3319C8BB6D000D2D56 /* VIdeoCaptureController */,
+				0DF52E3919C8BB95000D2D56 /* TextMessageController */,
+			);
+			name = AttachedWindows;
+			sourceTree = "<group>";
+		};
+		0D9AF01919DF56E3003D5275 /* ImgurAPI */ = {
+			isa = PBXGroup;
+			children = (
+				0D9AF01A19DF571D003D5275 /* ImgurThumbnailLoader.h */,
+				0D9AF01B19DF571D003D5275 /* ImgurThumbnailLoader.m */,
+			);
+			name = ImgurAPI;
+			sourceTree = "<group>";
+		};
+		0DB6349A19CCAC9B00F97E34 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				0D6C7F2D19CE011800D40BD3 /* PreferencesController */,
+				0D6C7F3A19CE26BC00D40BD3 /* Shortcuts */,
+				0D6C7F3419CE205E00D40BD3 /* Account */,
+				0D6C7F2E19CE013D00D40BD3 /* MainPreferences */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
+		0DF52E2C19C8B91C000D2D56 /* New Design */ = {
+			isa = PBXGroup;
+			children = (
+				0D48778119D2FD070015961F /* Categories */,
+				0D9AF01919DF56E3003D5275 /* ImgurAPI */,
+				0D54347D19DC45950002135C /* YouTubeApi */,
+				0D70E23C19D1FA0C006DB515 /* BoxAPI */,
+				0DF52E3019C8BB4F000D2D56 /* AttachedWindowsController.h */,
+				0DF52E3119C8BB4F000D2D56 /* AttachedWindowsController.m */,
+				0D01A72119CAB78D000349A7 /* MAAttachedWindowController.h */,
+				0D01A72219CAB78D000349A7 /* MAAttachedWindowController.m */,
+				0DF52E5019C8BF21000D2D56 /* MAAttachedWindow.h */,
+				0DF52E5119C8BF21000D2D56 /* MAAttachedWindow.m */,
+				0DB6349A19CCAC9B00F97E34 /* Preferences */,
+				0D8EEB3319D0AB1D0028C5E9 /* AttachedWindows */,
+			);
+			name = "New Design";
+			sourceTree = "<group>";
+		};
+		0DF52E3319C8BB6D000D2D56 /* VIdeoCaptureController */ = {
+			isa = PBXGroup;
+			children = (
+				0DF52E3419C8BB8B000D2D56 /* VideoCaptureController.h */,
+				0DF52E3519C8BB8B000D2D56 /* VideoCaptureController.m */,
+				0DF52E3619C8BB8B000D2D56 /* VideoCaptureController.xib */,
+			);
+			name = VIdeoCaptureController;
+			sourceTree = "<group>";
+		};
+		0DF52E3919C8BB95000D2D56 /* TextMessageController */ = {
+			isa = PBXGroup;
+			children = (
+				0DF52E3A19C8BBD3000D2D56 /* TextMessageViewController.h */,
+				0DF52E3B19C8BBD3000D2D56 /* TextMessageViewController.m */,
+				0DF52E3C19C8BBD3000D2D56 /* TextMessageViewController.xib */,
+			);
+			name = TextMessageController;
+			sourceTree = "<group>";
+		};
+		0DF52E3F19C8BBE2000D2D56 /* mainView */ = {
+			isa = PBXGroup;
+			children = (
+				0DF52E4019C8BBFC000D2D56 /* mainView.h */,
+				0DF52E4119C8BBFC000D2D56 /* mainView.m */,
+				0DF52E4219C8BBFC000D2D56 /* mainView.xib */,
+				0DF52E4319C8BBFC000D2D56 /* MainViewCellController.h */,
+				0DF52E4419C8BBFC000D2D56 /* MainViewCellController.m */,
+				0DF52E4519C8BBFC000D2D56 /* MainViewCellController.xib */,
+				0DC9DC3419D70F3100267D84 /* SHTableView.h */,
+				0DC9DC3519D70F3100267D84 /* SHTableView.m */,
+			);
+			name = mainView;
+			sourceTree = "<group>";
+		};
+		0DF52E4A19C8BEF5000D2D56 /* loginView */ = {
+			isa = PBXGroup;
+			children = (
+				0DF52E4B19C8BF09000D2D56 /* LoginViewController.h */,
+				0DF52E4C19C8BF09000D2D56 /* LoginViewController.m */,
+				0DF52E4D19C8BF09000D2D56 /* LoginViewController.xib */,
+			);
+			name = loginView;
+			sourceTree = "<group>";
+		};
 		2C11BB3B16A7D264005C240C /* Base64 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1008,6 +1334,17 @@
 		848F999819609BC800984731 /* New Images */ = {
 			isa = PBXGroup;
 			children = (
+				0D4FA97619FADC6700588416 /* close_button_small.png */,
+				0D4FA97319FADC1500588416 /* close_button_small@2x.png */,
+				0D9AF00919DF531D003D5275 /* dont-use-imgur-button-pressed.png */,
+				0D9AF00A19DF531D003D5275 /* dont-use-imgur-button-pressed@2x.png */,
+				0D9AF00B19DF531D003D5275 /* dont-use-imgur-button.png */,
+				0D9AF00C19DF531D003D5275 /* dont-use-imgur-button@2x.png */,
+				0D9AF00D19DF531D003D5275 /* use-imgur-button-pressed.png */,
+				0D9AF00E19DF531D003D5275 /* use-imgur-button-pressed@2x.png */,
+				0D9AF00F19DF531D003D5275 /* use-imgur-button.png */,
+				0D9AF01019DF531D003D5275 /* use-imgur-button@2x.png */,
+				0D75692319CB13CA0084FA0D /* backArrow.png */,
 				84ADE14019AA4B3D009AAD62 /* nouser.png */,
 				848F999919609C2F00984731 /* box-account-login-button-pressed@2x.png */,
 				848F999A19609C2F00984731 /* box-account-login-button@2x.png */,
@@ -1018,10 +1355,18 @@
 				848F999F19609C2F00984731 /* login-app-icon@2x.png */,
 				848F99A019609C2F00984731 /* login-to-box-button-pressed@2x.png */,
 				848F99A119609C2F00984731 /* login-to-box-button@2x.png */,
-				848F99A219609C2F00984731 /* login-with-imgur-button-pressed@2x.png */,
-				848F99A319609C2F00984731 /* login-with-imgur-button@2x.png */,
-				848F99A419609C2F00984731 /* login-with-youtube-button-pressed@2x.png */,
-				848F99A519609C2F00984731 /* login-with-youtube-button@2x.png */,
+				848F99A219609C2F00984731 /* login-with-youtube-button-pressed@2x.png */,
+				848F99A319609C2F00984731 /* login-with-youtube-button@2x.png */,
+				848F99A419609C2F00984731 /* login-with-imgur-button-pressed@2x.png */,
+				848F99A519609C2F00984731 /* login-with-imgur-button@2x.png */,
+				848F99C119609C2F00984731 /* login-with-youtube-button-pressed.png */,
+				848F99C219609C2F00984731 /* login-with-youtube-button.png */,
+				848F99C319609C2F00984731 /* login-with-imgur-button-pressed.png */,
+				848F99C419609C2F00984731 /* login-with-imgur-button.png */,
+				0D2B34C919DDF186009B06EF /* logout-from-youtube-button-pressed.png */,
+				0D2B34CA19DDF186009B06EF /* logout-from-youtube-button-pressed@2x.png */,
+				0D2B34CB19DDF186009B06EF /* logout-from-youtube-button.png */,
+				0D2B34CC19DDF186009B06EF /* logout-from-youtube-button@2x.png */,
 				848F99A619609C2F00984731 /* prefs-accounts@2x.png */,
 				848F99A719609C2F00984731 /* prefs-prefs@2x.png */,
 				848F99A819609C2F00984731 /* prefs-shortcuts@2x.png */,
@@ -1049,10 +1394,6 @@
 				848F99BE19609C2F00984731 /* login-app-icon.png */,
 				848F99BF19609C2F00984731 /* login-to-box-button-pressed.png */,
 				848F99C019609C2F00984731 /* login-to-box-button.png */,
-				848F99C119609C2F00984731 /* login-with-imgur-button-pressed.png */,
-				848F99C219609C2F00984731 /* login-with-imgur-button.png */,
-				848F99C319609C2F00984731 /* login-with-youtube-button-pressed.png */,
-				848F99C419609C2F00984731 /* login-with-youtube-button.png */,
 				848F99C519609C2F00984731 /* prefs-accounts.png */,
 				848F99C619609C2F00984731 /* prefs-prefs.png */,
 				848F99C719609C2F00984731 /* prefs-shortcuts.png */,
@@ -1329,6 +1670,7 @@
 		8B84068113D375C30025EA39 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				0DB98CC11A24D0E600260C1E /* 3.png */,
 				8B84069B13D376B40025EA39 /* default.png */,
 				8B84069C13D376B40025EA39 /* image.png */,
 				8B84068213D375C30025EA39 /* audio.png */,
@@ -1466,9 +1808,9 @@
 			isa = PBXGroup;
 			children = (
 				8413C2401857839C00D5A115 /* icons.icns */,
-				84E38B5B18532BA600547472 /* LoginHelper.app */,
 				2CBDB36F16FA554D00BA81E1 /* SimpleShare.entitlements */,
 				8BDB2D2513C3989F003BFDE0 /* BoxSimpleShare */,
+				0D45F9C61A0119CC003A8595 /* LoginHelper */,
 				8BDB2D1E13C3989F003BFDE0 /* Frameworks */,
 				8BDB2D1C13C3989F003BFDE0 /* Products */,
 				8B4C683813CF14E70044492C /* APPL.icns */,
@@ -1480,6 +1822,7 @@
 			isa = PBXGroup;
 			children = (
 				8BDB2D1B13C3989F003BFDE0 /* SimpleShare.app */,
+				0D45F9C51A0119CC003A8595 /* LoginHelper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1531,6 +1874,8 @@
 		8BDB2D2513C3989F003BFDE0 /* BoxSimpleShare */ = {
 			isa = PBXGroup;
 			children = (
+				0D2C6F7E1A0154FC0068B4EB /* LoginController */,
+				0DF52E2C19C8B91C000D2D56 /* New Design */,
 				848F998519607FC000984731 /* PopupUI */,
 				8B69535D13C4D71500B32618 /* App Constants */,
 				8B69534F13C3CC3D00B32618 /* Extended */,
@@ -1828,6 +2173,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0D45F9C41A0119CC003A8595 /* LoginHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D45F9E31A0119CD003A8595 /* Build configuration list for PBXNativeTarget "LoginHelper" */;
+			buildPhases = (
+				0D45F9C11A0119CC003A8595 /* Sources */,
+				0D45F9C21A0119CC003A8595 /* Frameworks */,
+				0D45F9C31A0119CC003A8595 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LoginHelper;
+			productName = LoginHelper;
+			productReference = 0D45F9C51A0119CC003A8595 /* LoginHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
 		8BDB2D1A13C3989F003BFDE0 /* SimpleShare */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BDB2D3913C3989F003BFDE0 /* Build configuration list for PBXNativeTarget "SimpleShare" */;
@@ -1836,8 +2198,8 @@
 				8BDB2D1813C3989F003BFDE0 /* Frameworks */,
 				8BDB2D1913C3989F003BFDE0 /* Resources */,
 				8B120E4B13D329EF00604F85 /* Copy Linked Frameworks */,
-				84E38B5D18532BD300547472 /* CopyFiles */,
-				844218E5186162FE00E0AB8C /* ShellScript */,
+				844218E5186162FE00E0AB8C /* Run Script */,
+				0D2C6F821A015F1A0068B4EB /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1854,11 +2216,20 @@
 		8BDB2D1213C3989E003BFDE0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = SAPLogix;
 				TargetAttributes = {
+					0D45F9C41A0119CC003A8595 = {
+						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 956ZZDEPUK;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
 					8BDB2D1A13C3989F003BFDE0 = {
-						DevelopmentTeam = S9S8JXEXXT;
+						DevelopmentTeam = 956ZZDEPUK;
 					};
 				};
 			};
@@ -1868,6 +2239,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 8BDB2D1013C3989E003BFDE0;
 			productRefGroup = 8BDB2D1C13C3989F003BFDE0 /* Products */;
@@ -1875,11 +2247,22 @@
 			projectRoot = "";
 			targets = (
 				8BDB2D1A13C3989F003BFDE0 /* SimpleShare */,
+				0D45F9C41A0119CC003A8595 /* LoginHelper */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0D45F9C31A0119CC003A8595 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D45F9CF1A0119CD003A8595 /* Images.xcassets in Resources */,
+				0D45F9E61A011A9F003A8595 /* LoginHelper.entitlements in Resources */,
+				0D45F9D21A0119CD003A8595 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8BDB2D1913C3989F003BFDE0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1891,56 +2274,68 @@
 				848F99F919609C2F00984731 /* box-account-logout-button.png in Resources */,
 				847EF05618BB187300C5CDEE /* FeedbackWindowController.xib in Resources */,
 				8BA5383B13C73F47008E5AC3 /* icon_account.png in Resources */,
-				848F99E319609C2F00984731 /* login-with-youtube-button@2x.png in Resources */,
+				0D9AF01119DF531D003D5275 /* dont-use-imgur-button-pressed.png in Resources */,
+				848F99E319609C2F00984731 /* login-with-imgur-button@2x.png in Resources */,
 				848F99EE19609C2F00984731 /* small-toggle-on@2x.png in Resources */,
 				8BA5383C13C73F47008E5AC3 /* icon_file.png in Resources */,
-				848F9A0119609C2F00984731 /* login-with-youtube-button-pressed.png in Resources */,
+				848F9A0119609C2F00984731 /* login-with-imgur-button-pressed.png in Resources */,
 				8BA5383D13C73F47008E5AC3 /* icon_image.png in Resources */,
 				8433B2BE19AE76C100DBA8FC /* ItemCell.xib in Resources */,
 				84CC87F01916C33C00A239E0 /* DragDropWindowController.xib in Resources */,
 				8BA5383E13C73F47008E5AC3 /* icon_preferences.png in Resources */,
+				0DF52E4719C8BBFC000D2D56 /* mainView.xib in Resources */,
 				8BA5383F13C73F47008E5AC3 /* icon_userimage.png in Resources */,
 				848F99E519609C2F00984731 /* prefs-prefs@2x.png in Resources */,
 				8BA5384013C73F47008E5AC3 /* image_hotkey_drawregion.png in Resources */,
 				84CC880119177F6000A239E0 /* image_hotkey_drawregion@2x.png in Resources */,
 				8BA5384113C73F47008E5AC3 /* image_hotkey_fullscreen.png in Resources */,
-				848F9A0019609C2F00984731 /* login-with-imgur-button.png in Resources */,
+				848F9A0019609C2F00984731 /* login-with-youtube-button.png in Resources */,
 				848F99D819609C2F00984731 /* box-account-login-button@2x.png in Resources */,
 				8BA5384213C73F47008E5AC3 /* image_hotkey_screencast.png in Resources */,
 				8BA5384313C73F47008E5AC3 /* image_howto_step1.png in Resources */,
 				8BA5384413C73F47008E5AC3 /* image_howto_step2.png in Resources */,
 				848F99EC19609C2F00984731 /* settings-icon@2x.png in Resources */,
+				0D2B34CE19DDF187009B06EF /* logout-from-youtube-button-pressed@2x.png in Resources */,
 				848F99EF19609C2F00984731 /* take-full-screen-icon@2x.png in Resources */,
 				848F9A1119609C2F00984731 /* upload-target-button-pressed.png in Resources */,
 				848F99DF19609C2F00984731 /* login-to-box-button@2x.png in Resources */,
 				848F99DE19609C2F00984731 /* login-to-box-button-pressed@2x.png in Resources */,
 				848F9A0C19609C2F00984731 /* small-toggle-on.png in Resources */,
+				0D9AF01719DF531D003D5275 /* use-imgur-button.png in Resources */,
 				8B4C683913CF14E80044492C /* APPL.icns in Resources */,
 				848F9A0B19609C2F00984731 /* small-toggle-off.png in Resources */,
 				8B4C683D13CF3BEE0044492C /* icon_account_small.png in Resources */,
+				0DF52E4F19C8BF09000D2D56 /* LoginViewController.xib in Resources */,
+				0D6C7F3F19CE26EB00D40BD3 /* ShortcutsViewController.xib in Resources */,
 				848F99E419609C2F00984731 /* prefs-accounts@2x.png in Resources */,
 				8B4C683E13CF3BEE0044492C /* icon_preferences_small.png in Resources */,
 				8B84068E13D375C30025EA39 /* audio.png in Resources */,
 				8B84068F13D375C30025EA39 /* bookmark.png in Resources */,
 				84CC87FA19177F0100A239E0 /* icon_account_small@2x.png in Resources */,
 				8B84069013D375C30025EA39 /* compress.png in Resources */,
-				848F99FF19609C2F00984731 /* login-with-imgur-button-pressed.png in Resources */,
+				848F99FF19609C2F00984731 /* login-with-youtube-button-pressed.png in Resources */,
+				0DF52E3E19C8BBD3000D2D56 /* TextMessageViewController.xib in Resources */,
 				8B84069113D375C30025EA39 /* excel.png in Resources */,
 				848F9A0719609C2F00984731 /* record-button.png in Resources */,
-				848F99E119609C2F00984731 /* login-with-imgur-button@2x.png in Resources */,
+				848F99E119609C2F00984731 /* login-with-youtube-button@2x.png in Resources */,
 				848F99FE19609C2F00984731 /* login-to-box-button.png in Resources */,
 				8B84069213D375C30025EA39 /* flash.png in Resources */,
 				848F99E619609C2F00984731 /* prefs-shortcuts@2x.png in Resources */,
 				8433B2A819ADA0B700DBA8FC /* ItemViewController.xib in Resources */,
 				848F99FC19609C2F00984731 /* login-app-icon.png in Resources */,
+				0D9AF01319DF531D003D5275 /* dont-use-imgur-button.png in Resources */,
 				848F99DD19609C2F00984731 /* login-app-icon@2x.png in Resources */,
 				8B84069313D375C30025EA39 /* illustrator.png in Resources */,
+				0D9AF01819DF531D003D5275 /* use-imgur-button@2x.png in Resources */,
 				8B84069413D375C30025EA39 /* pdf.png in Resources */,
 				8B84069513D375C30025EA39 /* photoshop.png in Resources */,
+				0D4FA97519FADC1500588416 /* close_button_small@2x.png in Resources */,
+				0DF52E4919C8BBFC000D2D56 /* MainViewCellController.xib in Resources */,
 				8B84069613D375C30025EA39 /* powerpoint.png in Resources */,
 				849219CB18F1426A000F0E7D /* LoginWindowController.xib in Resources */,
 				848F9A0319609C2F00984731 /* prefs-accounts.png in Resources */,
 				8B84069713D375C30025EA39 /* video.png in Resources */,
+				0D6C7F3919CE208600D40BD3 /* AccountViewController.xib in Resources */,
 				848F99F619609C2F00984731 /* box-account-login-button-pressed.png in Resources */,
 				848F99E819609C2F00984731 /* record-button@2x.png in Resources */,
 				848F9A1219609C2F00984731 /* upload-target-button.png in Resources */,
@@ -1951,6 +2346,8 @@
 				8B84069D13D376B40025EA39 /* default.png in Resources */,
 				8B84069E13D376B40025EA39 /* image.png in Resources */,
 				848F99FD19609C2F00984731 /* login-to-box-button-pressed.png in Resources */,
+				0D9AF01419DF531D003D5275 /* dont-use-imgur-button@2x.png in Resources */,
+				0DF52E3819C8BB8B000D2D56 /* VideoCaptureController.xib in Resources */,
 				848F9A0619609C2F00984731 /* record-button-pressed.png in Resources */,
 				9104DD15146AC1B500D1A0C9 /* README in Resources */,
 				848F99ED19609C2F00984731 /* small-toggle-off@2x.png in Resources */,
@@ -1960,10 +2357,12 @@
 				2CAFB71616B1C3B800418D61 /* active-icon@2x.png in Resources */,
 				2CAFB71716B1C3B800418D61 /* default-icon.png in Resources */,
 				848F99FA19609C2F00984731 /* large-toggle-off.png in Resources */,
+				0D9AF01519DF531D003D5275 /* use-imgur-button-pressed.png in Resources */,
 				848F9A0419609C2F00984731 /* prefs-prefs.png in Resources */,
 				2CAFB71816B1C3B800418D61 /* default-icon@2x.png in Resources */,
 				848F9A1319609C2F00984731 /* screencast-recording-icon.png in Resources */,
-				848F9A0219609C2F00984731 /* login-with-youtube-button.png in Resources */,
+				0D75692419CB13CA0084FA0D /* backArrow.png in Resources */,
+				848F9A0219609C2F00984731 /* login-with-imgur-button.png in Resources */,
 				2CAFB71916B1C3B800418D61 /* icon-animation-1.png in Resources */,
 				2CAFB71A16B1C3B800418D61 /* icon-animation-1@2x.png in Resources */,
 				2CAFB71B16B1C3B800418D61 /* icon-animation-2.png in Resources */,
@@ -1974,12 +2373,14 @@
 				2CAFB71D16B1C3B800418D61 /* icon-animation-3.png in Resources */,
 				2CAFB71E16B1C3B800418D61 /* icon-animation-3@2x.png in Resources */,
 				2CAFB71F16B1C3B800418D61 /* icon-animation-4.png in Resources */,
+				0D6C7F3319CE022100D40BD3 /* MainPreferencesViewController.xib in Resources */,
 				2CAFB72016B1C3B800418D61 /* icon-animation-4@2x.png in Resources */,
 				848F9A0E19609C2F00984731 /* take-selected-region-button-pressed.png in Resources */,
 				2CAFB73F16B1C3D000418D61 /* icon-animation-5.png in Resources */,
 				2CAFB74016B1C3D000418D61 /* icon-animation-5@2x.png in Resources */,
 				2CAFB74116B1C3D000418D61 /* icon-animation-6.png in Resources */,
 				848F9A0D19609C2F00984731 /* take-full-screen-icon.png in Resources */,
+				0D2B34D019DDF187009B06EF /* logout-from-youtube-button@2x.png in Resources */,
 				84CC87FC19177F0100A239E0 /* icon_preferences_small@2x.png in Resources */,
 				8411F959191F95B500C4F8CF /* drag_drop.png in Resources */,
 				848F99E919609C2F00984731 /* screencast-recording-button-pressed@2x.png in Resources */,
@@ -1991,13 +2392,15 @@
 				848F99EA19609C2F00984731 /* screencast-recording-button@2x.png in Resources */,
 				2CAFB74316B1C3D000418D61 /* icon-animation-7.png in Resources */,
 				2CAFB74416B1C3D000418D61 /* icon-animation-7@2x.png in Resources */,
-				848F99E019609C2F00984731 /* login-with-imgur-button-pressed@2x.png in Resources */,
+				848F99E019609C2F00984731 /* login-with-youtube-button-pressed@2x.png in Resources */,
 				2CAFB74516B1C3D000418D61 /* icon-animation-8.png in Resources */,
+				0D2B34CF19DDF187009B06EF /* logout-from-youtube-button.png in Resources */,
 				2CAFB74616B1C3D000418D61 /* icon-animation-8@2x.png in Resources */,
 				2CAFB74716B1C3D000418D61 /* icon-animation-9.png in Resources */,
+				0DB98CC21A24D0E600260C1E /* 3.png in Resources */,
 				2CAFB74816B1C3D000418D61 /* icon-animation-9@2x.png in Resources */,
 				84B8535A188C4D6A00D1DF26 /* GrantAccessWindowController.xib in Resources */,
-				848F99E219609C2F00984731 /* login-with-youtube-button-pressed@2x.png in Resources */,
+				848F99E219609C2F00984731 /* login-with-imgur-button-pressed@2x.png in Resources */,
 				848F998A19607FEC00984731 /* PopupWindowController.xib in Resources */,
 				848F99F019609C2F00984731 /* take-selected-region-button-pressed@2x.png in Resources */,
 				2CAFB74916B1C3D000418D61 /* icon-animation-10.png in Resources */,
@@ -2014,9 +2417,11 @@
 				848F99DA19609C2F00984731 /* box-account-logout-button@2x.png in Resources */,
 				8457515419AD12A1008AFF41 /* PopupMainViewController.xib in Resources */,
 				2CAFB74E16B1C3D000418D61 /* icon-animation-12@2x.png in Resources */,
+				0D2B34CD19DDF186009B06EF /* logout-from-youtube-button-pressed.png in Resources */,
 				848F9A0519609C2F00984731 /* prefs-shortcuts.png in Resources */,
 				848F9A1419609C2F00984731 /* upload-target-icon.png in Resources */,
 				848F99E719609C2F00984731 /* record-button-pressed@2x.png in Resources */,
+				0D9AF01619DF531D003D5275 /* use-imgur-button-pressed@2x.png in Resources */,
 				2CAFB74F16B1C3D000418D61 /* icon-animation-13.png in Resources */,
 				2CAFB75016B1C3D000418D61 /* icon-animation-13@2x.png in Resources */,
 				2CAFB75116B1C3D000418D61 /* icon-animation-14.png in Resources */,
@@ -2025,6 +2430,7 @@
 				2CAFB75316B1C3D000418D61 /* icon-animation-15.png in Resources */,
 				848F99F819609C2F00984731 /* box-account-logout-button-pressed.png in Resources */,
 				2CAFB75416B1C3D000418D61 /* icon-animation-15@2x.png in Resources */,
+				0D4FA97719FADC6700588416 /* close_button_small.png in Resources */,
 				2CAFB75516B1C3D000418D61 /* icon-animation-16.png in Resources */,
 				84ADE14119AA4B3D009AAD62 /* nouser.png in Resources */,
 				2CAFB75616B1C3D000418D61 /* icon-animation-16@2x.png in Resources */,
@@ -2041,7 +2447,9 @@
 				2C6B37A816C5A52F00359B3F /* nointernet-icon.png in Resources */,
 				848F9A0A19609C2F00984731 /* settings-icon.png in Resources */,
 				2C6B37A916C5A52F00359B3F /* nointernet-icon@2x.png in Resources */,
+				0DB634A419CCB29300F97E34 /* PreferencesController.xib in Resources */,
 				849219DC18F1F642000F0E7D /* YoutubeUploadWindowController.xib in Resources */,
+				0D9AF01219DF531D003D5275 /* dont-use-imgur-button-pressed@2x.png in Resources */,
 				2C6B37AC16CD8FD100359B3F /* image_howto_step1@2x.png in Resources */,
 				2C6B37AD16CD8FD100359B3F /* image_howto_step2@2x.png in Resources */,
 			);
@@ -2050,36 +2458,50 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		844218E5186162FE00E0AB8C /* ShellScript */ = {
+		844218E5186162FE00E0AB8C /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "LOCATION=\"${BUILT_PRODUCTS_DIR}\"/\"${FRAMEWORKS_FOLDER_PATH}\"\nCONTENTS=\"${BUILT_PRODUCTS_DIR}\"/\"${CONTENTS_FOLDER_PATH}\"\nIDENTITY=\"3rd Party Mac Developer Application: Aaron Levie\"\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/Growl.framework/\"\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/GTL.framework/\"";
+			shellScript = "LOCATION=\"${BUILT_PRODUCTS_DIR}\"/\"${FRAMEWORKS_FOLDER_PATH}\"\nCONTENTS=\"${BUILT_PRODUCTS_DIR}\"/\"${CONTENTS_FOLDER_PATH}\"\n#IDENTITY=\"Mac Developer: Aaron Levie (8TCQ7LXTCG)\"\n\nIDENTITY=\"3rd Party Mac Developer Application: Aaron Levie (956ZZDEPUK)\"\n\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/Growl.framework\"\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/GTL.framework\"\n#codesign --verbose --force --sign \"$IDENTITY\" \"$CONTENTS/Library/LoginItems/LoginHelper.app/\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0D45F9C11A0119CC003A8595 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D45F9CD1A0119CC003A8595 /* AppDelegate.m in Sources */,
+				0D45F9CA1A0119CC003A8595 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8BDB2D1713C3989F003BFDE0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D6C7F3219CE022100D40BD3 /* MainPreferencesViewController.m in Sources */,
 				8BDB2D2D13C3989F003BFDE0 /* main.m in Sources */,
 				8433B2A719ADA0B700DBA8FC /* ItemViewController.m in Sources */,
 				8BDB2D3313C3989F003BFDE0 /* BoxSimpleShareAppDelegate.m in Sources */,
 				8BDB2D3F13C398D4003BFDE0 /* HTTPRequestHandler.m in Sources */,
+				0DF52E4E19C8BF09000D2D56 /* LoginViewController.m in Sources */,
 				8BDB2E8613C3A31E003BFDE0 /* ASIDataCompressor.m in Sources */,
 				84CC87EB1916C09100A239E0 /* RMBlurredView.m in Sources */,
 				8BDB2E8713C3A31E003BFDE0 /* ASIDataDecompressor.m in Sources */,
 				84B85359188C4D6A00D1DF26 /* GrantAccessWindowController.m in Sources */,
+				0D01A72319CAB78D000349A7 /* MAAttachedWindowController.m in Sources */,
 				848003B919240CB50001F9F4 /* NSImage+Additions.m in Sources */,
 				84098A7219BA3BAD00F37451 /* FooterView.m in Sources */,
+				0D48778719D301DD0015961F /* NSString+HTMLTags.m in Sources */,
 				847EF05518BB187300C5CDEE /* FeedbackWindowController.m in Sources */,
 				8BDB2E8813C3A31E003BFDE0 /* ASIDownloadCache.m in Sources */,
 				8BDB2E8913C3A31E003BFDE0 /* ASIFormDataRequest.m in Sources */,
@@ -2094,6 +2516,7 @@
 				8BDB2E9113C3A31E003BFDE0 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 				8BDB2E9213C3A31E003BFDE0 /* ASICloudFilesObject.m in Sources */,
 				8BDB2E9313C3A31E003BFDE0 /* ASICloudFilesObjectRequest.m in Sources */,
+				0DB634A319CCB29300F97E34 /* PreferencesController.m in Sources */,
 				8BDB2E9413C3A31E003BFDE0 /* ASICloudFilesRequest.m in Sources */,
 				84F29FED18F2BF70002B12EB /* YoutubeAuthenticateManager.m in Sources */,
 				8BDB2E9513C3A31E003BFDE0 /* ASIS3Bucket.m in Sources */,
@@ -2101,9 +2524,12 @@
 				8BDB2E9713C3A31E003BFDE0 /* ASIS3BucketRequest.m in Sources */,
 				8BDB2E9813C3A31E003BFDE0 /* ASIS3ObjectRequest.m in Sources */,
 				846F0F7018F6920A0010357C /* JCSSheetController.m in Sources */,
+				0DF52E4619C8BBFC000D2D56 /* mainView.m in Sources */,
 				8BDB2E9913C3A31E003BFDE0 /* ASIS3Request.m in Sources */,
 				8BDB2E9A13C3A31E003BFDE0 /* ASIS3ServiceRequest.m in Sources */,
+				0D9AF01C19DF571D003D5275 /* ImgurThumbnailLoader.m in Sources */,
 				8B69530113C3A99700B32618 /* HTTPRequest.m in Sources */,
+				0DF52E5219C8BF21000D2D56 /* MAAttachedWindow.m in Sources */,
 				8B69530313C3BBB500B32618 /* Macros.m in Sources */,
 				8B69533113C3BF6800B32618 /* BoxNet.m in Sources */,
 				8B69534513C3C6EC00B32618 /* AppConstants.m in Sources */,
@@ -2114,6 +2540,7 @@
 				8B69535C13C4D53400B32618 /* BoxNetUser.m in Sources */,
 				8B69536013C4E87000B32618 /* BoxFolder.m in Sources */,
 				8433B2B819ADA10E00DBA8FC /* PXListView+UserInteraction.m in Sources */,
+				0D54348019DC45EC0002135C /* YouTubeThumbnailLoader.m in Sources */,
 				84B980A018C327890053D264 /* ImgurUploadOperation.m in Sources */,
 				8406BBFF18484A7700556555 /* StartImageCaptureView.m in Sources */,
 				84F29FEA18F2B662002B12EB /* GTLYouTube_Sources.m in Sources */,
@@ -2136,10 +2563,12 @@
 				8B8406BC13D3A2B00025EA39 /* SBJsonStreamParserAdapter.m in Sources */,
 				8406BBFC1848446900556555 /* ImageCaptureController.m in Sources */,
 				8B8406BD13D3A2B00025EA39 /* SBJsonStreamParserState.m in Sources */,
+				0DF52E3719C8BB8B000D2D56 /* VideoCaptureController.m in Sources */,
 				8B8406BE13D3A2B00025EA39 /* SBJsonStreamWriter.m in Sources */,
 				8433B2B719ADA10E00DBA8FC /* PXListView.m in Sources */,
 				8B8406BF13D3A2B00025EA39 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				8B8406C013D3A2B00025EA39 /* SBJsonStreamWriterState.m in Sources */,
+				0DF52E3D19C8BBD3000D2D56 /* TextMessageViewController.m in Sources */,
 				8B8406C113D3A2B00025EA39 /* SBJsonTokeniser.m in Sources */,
 				84098A7119BA3BAD00F37451 /* HeaderView.m in Sources */,
 				849219DB18F1F642000F0E7D /* YoutubeUploadWindowController.m in Sources */,
@@ -2150,6 +2579,7 @@
 				843F142F18DEEBCC00C12EFF /* YoutubeUploadOperation.m in Sources */,
 				84DE8C71184F4BA80052B7FC /* NSImage+SavingAdditions.m in Sources */,
 				9104DD18146AC1B500D1A0C9 /* UKKQueue.m in Sources */,
+				0D70E23F19D1FABC006DB515 /* BoxNetAccount.m in Sources */,
 				9104DD19146AC1B500D1A0C9 /* UKMainThreadProxy.m in Sources */,
 				9104DD45146BE94000D1A0C9 /* LoginHelper.m in Sources */,
 				8433B2B619ADA10E00DBA8FC /* PXListDocumentView.m in Sources */,
@@ -2159,13 +2589,17 @@
 				9104DD9C146BE9B900D1A0C9 /* BoxUser.m in Sources */,
 				9104DD9F146BE9B900D1A0C9 /* BoxHTTPRequestBuilders.m in Sources */,
 				848F998F196084A900984731 /* Panel.m in Sources */,
+				0D48778419D2FD2E0015961F /* NSString+URLEncoding.m in Sources */,
 				8457515319AD12A1008AFF41 /* PopupMainViewController.m in Sources */,
+				0DF52E4819C8BBFC000D2D56 /* MainViewCellController.m in Sources */,
 				9104DDA1146BE9B900D1A0C9 /* BoxAddCommentsOperation.m in Sources */,
 				9104DDA2146BE9B900D1A0C9 /* BoxAPIOperation.m in Sources */,
 				9104DDA3146BE9B900D1A0C9 /* BoxCopyOperation.m in Sources */,
 				9104DDA4146BE9B900D1A0C9 /* BoxCreateFolderOperation.m in Sources */,
 				9104DDA5146BE9B900D1A0C9 /* BoxDeleteCommentOperation.m in Sources */,
+				0D6C7F3E19CE26EB00D40BD3 /* ShortcutsViewController.m in Sources */,
 				9104DDA6146BE9B900D1A0C9 /* BoxDeleteOperation.m in Sources */,
+				0DC9DC3619D70F3100267D84 /* SHTableView.m in Sources */,
 				9104DDA7146BE9B900D1A0C9 /* BoxDownloadOperation.m in Sources */,
 				9104DDA8146BE9B900D1A0C9 /* BoxGetAuthTokenOperation.m in Sources */,
 				9104DDAA146BE9B900D1A0C9 /* BoxGetTicketOperation.m in Sources */,
@@ -2176,11 +2610,13 @@
 				9104DDAE146BE9B900D1A0C9 /* BoxOperation.m in Sources */,
 				846E5D88183F6D73004CA339 /* StandardPaths.m in Sources */,
 				9104DDAF146BE9B900D1A0C9 /* BoxPrivateShareOperation.m in Sources */,
+				0D6ECD7A19D56E0B00550AEF /* BoxNetFileInfoLoader.m in Sources */,
 				9104DDB0146BE9B900D1A0C9 /* BoxPublicShareOperation.m in Sources */,
 				9104DDB1146BE9B900D1A0C9 /* BoxPublicUnshareOperation.m in Sources */,
 				9104DDB2146BE9B900D1A0C9 /* BoxRegisterOperation.m in Sources */,
 				9104DDB3146BE9B900D1A0C9 /* BoxRenameOperation.m in Sources */,
 				848D2D741969CE3F0054F0EF /* NSColor+ColorExtensions.m in Sources */,
+				0D2C6F811A0155190068B4EB /* StartAtLoginController.m in Sources */,
 				9104DDB4146BE9B900D1A0C9 /* BoxUploadOperation.m in Sources */,
 				84CC87F31916C55800A239E0 /* DragAnDropView.m in Sources */,
 				84ADE14419AA5EF0009AAD62 /* ITSwitch.m in Sources */,
@@ -2189,6 +2625,7 @@
 				845C02D0183719B100167FA2 /* StartVideoCaptureView.m in Sources */,
 				9104DDB7146BE9B900D1A0C9 /* NSDictionaryXMLParser.m in Sources */,
 				9104DDB8146BE9B900D1A0C9 /* GTMRegex.m in Sources */,
+				0DF52E3219C8BB4F000D2D56 /* AttachedWindowsController.m in Sources */,
 				91F23825147E886E00B1B655 /* StartVideoCaptureController.m in Sources */,
 				91F23833147EA93F00B1B655 /* ScreenshotManager.m in Sources */,
 				915F58C51490B7500053D18C /* VideoCaptureManagerLion.m in Sources */,
@@ -2204,12 +2641,21 @@
 				2CAFB7CC16B71E7000418D61 /* OAuth2Connection.m in Sources */,
 				848E35261883DC17000F83B1 /* NSAlert+SynchronousSheet.m in Sources */,
 				8433B2B919ADA10E00DBA8FC /* PXListViewCell.m in Sources */,
+				0D6C7F3819CE208600D40BD3 /* AccountViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		0D45F9D01A0119CD003A8595 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D45F9D11A0119CD003A8595 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		8BDB2D2813C3989F003BFDE0 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2229,6 +2675,63 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0D45F9DF1A0119CD003A8595 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_ENTITLEMENTS = LoginHelper/LoginHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = LoginHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		0D45F9E01A0119CD003A8595 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_ENTITLEMENTS = LoginHelper/LoginHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = LoginHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		8BDB2D3713C3989F003BFDE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2238,7 +2741,9 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2275,7 +2780,9 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -2304,7 +2811,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = SimpleShare.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Aaron Levie (956ZZDEPUK)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2332,6 +2839,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = SimpleShare;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2342,7 +2850,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = SimpleShare.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Aaron Levie (956ZZDEPUK)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2370,6 +2878,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = SimpleShare;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2378,6 +2887,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0D45F9E31A0119CD003A8595 /* Build configuration list for PBXNativeTarget "LoginHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D45F9DF1A0119CD003A8595 /* Debug */,
+				0D45F9E01A0119CD003A8595 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8BDB2D1513C3989E003BFDE0 /* Build configuration list for PBXProject "BoxSimpleShare" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

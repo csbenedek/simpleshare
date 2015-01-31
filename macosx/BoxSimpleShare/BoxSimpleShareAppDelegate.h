@@ -14,11 +14,19 @@
 #import "ImageCaptureController.h"
 #import "Growl.h"
 #import "FeedbackWindowController.h"
-extern const int MaxHistoryItemCount;
+
+#import "MAAttachedWindow.h"
+
+
+//extern const int MaxHistoryItemCount;
 
 @class MainController;
 @class PopupWindowController;
 @class MenubarController;
+
+@class AttachedWindowsController;
+@class PreferencesController;
+
 
 @interface BoxSimpleShareAppDelegate : NSObject <NSApplicationDelegate, NSTabViewDelegate, NSTableViewDataSource, NSWindowDelegate, NSToolbarDelegate, GrowlApplicationBridgeDelegate, VideoCaptureControllerDelegate,ImageCaptureControllerDelegate> {
 
@@ -58,8 +66,14 @@ extern const int MaxHistoryItemCount;
     NSMutableSet *filesAddedToQueue;
     NSMutableDictionary *icons;
     
+    
+    //this needed to uninstall global hotkeys
     EventHotKeyRef uploadFileHotkeyRef;
     EventHotKeyRef videoCaptureHotkeyRef;
+    EventHotKeyRef screenCaptureHotkeyRef;
+    EventHotKeyRef fullScreenCaptureHotkeyRef;
+    
+    
     
     // video capture
     
@@ -101,6 +115,27 @@ extern const int MaxHistoryItemCount;
 @property (nonatomic, retain) PopupWindowController* popupWindowController;
 @property (nonatomic, strong) MenubarController *menubarController;
 
+//a controller to manage attached window
+
+@property (nonatomic, retain) AttachedWindowsController *attachedWindowsController;
+
+//preferences controller
+@property (nonatomic, retain) PreferencesController* preferencesController;
+
+//is permission to desktop aws granted to app
+
+@property (nonatomic, assign) BOOL isDesktopGranted;
+
+
+
+
+//new helpers
+
+-(NSRect)getStatusItemRectInMainScreen;
+
+-(void)loadPreferencesController;
+
+
 + (BoxSimpleShareAppDelegate *) sharedDelegate;
 - (void) addAndResizeWindowForView:(NSView *)view;
 
@@ -128,4 +163,36 @@ extern const int MaxHistoryItemCount;
 -(IBAction)startImageCapture:(id)sender;
 
 -(NSWindow*)statusBarWindow;
+
+-(void)quitApplication;
+
+-(IBAction)startVideoCapture:(id)sender;
+
+-(IBAction)startImageCaptureFull:(id)sender;
+
+
+- (void)showPreferenceView;
+
+
+-(void)openBoxNetFile:(id)sender;
+
+-(void)sendFeedback:(id)sender;
+
+
+
+//setup hotkeys
+-(void)setupUploadHotKey;
+
+-(void)setupVideoCaptureHotKey;
+
+-(void)setupFullScreenCaptureHotKey;
+
+-(void)setupScreenCaptureHotKey;
+
+
+
+
+
+
+
 @end

@@ -12,6 +12,10 @@
 #import "ASINetworkQueue.h"
 #import "SBJsonParser.h"
 #import "GrantAccessWindowController.h"
+#import "BoxSimpleShareAppDelegate.h"
+#import "LoginViewController.h"
+#import "AttachedWindowsController.h"
+
 @implementation OAuth2Client
 
 static OAuth2Client* oauth2SharedInstance = nil;
@@ -93,6 +97,9 @@ GrantAccessWindowController* accessWindowController;
 
 - (void) authorize
 {
+    
+    
+    
 	if (!refreshToken)
 	{
 		NSString* redirectURL = [NSURL URLWithString: [NSString stringWithFormat:@"http://localhost:%d", (int)[server listenPort]]];
@@ -109,6 +116,7 @@ GrantAccessWindowController* accessWindowController;
         NSString* url = [NSString stringWithFormat:OAUTH2_AUTH_CODE_URL, OAUTH2_CLIENT_ID, redirectURL];
         [accessWindowController loadUrl:url];
         [accessWindowController showWindow:nil];
+        
 	}
 	else
 	{
@@ -158,10 +166,12 @@ GrantAccessWindowController* accessWindowController;
 	[request addPostValue:code forKey:@"code"];
 	[request addPostValue:OAUTH2_CLIENT_ID forKey:@"client_id"];
 	[request addPostValue:OAUTH2_CLIENT_SECRET forKey:@"client_secret"];
+    
+    //this creates query for login with received credentials
 
     NSMutableDictionary* dic = [NSMutableDictionary dictionaryWithObject:LOGIN_ACTION forKey:@"TYPE"];
     [request setUserInfo:dic];
-
+    
 	[queue addOperation:request];
 }
 
@@ -272,6 +282,8 @@ GrantAccessWindowController* accessWindowController;
 			{
 				isAuthorized = YES;
 //				[self getUserInformation];
+                
+                NSLog(@"Requesting user info");
 				
 				[[BoxNetHandler sharedHandler] oauth2GetUserInformation];
 			}
@@ -348,10 +360,22 @@ GrantAccessWindowController* accessWindowController;
 	{
 		[self refreshAccessToken];
 	}
+    
 }
 
 - (void) refreshAccessToken
 {
+    /*
+    //disable login button
+    BoxSimpleShareAppDelegate *delegate = (BoxSimpleShareAppDelegate *)[[NSApplication sharedApplication] delegate];
+    
+    LoginViewController *controller = delegate.attachedWindowsController.loginWindowController;
+    
+    
+    [controller disableLoginButton];
+     */
+    
+    
 	DbgLog(@"Refreshing OAuth2 access token...");
 
 	NSURL* url = [NSURL URLWithString:OAUTH2_AUTH_TOKEN_URL];

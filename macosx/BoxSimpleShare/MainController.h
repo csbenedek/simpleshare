@@ -78,7 +78,9 @@
     NSTimer *prefSyncTimer;
     BOOL prefChanged;
     NSComboBox *imageHost;
-    //
+    
+    
+    //1 stands for youtube as video upload host
     int upload_video_host_index;
 //    LoginHelper *loginHelper;
     
@@ -97,10 +99,19 @@
 @property (retain, nonatomic) IBOutlet NSTextField *verField1;
 @property (retain, nonatomic) IBOutlet NSTextField *storageStatus;
 
-///YOUTUBE VIEW
-@property (retain, nonatomic) IBOutlet NSTextField *youtubeLoginName;
-@property (retain, nonatomic) IBOutlet CustomNSImageView *youtubeUserImage;
-@property (retain, nonatomic) IBOutlet NSButton *youtubeLogoutBtn;
+///YOUTUBE Control variable, used in BoxNetHandler uploadFile method
+
+//@property (retain, nonatomic) IBOutlet NSTextField *youtubeLoginName;
+//@property (retain, nonatomic) IBOutlet CustomNSImageView *youtubeUserImage;
+//@property (retain, nonatomic) IBOutlet NSButton *youtubeLogoutBtn;
+
+@property (nonatomic, assign) BOOL isYouTubeLogin;
+
+
+//IMGUR Control variable
+
+@property (nonatomic, assign) BOOL isImgur;
+
 
 
 // LOGIN VIEW
@@ -131,6 +142,8 @@
 @property (nonatomic) BOOL shorten_links_check;
 @property (nonatomic) BOOL launch_at_startup_check;
 @property (nonatomic) BOOL mute_audio_check;
+@property (nonatomic) BOOL compress_screenshots;
+
 
 @property (nonatomic) int uploadhost_index;
 @property (nonatomic) int upload_video_host_index;
@@ -143,6 +156,10 @@
 @property (nonatomic, retain) IBOutlet NSComboBox *screencast_format;
 @property (nonatomic, retain) IBOutlet NSComboBox *imageHost;
 @property (nonatomic, retain) IBOutlet NSComboBox * videoHost;
+
+//process notifications methods
+-(void)processDoLogoutNotification:(NSNotification *)notification;
+
 
 
 // OTHER
@@ -161,5 +178,11 @@
 - (void) doLogin:(id)sender;
 -(IBAction)onSwitchChange:(id)sender;
 -(void)updateSwitchControl;
+
+
+-(void)doYoutubeLogin:(id)sender;
+-(void)doYoutubeLogout:(id)sender;
+
+
 
 @end

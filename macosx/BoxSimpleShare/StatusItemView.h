@@ -24,6 +24,9 @@
     BOOL _isHighlighted;
     SEL _action;
     __unsafe_unretained id _target;
+    
+    
+    BOOL isJustLaunched;
 
 }
 
@@ -35,5 +38,7 @@
 @property (nonatomic) SEL action;
 
 - (id) initWithStatusItem:(NSStatusItem *)item;
+
+-(void)postStatusItemClickedNotification;
 
 @end

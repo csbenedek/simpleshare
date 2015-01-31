@@ -22,6 +22,13 @@
 #import "ImgurUploadOperation.h"
 #import "YoutubeUploadOperation.h"
 #import "Mixpanel.h"
+#import "HTTPFormDataRequest.h"
+#import "StandardPaths.h"
+
+
+
+
+
 static NSString* BoxNetHandlerDefaultFolderPreferenceKey = @"BoxNetHandlerDefaultFolderPreferenceKey";
 
 static const NSTimeInterval ReloadUserInfoTimeInterval = 360; // every 6 mins
@@ -172,37 +179,222 @@ static BoxNetHandler *sharedObject = nil;
 }
 
 - (void) uploadFiles:(id)files withProperties:(NSDictionary *)properties {
+    
+    
+    MainController *controller = [[BoxSimpleShareAppDelegate sharedDelegate] mainController];
+    
+    //if disable upload is on, just return
+    
+    if (controller.disable_automatic_upload_check) {
+        
+        NSLog(@"Upload disabled");
+        
+        return;
+    }
+    
+    
 	UploadOperation *opt = [UploadOperation new];
-    [opt addFiles:files];
+    
     [opt setUploadToFolder:[defaultFolder folderID]];
-     MainController *controller = [[BoxSimpleShareAppDelegate sharedDelegate] mainController];
+    
     if (properties && [properties containsKey:@"SCREEN_SHOT"]) {
+        
+        //compress file if option checked
+        
+        NSArray *compressedFiles = [NSArray array];
+        
+        
+        if (controller.compress_screenshots) {
+            
+            NSLog(@"Compress screenshots block called!");
+            
+            NSString *path = [files objectAtIndex:0];
+            
+             //create CGImageRef
+             
+             CGDataProviderRef dataProvider = CGDataProviderCreateWithFilename([path UTF8String]);
+             CGImageRef image = CGImageCreateWithPNGDataProvider(dataProvider, NULL, NO, kCGRenderingIntentDefault);
+             
+             //convert to jpg
+             
+             
+             //dictionary with options
+             CFMutableDictionaryRef mSaveMetaAndOpts = CFDictionaryCreateMutable(nil, 0,
+             &kCFTypeDictionaryKeyCallBacks,  &kCFTypeDictionaryValueCallBacks);
+             CFDictionarySetValue(mSaveMetaAndOpts, kCGImageDestinationLossyCompressionQuality,
+             [NSNumber numberWithFloat:0.8]);	// set the compression quality here
+             
+             //path to save jpeg
+             
+             //NSString *tempString = [path stringByDeletingLastPathComponent];
+             
+             
+            // NSString *outPath = [NSString stringWithFormat:@"%@/compressed_%@.jpg",[path stringByDeletingLastPathComponent], [[path lastPathComponent] stringByDeletingPathExtension]];
+            
+            
+            NSString *outPath = [NSString stringWithFormat:@"%@/%@.jpg",[[NSFileManager defaultManager] cacheDataPath], [[path lastPathComponent] stringByDeletingPathExtension]];
+            
+           // NSString *outPath = [[[NSFileManager defaultManager] cacheDataPath] stringByAppendingPathComponent:@"compressed.jpeg"];
+             
+             
+             
+             NSURL *outURL = [[NSURL alloc] initFileURLWithPath:outPath];
+             
+             CGImageDestinationRef dr = CGImageDestinationCreateWithURL ((CFURLRef)outURL, (CFStringRef)@"public.jpeg" , 1, NULL);
+             CGImageDestinationAddImage(dr, image, mSaveMetaAndOpts);
+             
+             CGImageDestinationFinalize(dr);
+            
+            //release
+            
+            CFRelease(dataProvider);
+            
+            CFRelease(image);
+            
+            CFRelease(mSaveMetaAndOpts);
+            
+            CFRelease(dr);
+
+            [outURL release];
+            
+             
+            compressedFiles = [NSArray arrayWithObject:outPath];
+            
+            NSLog(@"New array");
+            
+        }
+        
+        
         
         
         [opt setIsScreenshot:YES];
        
-        [[Mixpanel sharedInstance] trackCaptureRegionEvent];
+        //[[Mixpanel sharedInstance] trackCaptureRegionEvent];
 
-        // Copy URL to clipboard
-        if (controller.uploadhost_index == 1)
+        
+        //check for imgur option
+        
+        if (controller.isImgur)
         {
             opt = [ImgurUploadOperation new];
             [opt addFiles:files];
             [opt setIsScreenshot:YES];
 
         }
+        
+        
+        //if there is compressed files, use it
+        
+        if ([compressedFiles count] > 0) {
+            
+            
+            [opt addFiles:compressedFiles];
+            
+        }
+        
+        else{
+            
+            [opt addFiles:files];
+            
+        }
+        
+        
+        
+        
+        [operationQueue addOperation:opt];
+        
+        
+        safe_release(opt);
+
+        return;
+        
     }
-    else if (properties && [properties containsKey:@"YOUTUBE"] && controller.upload_video_host_index == 1)
-    {
+    
+    else if (properties && [properties containsKey:@"YOUTUBE"] && controller.isYouTubeLogin == TRUE){
         opt = [YoutubeUploadOperation new];
+        
         [opt addFiles:files];
+        
+        [operationQueue addOperation:opt];
+
+        safe_release(opt);
+        
+        return;
 
     }
     
+    
+    [opt addFiles:files];
+    
     [operationQueue addOperation:opt];
+    
 
     safe_release(opt);
 }
+
+-(NSMutableDictionary *)checkUploadedFilesForFileName:(NSString *)fileName{
+    
+    NSMutableArray *files = uploadedFiles;
+    
+    for (NSMutableDictionary *item in uploadedFiles) {
+        
+        if ([[item objectForKey:@"name"] isEqualToString:fileName]) {
+            
+            NSLog(@"File already uploaded, updating.");
+            
+            return item;
+            
+            
+        }
+        
+        
+    }
+    
+    //file was not uploaded before
+    
+    return nil;
+    
+}
+
+
+-(void)addInfo:(NSMutableDictionary *)fileInfo{
+    
+    [uploadedFiles addObject:fileInfo];
+    
+    
+    
+}
+
+
+-(void)getListOfUploadedFiles{
+    
+    //contruct request
+    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.box.com/2.0/folders/%@/items?limit=1000&fields=name,etag",
+                                       [[BoxNetHandler sharedHandler] folderID]]];
+    
+    HTTPFormDataRequest *request = [[HTTPFormDataRequest requestWithURL:url] retain];
+    
+    //add self as delegate
+    
+    [request addMulticastDelegate:self];
+    
+    [request addRequestHeader:@"Authorization"
+                        value:[NSString stringWithFormat:@"Bearer %@", [[OAuth2Client sharedInstance] accessToken]]];
+    
+    [request setQueue:[[HTTPRequestHandler uploadHandler] queue]];
+    [request setRequestMethod:@"GET"];
+    [request addMulticastDelegate:self];
+    [request addMulticastDelegate:[BoxNetHandler sharedHandler]];
+    [request setUserInfo:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"GET_FOLDER_ITEMS", nil]
+                                                     forKeys:[NSArray arrayWithObjects:@"TYPE", nil]]];
+    
+    //add request to queue
+    [[HTTPRequestHandler uploadHandler] addRequest:request];
+    
+    
+}
+
+
 
 #pragma mark
 #pragma mark Parsers, Response Handlers And Utility Methods
@@ -229,8 +421,40 @@ static BoxNetHandler *sharedObject = nil;
 
 - (void) requestFinished:(id)request
 {
+    
+    NSString *action = [[request userInfo] valueForKey:@"TYPE"];
+    
+    if ([action isEqualToString:@"GET_FOLDER_ITEMS"]) {
+        
+        
+        NSLog(@"Get folder items request finished!");
+        
+        SBJsonParser* parser = [[SBJsonParser alloc] init];
+        NSDictionary* json = [parser objectWithString:[request responseString]];
+        
+        if ([[json objectForKey:@"type"] isEqualToString:@"error"])
+        {
+            //if json parsing failed
+            
+            [self requestFailed:request];
+            
+            [parser release];
+            
+            return;
+        }
+
+        
+        uploadedFiles = [[NSMutableArray alloc] initWithArray:[json objectForKey:@"entries"]];
+        
+        
+        return;
+        
+    }
+    
 	NSArray* objs = [NSArray arrayWithObjects:[[request userInfo] valueForKey:@"TYPE"], [request responseString], [request userInfo], nil];
 	NSArray* keys = [NSArray arrayWithObjects:@"ACTION", @"DATA", @"USERINFO", nil];
+    
+    
 
 	[NSThread detachNewThreadSelector:@selector(oauth2ParseResponse:)
 							 toTarget:self
@@ -245,6 +469,10 @@ static BoxNetHandler *sharedObject = nil;
 - (void)postNotificationOnMainThread:(NSNotification*)notification {
     [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
+
+
+
+
 
 - (void) parseResponse:(NSDictionary *)params {   
     NSAutoreleasePool *pool = [NSAutoreleasePool new];
@@ -800,6 +1028,8 @@ static BoxNetHandler *sharedObject = nil;
     safe_release(folderID);
     safe_release(boxNetUser);
     safe_release(defaultFolder);
+    safe_release(uploadedFiles);
+    
     
     [userInfoReloadTimer invalidate];
     
