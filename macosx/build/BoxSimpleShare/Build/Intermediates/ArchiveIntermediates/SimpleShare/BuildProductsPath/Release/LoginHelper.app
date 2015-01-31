@@ -1,0 +1,1 @@
+/Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Build/BoxSimpleShare/Build/Intermediates/ArchiveIntermediates/SimpleShare/IntermediateBuildFilesPath/UninstalledProducts/LoginHelper.app

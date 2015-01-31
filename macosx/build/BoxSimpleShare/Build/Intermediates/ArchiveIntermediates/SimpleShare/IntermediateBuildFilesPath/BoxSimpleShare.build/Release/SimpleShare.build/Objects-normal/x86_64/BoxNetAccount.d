@@ -1,0 +1,29 @@
+dependencies: \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/BoxNetAccount.m \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/BoxNetAccount.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/BoxSimpleShareAppDelegate.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/CustomNSView.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/StatusItemView.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/LoadingView.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/StartVideoCaptureController.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/StartVideoCaptureView.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/VideoCaptureManagerBase.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/ImageCaptureController.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/StartImageCaptureView.h \
+  Frameworks/Growl.framework/Headers/Growl.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/Growl.framework/Headers/GrowlDefines.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/Growl.framework/Headers/GrowlApplicationBridge.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/FeedbackWindowController.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/MAAttachedWindow.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/OAuth2Client.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/ASIHTTPRequest/ASIProgressDelegate.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/JSON/JSON.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/JSON/SBJsonIncludes.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/JSON/SBJsonParser.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/JSON/SBJsonWriter.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/JSON/SBJsonStreamWriter.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/JSON/SBJsonStreamParser.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/JSON/SBJsonStreamParserAdapter.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/JSON/NSObject+JSON.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/NSString+URLEncoding.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/NSString+HTMLTags.h

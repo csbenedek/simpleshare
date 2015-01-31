@@ -1,0 +1,26 @@
+-x
+objective-c++
+-arch
+x86_64
+-fpascal-strings
+-O0
+-DDEBUG
+-DOBJC_OLD_DISPATCH_PROTOTYPES=0
+-isysroot
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
+-fasm-blocks
+-mmacosx-version-min=10.7
+-g
+-fvisibility-inlines-hidden
+-iquote
+-iquote
+-I/Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Build/BoxSimpleShare/Build/Products/Debug/include
+-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/include/libxml2
+-IFrameworks/Growl.framework/Headers
+-F/Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Build/BoxSimpleShare/Build/Products/Debug
+-F/Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks
+-DGTL_BUILT_AS_FRAMEWORK=1
+x86_64-apple-darwin13.4.0
+"4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.51)"
+SDK_PRODUCT_BUILD_VERSION=13F26
+13F26

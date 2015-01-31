@@ -1,0 +1,31 @@
+dependencies: \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/OAuth2Client.m \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/OAuth2Client.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/ASIHTTPRequest/ASIProgressDelegate.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/OAuth2Server.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/BoxNetHandler.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/ASIHTTPRequest/ASIHTTPRequestDelegate.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/ASIHTTPRequest/ASIFormDataRequest.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/ASIHTTPRequest/ASIHTTPRequest.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/ASIHTTPRequest/ASIHTTPRequestConfig.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/ASIHTTPRequest/ASICacheDelegate.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/ASIHTTPRequest/ASINetworkQueue.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/JSON/SBJsonParser.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/GrantAccessWindowController.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/BoxSimpleShareAppDelegate.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/CustomNSView.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/StatusItemView.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/LoadingView.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/StartVideoCaptureController.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/StartVideoCaptureView.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/VideoCaptureManagerBase.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/ImageCaptureController.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/StartImageCaptureView.h \
+  Frameworks/Growl.framework/Headers/Growl.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/Growl.framework/Headers/GrowlDefines.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Frameworks/Growl.framework/Headers/GrowlApplicationBridge.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/FeedbackWindowController.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/MAAttachedWindow.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/LoginViewController.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/MAAttachedWindowController.h \
+  /Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/BoxSimpleShare/AttachedWindowsController.h

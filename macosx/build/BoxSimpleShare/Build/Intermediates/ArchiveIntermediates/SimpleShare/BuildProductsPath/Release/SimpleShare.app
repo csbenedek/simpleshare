@@ -1,0 +1,1 @@
+/Users/splotnikov/Desktop/SimpleShare/simpleshare/macosx/Build/BoxSimpleShare/Build/Intermediates/ArchiveIntermediates/SimpleShare/InstallationBuildProductsLocation/Applications/SimpleShare.app
