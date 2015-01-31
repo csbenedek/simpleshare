@@ -1,3 +1,4 @@
 macosx/build
 .DS_Store
+macosx/.DS_Store
 macosx/BoxSimpleShare.xcodeproj/project.xcworkspace/xcuserdata/splotnikov.xcuserdatad/UserInterfaceState.xcuserstate
